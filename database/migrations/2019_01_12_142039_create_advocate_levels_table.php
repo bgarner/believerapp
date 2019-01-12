@@ -22,11 +22,8 @@ class CreateAdvocateLevelsTable extends Migration
             $table->integer('level')->nullable();
             $table->string('level_range', 255)->nullable();
             $table->string('multiplier', 255)->nullable();
-
-            
-
-            
-
+            $table->timestamps();
+            $table->softDeletes();
         });
 
         

@@ -20,11 +20,8 @@ class CreateChallengeTypesTable extends Migration
         Schema::create('challenge_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('type', 255)->nullable();
-
-            
-
-            
-
+            $table->timestamps();
+            $table->softDeletes();
         });
 
         

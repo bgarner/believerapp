@@ -20,11 +20,8 @@ class CreateAdvocateGroupsTable extends Migration
         Schema::create('advocate_groups', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 255)->nullable();
-
-            
-
-            
-
+            $table->timestamps();
+            $table->softDeletes();
         });
 
         

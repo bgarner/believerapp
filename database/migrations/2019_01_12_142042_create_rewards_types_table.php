@@ -20,11 +20,8 @@ class CreateRewardsTypesTable extends Migration
         Schema::create('rewards_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('type', 255)->nullable();
-
-            
-
-            
-
+            $table->timestamps();
+            $table->softDeletes();
         });
 
         

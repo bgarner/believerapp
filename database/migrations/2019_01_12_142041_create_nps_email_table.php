@@ -21,11 +21,8 @@ class CreateNpsEmailTable extends Migration
             $table->increments('id');
             $table->string('subject', 255)->nullable();
             $table->longText('content')->nullable();
-
-            
-
-            
-
+            $table->timestamps();
+            $table->softDeletes();
         });
 
         
