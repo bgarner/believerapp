@@ -19,7 +19,7 @@ class CreateFollowersTable extends Migration
     {
         Schema::create('followers', function (Blueprint $table) {
             $table->unsignedInteger('brand_id')->nullable();
-            $table->integer('advocate_profile_id')->nullable();
+            $table->unsignedInteger('advocate_profile_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

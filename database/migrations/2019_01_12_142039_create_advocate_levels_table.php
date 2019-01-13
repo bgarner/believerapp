@@ -19,7 +19,7 @@ class CreateAdvocateLevelsTable extends Migration
     {
         Schema::create('advocate_levels', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('level')->nullable();
+            $table->unsignedInteger('level')->nullable();
             $table->string('level_range', 255)->nullable();
             $table->string('multiplier', 255)->nullable();
             $table->timestamps();
