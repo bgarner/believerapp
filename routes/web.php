@@ -18,3 +18,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/admin', function () {
+    return ('welcome admin');
+});
+
+Route::get('/brandadmin', function () {
+    return ('welcome brand admin');
+});
+
+Route::get('/advocate', function () {
+    return ('welcome advocate');
+});
