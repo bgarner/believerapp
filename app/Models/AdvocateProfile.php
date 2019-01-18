@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class AdvocateProfile extends Model
 {
     use SoftDeletes;
-    protected $table = 'advocate_groups';
+    protected $table = 'advocate_profiles';
     protected $fillable = ['advocate_bulk_upload_id','points','social_accounts','level','email','first','last'];
 
-    
+
 }

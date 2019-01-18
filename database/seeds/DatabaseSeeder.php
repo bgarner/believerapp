@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ChallengeTypesSeeder::class);
         $this->call(RewardsTypesTableSeeder::class);
         $this->call(AdvocateGroupsSeeder::class);
+        $this->call(AdvocateProfilesSeeder::class);
     }
 }
