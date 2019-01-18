@@ -16,6 +16,8 @@ class UserGroupTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('user_groups')->truncate();
+        
         foreach ($this->groups as $group) {
         	\DB::table('user_groups')->insert([
         		'id' => $group['id'],
