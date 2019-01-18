@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\ChallengeType;
+use App\Models\RewardType;
 
-class ChallengeTypesSeeder extends Seeder
+class RewardsTypesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,11 +12,11 @@ class ChallengeTypesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('challenge_types')->truncate();
+        DB::table('rewards_types')->truncate();
         $faker = Faker\Factory::create();
         
-        for($i = 0; $i < 10; $i++) {
-			ChallengeType::create(
+        for($i = 0; $i < 5; $i++) {
+			RewardType::create(
                 array(
                     'type' => $faker->word 
                 )
