@@ -21,6 +21,7 @@ class UsersTableSeeder extends Seeder
                 array(
                     'name' => $faker->firstName . " " . $faker->lastName, 
                     'email' => $faker->email, 
+                    'group_id' => $faker->numberBetween(1,3),
                     'email_verified_at' => now(),
                     'password' => md5('ketchup9')
                 )
