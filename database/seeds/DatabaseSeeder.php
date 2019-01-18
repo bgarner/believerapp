@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AdvocateBulkUploadsSeeder::class);
         $this->call(UserGroupTableSeeder::class);
         $this->call(UsersTableSeeder::class);
+        $this->call(ChallengeTypesSeeder::class);
     }
 }
