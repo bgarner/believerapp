@@ -31,3 +31,6 @@ Route::get('/brandadmin', function () {
 Route::get('/advocate', function () {
     return ('welcome advocate');
 });
+
+
+Route::resource('/admin/brands', 'Admin\Brand\BrandController');

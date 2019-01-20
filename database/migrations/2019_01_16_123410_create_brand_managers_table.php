@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserGroupsTable extends Migration
+class CreateBrandManagersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateUserGroupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_groups', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('group');
+        Schema::create('brand_managers', function (Blueprint $table) {
+            $table->unsignedInteger('brand_id')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
             $table->timestamps();
+            $table->foreign('brand_id')->references('id')->on('brands');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->softDeletes();
+
         });
     }
 
@@ -28,6 +31,6 @@ class CreateUserGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_groups');
+        Schema::dropIfExists('brand_managers');
     }
 }

@@ -28,5 +28,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
+    public static function getBrandManagerOptions()
+    {
+        return Self::where('group_id', 2)->get();
+
+        // not currently managing a brand;
+    }
+
+    
     
 }
