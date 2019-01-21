@@ -1,5 +1,5 @@
 <?php
  
 
-//Brand Routes
-Route::resource('/admin/brands', '\Admin\Brand\BrandController');
+//CLient Routes
+Route::resource('/admin/clients', '\Admin\Client\ClientController');

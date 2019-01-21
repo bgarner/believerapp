@@ -29,11 +29,9 @@ class User extends Authenticatable
     ];
 
 
-    public static function getBrandManagerOptions()
+    public static function getClientManagerOptions()
     {
         return Self::where('group_id', 2)->get();
-
-        // not currently managing a brand;
     }
 
     

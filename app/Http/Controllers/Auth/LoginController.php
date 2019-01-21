@@ -48,10 +48,10 @@ class LoginController extends Controller
                 return '/admin';
             break;
             case '2':
-                return '/brandadmin';
+                return '/client';
             break; 
             case '3':
-                return '/advocate';
+                return '/believer';
             break; 
             default:
                 return '/login'; 
