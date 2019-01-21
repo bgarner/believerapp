@@ -33,4 +33,4 @@ Route::get('/advocate', function () {
 });
 
 
-Route::resource('/admin/brands', 'Admin\Brand\BrandController');
+Route::resource('/admin/brands', 'Admin\Client\ClientController');

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBrandManagersTable extends Migration
+class CreateClientManagerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateBrandManagersTable extends Migration
      */
     public function up()
     {
-        Schema::create('brand_managers', function (Blueprint $table) {
-            $table->unsignedInteger('brand_id')->nullable();
+        Schema::create('client_manager', function (Blueprint $table) {
+            $table->unsignedInteger('client_id')->nullable();
             $table->unsignedInteger('user_id')->nullable();
             $table->timestamps();
-            $table->foreign('brand_id')->references('id')->on('brands');
+            $table->foreign('client_id')->references('id')->on('brands');
             $table->foreign('user_id')->references('id')->on('users');
             $table->softDeletes();
-
         });
     }
 
@@ -31,6 +30,6 @@ class CreateBrandManagersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('brand_managers');
+        Schema::dropIfExists('client_manager');
     }
 }
