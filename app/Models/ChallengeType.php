@@ -9,7 +9,5 @@ class ChallengeType extends Model
 {
     use SoftDeletes;
     protected $table = 'challenge_types';
-    protected $fillable = [
-        'type'
-    ];
+    protected $fillable = ['type'];
 }
