@@ -17,10 +17,12 @@ class UsersTableSeeder extends Seeder
         $faker = Faker\Factory::create();
         
         for($i = 0; $i < 50; $i++) {
+            $first = $faker->firstName;
+            $last = $faker->lastName;
 			User::create(
                 array(
-                    'name' => $faker->firstName . " " . $faker->lastName, 
-                    'email' => $faker->email, 
+                    'name' => $first . " " . $last, 
+                    'email' => $first . "." . $last . "@gmail.com", 
                     'group_id' => $faker->numberBetween(1,2),
                     'email_verified_at' => now(),
                     'password' => md5('ketchup9')

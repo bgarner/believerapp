@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RewardsTypesTableSeeder::class);
         $this->call(AdvocateGroupsSeeder::class);
         $this->call(AdvocateProfilesSeeder::class);
+        $this->call(ChallengesSeeder::class);
     }
 }
