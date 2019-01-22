@@ -13,41 +13,38 @@ class ClientController extends Controller
     public function index()
     {
     	$clients = Client::getAllClients();
-    	return view('admin.clients.index', [
-    		'clients' => $clients
-    	]);
+    	return $clients;
     }
 
     public function create()
     {
-    	$managerOptions = User::getClientManagerOptions();
     	return view('admin.clients.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-    	return 'save new Client';
+        return Client::createNewClient($request);
     }
 
     public function show($id)
     {
     	$client = Client::getClientById($id);
-    	dd($client);
-    	return 'view Client by id';
+    	return ($client);
     }
 
     public function edit($id)
     {
-    	return 'edit existing Client';
+    	$client = Client::getClientById($id);
+        return view('admin.clients.edit', ['client' => $client]);
     }
 
-    public function update()
+    public function update(Request $request, $id)
     {
-    	return 'save changes to existing Client';
+    	return Client::updateClient($request, $id);
     }
 
-    public function delete()
+    public function destroy($id)
     {
-    	return 'edit existing Client';
+    	return Client::deleteClient($id);
     }
 }
