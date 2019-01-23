@@ -30,5 +30,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AdvocateLevelSeeder::class);
         $this->call(ChallengeAudiencesSeeder::class);
         $this->call(ChallengeCompletionsSeeder::class);
+        $this->call(FollowerSeeder::class);
     }
 }
