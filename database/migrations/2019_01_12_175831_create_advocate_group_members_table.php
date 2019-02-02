@@ -18,7 +18,7 @@ class CreateAdvocateGroupMembersTable extends Migration
     public function up()
     {
         Schema::create('advocate_group_members', function (Blueprint $table) {
-            $table->unsignedInteger('advocate_profile_id')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
             $table->unsignedInteger('group_id')->nullable();
             $table->timestamps();
             $table->softDeletes();

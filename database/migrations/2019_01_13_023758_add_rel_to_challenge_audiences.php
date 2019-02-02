@@ -15,7 +15,7 @@ class AddRelToChallengeAudiences extends Migration
     {
         Schema::table('challenge_audiences', function (Blueprint $table) {
             $table->foreign('challenge_id')->references('id')->on('challenges');
-            $table->foreign('advocate_profile_id')->references('id')->on('advocate_profiles');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

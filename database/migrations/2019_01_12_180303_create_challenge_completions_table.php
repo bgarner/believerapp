@@ -19,7 +19,7 @@ class CreateChallengeCompletionsTable extends Migration
     {
         Schema::create('challenge_completions', function (Blueprint $table) {
             $table->unsignedInteger('challenge_id')->nullable();
-            $table->unsignedInteger('advocate_profile_id')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
