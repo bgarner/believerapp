@@ -9,5 +9,5 @@ class ChallengeCompletion extends Model
 {
     use SoftDeletes;
     protected $table = 'challenge_completions';
-    protected $fillable = ['challenge_id', 'advocate_profile_id'];
+    protected $fillable = ['challenge_id', 'user_id'];
 }
