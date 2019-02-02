@@ -19,7 +19,7 @@ class FollowerSeeder extends Seeder
 			Follower::create(
                 array(
                     'brand_id' => $faker->numberBetween(1,50),
-                    'advocate_profile_id' => $faker->numberBetween(1,50)
+                    'user_id' => $faker->numberBetween(1,500)
                 )
             );
 		}
