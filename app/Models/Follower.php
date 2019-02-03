@@ -9,5 +9,5 @@ class Follower extends Model
 {
     use SoftDeletes;
     protected $table = 'followers';
-    protected $fillable = ['brand_id', 'advocate_profile_id'];
+    protected $fillable = ['brand_id', 'user_id'];
 }

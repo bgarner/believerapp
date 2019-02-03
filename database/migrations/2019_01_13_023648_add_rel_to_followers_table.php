@@ -15,7 +15,7 @@ class AddRelToFollowersTable extends Migration
     {
         Schema::table('followers', function (Blueprint $table) {
             $table->foreign('brand_id')->references('id')->on('brands');
-            $table->foreign('advocate_profile_id')->references('id')->on('advocate_profiles');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -19,7 +19,7 @@ class ChallengeCompletionsSeeder extends Seeder
 			ChallengeCompletion::create(
                 array(
                     'challenge_id' => $faker->numberBetween(1,500),
-                    'advocate_profile_id' => $faker->numberBetween(1,2400)
+                    'user_id' => $faker->numberBetween(1,500)
                 )
             );
 		}
