@@ -28,7 +28,7 @@ class BrandsTableSeeder extends Seeder
                     'province' => $faker->stateAbbr,
                     'postal_code' => $faker->postcode,
                     'phone1' => $faker->phoneNumber,
-                    'phone2' => $faker->phoneNumber                     
+                    'phone2' => $faker->phoneNumber
                 )
             );
 		}
