@@ -14,7 +14,7 @@ class AddRelToAdvocateGroupMembers extends Migration
     public function up()
     {
         Schema::table('advocate_group_members', function (Blueprint $table) {
-            $table->foreign('advocate_profile_id')->references('id')->on('advocate_profiles');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('group_id')->references('id')->on('advocate_groups');
         });
     }

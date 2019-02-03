@@ -18,7 +18,7 @@ class RedemptionSeeder extends Seeder
         for($i = 0; $i < 100; $i++) {
             Redemption::create(
                 array(
-                    'advocate_profile_id' => $faker->numberBetween(1,2487),
+                    'user_id' => $faker->numberBetween(1,500),
                     'reward_id' => $faker->numberBetween(1,500)
                 )
             );
