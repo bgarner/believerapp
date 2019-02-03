@@ -18,7 +18,7 @@ class AdvocateGroupMembersSeeder extends Seeder
         for($i = 0; $i < 600; $i++) {
 			AdvocateGroupMember::create(
                 array(
-                    'advocate_profile_id' => $faker->numberBetween(1,2500),
+                    'user_id' => $faker->numberBetween(1,500),
                     'group_id' => $faker->numberBetween(1,20)
                 )
             );

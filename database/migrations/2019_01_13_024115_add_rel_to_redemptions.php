@@ -14,7 +14,7 @@ class AddRelToRedemptions extends Migration
     public function up()
     {
         Schema::table('redemptions', function (Blueprint $table) {
-            $table->foreign('advocate_profile_id')->references('id')->on('advocate_profiles');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('reward_id')->references('id')->on('rewards');
         });
     }
