@@ -18,7 +18,7 @@ class CreateRedemptionsTable extends Migration
     public function up()
     {
         Schema::create('redemptions', function (Blueprint $table) {
-            $table->unsignedInteger('advocate_profile_id')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
             $table->unsignedInteger('reward_id')->nullable();
             $table->timestamps();
             $table->softDeletes();

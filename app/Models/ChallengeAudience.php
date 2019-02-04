@@ -9,5 +9,5 @@ class ChallengeAudience extends Model
 {
     use SoftDeletes;
     protected $table = 'challenge_audiences';
-    protected $fillable = ['challenge_id', 'advocate_profile_id'];
+    protected $fillable = ['challenge_id', 'user_id'];
 }
