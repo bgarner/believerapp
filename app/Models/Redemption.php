@@ -9,5 +9,5 @@ class Redemption extends Model
 {
     use SoftDeletes;
     protected $table = 'redemptions';
-    protected $fillable = ['advocate_profile_id', 'reward_id'];
+    protected $fillable = ['user_id', 'reward_id'];
 }
