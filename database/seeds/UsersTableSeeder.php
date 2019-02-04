@@ -27,7 +27,7 @@ class UsersTableSeeder extends Seeder
                     'email' => $first . "." . $last . "@gmail.com", 
                     'group_id' => $faker->numberBetween(1,3),
                     'email_verified_at' => now(),
-                    'password' => md5('ketchup9'),
+                    'password' => bcrypt('ketchup9'),
                     'point_balance' => $faker->numberBetween(0,2500),
                     'social_accounts' => '',
                     'level' => $faker->numberBetween(1,9),
