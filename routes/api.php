@@ -23,9 +23,9 @@ Route::post('user/login', 'API\LoginController@login');
 
 Route::get('/v1/clients', 'api\ClientController@index');
 Route::get('/v1/clients/{id}', 'api\ClientController@show');
-Route::post('/v1/clients/{id}/follow', 'api\ClientController@follow');
-Route::post('/v1/clients/{id}/refer', 'api\ClientController@refer');
-Route::post('/v1/clients/{id}/share', 'api\ClientController@share');
+Route::post('/v1/clients/follow', 'api\ClientController@follow');
+Route::post('/v1/clients/refer', 'api\ClientController@refer');
+Route::post('/v1/clients/share', 'api\ClientController@share');
 
 Route::get('/v1/missions', 'api\MissionController@index');
 Route::get('/v1/missions/{id}', 'api\MissionController@show');
