@@ -22,7 +22,7 @@ class ClientController extends Controller
 
     public function show(Request $request)
     {
-
+        return Brand::find($request->id);
     }
 
     public function showByClient(Request $request)
