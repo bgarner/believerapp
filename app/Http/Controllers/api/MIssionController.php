@@ -76,7 +76,6 @@ class MissionController extends Controller
         } else {
             $completion = new ChallengeCompletion(['challenge_id' => $request->mission_id, 'user_id' => $request->user_id]);
             $completion->save();
-
             //get the points for this challenge
             $points = Challenge::find($request->mission_id);
             //update user points
