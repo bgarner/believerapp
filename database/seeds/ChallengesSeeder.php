@@ -25,7 +25,7 @@ class ChallengesSeeder extends Seeder
                     'brand_id' => $faker->numberBetween(1, 50),
                     'created_by' => $faker->numberBetween(1, 50),
                     'is_draft' => 0,
-                    'points' => 0,
+                    'points' => $faker->randomElement($array = array ('100','200','300','400','500')),
                     'challenge_type' => $faker->numberBetween(1, 10)
                 )
             );
