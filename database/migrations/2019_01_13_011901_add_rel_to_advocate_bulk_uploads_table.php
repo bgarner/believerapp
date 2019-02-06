@@ -14,7 +14,7 @@ class AddRelToAdvocateBulkUploadsTable extends Migration
     public function up()
     {
         Schema::table('advocate_bulk_uploads', function (Blueprint $table) {
-            $table->foreign('user_id_uploader')->references('id')->on('users');
+            //$table->foreign('user_id_uploader')->references('id')->on('users');
         });
     }
 

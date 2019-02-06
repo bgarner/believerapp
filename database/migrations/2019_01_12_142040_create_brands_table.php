@@ -22,11 +22,11 @@ class CreateBrandsTable extends Migration
             $table->string('name', 255)->nullable();
             $table->string('description', 255)->nullable();
             $table->string('logo', 255)->nullable();
-            $table->string('address1', 255)->nullable();
-            $table->string('address2', 255)->nullable();
-            $table->string('city', 255)->nullable();
-            $table->string('province', 255)->nullable();
-            $table->string('postal_code', 255)->nullable();
+            // $table->string('address1', 255)->nullable();
+            // $table->string('address2', 255)->nullable();
+            // $table->string('city', 255)->nullable();
+            // $table->string('province', 255)->nullable();
+            // $table->string('postal_code', 255)->nullable();
             $table->string('lat', 255)->nullable();
             $table->string('lng', 255)->nullable();
             $table->timestamps();

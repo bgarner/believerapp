@@ -19,7 +19,8 @@ class UsersTableSeeder extends Seeder
         for($i = 0; $i < 500; $i++) {
             $first = $faker->firstName;
             $last = $faker->lastName;
-			User::create(
+            
+			$user = User::create(
                 array(
                     'name' => $first . " " . $last, 
                     'first' => $first,
@@ -40,6 +41,7 @@ class UsersTableSeeder extends Seeder
                     'phone2' => $faker->phoneNumber
                 )
             );
+            $user->save();
 		}
     }
 }

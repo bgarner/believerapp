@@ -30,8 +30,8 @@ Route::post('/v1/clients/share', 'api\ClientController@share');
 Route::get('/v1/missions', 'api\MissionController@index');
 Route::get('/v1/missions/{id}', 'api\MissionController@show');
 Route::get('/v1/missions/client/{id}', 'api\MissionController@showByClient');
-Route::get('/v1/missions/{id}/accept', 'api\MissionController@accept');
-Route::get('/v1/missions/{id}/complete', 'api\MissionController@complete');
+Route::get('/v1/missions/accept', 'api\MissionController@accept');
+Route::post('/v1/missions/complete', 'api\MissionController@complete');
 
 Route::get('/v1/rewards', 'api\RewardController@index');
 Route::get('/v1/rewards/{id}', 'api\RewardController@show');
