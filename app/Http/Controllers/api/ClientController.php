@@ -3,7 +3,6 @@ namespace App\Http\Controllers\api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\AdvocateProfile;
 use App\User;
 use App\Models\Brand;
 use App\Models\Follower;
@@ -41,10 +40,9 @@ class ClientController extends Controller
         // }
         $checkFollow = Follower::where('user_id','=',$request->user)
                                 ->where('brand_id','=',$request->client)
-                                ->get();
-        
-        if(count($checkFollow)) {
-            return 'already followed';
+                                ->first();
+        if($checkFollow) {
+            return $checkFollow->updated_at;
         } else {
             $follow = new Follower(['brand_id' => $request->client, 'user_id' => $request->user]);
             $follow->save();
