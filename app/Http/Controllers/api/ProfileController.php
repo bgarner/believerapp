@@ -21,14 +21,15 @@ class ProfileController extends Controller
     public function balance($id)
     {
         //GET http://localhost:8000/api/v1/profile/pointbalance/77
-        //Not sure which one is better...
-        //return User::where('id',$id)->pluck('point_balance');
         return User::select('point_balance')->where('id', $id)->first();
     }
 
     public function challengeHistory(Request $request)
     {
-
+        // GET http://localhost:8000/api/v1/profile/history
+        // {
+        //     "user_id": 20
+        // }
         $completions = ChallengeCompletion::select('challenge_id', 'created_at')
                                             ->where('user_id', $request->user_id)
                                             ->orderBy('created_at')
