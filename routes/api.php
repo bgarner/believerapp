@@ -40,4 +40,4 @@ Route::get('/v1/profile/edit', 'api\ProfileController@edit');
 
 Route::get('/v1/rewards', 'api\RewardController@index');
 Route::get('/v1/rewards/{id}', 'api\RewardController@show');
-Route::get('/v1/rewards/{id}/redeem', 'api\RewardController@redeem');
+Route::post('/v1/rewards/redeem', 'api\RewardController@redeem');
