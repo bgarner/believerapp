@@ -39,7 +39,6 @@ class ProfileController extends Controller
             $challenge_details = Challenge::where('id', $completion->challenge_id)->first();
             $brand = Brand::where('id',$challenge_details->brand_id)->first();
             $challenge_type = ChallengeType::where('id', $challenge_details->challenge_type)->first();
-
             $completion->points = $challenge_details->points;
             $completion->challange_name = $challenge_details->name;
             $completion->challenge_type = $challenge_type->type;

@@ -35,4 +35,15 @@ class User extends Authenticatable
         $user->save();
         return $user->point_balance;
     }
+
+    public static function subtractPoints($user_id, $points){
+        $user = Self::find($user_id);
+        if($user->point_balance >= $points){
+            $user->point_balance = $user->point_balance - $points;
+            $user->save();
+            return $user->point_balance;
+        } else {
+            return "not enough points";
+        }
+    }
 }
