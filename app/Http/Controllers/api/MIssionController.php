@@ -62,7 +62,7 @@ class MissionController extends Controller
 
     public function complete(Request $request)
     {
-        //mark a mission as complete for a user
+        //mark a mission as complete for a user, returns the users new point balance one completed
         // POST http://localhost:8000/api/v1/missions/complete
         // {
         //     "user_id": 123,
@@ -76,7 +76,10 @@ class MissionController extends Controller
         } else {
             $completion = new ChallengeCompletion(['challenge_id' => $request->mission_id, 'user_id' => $request->user_id]);
             $completion->save();
-            return $completion->created_at;
+            //get the points for this challenge
+            $points = Challenge::find($request->mission_id);
+            //update user points
+            return User::addPoints($request->user_id, $points->points);
         }
     }
 }

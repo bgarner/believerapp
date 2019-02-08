@@ -4,6 +4,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\AdvocateProfile;
 use App\Models\Brand;
+use App\Models\Follower;
+use App\Models\Reward;
+use App\Models\Redemption;
+use App\User;
+use DB;
 
 class RewardController extends Controller
 {
@@ -14,17 +19,55 @@ class RewardController extends Controller
      */
     public function index(Request $request)
     {
-
+        /**
+         * show a list of all active rewards
+         *GET http://localhost:8000/api/v1/rewards
+         * {
+         *   "user_id": 15
+         * }
+         */
+        return Reward::where('active_status', 1)
+                    ->join('rewards_types', 'rewards.reward_type_id', '=', 'rewards_types.id')
+                    ->orderBy('points', 'ASC')
+                    ->get();
     }
 
-    public function show(Request $request)
+    public function show($id)
     {
-
+        //GET http://localhost:8000/api/v1/rewards/1
+        return Reward::find($id)
+                ->join('rewards_types', 'rewards.reward_type_id', '=', 'rewards_types.id')
+                ->first();
     }
 
     public function redeem(Request $request)
     {
+        // allows the user to redeem a reward, creates a record of the redemption, and subtracts
+        // the points from the users account
+        //
+        // POST http://localhost:8000/api/v1/rewards/redeem
+        // {
+        //     "user_id": 123,
+        //     "reward_id": 3
+        // }
+        $points_balance = User::where('id', $request->user_id)->value('point_balance');
+        $reward_cost = Reward::where('id', $request->reward_id)->value('points');
+        
+        if($points_balance >= $reward_cost){
+            $redemption = new Redemption(['user_id' => $request->user_id, 'reward_id' => $request->reward_id]); 
+            $new_point_balance = User::subtractPoints($request->user_id, $reward_cost);
+            $redemption->save();
 
+            $data = [
+                "redeemed_at" => $redemption->updated_at,
+                "new_point_balance" => $new_point_balance
+            ];
+
+            return response()->json($data);
+
+        } else {
+            return "not enough points";
+        }
     }
 
 }
