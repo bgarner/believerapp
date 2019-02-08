@@ -33,11 +33,11 @@ Route::get('/v1/missions/client/{id}', 'api\MissionController@showByClient');
 Route::get('/v1/missions/accept', 'api\MissionController@accept');
 Route::post('/v1/missions/complete', 'api\MissionController@complete');
 
+Route::get('/v1/profile/history', 'api\ProfileController@challengeHistory');
+Route::get('/v1/profile/{id}', 'api\ProfileController@show');
+Route::get('/v1/profile/pointbalance/{id}', 'api\ProfileController@balance');
+Route::get('/v1/profile/edit', 'api\ProfileController@edit');
+
 Route::get('/v1/rewards', 'api\RewardController@index');
 Route::get('/v1/rewards/{id}', 'api\RewardController@show');
 Route::get('/v1/rewards/{id}/redeem', 'api\RewardController@redeem');
-
-Route::get('/v1/profile', 'api\ProfileController@index');
-Route::get('/v1/profile/pointbalance', 'api\ProfileController@balance');
-Route::get('/v1/profile/edit', 'api\ProfileController@edit');
-
