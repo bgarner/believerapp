@@ -21,10 +21,7 @@ class RewardController extends Controller
     {
         /**
          * show a list of all active rewards
-         *GET http://localhost:8000/api/v1/rewards
-         * {
-         *   "user_id": 15
-         * }
+         * POST http://localhost:8000/api/v1/rewards
          */
         return Reward::where('active_status', 1)
                     ->join('rewards_types', 'rewards.reward_type_id', '=', 'rewards_types.id')
@@ -32,10 +29,13 @@ class RewardController extends Controller
                     ->get();
     }
 
-    public function show($id)
+    public function show(Request $request)
     {
-        //GET http://localhost:8000/api/v1/rewards/1
-        return Reward::find($id)
+        //POST http://localhost:8000/api/v1/rewards/show
+        // {
+        //     "reward_id": 3
+        // }
+        return Reward::find($request->reward_id)
                 ->join('rewards_types', 'rewards.reward_type_id', '=', 'rewards_types.id')
                 ->first();
     }

@@ -13,7 +13,7 @@ class ClientController extends Controller
     public function index(Request $request)
     {
         //match the first char of the postal code to brands with the same first char
-        // GET http://localhost:8000/api/v1/clients
+        // POST http://localhost:8000/api/v1/clients
         // {
         //     "user_id": 123   
         // }
@@ -24,11 +24,11 @@ class ClientController extends Controller
 
     public function show(Request $request)
     {
-        //GET http://localhost:8000/api/v1/clients/1
+        //POST http://localhost:8000/api/v1/clients/show
         // {
-        //     "id": 1,
+        //     "client_id": 10,
         // }
-        return Brand::find($request->id);
+        return Brand::find($request->client_id);
     }
 
     public function follow(Request $request)
@@ -52,11 +52,11 @@ class ClientController extends Controller
 
     public function refer(Request $request)
     {
-
+        return "this is the refer endpoint";
     }
 
     public function share(Request $request)
     {
-
+        return "this is the share endpoint";
     }
 }

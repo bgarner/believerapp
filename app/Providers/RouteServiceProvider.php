@@ -69,14 +69,14 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware(['web','admin.auth', 'can:accessClientRoutes'])
              ->namespace($this->namespace)
-             ->group(base_path('routes/admin.php'));
+             ->group(base_path('routes/clients.php'));
     }
     
     protected function mapBelieverRoutes()
     {
         Route::middleware(['web','admin.auth', 'can:accessBelieverRoutes'])
              ->namespace($this->namespace)
-             ->group(base_path('routes/admin.php'));
+             ->group(base_path('routes/believers.php'));
     }       
 
     /**
