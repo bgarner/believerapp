@@ -16,6 +16,10 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->truncate();
         $faker = Faker\Factory::create();
         
+        //create myself
+        User::create(array('name' => 'Brent Garner','first' => 'Brent','last' => 'Garner','email' => 'bgarner@gmail.com','group_id' => 1,'email_verified_at' => now(),'password' => bcrypt('ketchup9'),'point_balance' => $faker->numberBetween(0,2500),'social_accounts' => '','level' => $faker->numberBetween(1,9),'address1' => $faker->streetAddress,'address2' => '','city' => $faker->city,'province' => $faker->stateAbbr,'postal_code' => $faker->postcode,'phone1' => $faker->phoneNumber,'phone2' => $faker->phoneNumber));
+        User::create(array('name' => 'Megha Jyoti','first' => 'Megha','last' => 'Jyoti','email' => 'jyoti5337@gmail.com','group_id' => 1,'email_verified_at' => now(),'password' => bcrypt('ketchup9'),'point_balance' => $faker->numberBetween(0,2500),'social_accounts' => '','level' => $faker->numberBetween(1,9),'address1' => $faker->streetAddress,'address2' => '','city' => $faker->city,'province' => $faker->stateAbbr,'postal_code' => $faker->postcode,'phone1' => $faker->phoneNumber,'phone2' => $faker->phoneNumber));
+
         for($i = 0; $i < 500; $i++) {
             $first = $faker->firstName;
             $last = $faker->lastName;
