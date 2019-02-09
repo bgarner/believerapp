@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use App\Models\UserGroup;
 
 class LoginController extends Controller
 {
@@ -37,25 +39,38 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    /**
+     * The user has been authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        $group_id = $user->group_id;
+        $group = UserGroup::where('id', $group_id)->first()->name;
+        return redirect("/". strtolower($group));
+    }
+
+    /**
+     * Log the user out of the application.
+     * Overriding the logout method in AuthenticatesUser Trait
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+        $request->session()->flush();
+        $request->session()->regenerate();
+        return redirect('/login');
+    }    
+
     public function redirectTo()
     {
 
-        $group_id = \Auth::user()->group_id; 
-        
-        // Check user role
-        switch ($group_id) {
-            case '1':
-                return '/admin';
-            break;
-            case '2':
-                return '/brandadmin';
-            break; 
-            case '3':
-                return '/advocate';
-            break; 
-            default:
-                return '/login'; 
-            break;
-        }
+
     }
 }
