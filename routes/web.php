@@ -13,10 +13,10 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 /*--- PUBLIC ROUTES ------------------------------------*/
-Route::get('/', array('uses'=> 'HomeController@index'));
+//Route::get('/', array('uses'=> 'HomeController@index'));
 
 
 /*--- USER ROUTES --------------------------------------*/
@@ -29,8 +29,6 @@ Route::get('/', array('uses'=> 'HomeController@index'));
 //     return ('welcome brand admin');
 // });
 
-/*--- ADMIN ROUTES -------------------------------------*/
-Route::get('/admin', array('uses'=> 'Admin\AdminDashbaordController@index'));
 
 
 

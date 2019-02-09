@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,6 +14,6 @@ class AdminDashboardController extends Controller
 
     public function index()
     {
-        return "here we are in the Admin Dashboard Controller...";
+        return view('admin.index');
     }
 }
