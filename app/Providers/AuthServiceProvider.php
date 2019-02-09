@@ -25,6 +25,25 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('accessAdminRoutes', function($user) {
+            if( $user->group_id == 1 ){
+                return true;
+            }
+            return false;
+        });
+        
+        Gate::define('accessClientRoutes', function($user) {
+            if( $user->group_id == 2 ){
+                return true;
+            }
+            return false;
+        });
+
+        Gate::define('accessBelieverRoutes', function($user) {
+            if( $user->group_id == 2 ){
+                return true;
+            }
+            return false;
+        });        
     }
 }
