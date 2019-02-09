@@ -12,16 +12,22 @@ use App\Models\Challenge;
 class ProfileController extends Controller
 {
 
-    public function show($id)
+    public function show(Request $request)
     {
-        //GET http://localhost:8000/api/v1/profile/56
-        return User::find($id);
+        //POST http://localhost:8000/api/v1/profile
+        // {
+        //     "user_id": 123
+        // }
+        return User::find($request->user_id);
     }
 
-    public function balance($id)
+    public function balance(Request $request)
     {
-        //GET http://localhost:8000/api/v1/profile/pointbalance/77
-        return User::select('point_balance')->where('id', $id)->first();
+        //POST http://localhost:8000/api/v1/profile/pointbalance
+        // {
+        //     "user_id": 123
+        // }
+        return User::select('point_balance')->where('id', $request->user_id)->first();
     }
 
     public function challengeHistory(Request $request)
@@ -52,7 +58,7 @@ class ProfileController extends Controller
 
     public function edit(Request $request)
     {
-
+        return "not implemented yet";
     }
 
 }

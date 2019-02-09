@@ -19,7 +19,7 @@ class MissionController extends Controller
     public function index(Request $request)
     {
         //get all of the missions from the brands that a user is following
-        // GET http://localhost:8000/api/v1/missions
+        // POST http://localhost:8000/api/v1/missions
         // {
         //     "user_id": 31
         // }
@@ -37,19 +37,25 @@ class MissionController extends Controller
         return $challenges;
     }
 
-    public function show($id)
+    public function show(Request $request)
     {
         // get a single mission
-        //GET http://localhost:8000/api/v1/missions/2
-        return Challenge::find($id);
+        //POST http://localhost:8000/api/v1/missions
+        // {
+        //     "user_id": 10
+        // }
+        return Challenge::find($request->mission_id);
     }
 
-    public function showByClient($id)
+    public function showByClient(Request $request)
     {
         //get all of active the missions for a particular brand
-        // GET http://localhost:8000/api/v1/missions/client/44
+        // POST http://localhost:8000/api/v1/missions/client
+        // {
+        //     "client_id": 10
+        // }
 
-        return Challenge::where('brand_id', $id)
+        return Challenge::where('brand_id', $request->client_id)
                 ->where('start', '<', Carbon::now())
                 ->where('end', '>', Carbon::now())
                 ->get();
@@ -57,7 +63,13 @@ class MissionController extends Controller
 
     public function accept(Request $request)
     {
+        // POST http://localhost:8000/api/v1/missions/accept
+        // {
+        //     "user": 123,
+        //     "mission": 2
+        // }
         //add a mission to a users 'accepted missions' view
+        return "this is the accept a mission endpoint. Not used.";
     }
 
     public function complete(Request $request)
@@ -72,14 +84,22 @@ class MissionController extends Controller
                                 ->where('user_id','=',$request->user_id)
                                 ->first();
         if($check) {
-            return $check->created_at;
+            $data = [
+                "previously_completed" => 1,
+                "completed_at" => $check->created_at,
+            ];            
         } else {
             $completion = new ChallengeCompletion(['challenge_id' => $request->mission_id, 'user_id' => $request->user_id]);
             $completion->save();
-            //get the points for this challenge
+            //get the points for this challenge, update user points
             $points = Challenge::find($request->mission_id);
-            //update user points
-            return User::addPoints($request->user_id, $points->points);
+            $new_point_balance = User::addPoints($request->user_id, $points->points);
+
+            $data = [
+                "completed_at" => $completion->updated_at,
+                "new_point_balance" => $new_point_balance
+            ];
         }
+        return response()->json($data);
     }
 }

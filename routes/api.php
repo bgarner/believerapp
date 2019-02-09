@@ -21,23 +21,23 @@ Route::post('user/login', 'API\LoginController@login');
 //     return auth()->user();
 // });
 
-Route::get('/v1/clients', 'api\ClientController@index');
-Route::get('/v1/clients/{id}', 'api\ClientController@show');
+Route::post('/v1/clients', 'api\ClientController@index');
+Route::post('/v1/clients/show', 'api\ClientController@show');
 Route::post('/v1/clients/follow', 'api\ClientController@follow');
 Route::post('/v1/clients/refer', 'api\ClientController@refer');
 Route::post('/v1/clients/share', 'api\ClientController@share');
 
-Route::get('/v1/missions', 'api\MissionController@index');
-Route::get('/v1/missions/{id}', 'api\MissionController@show');
-Route::get('/v1/missions/client/{id}', 'api\MissionController@showByClient');
-Route::get('/v1/missions/accept', 'api\MissionController@accept');
+Route::post('/v1/missions', 'api\MissionController@index');
+Route::post('/v1/missions/show', 'api\MissionController@show');
+Route::post('/v1/missions/client', 'api\MissionController@showByClient');
+Route::post('/v1/missions/accept', 'api\MissionController@accept');
 Route::post('/v1/missions/complete', 'api\MissionController@complete');
 
-Route::get('/v1/profile/history', 'api\ProfileController@challengeHistory');
-Route::get('/v1/profile/{id}', 'api\ProfileController@show');
-Route::get('/v1/profile/pointbalance/{id}', 'api\ProfileController@balance');
-Route::get('/v1/profile/edit', 'api\ProfileController@edit');
+Route::post('/v1/profile', 'api\ProfileController@show');
+Route::post('/v1/profile/history', 'api\ProfileController@challengeHistory');
+Route::post('/v1/profile/pointbalance/', 'api\ProfileController@balance');
+Route::post('/v1/profile/edit', 'api\ProfileController@edit');
 
-Route::get('/v1/rewards', 'api\RewardController@index');
-Route::get('/v1/rewards/{id}', 'api\RewardController@show');
+Route::post('/v1/rewards', 'api\RewardController@index');
+Route::post('/v1/rewards/show', 'api\RewardController@show');
 Route::post('/v1/rewards/redeem', 'api\RewardController@redeem');
