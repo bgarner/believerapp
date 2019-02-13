@@ -9,6 +9,13 @@ import $ from 'jquery';
 window.$ = window.jQuery = $;
 
 require('bootstrap');
+require('popper.js');
+require('tooltip.js');
+require('icheck');
+require('jquery.nicescroll');
+require('moment');
+require('./stisla.js');
+require('./scripts.js');
 // window.Vue = require('vue');
 
 /**

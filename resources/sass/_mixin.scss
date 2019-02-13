@@ -76,13 +76,13 @@
 }
 
 @mixin form-control() {
-  background-color: color_lighten(primary, 32.4%);
-  border-color: color_lighten(primary, 27%);
+  //background-color: color_lighten(primary, 32.4%);
+  border-color: color_lighten(dark, 50%);
 }
 
 @mixin form-control-focus() {
-  background-color: color_lighten(primary, 32.8%);
-  border-color: color_lighten(primary, 10%);
+  //background-color: color_lighten(primary, 32.8%);
+  border-color: color_lighten(primary, 0%);
 }
 
 // Breakpoint viewport sizes and media queries.

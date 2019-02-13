@@ -187,7 +187,7 @@
         float: right;
         color: color_lighten(primary, 8%);
         margin: -60px;
-        .ion, .fas, .far, .fab, .fal {
+        .ion, .fas, .far, .fab, .fal, .fa {
           font-size: 140px;
         }
       }
@@ -222,14 +222,16 @@
   &.card-statistic-1 .card-icon, &.card-statistic-2 .card-icon {
     width: 80px;
     height: 80px;
-    margin: 10px;
+    margin: 0px 10px 20px 10px;
     border-radius: 3px;
     line-height: 94px;
     text-align: center;
     float: left;
     margin-right: 15px;
-    .ion, .fas, .far, .fab, .fal {
-      font-size: 22px;
+    .ion, .fas, .far, .fab, .fal, .fa {
+      font-size: 42px;
+      position: relative;
+      top: 8px;
       color: #fff;
     }
   }
@@ -327,7 +329,7 @@
       flex-shrink: 0;
       width: 150px;
       border-radius: 3px 0 0 3px;
-      .ion, .fas, .far, .fab, .fal {
+      .ion, .fas, .far, .fab, .fal, .fa {
         font-size: 60px;
       }
     }
