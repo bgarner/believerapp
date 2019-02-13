@@ -16,7 +16,7 @@ Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');
 
 /*--- PUBLIC ROUTES ------------------------------------*/
-//Route::get('/', array('uses'=> 'HomeController@index'));
+Route::get('/', array('uses'=> 'HomeController@index'));
 
 
 /*--- USER ROUTES --------------------------------------*/
