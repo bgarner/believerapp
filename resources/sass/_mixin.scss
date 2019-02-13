@@ -77,7 +77,7 @@
 
 @mixin form-control() {
   //background-color: color_lighten(primary, 32.4%);
-  border-color: color_lighten(dark, 50%);
+  border-color: color_lighten(dark, 70%);
 }
 
 @mixin form-control-focus() {
