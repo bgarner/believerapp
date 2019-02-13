@@ -22,7 +22,7 @@
         <div class="navbar-bg"></div>
         <nav class="navbar navbar-expand-lg main-navbar">
           <a href="index.html" class="navbar-brand sidebar-gone-hide">Believer</a>
-          <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
+          <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fa fa-bars"></i></a>
           <div class="nav-collapse">
             <a class="sidebar-gone-show nav-collapse-toggle nav-link" href="#">
               <i class="fas fa-ellipsis-v"></i>
@@ -37,18 +37,18 @@
           <ul class="navbar-nav float-right" style="position: absolute; right: 0px;">
 
             <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-              <img alt="image" src="/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+              <img alt="image" src="/images/avatar/avatar-1.png" class="rounded-circle mr-1">
               <div class="d-sm-none d-lg-inline-block">Hi, Sam Hudson</div></a>
               <div class="dropdown-menu dropdown-menu-right">
                 <a href="features-profile.html" class="dropdown-item has-icon">
-                  <i class="far fa-user"></i> Profile
+                  <i class="fa fa-user"></i> Profile
                 </a>
                 <a href="features-settings.html" class="dropdown-item has-icon">
-                  <i class="fas fa-cog"></i> Settings
+                  <i class="fa fa-cog"></i> Settings
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item has-icon text-danger">
-                  <i class="fas fa-sign-out-alt"></i> Logout
+                  <i class="fa fa-sign-out"></i> Logout
                 </a>
               </div>
             </li>
@@ -83,7 +83,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                       <div class="card card-statistic-1">
                         <div class="card-icon bg-primary">
-                          <i class="fas fa-user"></i>
+                          <i class="fa fa-user"></i>
                         </div>
                         <div class="card-wrap">
                           <div class="card-header">
@@ -98,7 +98,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                       <div class="card card-statistic-1">
                         <div class="card-icon bg-danger">
-                          <i class="fas fa-users"></i>
+                          <i class="fa fa-users"></i>
                         </div>
                         <div class="card-wrap">
                           <div class="card-header">
@@ -113,7 +113,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                       <div class="card card-statistic-1">
                         <div class="card-icon bg-warning">
-                          <i class="fas fa-coins"></i>
+                          <i class="fa fa-trophy"></i>
                         </div>
                         <div class="card-wrap">
                           <div class="card-header">
@@ -128,7 +128,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                       <div class="card card-statistic-1">
                         <div class="card-icon bg-success">
-                          <i class="fas fa-gift"></i>
+                          <i class="fa fa-gift"></i>
                         </div>
                         <div class="card-wrap">
                           <div class="card-header">
@@ -198,22 +198,8 @@
     </div>
   
     <!-- General JS Scripts -->
-    <script src="/modules/jquery.min.js"></script>
-    <script src="/modules/popper.js"></script>
-    <script src="/modules/tooltip.js"></script>
-    <script src="/modules/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/modules/nicescroll/jquery.nicescroll.min.js"></script>
-    <script src="/modules/moment.min.js"></script>
-    <script src="/js/stisla.js"></script>
-    
-    <!-- JS Libraies -->
-  
-    <!-- Page Specific JS File -->
-    <script src="/js/page/index-0.js"></script>
+    <script src="/js/app.js"></script>
 
-    <!-- Template JS File -->
-    <script src="/js/scripts.js"></script>
-    <script src="/js/custom.js"></script>
   </body>
 
 </html>
