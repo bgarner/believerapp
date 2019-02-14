@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);@import url(https://fonts.googleapis.com/css?family=Nunito:400,600,700,800);@charset "UTF-8";
+@charset "UTF-8";
 
 /*!
  * Bootstrap v4.2.1 (https://getbootstrap.com/)
@@ -14618,9 +14618,9 @@ select.form-control:not([size]):not([multiple]) {
 
 .card.card-statistic-1 .card-icon,
 .card.card-statistic-2 .card-icon {
-  width: 80px;
-  height: 80px;
-  margin: 0px 10px 20px 10px;
+  width: 70px;
+  height: 70px;
+  margin: 10px;
   border-radius: 3px;
   line-height: 94px;
   text-align: center;
@@ -14640,9 +14640,7 @@ select.form-control:not([size]):not([multiple]) {
 .card.card-statistic-2 .card-icon .fab,
 .card.card-statistic-2 .card-icon .fal,
 .card.card-statistic-2 .card-icon .fa {
-  font-size: 42px;
-  position: relative;
-  top: 8px;
+  font-size: 38px;
   color: #fff;
 }
 
@@ -16437,40 +16435,16 @@ a.dropdown-item.active {
 
 /* nunito-regular - latin */
 
-@font-face {
-  font-family: "Nunito";
-  font-style: normal;
-  font-weight: 400;
-}
-
 /* nunito-600 - latin */
-
-@font-face {
-  font-family: "Nunito";
-  font-style: normal;
-  font-weight: 600;
-}
 
 /* nunito-700 - latin */
 
-@font-face {
-  font-family: "Nunito";
-  font-style: normal;
-  font-weight: 700;
-}
-
 /* nunito-800 - latin */
-
-@font-face {
-  font-family: "Nunito";
-  font-style: normal;
-  font-weight: 800;
-}
 
 :root {
   /* Colors */
   --primary: color(primary);
-  --secondary: color(fontdark);
+  --secondary: color(secondary);
   --success: color(success);
   --info: color(info);
   --warning: color(warning);
@@ -16480,16 +16454,16 @@ a.dropdown-item.active {
 }
 
 body {
-  background-color: #fafdfb;
+  background-color: #f4f4f4;
   font-size: 14px;
   font-weight: 400;
-  font-family: "Nunito", "Segoe UI", arial;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   color: #6c757d;
 }
 
 a.bb {
   text-decoration: none;
-  border-bottom: 1px solid #303030;
+  border-bottom: 1px solid #09a4bc;
   padding-bottom: 1px;
 }
 
@@ -16536,8 +16510,7 @@ a.bb {
 }
 
 .login-brand {
-  margin: 20px 0;
-  margin-bottom: 40px;
+  margin: 40px 0 20px 0;
   font-size: 24px;
   text-transform: uppercase;
   letter-spacing: 4px;
