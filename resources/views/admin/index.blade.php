@@ -47,7 +47,7 @@
                   <i class="fa fa-cog"></i> Settings
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item has-icon text-danger">
+                <a href="/logout" class="dropdown-item has-icon text-danger">
                   <i class="fa fa-sign-out"></i> Logout
                 </a>
               </div>
