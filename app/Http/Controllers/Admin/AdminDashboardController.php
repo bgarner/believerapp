@@ -4,16 +4,27 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
+use App\Models\Brand;
+use App\Models\Redemption;
 
 class AdminDashboardController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth');       
     }  
 
     public function index()
     {
-        return view('layouts.admin_layout');
+        $believer_count = User::where('group_id', 3)->count();
+        $brand_count = Brand::count();
+        $point_total = User::where('group_id', 3)->sum('point_balance');
+        $redemption_count = Redemption::count();
+        return view('admin.index')
+            ->with('believer_count', number_format($believer_count))
+            ->with('brand_count', number_format($brand_count))
+            ->with('point_total', number_format($point_total))
+            ->with('redemption_count', number_format($redemption_count));
     }
 }
