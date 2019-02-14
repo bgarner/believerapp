@@ -26,8 +26,8 @@
                               <th>Team Members</th>
                               <th>Date Joined</th>
                               <th>Believers</th>
-                              <th>Points</th>
                               <th>Missions Completed</th>
+                              <th>Points Awarded</th>
                               <th>Delete</th>
                             </tr>
                             @foreach($clients as $client)
@@ -36,8 +36,8 @@
                               <td><img alt="image" src="/img/avatar/avatar-5.png" class="rounded-circle" width="20" data-toggle="tooltip" title="" data-original-title="Wildan Ahdian"></td>
                               <td>{{ $client->created_at }}</td>  
                               <td>{{ $client->total_believers }}</td>
-                              <td>{{ $client->total_points }}</td>
                               <td>{{ $client->challenge_completions }}</td>
+                              <td>{{ $client->total_points }}</td>
                               <td><a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
                             </tr>
 

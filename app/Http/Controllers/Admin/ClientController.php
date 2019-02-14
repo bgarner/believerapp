@@ -8,7 +8,6 @@ use App\Models\Brand;
 use App\Models\Follower;
 use App\Models\Challenge;
 use App\Models\ChallengeCompletion;
-use App\User;
 
 class ClientController extends Controller
 {
@@ -22,7 +21,7 @@ class ClientController extends Controller
         $clients = Brand::all();
         foreach($clients as $client){
             $followers = Follower::where('brand_id', $client->id)->get();
-            // $follower_points = User::whereIn('id', $followers)->sum('point_balance');
+            
             $challenges = Challenge::where('brand_id', $client->id)->pluck('id');
             $challenge_completions = ChallengeCompletion::whereIn('challenge_id', $challenges)->count();
 
