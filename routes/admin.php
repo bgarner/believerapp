@@ -1,3 +1,3 @@
 <?php
 /*--- ADMIN ROUTES -------------------------------------*/
-Route::get('/', array('uses'=> 'Admin\AdminDashboardController@index'));
+Route::get('/admin', array('uses'=> 'Admin\AdminDashboardController@index'));
