@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserGroupsTable extends Migration
+class UpdateBrandsTableAddUniqueName extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateUserGroupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_groups', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('group');
-            $table->timestamps();
-            $table->softDeletes();
+        Schema::table('brands', function (Blueprint $table) {
+            $table->string('unique_name')->after('name');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateUserGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_groups');
+        Schema::table('brands', function (Blueprint $table) {
+            $table->dropColumn('unique_name');
+        });
     }
 }

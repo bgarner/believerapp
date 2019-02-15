@@ -1,9 +1,10 @@
 <?php
-/*--- ADMIN ROUTES -------------------------------------*/
-Route::get('/admin', array('uses'=> 'Admin\AdminDashboardController@index'));
+ 
 
+//CLient Routes
+Route::resource('/admin/clients', '\Admin\Client\ClientController');
 
-Route::get('/admin/clients', array('uses'=> 'Admin\ClientController@index'));
+//Route::get('/admin/clients', array('uses'=> 'Admin\ClientController@index'));
 
 Route::get('/admin/rewards', array('uses'=> 'Admin\RewardController@index'));
 
