@@ -32,7 +32,7 @@
                             </tr>
                             @foreach($clients as $client)
                             <tr>
-                              <td><a href="/admin/clients/edit/{{ $client->id }}">{{ $client->name }}</a></td>
+                              <td><a href="/admin/clients/{{ $client->id }}">{{ $client->name }}</a></td>
                               <td><img alt="image" src="/img/avatar/avatar-5.png" class="rounded-circle" width="20" data-toggle="tooltip" title="" data-original-title="Wildan Ahdian"></td>
                               <td>{{ $client->created_at }}</td>  
                               <td>{{ $client->total_believers }}</td>

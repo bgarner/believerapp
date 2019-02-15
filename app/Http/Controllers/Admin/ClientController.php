@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Brand;
+use App\Models\Client;
 use App\Models\Follower;
 use App\Models\Challenge;
 use App\Models\ChallengeCompletion;
@@ -18,7 +18,7 @@ class ClientController extends Controller
     
     public function index()
     {
-        $clients = Brand::all();
+        $clients = Client::all();
         foreach($clients as $client){
             $followers = Follower::where('brand_id', $client->id)->get();
             

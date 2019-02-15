@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Brand;
+use App\Models\Client;
 
 class BrandsTableSeeder extends Seeder
 {
@@ -17,7 +17,7 @@ class BrandsTableSeeder extends Seeder
         $faker = Faker\Factory::create();
         
         for($i = 0; $i < 50; $i++) {
-			Brand::create(
+			Client::create(
                 array(
                     'name' => $faker->company, 
                     'description' => $faker->sentence, 

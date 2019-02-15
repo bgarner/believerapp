@@ -3,7 +3,7 @@ namespace App\Http\Controllers\api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\AdvocateProfile;
-use App\Models\Brand;
+use App\Models\Client;
 use App\User;
 use App\Models\ChallengeCompletion;
 use App\Models\ChallengeType;
@@ -43,7 +43,7 @@ class ProfileController extends Controller
 
         foreach($completions as $completion){
             $challenge_details = Challenge::where('id', $completion->challenge_id)->first();
-            $brand = Brand::where('id',$challenge_details->brand_id)->first();
+            $brand = Client::where('id',$challenge_details->brand_id)->first();
             $challenge_type = ChallengeType::where('id', $challenge_details->challenge_type)->first();
             $completion->points = $challenge_details->points;
             $completion->challange_name = $challenge_details->name;

@@ -3,7 +3,7 @@ namespace App\Http\Controllers\api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\AdvocateProfile;
-use App\Models\Brand;
+use App\Models\Client;
 use App\Models\Follower;
 use App\Models\Reward;
 use App\Models\Redemption;
