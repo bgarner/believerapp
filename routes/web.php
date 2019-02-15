@@ -13,8 +13,8 @@
 
 Auth::routes();
 //alias for the 'register' route
-Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('signup', 'Auth\RegisterController@register');
+Route::get('/signup', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('/signup', 'Auth\RegisterController@register');
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 //Route::get('/home', 'HomeController@index')->name('home');
