@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use App\Models\UserGroup;
 
 class RedirectIfAuthenticated
 {
@@ -15,12 +16,16 @@ class RedirectIfAuthenticated
      * @param  string|null  $guard
      * @return mixed
      */
+
     public function handle($request, Closure $next, $guard = null)
     {
+        // Auth::logout(); 
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            $group_id = Auth::user()->group_id;
+            $group = UserGroup::where('id', $group_id)->first()->name;
+            return redirect("/". strtolower($group));
         }
-
         return $next($request);
-    }
+    } 
+
 }
