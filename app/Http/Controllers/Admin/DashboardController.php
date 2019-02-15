@@ -8,7 +8,7 @@ use App\User;
 use App\Models\Client;
 use App\Models\Redemption;
 
-class AdminDashboardController extends Controller
+class DashboardController extends Controller
 {
     public function __construct()
     {
@@ -21,7 +21,7 @@ class AdminDashboardController extends Controller
         $brand_count = client::count();
         $point_total = User::where('group_id', 3)->sum('point_balance');
         $redemption_count = Redemption::count();
-        return view('admin.index')
+        return view('admin.dashboard.index')
             ->with('believer_count', number_format($believer_count))
             ->with('brand_count', number_format($brand_count))
             ->with('point_total', number_format($point_total))

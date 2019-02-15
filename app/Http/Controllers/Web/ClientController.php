@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,8 +14,10 @@ class ClientController extends Controller
     }  
 
     public function clientLandingPage($slug)
-    {
-        return Client::where('unique_name', $slug)->first();
+    { 
+        $brand = Client::where('unique_name', $slug)->first();
+        return view('web.landingpage')
+          ->with('brand', $brand);
     }
 }
 

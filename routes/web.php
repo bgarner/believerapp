@@ -16,9 +16,9 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 //Route::get('/home', 'HomeController@index')->name('home');
 
 /*--- PUBLIC ROUTES ------------------------------------*/
-Route::get('/', array('uses'=> 'HomeController@index'));
+Route::get('/', array('uses'=> 'Web\HomeController@index'));
 
-Route::get('/{client_slug}', array('uses' => 'ClientController@clientLandingPage'));
+Route::get('/{client_slug}', array('uses' => 'Web\ClientController@clientLandingPage'));
 
 /*--- USER ROUTES --------------------------------------*/
 // Route::get('/advocate', function () {

@@ -33,7 +33,7 @@ class ClientController extends Controller
             $client->total_points = number_format($total_points);
             $client->challenge_completions = number_format($challenge_completions);
         }
-        return view('admin.clients')
+        return view('admin.clients.index')
             ->with('clients', $clients);
     }
 
