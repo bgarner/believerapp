@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
-use App\Models\Brand;
+use App\Models\Client;
 use App\Models\Redemption;
 
 class AdminDashboardController extends Controller
@@ -18,7 +18,7 @@ class AdminDashboardController extends Controller
     public function index()
     {
         $believer_count = User::where('group_id', 3)->count();
-        $brand_count = Brand::count();
+        $brand_count = client::count();
         $point_total = User::where('group_id', 3)->sum('point_balance');
         $redemption_count = Redemption::count();
         return view('admin.index')
