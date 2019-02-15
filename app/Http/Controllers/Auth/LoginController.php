@@ -71,6 +71,23 @@ class LoginController extends Controller
     public function redirectTo()
     {
 
+        $group_id = \Auth::user()->group_id; 
+        
+        // Check user role
+        switch ($group_id) {
+            case '1':
+                return '/admin';
+            break;
+            case '2':
+                return '/client';
+            break; 
+            case '3':
+                return '/believer';
+            break; 
+            default:
+                return '/login'; 
+            break;
+        }
 
     }
 }

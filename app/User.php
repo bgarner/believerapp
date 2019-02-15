@@ -29,6 +29,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
+    public static function getClientManagerOptions()
+    {
+        return Self::where('group_id', 2)->get();
+    }
+
+    
+    
     public static function addPoints($user_id, $points){
         $user = Self::find($user_id);
         $user->point_balance = $user->point_balance + $points;
