@@ -1,0 +1,1026 @@
+{
+	"info": {
+		"_postman_id": "522d07b7-b3d7-4c5c-80dd-a88678b39eaa",
+		"name": "Believer App",
+		"description": "# Introduction\nThis is the API for the mobile app for Believer\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/api/v1/clients",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": 123\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/clients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"clients"
+					]
+				},
+				"description": "List available clients to follow, ordered by closest to user first"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": 123,\n  \"lat\": 51.282614,\n  \"lng\": -113.98166\n}"
+						},
+						"url": {
+							"raw": "/api/v1/clients",
+							"path": [
+								"api",
+								"v1",
+								"clients"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n  \"livingston\": {\n    \"name\": \"Livingston by Brookfield\",\n    \"logo\": \"livingston_logo.png\",\n    \"client_id\": 323,\n    \"description\": \"Livingston is great place to buy a house\",\n    \"location\": {\n      \"address\": \"123 Livington Street, Calgary, Alberta\",\n      \"lat\": 51.28276580000001,\n      \"lng\": -113.9817451\n    }\n  },\n  \"Starbucks\": {\n    \"name\": \"Starbucks\",\n    \"logo\": \"starbucks_logo.png\",\n    \"client_id\": 322,\n    \"description\": \"Coffee\",\n    \"location\": {\n      \"address\": \"123 7th Ave SW, Calgary, Alberta\",\n      \"lat\": 51.28276580000001,\n      \"lng\": -113.9817451\n    }\n  },\n  \"Tim Hortons\": {\n    \"name\": \"Tim Hortons\",\n    \"logo\": \"tims_logo.png\",\n    \"client_id\": 321,\n    \"description\": \"More Coffee\",\n    \"location\": {\n      \"address\": \"121 7th Ave SW, Calgary, Alberta\",\n      \"lat\": 51.28276580000001,\n      \"lng\": -113.9817451\n    }\n  }   \n}"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/clients/show",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"client_id\": 123\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/clients/show",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"clients",
+						"show"
+					]
+				},
+				"description": "show a single clients details"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": 123,\n  \"lat\": 51.282614,\n  \"lng\": -113.98166\n}"
+						},
+						"url": {
+							"raw": "/api/v1/clients",
+							"path": [
+								"api",
+								"v1",
+								"clients"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n  \"livingston\": {\n    \"name\": \"Livingston by Brookfield\",\n    \"logo\": \"livingston_logo.png\",\n    \"client_id\": 323,\n    \"description\": \"Livingston is great place to buy a house\",\n    \"location\": {\n      \"address\": \"123 Livington Street, Calgary, Alberta\",\n      \"lat\": 51.28276580000001,\n      \"lng\": -113.9817451\n    }\n  },\n  \"Starbucks\": {\n    \"name\": \"Starbucks\",\n    \"logo\": \"starbucks_logo.png\",\n    \"client_id\": 322,\n    \"description\": \"Coffee\",\n    \"location\": {\n      \"address\": \"123 7th Ave SW, Calgary, Alberta\",\n      \"lat\": 51.28276580000001,\n      \"lng\": -113.9817451\n    }\n  },\n  \"Tim Hortons\": {\n    \"name\": \"Tim Hortons\",\n    \"logo\": \"tims_logo.png\",\n    \"client_id\": 321,\n    \"description\": \"More Coffee\",\n    \"location\": {\n      \"address\": \"121 7th Ave SW, Calgary, Alberta\",\n      \"lat\": 51.28276580000001,\n      \"lng\": -113.9817451\n    }\n  }   \n}"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/clients/follow",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\": 123,\n    \"client\": 1\n}"
+				},
+				"url": {
+					"raw": "/api/v1/clients/1/follow",
+					"path": [
+						"api",
+						"v1",
+						"clients",
+						"1",
+						"follow"
+					]
+				},
+				"description": "Follow a given client"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": 123,\n  \"client\": 1\n}"
+						},
+						"url": {
+							"raw": "/api/v1/clients/1/follow",
+							"path": [
+								"api",
+								"v1",
+								"clients",
+								"1",
+								"follow"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n  \"success\": true\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/clients/refer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\": 123,\n    \"client\": 1,\n    \"referal_name\": \"John Smith\",\n    \"referal_email\": \"john.smith@gmail.com\",\n    \"referal_phone\": 4035551234,\n    \"referal_note\": \"Placeholder text for a note or question specific to the referal.\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/clients/refer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"clients",
+						"refer"
+					]
+				},
+				"description": "If available, send referral to a selected client."
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": 123,\n  \"client\": 1,\n  \"referal_name\": \"John Smith\",\n  \"referal_email\": \"john.smith@gmail.com\",\n  \"referal_phone\": 4035551234,\n  \"referal_note\": \"Placeholder text for a note or question specific to the referal.\"\n}"
+						},
+						"url": {
+							"raw": "/api/v1/clients/1/refer",
+							"path": [
+								"api",
+								"v1",
+								"clients",
+								"1",
+								"refer"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n\t\"success\": true\n}\n"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/clients/share",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\": 123,\n    \"client\": 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/clients/share",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"clients",
+						"share"
+					]
+				},
+				"description": "Share client with another user."
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": 123,\n  \"client\": 1\n}"
+						},
+						"url": {
+							"raw": "/api/v1/clients/1/share",
+							"path": [
+								"api",
+								"v1",
+								"clients",
+								"1",
+								"share"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n\t\"success\": true\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/missions",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": 31\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/missions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"missions"
+					]
+				},
+				"description": "List of missions available for all brands a user is following"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": 123\n}"
+						},
+						"url": {
+							"raw": "/api/v1/missions",
+							"path": [
+								"api",
+								"v1",
+								"missions"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n  \"789\": {\n    \"title\": \"This is the title of the mission\",\n    \"description_short\": \"this is a quick blurb about what the mission is. Less than 50 chars\",\n    \"description_full\": \"this is the full description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget cursus mi. Aenean et eros non velit pharetra ornare non eu enim. Nulla vitae nulla sit amet leo accumsan hendrerit eu vitae ipsum. Cras et leo id lacus interdum posuere ac at libero. Etiam laoreet, magna vitae malesuada pellentesque, sem risus ullamcorper libero, finibus volutpat risus nisi ac arcu. Phasellus leo tortor, blandit in lorem non, maximus tincidunt libero. Curabitur mi lectus, scelerisque sit amet magna et, ornare fermentum lacus\",\n    \"mission_type\": \"Share\", \n    \"platform\": \"Facebook\",\n    \"platform_id\": 1,\n    \"mission_url\": \"http://facebook.com/starbucks/post/alkjasdkad\",\n    \"client_name\": \"Starbucks\",\n    \"client_id\": 123,\n    \"client_location\":{\n      \"lat\": 112.6622114,\n      \"lng\": -55.2655\n    },\n    \"background_image\": \"df13eo31e3l.png\",\n  },\n  \"791\": {\n    \"title\": \"This is the title of the mission\",\n    \"description_short\": \"this is a quick blurb about what the mission is. Less than 50 chars\",\n    \"description_full\": \"this is the full description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget cursus mi. Aenean et eros non velit pharetra ornare non eu enim. Nulla vitae nulla sit amet leo accumsan hendrerit eu vitae ipsum. Cras et leo id lacus interdum posuere ac at libero. Etiam laoreet, magna vitae malesuada pellentesque, sem risus ullamcorper libero, finibus volutpat risus nisi ac arcu. Phasellus leo tortor, blandit in lorem non, maximus tincidunt libero. Curabitur mi lectus, scelerisque sit amet magna et, ornare fermentum lacus\",\n    \"mission_type\": \"Share\", \n    \"platform\": \"Twitter\",\n    \"platform_id\": 1,\n    \"mission_url\": \"http://twitter.com/timhortons/post/alkjasdkad\",\n    \"client_name\": \"Tim Hortons\",\n    \"client_id\": 123,\n    \"client_location\":{\n      \"lat\": 112.6622114,\n      \"lng\": -55.2655\n    },\n    \"background_image\": \"gasg424ggsg.png\",\n  }   \n}"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/missions/show",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/missions/show",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"missions",
+						"show"
+					]
+				},
+				"description": "show a specific mission"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": 123,\n  \"client\": 1\n}"
+						},
+						"url": {
+							"raw": "/api/v1/missions/client/1",
+							"path": [
+								"api",
+								"v1",
+								"missions",
+								"client",
+								"1"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n  \"789\": {\n    \"title\": \"This is the title of the mission\",\n    \"description_short\": \"this is a quick blurb about what the mission is. Less than 50 chars\",\n    \"description_full\": \"this is the full description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget cursus mi. Aenean et eros non velit pharetra ornare non eu enim. Nulla vitae nulla sit amet leo accumsan hendrerit eu vitae ipsum. Cras et leo id lacus interdum posuere ac at libero. Etiam laoreet, magna vitae malesuada pellentesque, sem risus ullamcorper libero, finibus volutpat risus nisi ac arcu. Phasellus leo tortor, blandit in lorem non, maximus tincidunt libero. Curabitur mi lectus, scelerisque sit amet magna et, ornare fermentum lacus\",\n    \"mission_type\": \"Share\", \n    \"platform\": \"Facebook\",\n    \"platform_id\": 1,\n    \"mission_url\": \"http://facebook.com/starbucks/post/alkjasdkad\",\n    \"client_name\": \"Starbucks\",\n    \"client_id\": 123,\n    \"client_location\":{\n      \"lat\": 112.6622114,\n      \"lng\": -55.2655\n    },\n    \"background_image\": \"df13eo31e3l.png\",\n  },\n  \"792\": {\n    \"title\": \"This is the title of the mission\",\n    \"description_short\": \"this is a quick blurb about what the mission is. Less than 50 chars\",\n    \"description_full\": \"this is the full description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget cursus mi. Aenean et eros non velit pharetra ornare non eu enim. Nulla vitae nulla sit amet leo accumsan hendrerit eu vitae ipsum. Cras et leo id lacus interdum posuere ac at libero. Etiam laoreet, magna vitae malesuada pellentesque, sem risus ullamcorper libero, finibus volutpat risus nisi ac arcu. Phasellus leo tortor, blandit in lorem non, maximus tincidunt libero. Curabitur mi lectus, scelerisque sit amet magna et, ornare fermentum lacus\",\n    \"mission_type\": \"Share\", \n    \"platform\": \"Starbucks\",\n    \"platform_id\": 1,\n    \"mission_url\": \"http://twitter.com/Starbucks/post/adadasd\",\n    \"client_name\": \"Starbucks\",\n    \"client_id\": 123,\n    \"client_location\":{\n      \"lat\": 112.6622114,\n      \"lng\": -55.2655\n    },\n    \"background_image\": \"asdasd22dd.png\",\n  }   \n}"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/missions/client",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"client_id\": 10\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/missions/client",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"missions",
+						"client"
+					]
+				},
+				"description": "show a specific mission"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": 123,\n  \"client\": 1\n}"
+						},
+						"url": {
+							"raw": "/api/v1/missions/client/1",
+							"path": [
+								"api",
+								"v1",
+								"missions",
+								"client",
+								"1"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n  \"789\": {\n    \"title\": \"This is the title of the mission\",\n    \"description_short\": \"this is a quick blurb about what the mission is. Less than 50 chars\",\n    \"description_full\": \"this is the full description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget cursus mi. Aenean et eros non velit pharetra ornare non eu enim. Nulla vitae nulla sit amet leo accumsan hendrerit eu vitae ipsum. Cras et leo id lacus interdum posuere ac at libero. Etiam laoreet, magna vitae malesuada pellentesque, sem risus ullamcorper libero, finibus volutpat risus nisi ac arcu. Phasellus leo tortor, blandit in lorem non, maximus tincidunt libero. Curabitur mi lectus, scelerisque sit amet magna et, ornare fermentum lacus\",\n    \"mission_type\": \"Share\", \n    \"platform\": \"Facebook\",\n    \"platform_id\": 1,\n    \"mission_url\": \"http://facebook.com/starbucks/post/alkjasdkad\",\n    \"client_name\": \"Starbucks\",\n    \"client_id\": 123,\n    \"client_location\":{\n      \"lat\": 112.6622114,\n      \"lng\": -55.2655\n    },\n    \"background_image\": \"df13eo31e3l.png\",\n  },\n  \"792\": {\n    \"title\": \"This is the title of the mission\",\n    \"description_short\": \"this is a quick blurb about what the mission is. Less than 50 chars\",\n    \"description_full\": \"this is the full description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget cursus mi. Aenean et eros non velit pharetra ornare non eu enim. Nulla vitae nulla sit amet leo accumsan hendrerit eu vitae ipsum. Cras et leo id lacus interdum posuere ac at libero. Etiam laoreet, magna vitae malesuada pellentesque, sem risus ullamcorper libero, finibus volutpat risus nisi ac arcu. Phasellus leo tortor, blandit in lorem non, maximus tincidunt libero. Curabitur mi lectus, scelerisque sit amet magna et, ornare fermentum lacus\",\n    \"mission_type\": \"Share\", \n    \"platform\": \"Starbucks\",\n    \"platform_id\": 1,\n    \"mission_url\": \"http://twitter.com/Starbucks/post/adadasd\",\n    \"client_name\": \"Starbucks\",\n    \"client_id\": 123,\n    \"client_location\":{\n      \"lat\": 112.6622114,\n      \"lng\": -55.2655\n    },\n    \"background_image\": \"asdasd22dd.png\",\n  }   \n}"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/missions/accept",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\": 123,\n    \"mission\": 2\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/missions/accept",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"missions",
+						"accept"
+					]
+				},
+				"description": "Accept a mission"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": 123,\n  \"mission\": 2\n}"
+						},
+						"url": {
+							"raw": "/api/v1/missions/2/accept",
+							"path": [
+								"api",
+								"v1",
+								"missions",
+								"2",
+								"accept"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n\t\"accept\": true\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/missions/complete",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": 1,\n    \"mission_id\": 11\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/missions/complete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"missions",
+						"complete"
+					]
+				},
+				"description": "Complete a specific mission"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": 123,\n  \"mission\": 2\n}"
+						},
+						"url": {
+							"raw": "/api/v1/missions/2/complete",
+							"path": [
+								"api",
+								"v1",
+								"missions",
+								"2",
+								"complete"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"completed\": true,\n    \"completed_at\": \"2019-02-18 18:37:21\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/profile",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": 123\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"profile"
+					]
+				},
+				"description": "Show a user their profile"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": 123\n}"
+						},
+						"url": {
+							"raw": "/api/v1/profile",
+							"path": [
+								"api",
+								"v1",
+								"profile"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n  \"user_id\": 123,\n  \"first\": \"Rebecca\", \n  \"last\": \"Powlowski\",\n  \"email\": \"rebecca.powlowski@gmail.com\",\n  \"profile_pic\": \"3sfggas23g23g3f.jpg\",\n  \"social_accounts\":{\n    \"facebook\":{\n      \"username\": \"beckypowlowski\",\n      \"api_key\": \"efd8288a0ad99d9a0eee999\"\n    },\n    \"twitter\":{\n      \"username\": \"beckypowlowski\",\n      \"api_key\": \"dfe1223ee7129232acc\"\n    },\n  },\n  \"point_balance\": 2150,\n  \"member_since\": \"2019-02-19 13:45:23\",\n  \"last_updated\": \"2019-03-06 19:12:41\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/profile/pointbalance",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"user_id\": 77\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/profile/pointbalance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"profile",
+						"pointbalance"
+					]
+				},
+				"description": "Show a user their point balance"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": 123\n}"
+						},
+						"url": {
+							"raw": "/api/v1/profile/pointbalance",
+							"path": [
+								"api",
+								"v1",
+								"profile",
+								"pointbalance"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n\t\"point_balance\": 2150\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/profile/history",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/profile/history",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"profile",
+						"history"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/profile/edit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": 123,\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/profile/edit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"profile",
+						"edit"
+					]
+				},
+				"description": "change email, password, or social account details"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": 123,\n    \"first\": \"Rebecca\",\n    \"last\": \"Powlowski\",\n    \"email\": \"rebecca.powlowski@gmail.com\",\n    \"profile_pic\": \"3sfggas23g23g3f.jpg\",\n    \"social_accounts\": {\n        \"facebook\": {\n            \"username\": \"beckypowlowski\",\n            \"api_key\": \"efd8288a0ad99d9a0eee999\"\n        },\n        \"twitter\": {\n            \"username\": \"beckypowlowski\",\n            \"api_key\": \"dfe1223ee7129232acc\"\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "/api/v1/profile/edit",
+							"path": [
+								"api",
+								"v1",
+								"profile",
+								"edit"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n\t\"profile_updated\": true,\n\t\"last_updated\": \"2019-03-06 19:12:41\"\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/rewards",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/rewards",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"rewards"
+					]
+				},
+				"description": "List all available rewards"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": 123\n}"
+						},
+						"url": {
+							"raw": "/api/v1/rewards",
+							"path": [
+								"api",
+								"v1",
+								"rewards"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n  \"145\":{\n    \"title\": \"Name of the reward\",\n    \"description\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget cursus mi. Aenean et eros non velit pharetra ornare non eu enim. Nulla vitae nulla sit amet leo accumsan hendrerit eu vitae ipsum.\",\n    \"picture\": \"afi32f0n09nf3kf.jpg\",\n    \"points\": 2000,\n    \"date_added\": \"2019-02-27 13:34:31\"\n  },\n  \"146\":{\n    \"title\": \"Name of the reward\",\n    \"description\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget cursus mi. Aenean et eros non velit pharetra ornare non eu enim. Nulla vitae nulla sit amet leo accumsan hendrerit eu vitae ipsum.\",\n    \"picture\": \"garsg44g4agw4ag.jpg\",\n    \"points\": 2500,\n    \"date_added\": \"2019-02-27 13:56:31\"\n  },\n  \"147\":{\n    \"title\": \"Name of the reward\",\n    \"description\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget cursus mi. Aenean et eros non velit pharetra ornare non eu enim. Nulla vitae nulla sit amet leo accumsan hendrerit eu vitae ipsum.\",\n    \"picture\": \"dffaf33f32faFEF.jpg\",\n    \"points\": 3200,\n    \"date_added\": \"2019-02-27 14:01:31\"\n  },  \n}"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/rewards/show",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"reward_id\": 3\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/rewards/show",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"rewards",
+						"show"
+					]
+				},
+				"description": "View the details of a specific reward"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"reward\": 3\n}"
+						},
+						"url": {
+							"raw": "/api/v1/rewards/1",
+							"path": [
+								"api",
+								"v1",
+								"rewards",
+								"1"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"3\": {\n        \"title\": \"Name of the reward\",\n        \"description\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget cursus mi. Aenean et eros non velit pharetra ornare non eu enim. Nulla vitae nulla sit amet leo accumsan hendrerit eu vitae ipsum.\",\n        \"picture\": \"afi32f0n09nf3kf.jpg\",\n        \"points\": 2000,\n        \"date_added\": \"2019-02-27 13:34:31\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "/api/v1/rewards/redeem",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": 123,\n    \"reward_id\": 3\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/rewards/redeem",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"rewards",
+						"redeem"
+					]
+				},
+				"description": "Redeem a specified reward"
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": 123,\n    \"reward\": 3\n}"
+						},
+						"url": {
+							"raw": "/api/v1/rewards/1/redeem",
+							"path": [
+								"api",
+								"v1",
+								"rewards",
+								"1",
+								"redeem"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n\t\"success\": true\n}"
+				}
+			]
+		}
+	]
+}

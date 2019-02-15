@@ -14,7 +14,7 @@ class AddRelToRewardsTable extends Migration
     public function up()
     {
         Schema::table('rewards', function (Blueprint $table) {
-           // $table->foreign('reward_type_id')->references('id')->on('reward_types');
+           $table->foreign('reward_type_id')->references('id')->on('rewards_types');
         });
     }
 

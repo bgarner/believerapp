@@ -11,26 +11,29 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
+//Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-Route::get('/admin', function () {
-    return ('welcome admin');
-});
-
-Route::get('/brandadmin', function () {
-    return ('welcome brand admin');
-});
-
-Route::get('/advocate', function () {
-    return ('welcome advocate');
-});
+/*--- PUBLIC ROUTES ------------------------------------*/
+Route::get('/', array('uses'=> 'HomeController@index'));
 
 
-Route::resource('/admin/clients', 'Admin\Client\ClientController');
+/*--- USER ROUTES --------------------------------------*/
+// Route::get('/advocate', function () {
+//     return ('welcome advocate');
+// });
+
+/*--- CLIENT ROUTES ------------------------------------*/
+// Route::get('/brandadmin', function () {
+//     return ('welcome brand admin');
+// });
+
+
+
+
+
+
+
+
+
