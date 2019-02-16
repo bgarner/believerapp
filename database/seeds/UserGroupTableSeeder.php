@@ -5,9 +5,9 @@ use Illuminate\Database\Seeder;
 class UserGroupTableSeeder extends Seeder
 {
     private $groups =  [
-    					 ['id' => 1, 'name' => 'superadmin'],
-    					 ['id' => 2, 'name' => 'brandadmin'],
-    					 ['id' => 3, 'name' => 'advocate']
+    					 ['id' => 1, 'name' => 'admin'],
+    					 ['id' => 2, 'name' => 'client'],
+    					 ['id' => 3, 'name' => 'believer']
     					];
     /**
      * Run the database seeds.

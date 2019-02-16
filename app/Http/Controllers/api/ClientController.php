@@ -4,7 +4,7 @@ namespace App\Http\Controllers\api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
-use App\Models\Brand;
+use App\Models\Client;
 use App\Models\Follower;
 
 class ClientController extends Controller
@@ -19,7 +19,7 @@ class ClientController extends Controller
         // }
         $user = User::find($request->user_id);
         $user_postal_code_fragment = substr($user->postal_code, 0, 1) . '%';
-        return Brand::where('postal_code','like',$user_postal_code_fragment)->get();        
+        return Client::where('postal_code','like',$user_postal_code_fragment)->get();        
     }
 
     public function show(Request $request)
@@ -28,7 +28,7 @@ class ClientController extends Controller
         // {
         //     "client_id": 10,
         // }
-        return Brand::find($request->client_id);
+        return Client::find($request->client_id);
     }
 
     public function follow(Request $request)

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Brand;
+use App\Models\Client;
 
 class BrandsTableSeeder extends Seeder
 {
@@ -17,9 +17,11 @@ class BrandsTableSeeder extends Seeder
         $faker = Faker\Factory::create();
         
         for($i = 0; $i < 50; $i++) {
-			Brand::create(
+            $company = $faker->company;
+			Client::create(
                 array(
-                    'name' => $faker->company, 
+                    'name' => $company, 
+                    'unique_name' => preg_replace("/[^a-zA-Z]+/", "", $company),
                     'description' => $faker->sentence, 
                     'logo' => 'fake_logo.jpg',
                     'address1' => $faker->streetAddress,

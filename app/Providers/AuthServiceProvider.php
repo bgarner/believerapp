@@ -40,7 +40,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('accessBelieverRoutes', function($user) {
-            if( $user->group_id == 2 ){
+            if( $user->group_id == 3 ){
                 return true;
             }
             return false;

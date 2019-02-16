@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\User;
-use App\Models\Brand;
+use App\Models\Client;
 use App\Models\Follower;
 use App\Models\Challenge;
 use App\Models\ChallengeCompletion;
