@@ -39,29 +39,34 @@ class ClientController extends Controller
 
     public function create()
     {
-    	return view('admin.clients.create');
+        return view('admin.clients.create');
     }
+
     public function store(Request $request)
     {
         return Client::createNewClient($request);
     }
+
     public function show($id)
     {
-    	$client = Client::getClientById($id);
-    	return ($client);
+        $client = Client::getClientById($id);
+        return ($client);
     }
+
     public function edit($id)
     {
-    	$client = Client::getClientById($id);
+        $client = Client::getClientById($id);
         return view('admin.clients.edit', ['client' => $client]);
     }
+
     public function update(Request $request, $id)
     {
-    	return Client::updateClient($request, $id);
+        return Client::updateClient($request, $id);
     }
+
     public function destroy($id)
     {
-    	return Client::deleteClient($id);
+        return Client::deleteClient($id);
     }
     
 }
