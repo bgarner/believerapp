@@ -49,7 +49,7 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         $group_id = $user->group_id;
-        $group = UserGroup::where('id', $group_id)->first()->name;
+        $group = UserGroup::where('id', $group_id)->value('group');
         return redirect("/". strtolower($group));
     }
 
