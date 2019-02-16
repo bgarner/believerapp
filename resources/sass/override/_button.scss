@@ -252,7 +252,8 @@
     }
   }
   &:active, &:hover {
-    background-color: color_darken(primary, 10%) !important;
+    //background-color: color_darken(primary, 10%) !important;
+    background-color: grey !important;
   }
 }
 
