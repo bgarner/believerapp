@@ -14,6 +14,7 @@ require('tooltip.js');
 require('icheck');
 require('jquery.nicescroll');
 require('moment');
+require('datatables');
 require('./stisla.js');
 require('./scripts.js');
 // window.Vue = require('vue');
@@ -49,3 +50,7 @@ require('./scripts.js');
       increaseArea: '20%' /* optional */
     });
   });
+
+$(document).ready( function () {
+  $('.datatable').DataTable();
+} );
