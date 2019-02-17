@@ -10,7 +10,7 @@ class Client extends Model
     use SoftDeletes;
     protected $table = 'brands';
     protected $fillable = [
-        'name', 'description', 'logo'
+        'name', 'description', 'logo', 'unique_name', 'address1', 'address2', 'city', 'province', 'postal_code', 'phone1', 'phone2'
     ];
 
     public function managers()
@@ -42,7 +42,15 @@ class Client extends Model
         $client->update([
                     'name' => $request->name,
                     'unique_name' => $request->unique_name,
-                    'description' => $request->description
+                    'description' => $request->description,
+                    'logo' => null,
+                    'address1' => $request->address1,
+                    'address2' => $request->address2,
+                    'city' => $request->city,
+                    'postal_code' => $request->postal_code,
+                    'province' => $request->province,
+                    'phone1' => $request->phone1,
+                    'phone2' => $request->phone2
                 ]);
 
         return $client;
