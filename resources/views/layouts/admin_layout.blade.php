@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>ADMIN</title>
 
   <!-- General CSS Files -->
@@ -13,6 +14,7 @@
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="/css/app.css">
+  
   <!-- <link rel="stylesheet" href="/css/components.css"> -->
 </head>
 
@@ -24,9 +26,11 @@
         @include('admin.includes.main_nav')
   
         <nav class="navbar navbar-secondary navbar-expand-lg" style="">
-          <!-- <div class="container">
+        
+          <div class="container">
             <ul class="navbar-nav">
-              <li class="nav-item dropdown">
+              @yield('subnav')
+              <!-- <li class="nav-item dropdown">
                 <a href="#" data-toggle="dropdown" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
               </li>
               <li class="nav-item">
@@ -34,9 +38,9 @@
               </li>
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link"><i class="far fa-clone"></i><span>Multiple Dropdown</span></a>
-              </li>
+              </li> -->
             </ul>
-          </div> -->
+          </div>
         </nav>
   
         <!-- Main Content -->

@@ -15,6 +15,7 @@ require('icheck');
 require('jquery.nicescroll');
 require('moment');
 require('datatables');
+require('sweetalert');
 require('./stisla.js');
 require('./scripts.js');
 // window.Vue = require('vue');
@@ -42,15 +43,53 @@ require('./scripts.js');
 //     el: '#app'
 // });
 
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
 
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' /* optional */
-    });
+$(function () {
+  $('input').iCheck({
+    checkboxClass: 'icheckbox_square-blue',
+    radioClass: 'iradio_square-blue',
+    increaseArea: '20%' /* optional */
   });
+});
 
 $(document).ready( function () {
   $('.datatable').DataTable();
 } );
+
+
+$(document).on("click", ".deleteClient", function() {
+	console.log("client delete requested");
+	var fileId = $(this).attr('data-item-id');
+	var selector = "#client"+fileId;
+	console.log("selector: " + selector);
+    // e.preventDefault();
+    swal({
+      title: "Are you sure?",
+      text: "Are you sure you want to delete this client?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+          $.ajax({
+              url: '/admin/clients/'+ fileId,
+              type: 'DELETE',
+              success: function(result) {
+                  $(selector).closest('tr').fadeOut(1000);
+                  swal("Client deleted!", {
+                    icon: "success",
+                  });
+              }
+          });
+      } else {
+        swal("Client is safe!");
+      }
+    });    
+	return false; 
+});

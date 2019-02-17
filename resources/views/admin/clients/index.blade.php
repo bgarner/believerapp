@@ -1,5 +1,11 @@
 @extends('layouts.admin_layout')
 
+@section('subnav')
+<li class="nav-item">
+    <a class="btn btn-lg btn-primary" href="/admin/clients/create" role="button"><i class="fa fa-plus"></i> Add New Client</a>
+</li>
+@endsection
+
 @section('content')
 
 <div class="row">
@@ -20,13 +26,13 @@
                 </thead>
                 <tbody>                                
                 @foreach($clients as $client)
-                <tr>
+                <tr id="client{{ $client->id }}">
                     <td><a href="/admin/clients/{{ $client->id }}">{{ $client->name }}</a></td>
                     <td>{{ $client->created_at }}</td>  
                     <td>{{ $client->total_believers }}</td>
                     <td>{{ $client->challenge_completions }}</td>
                     <td>{{ $client->total_points }}</td>
-                    <td><a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+                    <td><a href="#" class="btn btn-danger deleteClient" data-item-id="{{ $client->id }}"><i class="fa fa-trash"></i></a></td>
                 </tr>
 
                 @endforeach                 
