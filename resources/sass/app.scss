@@ -11,4 +11,11 @@
 
 @import 'style.scss';
 
+.form-group small{
+    display: block;
+    padding: 0px 15px 10px 15px;
+}
 
+.req{
+    color: $danger !important;
+}

@@ -17667,3 +17667,12 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
   }
 }
 
+.form-group small {
+  display: block;
+  padding: 0px 15px 10px 15px;
+}
+
+.req {
+  color: #dc3545 !important;
+}
+
