@@ -28,7 +28,7 @@
         <nav class="navbar navbar-secondary navbar-expand-lg" style="">
         
           <div class="container">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav" style="float: right;">
               @yield('subnav')
               <!-- <li class="nav-item dropdown">
                 <a href="#" data-toggle="dropdown" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>

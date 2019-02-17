@@ -2,7 +2,7 @@
 
 @section('subnav')
 <li class="nav-item">
-    <a class="btn btn-lg btn-primary" href="/admin/clients/create" role="button"><i class="fa fa-plus"></i> Add New Client</a>
+    <a class="btn btn-primary" href="/admin/clients/create" role="button"><i class="fa fa-plus"></i> Add New Client</a>
 </li>
 @endsection
 

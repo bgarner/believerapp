@@ -50,7 +50,7 @@ class ClientController extends Controller
     public function show($id)
     {
         $client = Client::getClientById($id);
-        return ($client);
+        return view('admin.clients.show', ['client' => $client]);
     }
 
     public function edit($id)
