@@ -55606,13 +55606,8 @@ module.exports = function(module) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
 
-window.$ = window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
+window.$ = window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_0___default.a; //libraries...
 
 __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
 
@@ -55632,49 +55627,45 @@ __webpack_require__(/*! sweetalert */ "./node_modules/sweetalert/dist/sweetalert
 
 __webpack_require__(/*! ./stisla.js */ "./resources/js/stisla.js");
 
-__webpack_require__(/*! ./scripts.js */ "./resources/js/scripts.js"); // window.Vue = require('vue');
-
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-// Vue.component('example-component', require('./components/ExampleComponent.vue'));
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-// const app = new Vue({
-//     el: '#app'
-// });
-
+__webpack_require__(/*! ./scripts.js */ "./resources/js/scripts.js");
 
 jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajaxSetup({
   headers: {
     'X-CSRF-TOKEN': jquery__WEBPACK_IMPORTED_MODULE_0___default()('meta[name="csrf-token"]').attr('content')
   }
-});
-jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()('input').iCheck({
-    checkboxClass: 'icheckbox_square-blue',
-    radioClass: 'iradio_square-blue',
-    increaseArea: '20%'
-    /* optional */
+}); //implementiations...
 
-  });
+__webpack_require__(/*! ./believer/iCheck.js */ "./resources/js/believer/iCheck.js");
+
+__webpack_require__(/*! ./believer/dataTables.js */ "./resources/js/believer/dataTables.js");
+
+__webpack_require__(/*! ./believer/deleteClient.js */ "./resources/js/believer/deleteClient.js");
+
+/***/ }),
+
+/***/ "./resources/js/believer/dataTables.js":
+/*!*********************************************!*\
+  !*** ./resources/js/believer/dataTables.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  $('.datatable').DataTable();
 });
-jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.datatable').DataTable();
-});
-jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on("click", ".deleteClient", function () {
+
+/***/ }),
+
+/***/ "./resources/js/believer/deleteClient.js":
+/*!***********************************************!*\
+  !*** ./resources/js/believer/deleteClient.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).on("click", ".deleteClient", function () {
   console.log("client delete requested");
-  var fileId = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr('data-item-id');
+  var fileId = $(this).attr('data-item-id');
   var selector = "#client" + fileId;
   console.log("selector: " + selector); // e.preventDefault();
 
@@ -55686,11 +55677,11 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on("click", ".deleteClie
     dangerMode: true
   }).then(function (willDelete) {
     if (willDelete) {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+      $.ajax({
         url: '/admin/clients/' + fileId,
         type: 'DELETE',
         success: function success(result) {
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()(selector).closest('tr').fadeOut(1000);
+          $(selector).closest('tr').fadeOut(1000);
           swal("Client deleted!", {
             icon: "success"
           });
@@ -55701,6 +55692,25 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on("click", ".deleteClie
     }
   });
   return false;
+});
+
+/***/ }),
+
+/***/ "./resources/js/believer/iCheck.js":
+/*!*****************************************!*\
+  !*** ./resources/js/believer/iCheck.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  $('input').iCheck({
+    checkboxClass: 'icheckbox_square-blue',
+    radioClass: 'iradio_square-blue',
+    increaseArea: '20%'
+    /* optional */
+
+  });
 });
 
 /***/ }),
