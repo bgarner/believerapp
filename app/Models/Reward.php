@@ -10,10 +10,11 @@ class Reward extends Model
     use SoftDeletes;
     protected $table = 'rewards';
     protected $fillable = [
-        'reward_type_id',
         'title',
+        'reward_type_id',
         'description',
         'points',
+        'image',
         'active_status'
     ];
 
@@ -24,13 +25,30 @@ class Reward extends Model
 
     public static function createNewReward($request)
     {
-        $reward = Reward::create([
-                    'title' => $request->title,
-                    'unique_name' => $request->unique_name,
-                    'description' => $request->description,
-                    'points' => $request->points,
-                    'active_status' => $request->active_status
-                ]);
+        //dd($request);
+        if( $request->file('rewardimage')->isValid() ) {
+            $file = $request->rewardimage;
+            $ext = strtolower( $request->rewardimage->extension() );
+        } else {
+            dd($request);
+        }
+        
+        $directory = public_path() . '/uploads/rewards';
+        $hash = md5(uniqid(rand(), true));
+        $filename  = $hash . "." . $ext;
+        //move and rename file
+        $upload_success = $request->file('rewardimage')->move($directory, $filename); 
+        
+        if ($upload_success) {
+            $reward = Reward::create([
+                'title' => $request->title,
+                'reward_type_id' => $request->reward_type_id,
+                'description' => $request->description,
+                'points' => $request->points,
+                'image' => $filename,
+                'active_status' => 1
+            ]);
+        }
         return $reward;
     }
 

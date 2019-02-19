@@ -66,7 +66,6 @@
                     <input type="text" id="address2" name="address2" class="form-control" value="{{ $client->address2 }}" placeholder="Address Line 2 (optional)">
                 </div>
             </div>
-province
 
             <div class="input-group form-group col-10">
                 <input type="text" class="form-control" name="city" id="city" placeholder="City" value="{{ $client->city }}">

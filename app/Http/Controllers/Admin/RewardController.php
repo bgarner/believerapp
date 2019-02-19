@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use App\Http\Controllers\Controller;
 use App\Models\Reward;
+use App\Models\RewardType;
 
 class RewardController extends Controller
 {
@@ -21,7 +23,8 @@ class RewardController extends Controller
 
     public function create()
     {
-        return view('admin.rewards.create');
+        $types = RewardType::all();
+        return view('admin.rewards.create', ['types' => $types]);
     }
 
     public function store(Request $request)
