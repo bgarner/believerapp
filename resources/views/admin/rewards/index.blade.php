@@ -17,6 +17,7 @@
                 <thead>
                     <tr>
                         <th>Title</th>
+                        <th>Image</th>
                         <th>Description</th>
                         <th>Points</th>
                         <th>Status</th>
@@ -27,6 +28,11 @@
                 @foreach($rewards as $reward)
                 <tr id="reward{{ $reward->id }}">
                     <td><a href="/admin/rewards/{{ $reward->id }}">{{ $reward->title }}</a></td>
+                    @if(!$reward->image)
+                    <td><img src="/uploads/rewards/placeholder.jpg" width="100" /></td>
+                    @else
+                    <td><img src="/uploads/rewards/{{ $reward->image }}" width="100" /></td>
+                    @endif
                     <td>{{ $reward->description }}</td>  
                     <td>{{ $reward->points }}</td>
                     <td>{{ $reward->status }}</td>
