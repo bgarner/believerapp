@@ -10,7 +10,7 @@
 <form method="POST" action="/admin/clients/{{ $client->id }}"class="form-horizontal">
     @method('patch')
     @csrf
-
+    <input type="hidden" name="client_id" id="client_id" value="{{ $client->id }}" />
     <div class="card">
         <div class="card-header"><h4>Client Details</h4></div>
 
@@ -91,7 +91,8 @@
 
     <div class="form-group">
         <div class="col-sm-10 col-sm-offset-2">
-            <button class="event-create btn btn-primary" type="submit"><i class="fa fa-check"></i><span> Update Client</span></button>
+            <!-- <button class="event-create btn btn-primary" type="submit"><i class="fa fa-check"></i><span> Update Client</span></button> -->
+            <a class="event-create btn btn-primary editClient" href="#"><i class="fa fa-check"></i><span> Update Client</span></button>
             <a class="btn btn-white" href="/admin/clients"><i class="fa fa-close"></i> Cancel</a>
 
         </div>

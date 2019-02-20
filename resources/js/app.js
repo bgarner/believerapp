@@ -23,3 +23,4 @@ $.ajaxSetup({
 require('./believer/iCheck.js');
 require('./believer/dataTables.js');
 require('./believer/deleteClient.js');
+require('./believer/editClient.js');
