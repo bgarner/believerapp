@@ -1,10 +1,17 @@
 @extends('layouts.admin_layout')
 
-@section('subnav')
-<li class="nav-item"><h2>{{ $client->name }}</h2></li>
-</ul>
-<ul class="navbar-nav pull-right" style="float: right;">
+@section('logo')
+  @if($client->logo != null)
+    <img src="/uploads/clients/{{ $client->logo }}" class="profile-logo" />
+  @endif
+@endsection
 
+@section('subnav')
+  @if($client->logo == null)
+    <li class="nav-item"><h2>{{ $client->name }}</h2></li>
+  </ul>
+  @endif
+<ul class="navbar-nav pull-right" style="float: right;">
     <li class="nav-item" style="padding-right: 10px;"><a href="/{{ $client->unique_name }}" target="_blank"><i class="fa fa-share" aria-hidden="true"></i> believerapp.com/<strong>{{ $client->unique_name }}</strong></a></li>
     <li class="nav-item">
         <a class="btn btn-primary" href="/admin/clients/{{ $client->id }}/edit" role="button"><i class="fa fa-pencil-square-o"></i> Edit</a>
@@ -13,7 +20,11 @@
 @endsection
 
 @section('content')
+@if($client->logo == null)
 <div class="row">
+@else
+<div class="row" style="padding-top: 60px;">
+@endif
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-primary">

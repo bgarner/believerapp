@@ -28,17 +28,9 @@
         <nav class="navbar navbar-secondary navbar-expand-lg" style="">
         
           <div class="container">
-            <ul class="navbar-nav" style="float: right;">
+            @yield('logo')
+            <ul class="navbar-nav" style="float: left;">
               @yield('subnav')
-              <!-- <li class="nav-item dropdown">
-                <a href="#" data-toggle="dropdown" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link"><i class="far fa-heart"></i><span>Top Navigation</span></a>
-              </li>
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link"><i class="far fa-clone"></i><span>Multiple Dropdown</span></a>
-              </li> -->
             </ul>
           </div>
         </nav>

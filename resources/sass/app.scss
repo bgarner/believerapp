@@ -19,3 +19,12 @@
 .req{
     color: $danger !important;
 }
+
+.profile-logo{
+    width: 150px;
+    border: 10px solid #fff;
+    position: relative;
+    top: 30px;
+    float: left;
+    @include shadow;
+}

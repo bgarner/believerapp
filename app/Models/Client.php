@@ -36,19 +36,34 @@ class Client extends Model
 
     public static function createNewClient($request)
     {
-        $client = Client::create([
-                    'name' => $request->name,
-                    'unique_name' => $request->unique_name,
-                    'description' => $request->description,
-                    'logo' => null,
-                    'address1' => $request->address1,
-                    'address2' => $request->address2,
-                    'city' => $request->city,
-                    'postal_code' => $request->postal_code,
-                    'province' => $request->province,
-                    'phone1' => $request->phone1,
-                    'phone2' => $request->phone2
-                ]);
+        if( $request->file('clientimage')->isValid() ) {
+            $file = $request->clientimage;
+            $ext = strtolower( $request->clientimage->extension() );
+        } else {
+            dd($request);
+        }
+
+        $directory = public_path() . '/uploads/clients';
+        $hash = md5(uniqid(rand(), true));
+        $filename  = $hash . "." . $ext;
+        //move and rename file
+        $upload_success = $request->file('clientimage')->move($directory, $filename); 
+                
+        if ($upload_success) {
+            $client = Client::create([
+                'name' => $request->name,
+                'unique_name' => $request->unique_name,
+                'description' => $request->description,
+                'logo' => $filename,
+                'address1' => $request->address1,
+                'address2' => $request->address2,
+                'city' => $request->city,
+                'postal_code' => $request->postal_code,
+                'province' => $request->province,
+                'phone1' => $request->phone1,
+                'phone2' => $request->phone2
+            ]);
+        }
         return $client;
     }
 

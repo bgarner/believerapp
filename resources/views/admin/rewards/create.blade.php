@@ -53,9 +53,6 @@
                             <div class="custom-file">
                                 <input type="file" class="form-control-file" id="rewardimage" name="rewardimage">
                             </div>
-                            <!-- <div class="input-group-append">
-                                <span class="input-group-text" id="">Upload</span>
-                            </div> -->
                         </div>
                     </div>
                 </div>

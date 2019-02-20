@@ -17676,3 +17676,12 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
   color: #dc3545 !important;
 }
 
+.profile-logo {
+  width: 150px;
+  border: 10px solid #fff;
+  position: relative;
+  top: 30px;
+  float: left;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+}
+
