@@ -40,12 +40,15 @@
                     </div>
 
                     <div class="form-group"><label class="col-sm-12 control-label">Image<span class="req">*</span></label>
-                        @if(!$reward->image)
-                        <img src="/uploads/rewards/placeholder.jpg" width="150" />
-                        @else
-                        <img src="/uploads/rewards/{{ $reward->image }}" width="150" />
-                        @endif
                         <small>Some info about the specs for a logo file should go here...</small>
+                        <div class="col-6">
+                            @if(!$reward->image)
+                            <img src="/uploads/rewards/placeholder.jpg" width="150" />
+                            @else
+                            <img src="/uploads/rewards/{{ $reward->image }}" width="150" />
+                            @endif
+                        </div>
+                        
                         <div class="input-group col-12">
                             <div class="custom-file">
                                 <input type="file" class="form-control-file" id="rewardimage" name="rewardimage">
@@ -65,7 +68,7 @@
     <div class="form-group">
         <div class="col-sm-10 col-sm-offset-2">
             <button class="event-create btn btn-primary" type="submit"><i class="fa fa-check"></i><span> Update Reward</span></button>
-            <a class="btn btn-white" href="/admin/clients"><i class="fa fa-close"></i> Cancel</a>
+            <a class="btn btn-white" href="/admin/rewards"><i class="fa fa-close"></i> Cancel</a>
 
         </div>
     </div>

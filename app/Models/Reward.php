@@ -66,11 +66,12 @@ class Reward extends Model
             //move and rename file
             $upload_success = $request->file('rewardimage')->move($directory, $filename);
             $image = $filename; //send this to the updaate array
-            unlink(public_path().'/uploads/rewards/'.$old_image); //delete the old file.             
+            if($reward->image){ //if there was an old image...
+                unlink(public_path().'/uploads/rewards/' . $old_image); //delete the old file.             
+            }
         } else {
             $image = $old_image; //just put the old one back.
         }
-
 
         $reward->update([
                 'title' => $request->title,
