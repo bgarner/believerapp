@@ -4345,21 +4345,21 @@
 
 /***/ }),
 
-/***/ "./node_modules/datatables/media/js/jquery.dataTables.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/datatables/media/js/jquery.dataTables.js ***!
-  \***************************************************************/
+/***/ "./node_modules/datatables.net/js/jquery.dataTables.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/datatables.net/js/jquery.dataTables.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1.10.18
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1.10.19
  * ©2008-2018 SpryMedia Ltd - datatables.net/license
  */
 
 /**
  * @summary     DataTables
  * @description Paginate, search and order HTML tables
- * @version     1.10.18
+ * @version     1.10.19
  * @file        jquery.dataTables.js
  * @author      SpryMedia Ltd
  * @contact     www.datatables.net
@@ -13789,7 +13789,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	
 		return resolved.replace( '%d', plural ); // nb: plural might be undefined,
 	} );
-
 	/**
 	 * Version string for plug-ins to check compatibility. Allowed format is
 	 * `a.b.c-d` where: a:int, b:int, c:int, d:string(dev|beta|alpha). `d` is used
@@ -13798,7 +13797,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	 *  @type string
 	 *  @default Version number
 	 */
-	DataTable.version = "1.10.18";
+	DataTable.version = "1.10.19";
 
 	/**
 	 * Private data store, containing all of the settings objects that are
@@ -19309,7 +19308,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	
 		text: function () {
 			return {
-				display: __htmlEscapeEntities
+				display: __htmlEscapeEntities,
+				filter: __htmlEscapeEntities
 			};
 		}
 	};
@@ -55621,7 +55621,7 @@ __webpack_require__(/*! jquery.nicescroll */ "./node_modules/jquery.nicescroll/j
 
 __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 
-__webpack_require__(/*! datatables */ "./node_modules/datatables/media/js/jquery.dataTables.js");
+__webpack_require__(/*! datatables.net */ "./node_modules/datatables.net/js/jquery.dataTables.js");
 
 __webpack_require__(/*! sweetalert */ "./node_modules/sweetalert/dist/sweetalert.min.js");
 
@@ -55637,11 +55637,130 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajaxSetup({
 
 __webpack_require__(/*! ./believer/iCheck.js */ "./resources/js/believer/iCheck.js");
 
+__webpack_require__(/*! ./believer/dataTables.bs4.js */ "./resources/js/believer/dataTables.bs4.js");
+
 __webpack_require__(/*! ./believer/dataTables.js */ "./resources/js/believer/dataTables.js");
 
 __webpack_require__(/*! ./believer/deleteClient.js */ "./resources/js/believer/deleteClient.js");
 
 __webpack_require__(/*! ./believer/editClient.js */ "./resources/js/believer/editClient.js");
+
+/***/ }),
+
+/***/ "./resources/js/believer/dataTables.bs4.js":
+/*!*************************************************!*\
+  !*** ./resources/js/believer/dataTables.bs4.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+/*!
+ DataTables Bootstrap 4 integration
+ ©2011-2017 SpryMedia Ltd - datatables.net/license
+*/
+(function (b) {
+   true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"), __webpack_require__(/*! datatables.net */ "./node_modules/datatables.net/js/jquery.dataTables.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (a) {
+    return b(a, window, document);
+  }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : undefined;
+})(function (b, a, d, m) {
+  var f = b.fn.dataTable;
+  b.extend(!0, f.defaults, {
+    dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+    renderer: "bootstrap"
+  });
+  b.extend(f.ext.classes, {
+    sWrapper: "dataTables_wrapper dt-bootstrap4",
+    sFilterInput: "form-control form-control-sm",
+    sLengthSelect: "custom-select custom-select-sm form-control form-control-sm",
+    sProcessing: "dataTables_processing card",
+    sPageButton: "paginate_button page-item"
+  });
+
+  f.ext.renderer.pageButton.bootstrap = function (a, h, r, s, j, n) {
+    var o = new f.Api(a),
+        t = a.oClasses,
+        k = a.oLanguage.oPaginate,
+        u = a.oLanguage.oAria.paginate || {},
+        e,
+        g,
+        p = 0,
+        q = function q(d, f) {
+      var l,
+          h,
+          i,
+          c,
+          m = function m(a) {
+        a.preventDefault();
+        !b(a.currentTarget).hasClass("disabled") && o.page() != a.data.action && o.page(a.data.action).draw("page");
+      };
+
+      l = 0;
+
+      for (h = f.length; l < h; l++) {
+        if (c = f[l], b.isArray(c)) q(d, c);else {
+          g = e = "";
+
+          switch (c) {
+            case "ellipsis":
+              e = "&#x2026;";
+              g = "disabled";
+              break;
+
+            case "first":
+              e = k.sFirst;
+              g = c + (0 < j ? "" : " disabled");
+              break;
+
+            case "previous":
+              e = k.sPrevious;
+              g = c + (0 < j ? "" : " disabled");
+              break;
+
+            case "next":
+              e = k.sNext;
+              g = c + (j < n - 1 ? "" : " disabled");
+              break;
+
+            case "last":
+              e = k.sLast;
+              g = c + (j < n - 1 ? "" : " disabled");
+              break;
+
+            default:
+              e = c + 1, g = j === c ? "active" : "";
+          }
+
+          e && (i = b("<li>", {
+            "class": t.sPageButton + " " + g,
+            id: 0 === r && "string" === typeof c ? a.sTableId + "_" + c : null
+          }).append(b("<a>", {
+            href: "#",
+            "aria-controls": a.sTableId,
+            "aria-label": u[c],
+            "data-dt-idx": p,
+            tabindex: a.iTabIndex,
+            "class": "page-link"
+          }).html(e)).appendTo(d), a.oApi._fnBindAction(i, {
+            action: c
+          }, m), p++);
+        }
+      }
+    },
+        i;
+
+    try {
+      i = b(h).find(d.activeElement).data("dt-idx");
+    } catch (v) {}
+
+    q(b(h).empty().html('<ul class="pagination"/>').children("ul"), s);
+    i !== m && b(h).find("[data-dt-idx=" + i + "]").focus();
+  };
+
+  return f;
+});
 
 /***/ }),
 
@@ -55652,8 +55771,17 @@ __webpack_require__(/*! ./believer/editClient.js */ "./resources/js/believer/edi
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$(document).ready(function () {
-  $('.datatable').DataTable();
+// $(document).ready( function () {
+//     $('.datatable').DataTable();
+//     "columnDefs": [
+//         { "sortable": false, "targets": [2,3] }
+//       ]    
+// } );
+$(".datatable").dataTable({
+  "columnDefs": [{
+    "sortable": false,
+    "targets": [1, 2, 5]
+  }]
 });
 
 /***/ }),

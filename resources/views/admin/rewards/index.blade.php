@@ -12,8 +12,8 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body p-10">
-            <div class="">
-                <table id="table_id" class="datatable">
+            <div class="table-responsive dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+                <table id="table_id" class="datatable table table-striped dataTable no-footer">
                 <thead>
                     <tr>
                         <th>Title</th>
@@ -35,8 +35,16 @@
                     @endif
                     <td>{{ $reward->description }}</td>  
                     <td>{{ $reward->points }}</td>
-                    <td>{{ $reward->status }}</td>
-                    <td><a href="#" class="btn btn-danger deleteReward" data-item-id="{{ $reward->id }}"><i class="fa fa-trash"></i></a></td>
+                    <td>
+                        @if( $reward->active_status == 1 )
+                            <h3><a href="#" class="unpublishReward" data-item-id="{{ $reward->id }}"><i class="fa fa-toggle-on" aria-hidden="true"></i></a></h3>
+                        @else
+                            <h3><a href="#" class="publishReward" data-item-id="{{ $reward->id }}"><i class="fa fa-toggle-off" aria-hidden="true"></i></a></h3>
+                        @endif
+                    </td>
+                    <td>
+                        <h3><a href="#" class="req deleteReward" data-item-id="{{ $reward->id }}"><i class="fa fa-trash"></i></a></h3>
+                    </td>
                 </tr>
 
                 @endforeach                 
