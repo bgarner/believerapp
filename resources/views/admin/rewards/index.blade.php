@@ -13,7 +13,7 @@
         <div class="card">
             <div class="card-body p-10">
             <div class="table-responsive dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
-                <table id="table_id" class="datatable table table-striped dataTable no-footer">
+                <table id="table_id" class="datatable-rewards table table-striped dataTable no-footer">
                 <thead>
                     <tr>
                         <th>Title</th>

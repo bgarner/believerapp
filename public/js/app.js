@@ -55641,6 +55641,8 @@ __webpack_require__(/*! ./believer/dataTables.bs4.js */ "./resources/js/believer
 
 __webpack_require__(/*! ./believer/dataTables.js */ "./resources/js/believer/dataTables.js");
 
+__webpack_require__(/*! ./believer/deleteReward.js */ "./resources/js/believer/deleteReward.js");
+
 __webpack_require__(/*! ./believer/deleteClient.js */ "./resources/js/believer/deleteClient.js");
 
 __webpack_require__(/*! ./believer/editClient.js */ "./resources/js/believer/editClient.js");
@@ -55777,10 +55779,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof
 //         { "sortable": false, "targets": [2,3] }
 //       ]    
 // } );
-$(".datatable").dataTable({
+$(".datatable-rewards").dataTable({
   "columnDefs": [{
     "sortable": false,
-    "targets": [1, 2, 5]
+    "targets": [1, 2, 4, 5]
   }]
 });
 
@@ -55819,6 +55821,46 @@ $(document).on("click", ".deleteClient", function () {
       });
     } else {
       swal("Client is safe!");
+    }
+  });
+  return false;
+});
+
+/***/ }),
+
+/***/ "./resources/js/believer/deleteReward.js":
+/*!***********************************************!*\
+  !*** ./resources/js/believer/deleteReward.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).on("click", ".deleteReward", function () {
+  console.log("reward delete requested");
+  var fileId = $(this).attr('data-item-id');
+  var selector = "#reward" + fileId;
+  console.log("selector: " + selector); // e.preventDefault();
+
+  swal({
+    title: "Are you sure?",
+    text: "Are you sure you want to delete this reward?",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true
+  }).then(function (willDelete) {
+    if (willDelete) {
+      $.ajax({
+        url: '/admin/rewards/' + fileId,
+        type: 'DELETE',
+        success: function success(result) {
+          $(selector).closest('tr').fadeOut(1000);
+          swal("Reward deleted!", {
+            icon: "success"
+          });
+        }
+      });
+    } else {
+      swal("Reward is safe!");
     }
   });
   return false;

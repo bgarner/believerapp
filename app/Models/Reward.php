@@ -90,7 +90,7 @@ class Reward extends Model
         return Reward::find($id);
     }
 
-    public function deleteReward($id)
+    public static function deleteReward($id)
     {
         return Reward::find($id)->delete();
     }

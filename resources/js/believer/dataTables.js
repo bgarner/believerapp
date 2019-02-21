@@ -7,8 +7,8 @@
 // } );
 
 
-$(".datatable").dataTable({
+$(".datatable-rewards").dataTable({
     "columnDefs": [
-      { "sortable": false, "targets": [1,2,5] }
+      { "sortable": false, "targets": [1,2,4,5] }
     ]
 });
