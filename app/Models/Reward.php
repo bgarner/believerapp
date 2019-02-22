@@ -32,13 +32,13 @@ class Reward extends Model
         } else {
             dd($request);
         }
-        
+
         $directory = public_path() . '/uploads/rewards';
         $hash = md5(uniqid(rand(), true));
         $filename  = $hash . "." . $ext;
         //move and rename file
-        $upload_success = $request->file('rewardimage')->move($directory, $filename); 
-        
+        $upload_success = $request->file('rewardimage')->move($directory, $filename);
+
         if ($upload_success) {
             $reward = Reward::create([
                 'title' => $request->title,
@@ -57,30 +57,48 @@ class Reward extends Model
         $reward = Reward::find($id);
         $old_image = $reward->image;
 
-        if( $request->file('rewardimage')->isValid() ) {
-            $file = $request->rewardimage;
-            $ext = strtolower( $request->rewardimage->extension() );
-            $directory = public_path() . '/uploads/rewards';
-            $hash = md5(uniqid(rand(), true));
-            $filename  = $hash . "." . $ext;
-            //move and rename file
-            $upload_success = $request->file('rewardimage')->move($directory, $filename);
-            $image = $filename; //send this to the updaate array
-            if($reward->image){ //if there was an old image...
-                unlink(public_path().'/uploads/rewards/' . $old_image); //delete the old file.             
+        if($request->file('rewardimage')){ //image is not null, therefore, we are update it too..
+            if( $request->file('rewardimage')->isValid() ) {
+                $file = $request->rewardimage;
+                $ext = strtolower( $request->rewardimage->extension() );
+                $directory = public_path() . '/uploads/rewards';
+                $hash = md5(uniqid(rand(), true));
+                $filename  = $hash . "." . $ext;
+                //move and rename file
+                $upload_success = $request->file('rewardimage')->move($directory, $filename);
+                $image = $filename; //send this to the updaate array
+                if($reward->image){ //if there was an old image...
+                    unlink(public_path().'/uploads/rewards/' . $old_image); //delete the old file.
+                }
+            } else {
+                $image = $old_image; //just put the old one back.
             }
-        } else {
-            $image = $old_image; //just put the old one back.
-        }
-
-        $reward->update([
+            $reward->update([
                 'title' => $request->title,
                 'unique_name' => $request->unique_name,
                 'description' => $request->description,
                 'points' => $request->points,
                 'image' => $image,
-                'active_status' => $request->active_status
             ]);
+        } else { //no image update, just update the text fields
+            $reward->update([
+                'title' => $request->title,
+                'unique_name' => $request->unique_name,
+                'description' => $request->description,
+                'points' => $request->points,
+            ]);
+        }
+
+        return $reward;
+    }
+
+    public static function toggleStatus($id, $state)
+    {
+        $reward = Reward::find($id);
+
+        $reward->update([
+            'active_status' => $state
+        ]);
 
         return $reward;
     }

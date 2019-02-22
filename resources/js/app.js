@@ -26,3 +26,4 @@ require('./believer/dataTables.js');
 require('./believer/deleteReward.js');
 require('./believer/deleteClient.js');
 require('./believer/editClient.js');
+require('./believer/rewardPublishing.js');

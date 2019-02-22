@@ -13,8 +13,8 @@ class RewardController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    } 
-    
+    }
+
     public function index()
     {
         $rewards = Reward::all();
@@ -53,5 +53,10 @@ class RewardController extends Controller
     {
         $reward = Reward::deleteReward($id);
         return response()->json($reward);
-    }    
+    }
+
+    public function toggleStatus(Request $request)
+    {
+        Reward::toggleStatus($request->id, $request->active_status);
+    }
 }

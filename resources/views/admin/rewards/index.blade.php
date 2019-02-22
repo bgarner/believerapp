@@ -24,7 +24,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>                                
+                <tbody>
                 @foreach($rewards as $reward)
                 <tr id="reward{{ $reward->id }}">
                     <td><a href="/admin/rewards/{{ $reward->id }}">{{ $reward->title }}</a></td>
@@ -33,13 +33,13 @@
                     @else
                     <td><img src="/uploads/rewards/{{ $reward->image }}" width="100" /></td>
                     @endif
-                    <td>{{ $reward->description }}</td>  
+                    <td>{{ $reward->description }}</td>
                     <td>{{ $reward->points }}</td>
                     <td>
                         @if( $reward->active_status == 1 )
-                            <h3><a href="#" class="unpublishReward" data-item-id="{{ $reward->id }}"><i class="fa fa-toggle-on" aria-hidden="true"></i></a></h3>
+                            <h3><i class="fa fa-toggle-on publishReward" aria-hidden="true" data-state="1" data-item-id="{{ $reward->id }}"></i></h3>
                         @else
-                            <h3><a href="#" class="publishReward" data-item-id="{{ $reward->id }}"><i class="fa fa-toggle-off" aria-hidden="true"></i></a></h3>
+                            <h3><i class="fa fa-toggle-off publishReward" aria-hidden="true" data-state="0" data-item-id="{{ $reward->id }}""></i></h3>
                         @endif
                     </td>
                     <td>
@@ -47,7 +47,7 @@
                     </td>
                 </tr>
 
-                @endforeach                 
+                @endforeach
                 </tbody>
                 </table>
             </div>
