@@ -37,9 +37,9 @@
                     <td>{{ $reward->points }}</td>
                     <td>
                         @if( $reward->active_status == 1 )
-                            <h3><i class="fa fa-toggle-on publishReward" aria-hidden="true" data-state="1" data-item-id="{{ $reward->id }}"></i></h3>
+                            <h3><small>OFF</small><i class="fa fa-toggle-on publishReward" aria-hidden="true" data-state="1" data-item-id="{{ $reward->id }}"></i><small>ON</small></h3>
                         @else
-                            <h3><i class="fa fa-toggle-off publishReward" aria-hidden="true" data-state="0" data-item-id="{{ $reward->id }}""></i></h3>
+                            <h3><small>OFF</small><i class="fa fa-toggle-off publishReward" aria-hidden="true" data-state="0" data-item-id="{{ $reward->id }}""></i><small>ON</small></h3>
                         @endif
                     </td>
                     <td>

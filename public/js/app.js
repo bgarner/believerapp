@@ -55954,12 +55954,10 @@ $(document).on("click", ".publishReward", function () {
   var state = $(this).attr('data-state');
 
   if (state == 1) {
-    console.log("OFF");
     result = makeAjaxCallForPublish(rewardId, 0); // it's on - so turn it off
 
     $(this).attr('data-state', 0); //set the current state to off
 
-    console.log("this is the state state for the next request: " + $(this).attr('data-state'));
     $(this).removeClass("fa-toggle-on").addClass("fa-toggle-off");
   } else {
     result = makeAjaxCallForPublish(rewardId, 1); // turn it on

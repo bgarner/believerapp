@@ -28,3 +28,15 @@
     float: left;
     @include shadow;
 }
+
+.datatable-rewards h3 {
+    white-space:nowrap;
+}
+.datatable-rewards h3 small{
+    font-size: 6px;
+    display: inline;
+    white-space:nowrap;
+    position: relative;
+    bottom: 6px;
+    padding: 0px 2px;
+}
