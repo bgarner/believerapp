@@ -6,14 +6,13 @@
 
 @section('content')
 
-<form method="POST" enctype="multipart/form-data" action="/admin/rewards/{{ $reward->id }}"class="form-horizontal">
-    @method('patch')
+<form id="editreward" name="editreward" method="POST" enctype="multipart/form-data" action="/admin/updateReward" class="form-horizontal">
     @csrf
-
+    <input type="hidden" name="reward_id" id="reward_id" value="{{ $reward->id }}" />
     <div class="card">
         <div class="card-header"><h4>Reward Details</h4></div>
 
-        <div class="card-body">        
+        <div class="card-body">
             <div class="row">
 
                 <div class="col-12">
@@ -30,7 +29,7 @@
                         <div class="col-sm-10">
                             <input type="text" id="points" name="points" class="form-control" value="{{ $reward->points }}">
                         </div>
-                    </div>                    
+                    </div>
 
                     <div class="form-group"><label class="col-sm-12 control-label">Description<span class="req">*</span></label>
                         <div class="col-sm-10">
@@ -48,7 +47,7 @@
                             <img src="/uploads/rewards/{{ $reward->image }}" width="150" />
                             @endif
                         </div>
-                        
+
                         <div class="input-group col-12">
                             <div class="custom-file">
                                 <input type="file" class="form-control-file" id="rewardimage" name="rewardimage">
@@ -67,7 +66,7 @@
 
     <div class="form-group">
         <div class="col-sm-10 col-sm-offset-2">
-            <button class="event-create btn btn-primary" type="submit"><i class="fa fa-check"></i><span> Update Reward</span></button>
+            <button class="event-create btn btn-primary editReward" type="submit"><i class="fa fa-check"></i><span> Update Reward</span></button>
             <a class="btn btn-white" href="/admin/rewards"><i class="fa fa-close"></i> Cancel</a>
 
         </div>

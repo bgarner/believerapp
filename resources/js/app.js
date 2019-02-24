@@ -23,7 +23,10 @@ $.ajaxSetup({
 require('./believer/iCheck.js');
 require('./believer/dataTables.bs4.js');
 require('./believer/dataTables.js');
-require('./believer/deleteReward.js');
+// clients
 require('./believer/deleteClient.js');
 require('./believer/editClient.js');
+// rewards
+require('./believer/deleteReward.js');
+require('./believer/editReward.js');
 require('./believer/rewardPublishing.js');

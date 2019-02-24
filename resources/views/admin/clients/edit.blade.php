@@ -7,14 +7,13 @@
 
 @section('content')
 
-<form method="POST" action="/admin/clients/{{ $client->id }}"class="form-horizontal">
-    @method('patch')
+<form id="editclient" name="editclient" method="POST" enctype="multipart/form-data" action="/admin/updateCient" class="form-horizontal">
     @csrf
     <input type="hidden" name="client_id" id="client_id" value="{{ $client->id }}" />
     <div class="card">
         <div class="card-header"><h4>Client Details</h4></div>
 
-        <div class="card-body">        
+        <div class="card-body">
             <div class="row">
 
                 <div class="col-6">
@@ -45,20 +44,16 @@
                         <small>Some info about the specs for a logo file should go here...</small>
                         <div class="input-group mb-3 col-sm-12">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="inputGroupFile02">
-                                <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-                            </div>
-                            <div class="input-group-append">
-                                <span class="input-group-text" id="">Upload</span>
+                                <input type="file" class="form-control-file" id="clientimage" name="clientimage">
                             </div>
                         </div>
                     </div>
             </div>
 
 
-        
+
         <div class="col-6">
-       
+
             <div class="form-group">
                 <label class="col-sm-6 control-label">Address<span class="req">*</span></label>
                 <div class="col-sm-10">
@@ -71,7 +66,7 @@
                 <input type="text" class="form-control" name="city" id="city" placeholder="City" value="{{ $client->city }}">
                 <input type="text" class="form-control" name="province" id="province" placeholder="Province/State" value="{{ $client->province }}">
                 <input type="text" class="form-control" name="postal_code" id="postal_code" placeholder="Postal/Zip Code" value="{{ $client->postal_code }}">
-            </div>            
+            </div>
 
             <div class="form-group">
                 <label class="col-sm-6 control-label">Phone<span class="req">*</span></label>

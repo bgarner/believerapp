@@ -14,14 +14,14 @@ class ClientController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    } 
-    
+    }
+
     public function index()
     {
         $clients = Client::all();
         foreach($clients as $client){
             $followers = Follower::where('brand_id', $client->id)->get();
-            
+
             $challenges = Challenge::where('brand_id', $client->id)->pluck('id');
             $challenge_completions = ChallengeCompletion::whereIn('challenge_id', $challenges)->count();
 
@@ -29,7 +29,7 @@ class ClientController extends Controller
                         ->join('challenge_completions', 'challenges.id', '=', 'challenge_completions.challenge_id')
                         ->sum('challenges.points');
 
-            $client->total_believers = number_format(count($followers)); 
+            $client->total_believers = number_format(count($followers));
             $client->total_points = number_format($total_points);
             $client->challenge_completions = number_format($challenge_completions);
         }
@@ -59,9 +59,9 @@ class ClientController extends Controller
         return view('admin.clients.edit', ['client' => $client]);
     }
 
-    public function update(Request $request, $id)
+    public function updateClient(Request $request)
     {
-        return Client::updateClient($request, $id);
+        return Client::updateClient($request);
     }
 
     public function destroy($id)
@@ -69,5 +69,5 @@ class ClientController extends Controller
         $client = Client::deleteClient($id);
         return response()->json($client);
     }
-    
+
 }

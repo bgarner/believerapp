@@ -49,23 +49,24 @@ class Reward extends Model
                 'active_status' => 1
             ]);
         }
-        return $reward;
+        return redirect()->to('/admin/rewards');
     }
 
-    public static function updateReward($request, $id)
+    public static function updateReward($request)
     {
-        $reward = Reward::find($id);
+        $reward = Reward::find($request->rewardId);
+
         $old_image = $reward->image;
 
-        if($request->file('rewardimage')){ //image is not null, therefore, we are update it too..
-            if( $request->file('rewardimage')->isValid() ) {
-                $file = $request->rewardimage;
-                $ext = strtolower( $request->rewardimage->extension() );
+        if($request->file('image')){ //image is not null, therefore, we are update it too..
+            if( $request->file('image')->isValid() ) {
+                $file = $request->image;
+                $ext = strtolower( $request->image->extension() );
                 $directory = public_path() . '/uploads/rewards';
                 $hash = md5(uniqid(rand(), true));
                 $filename  = $hash . "." . $ext;
                 //move and rename file
-                $upload_success = $request->file('rewardimage')->move($directory, $filename);
+                $upload_success = $request->file('image')->move($directory, $filename);
                 $image = $filename; //send this to the updaate array
                 if($reward->image){ //if there was an old image...
                     unlink(public_path().'/uploads/rewards/' . $old_image); //delete the old file.

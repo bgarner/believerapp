@@ -55639,13 +55639,17 @@ __webpack_require__(/*! ./believer/iCheck.js */ "./resources/js/believer/iCheck.
 
 __webpack_require__(/*! ./believer/dataTables.bs4.js */ "./resources/js/believer/dataTables.bs4.js");
 
-__webpack_require__(/*! ./believer/dataTables.js */ "./resources/js/believer/dataTables.js");
+__webpack_require__(/*! ./believer/dataTables.js */ "./resources/js/believer/dataTables.js"); // clients
 
-__webpack_require__(/*! ./believer/deleteReward.js */ "./resources/js/believer/deleteReward.js");
 
 __webpack_require__(/*! ./believer/deleteClient.js */ "./resources/js/believer/deleteClient.js");
 
-__webpack_require__(/*! ./believer/editClient.js */ "./resources/js/believer/editClient.js");
+__webpack_require__(/*! ./believer/editClient.js */ "./resources/js/believer/editClient.js"); // rewards
+
+
+__webpack_require__(/*! ./believer/deleteReward.js */ "./resources/js/believer/deleteReward.js");
+
+__webpack_require__(/*! ./believer/editReward.js */ "./resources/js/believer/editReward.js");
 
 __webpack_require__(/*! ./believer/rewardPublishing.js */ "./resources/js/believer/rewardPublishing.js");
 
@@ -55884,39 +55888,90 @@ $(document).on("click", ".deleteReward", function () {
 /***/ (function(module, exports) {
 
 $(document).on("click", ".editClient", function () {
+  // e.preventDefault();
   console.log("client edit requested");
+  var formData = new FormData();
   var clientId = $("#client_id").val();
-  var name = $("#name").val();
+  var company_name = $("#name").val();
   var unique_name = $("#unique_name").val();
   var description = $("#description").val();
+  var fileInput = document.getElementById('clientimage');
+  var file = fileInput.files[0];
   var address1 = $("#address1").val();
   var address2 = $("#address2").val();
   var city = $("#city").val();
   var postal_code = $("#postal_code").val();
   var province = $("#province").val();
   var phone1 = $("#phone1").val();
-  var phone2 = $("#phone2").val(); // e.preventDefault();
-
+  var phone2 = $("#phone2").val();
+  formData.append('clientId', clientId);
+  formData.append('company_name', company_name);
+  formData.append('unique_name', unique_name);
+  formData.append('description', description);
+  formData.append('logo', file);
+  formData.append('address1', address1);
+  formData.append('address2', address2);
+  formData.append('city', city);
+  formData.append('postal_code', postal_code);
+  formData.append('province', province);
+  formData.append('phone1', phone1);
+  formData.append('phone2', phone2);
+  console.log(formData);
   $.ajax({
-    url: '/admin/clients/' + clientId,
-    type: 'PATCH',
-    dataType: 'json',
-    data: {
-      name: name,
-      unique_name: unique_name,
-      description: description,
-      logo: null,
-      address1: address1,
-      address2: address2,
-      city: city,
-      postal_code: postal_code,
-      province: province,
-      phone1: phone1,
-      phone2: phone2
-    },
+    url: '/admin/updateClient',
+    type: 'POST',
+    //dataType: 'json',
+    data: formData,
     success: function success(result) {
-      swal("Done!", "Client info updated!", "success");
-    }
+      swal("Done!", "Client info updated!", "success").then(function () {
+        window.location = "/admin/clients/" + result.id;
+      });
+    },
+    cache: false,
+    contentType: false,
+    processData: false
+  });
+  return false;
+});
+
+/***/ }),
+
+/***/ "./resources/js/believer/editReward.js":
+/*!*********************************************!*\
+  !*** ./resources/js/believer/editReward.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).on("click", ".editReward", function () {
+  // e.preventDefault();
+  console.log("reward edit requested");
+  var formData = new FormData(); //var rewardId = $("#reward_id").val();
+
+  var title = $("#title").val();
+  var points = $("#points").val();
+  var description = $("#description").val();
+  var fileInput = document.getElementById('rewardimage');
+  var file = fileInput.files[0];
+  formData.append('rewardId', $("#reward_id").val());
+  formData.append('title', title);
+  formData.append('points', points);
+  formData.append('description', description);
+  formData.append('image', file);
+  console.log(formData);
+  $.ajax({
+    url: '/admin/updateReward',
+    type: 'POST',
+    //dataType: 'json',
+    data: formData,
+    success: function success(result) {
+      swal("Done!", "Reward info updated!", "success").then(function () {
+        window.location = "/admin/rewards/" + result.id;
+      });
+    },
+    cache: false,
+    contentType: false,
+    processData: false
   });
   return false;
 });

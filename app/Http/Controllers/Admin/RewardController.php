@@ -44,9 +44,9 @@ class RewardController extends Controller
         return view('admin.rewards.edit', ['reward' => $reward]);
     }
 
-    public function update(Request $request, $id)
+    public function updateReward(Request $request)
     {
-        return Reward::updateReward($request, $id);
+        return Reward::updateReward($request);
     }
 
     public function destroy($id)
