@@ -12,11 +12,12 @@ class MissionController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('client');
     }
 
     public function index() //list the resources
     {
-        dd(Auth::user()->id);
+        dd(Auth::user());
         //$missions = Mission::getMissionsByClient();
         return view('clients.missions.index');
     }
