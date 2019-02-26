@@ -48,3 +48,5 @@ require('./believer/editClient.js');
 require('./believer/deleteReward.js');
 require('./believer/editReward.js');
 require('./believer/rewardPublishing.js');
+//missions
+require('./believer/deleteMission.js');

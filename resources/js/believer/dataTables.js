@@ -18,3 +18,9 @@ $(".datatable-clients").dataTable({
       { "sortable": false, "targets": [5] }
     ]
 });
+
+$(".datatable-missions").dataTable({
+    "columnDefs": [
+      { "sortable": false, "targets": [5] }
+    ]
+});

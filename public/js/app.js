@@ -55672,7 +55672,10 @@ __webpack_require__(/*! ./believer/deleteReward.js */ "./resources/js/believer/d
 
 __webpack_require__(/*! ./believer/editReward.js */ "./resources/js/believer/editReward.js");
 
-__webpack_require__(/*! ./believer/rewardPublishing.js */ "./resources/js/believer/rewardPublishing.js");
+__webpack_require__(/*! ./believer/rewardPublishing.js */ "./resources/js/believer/rewardPublishing.js"); //missions
+
+
+__webpack_require__(/*! ./believer/deleteMission.js */ "./resources/js/believer/deleteMission.js");
 
 /***/ }),
 
@@ -55818,6 +55821,12 @@ $(".datatable-clients").dataTable({
     "targets": [5]
   }]
 });
+$(".datatable-missions").dataTable({
+  "columnDefs": [{
+    "sortable": false,
+    "targets": [5]
+  }]
+});
 
 /***/ }),
 
@@ -55854,6 +55863,46 @@ $(document).on("click", ".deleteClient", function () {
       });
     } else {
       swal("Client is safe!");
+    }
+  });
+  return false;
+});
+
+/***/ }),
+
+/***/ "./resources/js/believer/deleteMission.js":
+/*!************************************************!*\
+  !*** ./resources/js/believer/deleteMission.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).on("click", ".deleteMission", function () {
+  console.log("mission delete requested");
+  var fileId = $(this).attr('data-item-id');
+  var selector = "#mission" + fileId;
+  console.log("selector: " + selector); // e.preventDefault();
+
+  swal({
+    title: "Are you sure?",
+    text: "Are you sure you want to delete this mission?",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true
+  }).then(function (willDelete) {
+    if (willDelete) {
+      $.ajax({
+        url: '/client/missions/' + fileId,
+        type: 'DELETE',
+        success: function success(result) {
+          $(selector).closest('tr').fadeOut(1000);
+          swal("Mission deleted!", {
+            icon: "success"
+          });
+        }
+      });
+    } else {
+      swal("Mission is safe!");
     }
   });
   return false;

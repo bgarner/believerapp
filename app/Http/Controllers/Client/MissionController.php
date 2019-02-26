@@ -17,9 +17,9 @@ class MissionController extends Controller
 
     public function index() //list the resources
     {
-        dd(Auth::user());
-        //$missions = Mission::getMissionsByClient();
-        return view('clients.missions.index');
+        $missions = Mission::getMissionsByClient();
+        return view('clients.missions.index')
+            ->with('missions', $missions);
     }
 
     public function create() //show the create form
@@ -44,6 +44,8 @@ class MissionController extends Controller
 
     public function destroy($id) //delete a resource
     {
+        $mission = Mission::deleteMission($id);
+        return response()->json($mission);
     }
 
 }
