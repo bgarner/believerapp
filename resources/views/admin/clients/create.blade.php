@@ -5,13 +5,13 @@
 @endsection
 
 @section('content')
-<form method="POST" enctype="multipart/form-data" action="/admin/clients" class="form-horizontal">
+<form method="POST" enctype="multipart/form-data" action="/admin/clients" class="form-horizontal needs-validation">
     @csrf
 
     <div class="card">
         <div class="card-header"><h4>Client Details</h4></div>
 
-        <div class="card-body">        
+        <div class="card-body">
             <div class="row">
 
                 <div class="col-6">
@@ -19,7 +19,7 @@
                     <div class="form-group">
                         <label class="col-sm-12 control-label">Name<span class="req">*</span></label>
                         <div class="col-sm-10">
-                            <input type="text" id="name" name="name" class="form-control" value="">
+                            <input type="text" id="name" name="name" class="form-control" value="" required>
                         </div>
                     </div>
 
@@ -27,13 +27,13 @@
                         <label class="col-sm-6 control-label">Unique Name<span class="req">*</span></label>
                         <small>This the landing page alias (i.e. believerapp.com/<strong>timhortons</strong>). Needs to be one word, lowercase. Can contain dashes(-) or underscores(_).</small>
                         <div class="col-sm-10">
-                            <input type="text" id="unique_name" name="unique_name" class="form-control" value="">
+                            <input type="text" id="unique_name" name="unique_name" class="form-control" value="" required>
                         </div>
                     </div>
 
                     <div class="form-group"><label class="col-sm-12 control-label">Description<span class="req">*</span></label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" rows="5" id="description" name="description"></textarea>
+                            <textarea class="form-control" rows="5" id="description" name="description" required></textarea>
 
                         </div>
                     </div>
@@ -42,35 +42,35 @@
                         <small>Some info about the specs for a logo file should go here...</small>
                         <div class="input-group col-12">
                             <div class="custom-file">
-                                <input type="file" class="form-control-file" id="clientimage" name="clientimage">
+                                <input type="file" class="form-control-file" id="clientimage" name="clientimage" required>
                             </div>
                         </div>
                     </div>
             </div>
 
 
-        
+
         <div class="col-6">
-       
+
             <div class="form-group">
                 <label class="col-sm-6 control-label">Address<span class="req">*</span></label>
                 <div class="col-sm-10">
-                    <input type="text" id="address1" name="address1" class="form-control" value="" placeholder="Address Line 1"><br />
+                    <input type="text" id="address1" name="address1" class="form-control" value="" placeholder="Address Line 1" required><br />
                     <input type="text" id="address2" name="address2" class="form-control" value="" placeholder="Address Line 2 (optional)">
                 </div>
             </div>
 
 
             <div class="input-group form-group col-10">
-                <input type="text" id="city" name="city" class="form-control" placeholder="City">
-                <input type="text" id="province" name="province" class="form-control" placeholder="Province/State">
-                <input type="text" id="postal_code" name="postal_code" class="form-control" placeholder="Postal/Zip Code">
-            </div>            
+                <input type="text" id="city" name="city" class="form-control" placeholder="City" required>
+                <input type="text" id="province" name="province" class="form-control" placeholder="Province/State" required>
+                <input type="text" id="postal_code" name="postal_code" class="form-control" placeholder="Postal/Zip Code" required>
+            </div>
 
             <div class="form-group">
                 <label class="col-sm-6 control-label">Phone<span class="req">*</span></label>
                 <div class="col-sm-10">
-                    <input type="text" id="phone1" name="phone1" class="form-control" value="" placeholder="Phone 1"><br />
+                    <input type="text" id="phone1" name="phone1" class="form-control" value="" placeholder="Phone 1" required><br />
                     <input type="text" id="phone2" name="phone2" class="form-control" value="" placeholder="Phone 2 (optional)">
                 </div>
             </div>

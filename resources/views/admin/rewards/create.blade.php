@@ -5,13 +5,13 @@
 @endsection
 
 @section('content')
-<form method="POST" enctype="multipart/form-data" action="/admin/rewards" class="form-horizontal">
+<form method="POST" enctype="multipart/form-data" action="/admin/rewards" class="form-horizontal needs-validation">
     @csrf
 
     <div class="card">
         <div class="card-header"><h4>Reward Details</h4></div>
 
-        <div class="card-body">        
+        <div class="card-body">
             <div class="row">
 
                 <div class="col-12">
@@ -19,39 +19,39 @@
                     <div class="form-group">
                         <label class="col-sm-12 control-label">Title<span class="req">*</span></label>
                         <div class="col-sm-12">
-                            <input type="text" id="title" name="title" class="form-control" value="">
+                            <input type="text" id="title" name="title" class="form-control" value="" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-12 control-label">Reward Type<span class="req">*</span></label>
                         <div class="col-sm-12">
-                            <select class="custom-select" id="reward_type_id" name="reward_type_id">
+                            <select class="custom-select" id="reward_type_id" name="reward_type_id" required>
                                 <option></option>
                                 @foreach($types as $type)
                                 <option value="{{ $type->id }}">{{ $type->type }}</option>
                                 @endforeach
                             </select>
                         </div>
-                    </div>                    
+                    </div>
 
                     <div class="form-group"><label class="col-sm-12 control-label">Description<span class="req">*</span></label>
                         <div class="col-sm-12">
-                            <textarea class="form-control" rows="5" id="description" name="description"></textarea>
+                            <textarea class="form-control" rows="5" id="description" name="description" required></textarea>
                         </div>
                     </div>
 
                     <div class="form-group"><label class="col-sm-12 control-label">Points<span class="req">*</span></label>
                         <div class="col-sm-12">
-                            <input type="text" id="points" name="points" class="form-control" value="">
+                            <input type="text" id="points" name="points" class="form-control" value="" required>
                         </div>
-                    </div>                    
+                    </div>
 
                     <div class="form-group"><label class="col-sm-12 control-label">Image<span class="req">*</span></label>
                         <small>Some info about the specs for a logo file should go here...</small>
                         <div class="input-group col-12">
                             <div class="custom-file">
-                                <input type="file" class="form-control-file" id="rewardimage" name="rewardimage">
+                                <input type="file" class="form-control-file" id="rewardimage" name="rewardimage" required>
                             </div>
                         </div>
                     </div>

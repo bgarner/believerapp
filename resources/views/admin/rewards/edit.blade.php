@@ -6,7 +6,7 @@
 
 @section('content')
 
-<form id="editreward" name="editreward" method="POST" enctype="multipart/form-data" action="/admin/updateReward" class="form-horizontal">
+<form id="editreward" name="editreward" method="POST" enctype="multipart/form-data" action="/admin/updateReward" class="form-horizontal needs-validation">
     @csrf
     <input type="hidden" name="reward_id" id="reward_id" value="{{ $reward->id }}" />
     <div class="card">
@@ -20,20 +20,20 @@
                     <div class="form-group">
                         <label class="col-sm-12 control-label">Name<span class="req">*</span></label>
                         <div class="col-sm-10">
-                            <input type="text" id="title" name="title" class="form-control" value="{{ $reward->title }}">
+                            <input type="text" id="title" name="title" class="form-control" value="{{ $reward->title }}" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-12 control-label">Points<span class="req">*</span></label>
                         <div class="col-sm-10">
-                            <input type="text" id="points" name="points" class="form-control" value="{{ $reward->points }}">
+                            <input type="text" id="points" name="points" class="form-control" value="{{ $reward->points }}" required>
                         </div>
                     </div>
 
                     <div class="form-group"><label class="col-sm-12 control-label">Description<span class="req">*</span></label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" rows="5" id="description" name="description">{{ $reward->description }}</textarea>
+                            <textarea class="form-control" rows="5" id="description" name="description" required>{{ $reward->description }}</textarea>
 
                         </div>
                     </div>
