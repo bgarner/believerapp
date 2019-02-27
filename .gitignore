@@ -14,3 +14,5 @@ yarn-error.log
 .env
 .phpunit.result.cache
 /public/uploads/rewards/*
+/public/uploads/missions/*
+/public/uploads/clients/*
