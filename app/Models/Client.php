@@ -39,8 +39,6 @@ class Client extends Model
         if( $request->file('clientimage')->isValid() ) {
             $file = $request->clientimage;
             $ext = strtolower( $request->clientimage->extension() );
-        } else {
-            dd($request);
         }
 
         $directory = public_path() . '/uploads/clients';

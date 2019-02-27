@@ -10,6 +10,7 @@ require('jquery.nicescroll');
 require('moment');
 require('datatables.net');
 require('sweetalert');
+require('daterangepicker');
 require('./stisla.js');
 require('./scripts.js');
 
@@ -36,6 +37,45 @@ $.ajaxSetup({
     });
   }, false);
 })();
+
+// Daterangepicker
+
+
+  $('#mission_create_daterange').daterangepicker({
+    drops: 'down',
+    opens: 'right'
+  }, function(start, end, label) {
+    $('#start').val( start.format('YYYY-MM-DD') + ' 00:00:00');
+    $('#end').val( end.format('YYYY-MM-DD') + ' 23:59:59');
+  });
+
+
+// if(jQuery().daterangepicker) {
+//   if($(".datepicker").length) {
+//     $('.datepicker').daterangepicker({
+//       locale: {format: 'MMMM D, YYYY'},
+//       singleDatePicker: true,
+//       showDropdowns: true,
+//     });
+//   }
+//   if($(".datetimepicker").length) {
+//     $('.datetimepicker').daterangepicker({
+//       locale: {format: 'YYYY-MM-DD hh:mm'},
+//       singleDatePicker: true,
+//       timePicker: true,
+//       timePicker24Hour: true,
+//     });
+//   }
+//   if($(".daterange").length) {
+//     $('.daterange').daterangepicker({
+//       locale: {format: 'YYYY-MM-DD'},
+//       drops: 'down',
+//       opens: 'right'
+//     }, function(start, end, label) {
+//         console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+//     });
+//   }
+// }
 
 //implementiations...
 require('./believer/iCheck.js');

@@ -11,7 +11,7 @@ class Challenge extends Model
 {
     use SoftDeletes;
     protected $table = 'challenges';
-    protected $fillable = ['name', 'content', 'start', 'end', 'brand_id', 'created_by', 'is_draft', 'points', 'challenge_type'];
+    protected $fillable = ['name', 'content', 'image', 'start', 'end', 'brand_id', 'created_by', 'is_draft', 'points', 'challenge_type'];
 
 
     public static function getMissionsByClient()
@@ -31,6 +31,37 @@ class Challenge extends Model
     public static function deleteMission($id)
     {
         return Self::find($id)->delete();
+    }
+
+    public static function createNewMission($request)
+    {
+        if( $request->file('missionimage')->isValid() ) {
+            $file = $request->missionimage;
+            $ext = strtolower( $request->missionimage->extension() );
+        }
+
+        $directory = public_path() . '/uploads/missions';
+        $hash = md5(uniqid(rand(), true));
+        $filename  = $hash . "." . $ext;
+        //move and rename file
+        $upload_success = $request->file('missionimage')->move($directory, $filename);
+
+        if ($upload_success) {
+            $client = Self::create([
+                'name' => $request->name,
+                'content' => $request->description,
+                'image' => $filename,
+                'start' => $request->start,
+                'brand_id' => Auth::user()->client_id,
+                'created_by' => Auth::user()->id,
+                'is_draft' => 0,
+                'points' => 100,
+                'end' => $request->end,
+                'challenge_type' => $request->challenge_type,
+            ]);
+        }
+        // return $client;
+        return redirect()->to('/client/missions');
     }
 
 }

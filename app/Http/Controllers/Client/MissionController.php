@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Client;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Challenge as Mission;
-use Auth;
+use App\Models\ChallengeType;
+
 
 class MissionController extends Controller
 {
@@ -24,10 +26,14 @@ class MissionController extends Controller
 
     public function create() //show the create form
     {
+        $challenge_types = ChallengeType::all();
+        return view('clients.missions.create')
+                ->with('challenge_types', $challenge_types);
     }
 
     public function store(Request $request) //store the resource
     {
+        return Mission::createNewMission($request);
     }
 
     public function show($id) //show a single resource

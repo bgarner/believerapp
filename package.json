@@ -29,6 +29,7 @@
         "ajv": "^6.8.1",
         "datatables": "^1.10.18",
         "datatables.net": "^1.10.19",
+        "daterangepicker": "^3.0.3",
         "font-awesome": "^4.7.0",
         "icheck": "^1.0.2",
         "ionicons": "^4.5.5",
