@@ -64,4 +64,9 @@ class Challenge extends Model
         return redirect()->to('/client/missions');
     }
 
+    public static function getMissionById($id)
+    {
+        return Self::find($id);
+    }
+
 }

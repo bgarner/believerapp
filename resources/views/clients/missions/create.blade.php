@@ -70,8 +70,6 @@
         </div>
     </div>
 
-
-
     <div class="form-group">
         <div class="col-sm-10 col-sm-offset-2">
             <button class="client-create btn btn-primary" type="submit"><i class="fa fa-check"></i><span> Create Mission</span></button>

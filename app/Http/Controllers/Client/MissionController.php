@@ -38,10 +38,15 @@ class MissionController extends Controller
 
     public function show($id) //show a single resource
     {
+        $mission = Mission::getMissionById($id);
+        return view('clients.missions.show')
+            ->with('mission', $mission);
     }
 
     public function edit($id) //show the edit form
     {
+        $mission = Mission::getMissionById($id);
+        return view('clients.missions.edit', ['mission' => $mission]);
     }
 
     public function updateMission(Request $request) //perform the update

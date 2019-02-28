@@ -1,26 +1,25 @@
-@extends('layouts.admin_layout')
+@extends('layouts.client_layout')
 
 @section('logo')
-  @if($client->logo != null)
+{{--   @if($client->logo != null)
     <img src="/uploads/clients/{{ $client->logo }}" class="profile-logo" />
-  @endif
+  @endif --}}
 @endsection
 
 @section('subnav')
-  @if($client->logo == null)
-    <li class="nav-item"><h2>{{ $client->name }}</h2></li>
+  @if($mission->image == null)
+    <li class="nav-item"><h2>{{ $mission->name }}</h2></li>
   </ul>
   @endif
 <ul class="navbar-nav pull-right" style="float: right;">
-    <li class="nav-item" style="padding-right: 10px;"><a href="/{{ $client->unique_name }}" target="_blank"><i class="fa fa-share" aria-hidden="true"></i> believerapp.com/<strong>{{ $client->unique_name }}</strong></a></li>
     <li class="nav-item">
-        <a class="btn btn-primary" href="/admin/clients/{{ $client->id }}/edit" role="button"><i class="fa fa-pencil-square-o"></i> Edit</a>
+        <a class="btn btn-primary" href="/client/missions/{{ $mission->id }}/edit" role="button"><i class="fa fa-pencil-square-o"></i> Edit</a>
     </li>
 
 @endsection
 
 @section('content')
-@if($client->logo == null)
+@if($mission->image == null)
 <div class="row">
 @else
 <div class="row" style="padding-top: 60px;">
