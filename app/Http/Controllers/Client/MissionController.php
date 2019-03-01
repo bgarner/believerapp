@@ -46,11 +46,18 @@ class MissionController extends Controller
     public function edit($id) //show the edit form
     {
         $mission = Mission::getMissionById($id);
-        return view('clients.missions.edit', ['mission' => $mission]);
+        $end = new \DateTime($mission->end);
+        $start = new \DateTime($mission->start);
+        $mission->start_trimmed = $start->format('m/d/Y');
+        $mission->end_trimmed = $end->format('m/d/Y');
+        //dd($mission);
+        $challenge_types = ChallengeType::all();
+        return view('clients.missions.edit', ['mission' => $mission, 'challenge_types' => $challenge_types]);
     }
 
     public function updateMission(Request $request) //perform the update
     {
+        return Mission::updateMission($request);
     }
 
     public function destroy($id) //delete a resource

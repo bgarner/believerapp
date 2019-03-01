@@ -84,6 +84,7 @@ require('./believer/dataTables.js');
 // clients
 require('./believer/deleteClient.js');
 require('./believer/editClient.js');
+require('./believer/editMission.js');
 // rewards
 require('./believer/deleteReward.js');
 require('./believer/editReward.js');

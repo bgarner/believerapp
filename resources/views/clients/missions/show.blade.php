@@ -7,10 +7,10 @@
 @endsection
 
 @section('subnav')
-  @if($mission->image == null)
+
     <li class="nav-item"><h2>{{ $mission->name }}</h2></li>
   </ul>
-  @endif
+
 <ul class="navbar-nav pull-right" style="float: right;">
     <li class="nav-item">
         <a class="btn btn-primary" href="/client/missions/{{ $mission->id }}/edit" role="button"><i class="fa fa-pencil-square-o"></i> Edit</a>
