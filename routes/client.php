@@ -10,6 +10,7 @@ Route::post('/client/updateMission', 'Client\MissionController@updateMission');
 //believers
 Route::resource('/client/believers', 'Client\BelieverController');
 Route::post('/client/updateBeliever', 'Client\BelieverController@updateBeliever');
+Route::post('/client/uploadList', 'Client\BelieverController@uploadList');
 //Route::post('/client/toggleRewardPublish', 'Client\BelieverController@toggleStatus');
 
 //referrals
