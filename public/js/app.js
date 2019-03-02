@@ -57765,7 +57765,7 @@ $(document).on("click", ".uploadInvites", function () {
     //dataType: 'json',
     data: formData,
     success: function success(result) {
-      swal("Done!", "Mission updated!", "success");
+      swal("Done!", "Your new believers will recieve their invites within 24 hours.", "success");
     },
     cache: false,
     contentType: false,
