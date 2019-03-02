@@ -57389,6 +57389,10 @@ $(".datatable-missions").dataTable({
     "targets": [5]
   }]
 });
+$(".datatable-believers").dataTable({// "columnDefs": [
+  //   { "sortable": false, "targets": [4] }
+  // ]
+});
 
 /***/ }),
 

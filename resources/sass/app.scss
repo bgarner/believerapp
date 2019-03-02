@@ -41,3 +41,9 @@
     bottom: 6px;
     padding: 0px 2px;
 }
+
+.navbar-secondary a.nav-link {
+    line-height: 74px;
+    margin-right: 15px;
+    color: map-get($colors, secondary) !important;
+}

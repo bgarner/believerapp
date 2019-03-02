@@ -20777,3 +20777,9 @@ tr:first-child > td > .fc-day-grid-event {
   padding: 0px 2px;
 }
 
+.navbar-secondary a.nav-link {
+  line-height: 74px;
+  margin-right: 15px;
+  color: #09a4bc !important;
+}
+

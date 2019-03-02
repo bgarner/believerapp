@@ -24,3 +24,9 @@ $(".datatable-missions").dataTable({
       { "sortable": false, "targets": [5] }
     ]
 });
+
+$(".datatable-believers").dataTable({
+    // "columnDefs": [
+    //   { "sortable": false, "targets": [4] }
+    // ]
+});
