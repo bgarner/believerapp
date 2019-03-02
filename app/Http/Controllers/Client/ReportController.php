@@ -14,6 +14,7 @@ class ReportController extends Controller
 
     public function index() //list the resources
     {
+        return view('clients.reports.index');
     }
 
     public function create() //show the create form

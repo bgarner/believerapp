@@ -14,6 +14,7 @@ class ReferralController extends Controller
 
     public function index() //list the resources
     {
+        return view('clients.referrals.index');
     }
 
     public function create() //show the create form

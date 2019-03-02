@@ -8,9 +8,12 @@ Route::resource('/client/missions', 'Client\MissionController');
 Route::post('/client/updateMission', 'Client\MissionController@updateMission');
 
 //believers
+Route::get('/client/believers/invite', 'Client\BelieverController@invite');
+Route::post('/client/believers/invite', 'Client\BelieverController@uploadInvites');
+Route::get('/client/believers/audiences', 'Client\BelieverController@audiences');
 Route::resource('/client/believers', 'Client\BelieverController');
 Route::post('/client/updateBeliever', 'Client\BelieverController@updateBeliever');
-Route::post('/client/uploadList', 'Client\BelieverController@uploadList');
+
 //Route::post('/client/toggleRewardPublish', 'Client\BelieverController@toggleStatus');
 
 //referrals

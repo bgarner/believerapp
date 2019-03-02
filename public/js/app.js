@@ -57237,7 +57237,10 @@ __webpack_require__(/*! ./believer/editReward.js */ "./resources/js/believer/edi
 __webpack_require__(/*! ./believer/rewardPublishing.js */ "./resources/js/believer/rewardPublishing.js"); //missions
 
 
-__webpack_require__(/*! ./believer/deleteMission.js */ "./resources/js/believer/deleteMission.js");
+__webpack_require__(/*! ./believer/deleteMission.js */ "./resources/js/believer/deleteMission.js"); //invites
+
+
+__webpack_require__(/*! ./believer/uploadInvites.js */ "./resources/js/believer/uploadInvites.js");
 
 /***/ }),
 
@@ -57736,6 +57739,40 @@ function makeAjaxCallForPublish(id, state) {
   });
   return true;
 }
+
+/***/ }),
+
+/***/ "./resources/js/believer/uploadInvites.js":
+/*!************************************************!*\
+  !*** ./resources/js/believer/uploadInvites.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).on("click", ".uploadInvites", function () {
+  // e.preventDefault();
+  console.log("csv file upload requested");
+  var formData = new FormData();
+  var fileInput = document.getElementById('csvfile');
+  var file = fileInput.files[0];
+  formData.append('csvfile', file);
+  formData.append('client_id', $("#client_id").val());
+  formData.append('uploader_id', $("#uploader_id").val());
+  console.log(formData);
+  $.ajax({
+    url: '/client/believers/invite',
+    type: 'POST',
+    //dataType: 'json',
+    data: formData,
+    success: function success(result) {
+      swal("Done!", "Mission updated!", "success");
+    },
+    cache: false,
+    contentType: false,
+    processData: false
+  });
+  return false;
+});
 
 /***/ }),
 

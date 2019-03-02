@@ -40,15 +40,30 @@ class BelieverController extends Controller
     {
     }
 
+    public function destroy($id) //delete a resource
+    {
+    }
+
     public function edit($id) //show the edit form
     {
     }
 
-    public function updateBeliever(Request $request) //perform the update
+    public function invite() //perform the update
     {
+        $client_id = Auth::user()->client_id;
+        $uploader_id = Auth::user()->id;
+        return view('clients.believers.invite')
+                ->with('client_id', $client_id)
+                ->with('uploader_id', $uploader_id);
     }
 
-    public function destroy($id) //delete a resource
+    public function uploadInvites(Request $request)
     {
+        \Log::info($request);
+    }
+
+    public function audiences() //perform the update
+    {
+        return view('clients.believers.audiences');
     }
 }
