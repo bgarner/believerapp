@@ -64,6 +64,10 @@ class BelieverController extends Controller
 
     public function audiences() //perform the update
     {
-        return view('clients.believers.audiences');
+        $client_id = Auth::user()->client_id;
+        $uploader_id = Auth::user()->id;
+        return view('clients.believers.audiences')
+                ->with('client_id', $client_id)
+                ->with('uploader_id', $uploader_id);
     }
 }
