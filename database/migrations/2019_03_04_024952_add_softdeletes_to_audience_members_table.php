@@ -14,7 +14,7 @@ class AddSoftdeletesToAudienceMembersTable extends Migration
     public function up()
     {
         Schema::table('audience_members', function (Blueprint $table) {
-            //
+            $table->softDeletes();
         });
     }
 
