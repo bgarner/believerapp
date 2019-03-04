@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\ClientUser;
 use App\Models\Audience;
+use App\Models\Follower;
+use App\Models\Challenge as Mission;
 use Auth;
 use DB;
 
@@ -82,6 +84,14 @@ class BelieverController extends Controller
 
     public function showAudience($id)
     {
-        return "show audience: " . $id;
+        $client_id = Auth::user()->client_id;
+        $audience = Audience::getAudience($id);
+        $followers = Follower::getFollowers($client_id);
+        $missions = Mission::getMissionsByClient();
+
+        return view('clients.believers.audience')
+            ->with('audience', $audience)
+            ->with('missions', $missions)
+            ->with('followers', $followers);
     }
 }

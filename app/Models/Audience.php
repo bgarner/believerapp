@@ -24,6 +24,13 @@ class Audience extends Model
         return $audiences;
     }
 
+    public static function getAudience($id)
+    {
+        $audience = Self::find($id);
+
+        return $audience;
+    }
+
     public static function createNewAudience($request)
     {
         $audience = Self::create([
