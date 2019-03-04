@@ -57396,6 +57396,12 @@ $(".datatable-believers").dataTable({// "columnDefs": [
   //   { "sortable": false, "targets": [4] }
   // ]
 });
+$(".datatable-audiences").dataTable({
+  "columnDefs": [{
+    "sortable": false,
+    "targets": [2]
+  }]
+});
 
 /***/ }),
 

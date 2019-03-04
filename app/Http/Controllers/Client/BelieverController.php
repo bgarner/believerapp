@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\ClientUser;
+use App\Models\Audience;
 use Auth;
 use DB;
 
@@ -66,8 +67,21 @@ class BelieverController extends Controller
     {
         $client_id = Auth::user()->client_id;
         $uploader_id = Auth::user()->id;
+        $audiences = Audience::getAudiencesByBrand($client_id);
+
         return view('clients.believers.audiences')
                 ->with('client_id', $client_id)
-                ->with('uploader_id', $uploader_id);
+                ->with('uploader_id', $uploader_id)
+                ->with('audiences', $audiences);
+    }
+
+    public function createAudience(Request $request)
+    {
+        return Audience::createNewAudience($request);
+    }
+
+    public function showAudience($id)
+    {
+        return "show audience: " . $id;
     }
 }
