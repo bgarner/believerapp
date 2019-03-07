@@ -10,12 +10,9 @@ class ClientUser extends Model
 {
     use SoftDeletes;
     protected $table = 'client_user';
-    protected $fillable = [
-        'client_id',
-        'user_id',
-    ];
+    protected $fillable = ['client_id','user_id'];
 
-    public function static getFollowers($id)
+    public static function getFollowers($id)
     {
         $follower_ids = ClientUser::where('client_id', $id)->get();
         $followers = collect();

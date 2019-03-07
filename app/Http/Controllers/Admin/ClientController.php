@@ -15,7 +15,7 @@ class ClientController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->stats = new Stats;
+
     }
 
     public function index()
@@ -52,8 +52,10 @@ class ClientController extends Controller
     public function show($id)
     {
         $client = Client::getClientById($id);
-        $clientStats = $stats->clientStats($id);
-        return view('admin.clients.show', ['client' => $client, 'client_stats' => $clientStats]);
+
+        $stats = Stats::clientStats($id);
+
+        return view('admin.clients.show', ['client' => $client, 'stats' => $stats]);
     }
 
     public function edit($id)

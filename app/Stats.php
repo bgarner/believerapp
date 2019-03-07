@@ -5,7 +5,6 @@ namespace App;
 use App\User;
 use App\Models\UserGroup;
 use App\Models\ClientUser;
-use Illuminate\Support\Collection;
 
 class Stats
 {
@@ -14,18 +13,22 @@ class Stats
     {
     }
 
-    public function clientStats($id)
+    public static function clientStats($id)
     {
         //for a brand, we want to know...
         //how many followers
-        $followers = ClientUser::getFollowers($client_id);
+        $followers = count(ClientUser::getFollowers($id));
 
         //how many points have been awarded
 
         //how many challenges have been completed
 
-        $collection = collect(['follower_count', $followers], ['something_else', 3]);
-        return $collection;
+        $stats = array(
+            "follower_count" => $followers,
+            "Ben"=>"37",
+            "Joe"=>"43"
+        );
+        return $stats;
 
     }
 
