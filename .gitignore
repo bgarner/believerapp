@@ -16,3 +16,5 @@ yarn-error.log
 /public/uploads/rewards/*
 /public/uploads/missions/*
 /public/uploads/clients/*
+.catapult
+*.catapult
