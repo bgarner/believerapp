@@ -23,9 +23,7 @@ class BelieverController extends Controller
     public function index() //list the resources
     {
         $client_id = Auth::user()->client_id;
-
-        $f = new ClientUser();
-        $followers = $f->getFollowers($client_id);
+        $followers = ClientUser::getFollowers($client_id);
 
         return view('clients.believers.index')
             ->with('followers', $followers);

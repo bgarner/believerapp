@@ -15,7 +15,7 @@ class ClientUser extends Model
         'user_id',
     ];
 
-    public function getFollowers($id)
+    public function static getFollowers($id)
     {
         $follower_ids = ClientUser::where('client_id', $id)->get();
         $followers = collect();
