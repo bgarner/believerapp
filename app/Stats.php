@@ -4,6 +4,7 @@ namespace App;
 
 use Carbon\Carbon;
 use App\User;
+use App\Models\Follower;
 use App\Models\UserGroup;
 use App\Models\ClientUser;
 use App\Models\Challenge;
@@ -19,9 +20,10 @@ class Stats
     public static function clientStats($id)
     {
         //how many followers
-        $followers = ClientUser::getFollowers($id);
+        $followers = Follower::getFollowers($id);
+
         $follower_count = count($followers);
-        $new_followers_this_week = count(ClientUser::getFollowersSince($id, Carbon::now()->subWeek()));
+        $new_followers_this_week = count(Follower::getFollowersSince($id, Carbon::now()->subWeek()));
         $leaderboard = $followers->sortByDesc('point_balance')->take(10);
 
         //missions completed

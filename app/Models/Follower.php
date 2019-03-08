@@ -18,4 +18,18 @@ class Follower extends Model
                         ->get();
         return $followers;
     }
+
+    public static function getFollowersSince($id, $since)
+    {
+        $follower_ids = Follower::where('brand_id', $id)
+                        ->where('created_at', '>', $since)
+                        ->get();
+        $followers = collect();
+        foreach($follower_ids as $f){
+            $follower = User::find($f->user_id);
+            $followers->push($follower);
+        }
+
+        return $followers;
+    }
 }

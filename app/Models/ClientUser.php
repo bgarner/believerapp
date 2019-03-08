@@ -12,29 +12,5 @@ class ClientUser extends Model
     protected $table = 'client_user';
     protected $fillable = ['client_id','user_id'];
 
-    public static function getFollowers($id)
-    {
-        $follower_ids = ClientUser::where('client_id', $id)->get();
-        $followers = collect();
-        foreach($follower_ids as $f){
-            $follower = User::find($f->user_id);
-            $followers->push($follower);
-        }
 
-        return $followers;
-    }
-
-    public static function getFollowersSince($id, $since)
-    {
-        $follower_ids = ClientUser::where('client_id', $id)
-                        ->where('created_at', '>', $since)
-                        ->get();
-        $followers = collect();
-        foreach($follower_ids as $f){
-            $follower = User::find($f->user_id);
-            $followers->push($follower);
-        }
-
-        return $followers;
-    }
 }

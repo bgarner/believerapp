@@ -94,14 +94,32 @@
                   <h4>Leaderboard</h4>
                 </div>
                 <div class="card-body">
+                    @php
+                    $count = 1;
+                    @endphp
                     @foreach($stats['leaderboard'] as $leader)
+
+
                     <div class="mb-4">
                         <div class="text-small float-right font-weight-bold text-muted">{{ $leader->point_balance }}</div>
-                        <div class="font-weight-bold mb-1">{{ $leader->first }} {{ $leader->last }}
-                        <small class="text-muted">{{ $leader->city }}, {{ $leader->province }}</small>
+                        <div class="font-weight-bold mb-1">
+                            @if ($count == 1)
+                            <i class="fa fa-trophy" style="color: gold;" aria-hidden="true"></i>
+                            @elseif ($count == 2)
+                            <i class="fa fa-trophy" style="color: silver;" aria-hidden="true"></i>
+                            @elseif ($count ==3 )
+                            <i class="fa fa-trophy" style="color: tan;" aria-hidden="true"></i>
+                            @else
+                                {{ $count }}
+                            @endif
+                            &nbsp;&nbsp;&nbsp;{{ $leader->first }} {{ $leader->last }}
+                        <small class="text-muted">&nbsp;&nbsp;{{ $leader->city }}, {{ $leader->province }}</small>
                         </div>
 
                     </div>
+                    @php
+                    $count++;
+                    @endphp
                     @endforeach
 
                 </div>
