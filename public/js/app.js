@@ -57402,6 +57402,12 @@ $(".datatable-audiences").dataTable({
     "targets": [2]
   }]
 });
+$(".datatable-redemptions").dataTable({
+  "columnDefs": [{
+    "sortable": false,
+    "targets": [1]
+  }]
+});
 
 /***/ }),
 

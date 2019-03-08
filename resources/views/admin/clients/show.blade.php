@@ -28,7 +28,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-primary">
-                  <i class="fa fa-user"></i>
+                  <i class="fa fa-users" aria-hidden="true"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
@@ -43,7 +43,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-danger">
-                  <i class="fa fa-newspaper-o"></i>
+                  <i class="fa fa-flag" aria-hidden="true"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
@@ -57,8 +57,8 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
-                <div class="card-icon bg-warning">
-                  <i class="fa fa-file"></i>
+                <div class="card-icon bg-success">
+                  <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
@@ -72,8 +72,8 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
-                <div class="card-icon bg-success">
-                  <i class="fa fa-circle"></i>
+                <div class="card-icon bg-warning">
+                  <i class="fa fa-trophy"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">

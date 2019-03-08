@@ -7,6 +7,7 @@ use Illuminate\Http\UploadedFile;
 use App\Http\Controllers\Controller;
 use App\Models\Reward;
 use App\Models\RewardType;
+use App\Stats;
 
 class RewardController extends Controller
 {
@@ -35,7 +36,8 @@ class RewardController extends Controller
     public function show($id)
     {
         $reward = Reward::getRewardById($id);
-        return view('admin.rewards.show', ['reward' => $reward]);
+        $stats = Stats::rewardStats($id);
+        return view('admin.rewards.show', ['reward' => $reward, 'stats' => $stats]);
     }
 
     public function edit($id)

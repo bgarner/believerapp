@@ -8,6 +8,7 @@ use App\Models\Follower;
 use App\Models\UserGroup;
 use App\Models\ClientUser;
 use App\Models\Challenge;
+use App\Models\Redemption;
 use App\Models\ChallengeCompletion;
 
 class Stats
@@ -45,7 +46,6 @@ class Stats
         $all_time_points = Self::getPointTotal($completions);
         $total_points_this_week = Self::getPointTotal($mission_completions_this_week);
 
-
         $stats = array(
             "follower_count" => $follower_count,
             "new_followers_this_week" => $new_followers_this_week,
@@ -57,7 +57,32 @@ class Stats
             "total_points_this_week" => number_format($total_points_this_week),
         );
         return $stats;
+    }
 
+    public static function rewardStats($id)
+    {
+        //how many times claimed total
+        $redemptions = Redemption::where('reward_id', $id)->get();
+        $redemptions_count = count($redemptions);
+
+        //how many times claimed this week
+        $redemptions_this_week = Redemption::where('reward_id', $id)
+                                    ->where('created_at', '>', Carbon::now()->subWeek())
+                                    ->get();
+        $redemptions_this_week_count = count($redemptions_this_week);
+
+
+        $users_who_claimed_reward = User::whereIn('id', $redemptions->pluck('user_id') )
+                                    ->join('redemptions', 'users.id', '=', 'redemptions.user_id')
+                                    ->select('users.*', 'redemptions.created_at as redeemed_at')
+                                    ->orderBy('redemptions.created_at', 'desc')
+                                    ->get();
+        $stats = array(
+            "redemptions_count" => $redemptions_count,
+            "redemptions_this_week_count" => $redemptions_this_week_count,
+            "claims" => $users_who_claimed_reward,
+        );
+        return $stats;
     }
 
 

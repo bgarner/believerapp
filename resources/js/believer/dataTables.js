@@ -37,4 +37,11 @@ $(".datatable-audiences").dataTable({
     ]
 });
 
+$(".datatable-redemptions").dataTable({
+    "columnDefs": [
+      { "sortable": false, "targets": [1] }
+    ]
+});
+
+
 
