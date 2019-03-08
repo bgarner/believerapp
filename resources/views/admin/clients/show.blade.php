@@ -141,6 +141,9 @@
                       <div class="d-block mt-2">
                         {{-- <a href="#">View All</a> --}}
                       </div>
+                      <br />
+                      <h4>{{ $stats['new_followers_this_week'] }} new Believers</h4>
+
                     </div>
 
                   </div>
