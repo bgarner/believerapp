@@ -23,4 +23,18 @@ class ClientUser extends Model
 
         return $followers;
     }
+
+    public static function getFollowersSince($id, $since)
+    {
+        $follower_ids = ClientUser::where('client_id', $id)
+                        ->where('created_at', '>', $since)
+                        ->get();
+        $followers = collect();
+        foreach($follower_ids as $f){
+            $follower = User::find($f->user_id);
+            $followers->push($follower);
+        }
+
+        return $followers;
+    }
 }

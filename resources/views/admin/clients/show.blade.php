@@ -47,10 +47,10 @@
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>News</h4>
+                    <h4>Active Missions</h4>
                   </div>
                   <div class="card-body">
-                    42
+                    {{ $stats['active_missions'] }}
                   </div>
                 </div>
               </div>
@@ -62,10 +62,10 @@
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Reports</h4>
+                    <h4>All-Time Mission Completions</h4>
                   </div>
                   <div class="card-body">
-                    1,201
+                    {{ $stats['mission_completions'] }}
                   </div>
                 </div>
               </div>
@@ -77,10 +77,10 @@
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Online Users</h4>
+                    <h4>Total Points Awarded</h4>
                   </div>
                   <div class="card-body">
-                    47
+                    {{ $stats['total_points'] }}
                   </div>
                 </div>
               </div>
@@ -91,56 +91,19 @@
             <div class="col-lg-6 col-md-6 col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4>Referral URL</h4>
+                  <h4>Leaderboard</h4>
                 </div>
                 <div class="card-body">
-                  <div class="mb-4">
-                    <div class="text-small float-right font-weight-bold text-muted">2,100</div>
-                    <div class="font-weight-bold mb-1">Google</div>
-                    <div class="progress" data-height="3" style="height: 3px;">
-                      <div class="progress-bar" role="progressbar" data-width="80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-                    </div>
-                  </div>
+                    @foreach($stats['leaderboard'] as $leader)
+                    <div class="mb-4">
+                        <div class="text-small float-right font-weight-bold text-muted">{{ $leader->point_balance }}</div>
+                        <div class="font-weight-bold mb-1">{{ $leader->first }} {{ $leader->last }}
+                        <small class="text-muted">{{ $leader->city }}, {{ $leader->province }}</small>
+                        </div>
 
-                  <div class="mb-4">
-                    <div class="text-small float-right font-weight-bold text-muted">1,880</div>
-                    <div class="font-weight-bold mb-1">Facebook</div>
-                    <div class="progress" data-height="3" style="height: 3px;">
-                      <div class="progress-bar" role="progressbar" data-width="67%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 67%;"></div>
                     </div>
-                  </div>
+                    @endforeach
 
-                  <div class="mb-4">
-                    <div class="text-small float-right font-weight-bold text-muted">1,521</div>
-                    <div class="font-weight-bold mb-1">Bing</div>
-                    <div class="progress" data-height="3" style="height: 3px;">
-                      <div class="progress-bar" role="progressbar" data-width="58%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 58%;"></div>
-                    </div>
-                  </div>
-
-                  <div class="mb-4">
-                    <div class="text-small float-right font-weight-bold text-muted">884</div>
-                    <div class="font-weight-bold mb-1">Yahoo</div>
-                    <div class="progress" data-height="3" style="height: 3px;">
-                      <div class="progress-bar" role="progressbar" data-width="36%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 36%;"></div>
-                    </div>
-                  </div>
-
-                  <div class="mb-4">
-                    <div class="text-small float-right font-weight-bold text-muted">473</div>
-                    <div class="font-weight-bold mb-1">Kodinger</div>
-                    <div class="progress" data-height="3" style="height: 3px;">
-                      <div class="progress-bar" role="progressbar" data-width="28%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 28%;"></div>
-                    </div>
-                  </div>
-
-                  <div class="mb-4">
-                    <div class="text-small float-right font-weight-bold text-muted">418</div>
-                    <div class="font-weight-bold mb-1">Multinity</div>
-                    <div class="progress" data-height="3" style="height: 3px;">
-                      <div class="progress-bar" role="progressbar" data-width="20%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"></div>
-                    </div>
-                  </div>
                 </div>
               </div>
 
@@ -155,49 +118,13 @@
                 <div class="card-body">
                   <div class="summary">
                     <div class="summary-info">
-                      <h4>$1,053</h4>
-                      <div class="text-muted">Sold 3 items on 2 customers</div>
+                      <h4>{{ $stats['total_points_this_week'] }} points</h4>
+                      <div class="text-muted">on {{ $stats['mission_completions_this_week'] }} completed missions.</div>
                       <div class="d-block mt-2">
-                        <a href="#">View All</a>
+                        {{-- <a href="#">View All</a> --}}
                       </div>
                     </div>
-                    <div class="summary-item">
-                      <h6>Item List <span class="text-muted">(3 Items)</span></h6>
-                      <ul class="list-unstyled list-unstyled-border">
-                        <li class="media">
-                          <a href="#">
-                            <img class="mr-3 rounded" width="50" src="assets/img/products/product-1-50.png" alt="product">
-                          </a>
-                          <div class="media-body">
-                            <div class="media-right">$405</div>
-                            <div class="media-title"><a href="#">PlayStation 9</a></div>
-                            <div class="text-muted text-small">by <a href="#">Hasan Basri</a> <div class="bullet"></div> Sunday</div>
-                          </div>
-                        </li>
-                        <li class="media">
-                          <a href="#">
-                            <img class="mr-3 rounded" width="50" src="assets/img/products/product-2-50.png" alt="product">
-                          </a>
-                          <div class="media-body">
-                            <div class="media-right">$499</div>
-                            <div class="media-title"><a href="#">RocketZ</a></div>
-                            <div class="text-muted text-small">by <a href="#">Hasan Basri</a> <div class="bullet"></div> Sunday
-                            </div>
-                          </div>
-                        </li>
-                        <li class="media">
-                          <a href="#">
-                            <img class="mr-3 rounded" width="50" src="assets/img/products/product-3-50.png" alt="product">
-                          </a>
-                          <div class="media-body">
-                            <div class="media-right">$149</div>
-                            <div class="media-title"><a href="#">Xiaomay Readme 4.0</a></div>
-                            <div class="text-muted text-small">by <a href="#">Kusnaedi</a> <div class="bullet"></div> Tuesday
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
+
                   </div>
                 </div>
               </div>
