@@ -4,6 +4,7 @@ namespace App;
 
 use Carbon\Carbon;
 use App\User;
+use App\Utility;
 use App\Models\Follower;
 use App\Models\UserGroup;
 use App\Models\ClientUser;
@@ -87,7 +88,6 @@ class Stats
 
     public static function missionStats($id)
     {
-        $mission = Challenge::find($id);
         //how many times was this completed?
         //all time
         $completions = ChallengeCompletion::where('challenge_id', $id)->get();
@@ -97,6 +97,7 @@ class Stats
         $completions_this_week = ChallengeCompletion::where('challenge_id', $id)
                             ->where('created_at', '>', Carbon::now()->subWeek())
                             ->get();
+
         $completions_this_week_count = count($completions_this_week);
 
         //who completed it?
@@ -106,7 +107,10 @@ class Stats
                         ->join('challenge_completions', 'challenge_completions.user_id', '=', 'users.id')
                         ->where('challenge_completions.challenge_id', $id)
                         ->select('users.*', 'challenge_completions.created_at as completed_at')
-                        ->get();
+                        ->get()
+                        ->each(function($c){
+                            $c->completed_at = Utility::prettifyDate($c->completed_at);
+                        });
 
         $stats = array(
             "completion_count" => $completion_count,

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg main-navbar">
+<nav class="navbar navbar-expand-lg main-navbar" style="background-color: #000;">
     <a href="/client" class="navbar-brand sidebar-gone-hide">
         <img src="/images/logo-dark.png" width="150" />
     </a>

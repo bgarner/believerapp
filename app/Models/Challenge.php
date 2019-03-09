@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Utility;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
@@ -66,7 +67,11 @@ class Challenge extends Model
 
     public static function getMissionById($id)
     {
-        return Self::find($id);
+        $mission = Self::find($id);
+        $mission['start'] = Utility::prettifyDate($mission['start']);
+        $mission['end'] = Utility::prettifyDate($mission['end']);
+        //$mission['created_at'] = Utility::prettifyDate($mission['created_at']);
+        return $mission;
     }
 
     public static function updateMission($request)

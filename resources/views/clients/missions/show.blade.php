@@ -1,15 +1,15 @@
-@extends('layouts.client_layout')
+@extends('layouts.client_mission_layout')
 
 @section('content')
-
-
 
         <div class="row">
             <div class="col-lg-12 col-md-12 col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="pull-left">Mission Details</h4>
-                        <a class="btn btn-primary pull-right" href="/client/missions/{{ $mission->id }}/edit" role="button"><i class="fa fa-pencil-square-o"></i> Edit</a>
+                        <h4>Mission Details</h4>
+                        <div class="card-header-action">
+                        <a class="btn btn-primary" href="/client/missions/{{ $mission->id }}/edit" role="button"><i class="fa fa-pencil-square-o"></i> Edit Mission</a>
+                        </div>
                     </div>
                     <div class="card-body">
 
@@ -80,7 +80,7 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Address</th>
-                                <th>Date Completed</th>
+                                <th>Completed On</th>
                                 <th>Point Balance</th>
                             </tr>
                         </thead>
