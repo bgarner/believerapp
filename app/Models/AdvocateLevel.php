@@ -10,4 +10,9 @@ class AdvocateLevel extends Model
     use SoftDeletes;
     protected $table = 'advocate_levels';
     protected $fillable = ['level','level_range','multiplier'];
+
+    public function getCreatedAtAttribute($timestamp) {
+       // return Carbon\Carbon::parse($timestamp)->format('M d, Y');
+        return Utility::prettifyDate($timestamp);
+    }
 }

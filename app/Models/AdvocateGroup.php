@@ -12,4 +12,9 @@ class AdvocateGroup extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function getCreatedAtAttribute($timestamp) {
+       // return Carbon\Carbon::parse($timestamp)->format('M d, Y');
+        return Utility::prettifyDate($timestamp);
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\User;
+use App\Utility;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -12,11 +13,20 @@ class Follower extends Model
     protected $table = 'followers';
     protected $fillable = ['brand_id', 'user_id'];
 
+    public function getCreatedAtAttribute($timestamp) {
+       // return Carbon\Carbon::parse($timestamp)->format('M d, Y');
+        return Utility::prettifyDate($timestamp);
+    }
+
     public static function getFollowers($brand_id)
     {
         $followers = Follower::where('brand_id', $brand_id)
                         ->join('users', 'followers.user_id', '=', 'users.id')
-                        ->get();
+                        ->get()
+                        ->each(function($f){
+                            // $f->created_at = Utility::prettifyDate($f->created_at);
+                            // $m->end = Utility::prettifyDate($m->end);
+                        });
         return $followers;
     }
 

@@ -15,6 +15,18 @@ class Challenge extends Model
     protected $fillable = ['name', 'content', 'image', 'start', 'end', 'brand_id', 'created_by', 'is_draft', 'points', 'challenge_type'];
     private static $point_value = 100;
 
+    public function getCreatedAtAttribute($timestamp) {
+        return Utility::prettifyDate($timestamp);
+    }
+
+    public function getStartAttribute($timestamp) {
+        return Utility::prettifyDate($timestamp);
+    }
+
+     public function getEndAttribute($timestamp) {
+         return Utility::prettifyDate($timestamp);
+     }
+
     public static function getMissionsByClient()
     {
         $missions = Self::where("brand_id", Auth::user()->client_id)
@@ -67,11 +79,7 @@ class Challenge extends Model
 
     public static function getMissionById($id)
     {
-        $mission = Self::find($id);
-        $mission['start'] = Utility::prettifyDate($mission['start']);
-        $mission['end'] = Utility::prettifyDate($mission['end']);
-        //$mission['created_at'] = Utility::prettifyDate($mission['created_at']);
-        return $mission;
+        return Self::find($id);
     }
 
     public static function updateMission($request)

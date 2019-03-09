@@ -12,6 +12,11 @@ class Audience extends Model
     protected $table = 'audiences';
     protected $fillable = ['brand_id','name'];
 
+    public function getCreatedAtAttribute($timestamp) {
+       // return Carbon\Carbon::parse($timestamp)->format('M d, Y');
+        return Utility::prettifyDate($timestamp);
+    }
+
     public static function getAudiencesByBrand($id)
     {
         $audiences = Self::where('brand_id', $id)->get();
