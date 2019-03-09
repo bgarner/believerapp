@@ -11,8 +11,8 @@ class AudienceMember extends Model
     protected $table = 'audience_members';
     protected $fillable = ['audience_id','believer_id'];
 
-    public function getCreatedAtAttribute($timestamp) {
-       // return Carbon\Carbon::parse($timestamp)->format('M d, Y');
+    public function getCreatedAtAttribute($timestamp)
+    {
         return Utility::prettifyDate($timestamp);
     }
 }

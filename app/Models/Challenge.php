@@ -15,15 +15,18 @@ class Challenge extends Model
     protected $fillable = ['name', 'content', 'image', 'start', 'end', 'brand_id', 'created_by', 'is_draft', 'points', 'challenge_type'];
     private static $point_value = 100;
 
-    public function getCreatedAtAttribute($timestamp) {
+    public function getCreatedAtAttribute($timestamp)
+    {
         return Utility::prettifyDate($timestamp);
     }
 
-    public function getStartAttribute($timestamp) {
+    public function getStartAttribute($timestamp)
+    {
         return Utility::prettifyDate($timestamp);
     }
 
-     public function getEndAttribute($timestamp) {
+     public function getEndAttribute($timestamp)
+     {
          return Utility::prettifyDate($timestamp);
      }
 

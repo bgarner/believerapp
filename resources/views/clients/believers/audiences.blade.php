@@ -46,7 +46,7 @@
                     <td><a href="/client/believers/audience/{{ $audience->id }}">{{ $audience->name }}</a></td>
                     <td>{{ $audience->count }}</td>
                     <td>
-                        <h3><a href="#" class="req deleteAudience" data-item-id="{{ $audience->id }}"><i class="fa fa-trash"></i></a></h3>
+                        <h5><a href="#" class="req deleteAudience" data-item-id="{{ $audience->id }}"><i class="fa fa-trash"></i></a></h5>
                     </td>
                 </tr>
                 @endforeach

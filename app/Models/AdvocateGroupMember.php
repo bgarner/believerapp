@@ -11,8 +11,8 @@ class AdvocateGroupMember extends Model
     protected $table = 'advocate_group_members';
     protected $fillable = ['user_id', 'group_id'];
 
-    public function getCreatedAtAttribute($timestamp) {
-       // return Carbon\Carbon::parse($timestamp)->format('M d, Y');
+    public function getCreatedAtAttribute($timestamp)
+    {
         return Utility::prettifyDate($timestamp);
     }
 }

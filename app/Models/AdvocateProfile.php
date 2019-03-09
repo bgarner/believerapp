@@ -11,8 +11,8 @@ class AdvocateProfile extends Model
     protected $table = 'advocate_profiles';
     protected $fillable = ['advocate_bulk_upload_id','points','social_accounts','level','email','first','last'];
 
-    public function getCreatedAtAttribute($timestamp) {
-       // return Carbon\Carbon::parse($timestamp)->format('M d, Y');
+    public function getCreatedAtAttribute($timestamp)
+    {
         return Utility::prettifyDate($timestamp);
     }
 

@@ -13,8 +13,8 @@ class AdvocateGroup extends Model
         'name'
     ];
 
-    public function getCreatedAtAttribute($timestamp) {
-       // return Carbon\Carbon::parse($timestamp)->format('M d, Y');
+    public function getCreatedAtAttribute($timestamp)
+    {
         return Utility::prettifyDate($timestamp);
     }
 }

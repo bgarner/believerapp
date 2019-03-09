@@ -13,8 +13,8 @@ class AdvocateBulkUpload extends Model
         'first', 'last', 'email', 'registered', 'level', 'group_segmentation', 'user_id_uploader'
     ];
 
-    public function getCreatedAtAttribute($timestamp) {
-       // return Carbon\Carbon::parse($timestamp)->format('M d, Y');
+    public function getCreatedAtAttribute($timestamp)
+    {
         return Utility::prettifyDate($timestamp);
     }
 }

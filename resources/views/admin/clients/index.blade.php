@@ -33,7 +33,7 @@
                     <td>{{ $client->challenge_completions }}</td>
                     <td>{{ $client->total_points }}</td>
                     <td>
-                        <h3><a href="#" class="req deleteClient" data-item-id="{{ $client->id }}"><i class="fa fa-trash"></i></a></h3>
+                        <h5><a href="#" class="req deleteClient" data-item-id="{{ $client->id }}"><i class="fa fa-trash"></i></a></h5>
                     </td>
                 </tr>
 

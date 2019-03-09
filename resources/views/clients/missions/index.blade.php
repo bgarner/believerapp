@@ -33,7 +33,7 @@
                     <td>{{ $mission->end }}</td>
                     <td>{{ $mission->completion_count }}</td>
                     <td>
-                        <h3><a href="#" class="req deleteMission" data-item-id="{{ $mission->id }}"><i class="fa fa-trash"></i></a></h3>
+                        <h5><a href="#" class="req deleteMission" data-item-id="{{ $mission->id }}"><i class="fa fa-trash"></i></a></h5>
                     </td>
                 </tr>
                 @endforeach

@@ -11,8 +11,8 @@ class AdvocateLevel extends Model
     protected $table = 'advocate_levels';
     protected $fillable = ['level','level_range','multiplier'];
 
-    public function getCreatedAtAttribute($timestamp) {
-       // return Carbon\Carbon::parse($timestamp)->format('M d, Y');
+    public function getCreatedAtAttribute($timestamp)
+    {
         return Utility::prettifyDate($timestamp);
     }
 }

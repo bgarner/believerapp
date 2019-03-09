@@ -13,8 +13,8 @@ class Follower extends Model
     protected $table = 'followers';
     protected $fillable = ['brand_id', 'user_id'];
 
-    public function getCreatedAtAttribute($timestamp) {
-       // return Carbon\Carbon::parse($timestamp)->format('M d, Y');
+    public function getCreatedAtAttribute($timestamp)
+    {
         return Utility::prettifyDate($timestamp);
     }
 
