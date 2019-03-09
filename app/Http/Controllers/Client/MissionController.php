@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Challenge as Mission;
 use App\Models\ChallengeType;
+use App\Stats;
 
 
 class MissionController extends Controller
@@ -38,9 +39,11 @@ class MissionController extends Controller
 
     public function show($id) //show a single resource
     {
+        $stats = Stats::missionStats($id);
         $mission = Mission::getMissionById($id);
         return view('clients.missions.show')
-            ->with('mission', $mission);
+            ->with('mission', $mission)
+            ->with('stats', $stats);
     }
 
     public function edit($id) //show the edit form

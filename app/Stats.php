@@ -85,13 +85,45 @@ class Stats
         return $stats;
     }
 
+    public static function missionStats($id)
+    {
+        $mission = Challenge::find($id);
+        //how many times was this completed?
+        //all time
+        $completions = ChallengeCompletion::where('challenge_id', $id)->get();
+        $completion_count = count($completions);
+
+        //this week
+        $completions_this_week = ChallengeCompletion::where('challenge_id', $id)
+                            ->where('created_at', '>', Carbon::now()->subWeek())
+                            ->get();
+        $completions_this_week_count = count($completions_this_week);
+
+        //who completed it?
+        $completion_user_ids = $completions->pluck('user_id');
+
+        $completed_by = User::whereIn('id', $completion_user_ids)
+                        ->join('challenge_completions', 'challenge_completions.user_id', '=', 'users.id')
+                        ->where('challenge_completions.challenge_id', $id)
+                        ->select('users.*', 'challenge_completions.created_at as completed_at')
+                        ->get();
+
+        $stats = array(
+            "completion_count" => $completion_count,
+            "completions_this_week_count" => $completions_this_week_count,
+            "users" => $completed_by,
+        );
+
+        // dd($stats);
+        return $stats;
+    }
+
 
     static function getPointTotal($completions)
     {
         $point_total = 0;
         foreach($completions as $completion){
-            $points = Challenge::where('id', $completion->challenge_id)->pluck('points');
-            $points = (int)$points[0];
+            $points = Challenge::find($completion->challenge_id)->points;
             $point_total = $point_total + $points;
         }
 
