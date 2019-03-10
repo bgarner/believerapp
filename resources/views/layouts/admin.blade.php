@@ -1,21 +1,53 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	@include('admin.includes.head')
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>CLIENT</title>
+  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </head>
+
 <body>
-<div class="container">
-	<header class="row" style="border: thin solid lime;">
-		@include('admin.includes.header')
-	</header>
-	<div id="main" class="row" style="border: thin solid blue;">
-		@yield('content')
-	</div>
-	<footer class="row" style="border: thin solid red;">
-		@include('admin.includes.footer')
-	</footer>
+
+<div style="margin-bottom: 20px;">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"><img src="/images/logo-dark.png" width="150" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        @yield('mainnav')
+      </ul>
+    </div>
+
+    @include('clients.includes.user_nav')
+  </nav>
+
+  @if(View::hasSection('subnav'))
+  <nav class="navbar navbar-expand-sm navbar-light bg-white">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          @yield('subnav')
+        </ul>
+      </div>
+    </div>
+  </nav>
+  @endif
+
 </div>
+
+
+  <main role="main" class="container" style="clear: both;">
+    @yield('content')
+  </main>
+
+  <script src="/js/app.js"></script>
 </body>
 
-@yield('scripts')
-</html>
