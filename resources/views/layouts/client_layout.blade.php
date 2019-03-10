@@ -22,6 +22,8 @@
         @yield('mainnav')
       </ul>
     </div>
+
+    @include('clients.includes.user_nav')
   </nav>
 
   @if(View::hasSection('subnav'))
