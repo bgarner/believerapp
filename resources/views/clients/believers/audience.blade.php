@@ -1,5 +1,12 @@
 @extends('layouts.client_layout')
 
+@section('mainnav')
+<li class="nav-item"><a href="/client/missions" class="nav-link">Missions</a></li>
+<li class="nav-item active"><a href="/client/believers" class="nav-link">Believers</a></li>
+<li class="nav-item"><a href="/client/referrals" class="nav-link">Referrals</a></li>
+<li class="nav-item"><a href="/client/reports" class="nav-link">Reports</a></li>
+@endsection
+
 @section('subnav')
 <li class="nav-item">
     <a class="nav-link" href="/client/believers/invite" role=""><i class="fa fa-envelope-o" aria-hidden="true"></i> Invite</a>
@@ -10,6 +17,8 @@
 @endsection
 
 @section('content')
+<section class="section">
+
 <div class="section-header">
     <h1>{{ $audience->name }}</h1>
     <div class="section-header-breadcrumb">
@@ -53,4 +62,6 @@
 
     </div>
 </div>
+
+</section>
 @endsection

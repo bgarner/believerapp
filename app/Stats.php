@@ -122,6 +122,18 @@ class Stats
         return $stats;
     }
 
+    public static function believerStats($id)
+    {
+        $completion_count = ChallengeCompletion::where('user_id', $id)->get()->count();
+        $redemptions_count = Redemption::where('user_id', $id)->get()->count();
+        $stats = array(
+            "completion_count" => $completion_count,
+            "redemptions_count" => $redemptions_count,
+        );
+
+        return $stats;
+    }
+
 
     static function getPointTotal($completions)
     {

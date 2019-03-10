@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Stats;
 use App\Models\ClientUser;
 use App\Models\Audience;
 use App\Models\Follower;
@@ -24,6 +25,10 @@ class BelieverController extends Controller
     {
         $client_id = Auth::user()->client_id;
         $followers = Follower::getFollowers($client_id);
+        foreach($followers as $f){
+            $f->mission_count = count(User::getMissionsCompletedByUser($f->id));
+            $f->reward_count = count(User::getRewardsClaimedByUser($f->id));
+        }
 
         return view('clients.believers.index')
             ->with('followers', $followers);
@@ -39,6 +44,15 @@ class BelieverController extends Controller
 
     public function show($id) //show a single resource
     {
+        $user = User::find($id);
+        $stats = Stats::believerStats($id);
+        $missions = User::getMissionsCompletedByUser($id);
+        $rewards = User::getRewardsClaimedByUser($id);
+        return view('clients.believers.show')
+                ->with('user', $user)
+                ->with('missions', $missions)
+                ->with('rewards', $rewards)
+                ->with('stats', $stats);
     }
 
     public function destroy($id) //delete a resource

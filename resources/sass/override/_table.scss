@@ -2,7 +2,7 @@
   td, &:not(.table-bordered) th {
     border-top: none;
   }
-  &:not(.table-sm):not(.table-md):not(.dataTable) td, 
+  &:not(.table-sm):not(.table-md):not(.dataTable) td,
   &:not(.table-sm):not(.table-md):not(.dataTable) th {
     padding: 0 25px;
     height: 60px;
@@ -50,4 +50,11 @@ table tr:hover .table-links {
       min-width: 800px;
     }
   }
+}
+
+.table-sm{
+    font-size: 11px;
+}
+.table-sm thead{
+    font-weight: bold;
 }

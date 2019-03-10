@@ -1,8 +1,10 @@
 @extends('layouts.client_layout')
 
-@section('subnav')
-<li class="nav-item"><h2>Edit: {{ $mission->name }}</h2></li>
-
+@section('mainnav')
+<li class="nav-item active"><a href="/client/missions" class="nav-link">Missions</a></li>
+<li class="nav-item"><a href="/client/believers" class="nav-link">Believers</a></li>
+<li class="nav-item"><a href="/client/referrals" class="nav-link">Referrals</a></li>
+<li class="nav-item"><a href="/client/reports" class="nav-link">Reports</a></li>
 @endsection
 
 @section('content')
@@ -12,7 +14,7 @@
     <input type="hidden" name="mission_id" id="mission_id" value="{{ $mission->id }}" />
 
     <div class="card">
-        <div class="card-header"><h4>Mission Details</h4></div>
+        <div class="card-header"><h4>Edit Mission Details</h4></div>
 
         <div class="card-body">
             <div class="row">

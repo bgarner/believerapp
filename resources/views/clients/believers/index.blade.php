@@ -1,5 +1,12 @@
 @extends('layouts.client_layout')
 
+@section('mainnav')
+<li class="nav-item"><a href="/client/missions" class="nav-link">Missions</a></li>
+<li class="nav-item active"><a href="/client/believers" class="nav-link">Believers</a></li>
+<li class="nav-item"><a href="/client/referrals" class="nav-link">Referrals</a></li>
+<li class="nav-item"><a href="/client/reports" class="nav-link">Reports</a></li>
+@endsection
+
 @section('subnav')
 <li class="nav-item">
     <a class="nav-link" href="/client/believers/invite" role=""><i class="fa fa-envelope-o" aria-hidden="true"></i> Invite</a>
@@ -23,16 +30,18 @@
                             <th>Date Joined</th>
                             <th>Points</th>
                             <th>Missions<br />Completed</th>
+                            <th>Rewards<br />Claimed</th>
 {{--                             <th></th> --}}
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($followers as $f)
                     <tr id="client{{ $f->id }}">
-                        <td><a href="/clients/believers/{{ $f->id }}">{{ $f->name }}</a></td>
+                        <td><a href="/client/believers/{{ $f->id }}">{{ $f->name }}</a></td>
                         <td>{{ $f->created_at }}</td>
                         <td>{{ $f->point_balance }}</td>
-                        <td>5</td>
+                        <td>{{ $f->mission_count }}</td>
+                        <td>{{ $f->reward_count }}</td>
 {{--                         <td>
                             <h3><a href="#" class="req deleteClient" data-item-id="{{ $f->id }}"><i class="fa fa-trash"></i></a></h3>
                         </td> --}}
