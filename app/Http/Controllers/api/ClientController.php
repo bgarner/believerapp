@@ -22,6 +22,19 @@ class ClientController extends Controller
         return Client::where('postal_code','like',$user_postal_code_fragment)->get();        
     }
 
+    public function clientsFollowedByUser(Request $request)
+    {
+        //return a list of clients followed by the user
+        // POST http://localhost:8000/api/v1/clientsFollowedByUser
+        // {
+        //     "user_id": 123   
+        // }
+        $clientIds = Follower::where('user_id',$request->user_id)->pluck('brand_id')->toArray();
+        return Client::whereIn('id', $clientIds)->get();
+    }
+
+
+
     public function show(Request $request)
     {
         //POST http://localhost:8000/api/v1/clients/show

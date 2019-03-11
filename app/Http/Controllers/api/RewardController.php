@@ -25,6 +25,7 @@ class RewardController extends Controller
          */
         return Reward::where('active_status', 1)
                     ->join('rewards_types', 'rewards.reward_type_id', '=', 'rewards_types.id')
+                    ->select('rewards.*', 'rewards_types.type')
                     ->orderBy('points', 'ASC')
                     ->get();
     }

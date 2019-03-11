@@ -18,3 +18,4 @@ yarn-error.log
 /public/uploads/clients/*
 .catapult
 *.catapult
+.DS_Store
