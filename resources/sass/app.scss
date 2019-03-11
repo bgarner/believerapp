@@ -11,6 +11,8 @@
 @import 'style.scss';
 @import 'components.scss';
 
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+
 
 .form-group small{
     display: block;
@@ -47,3 +49,32 @@
     margin-right: 15px;
     color: map-get($colors, secondary) !important;
 }
+
+.bg-ltgrey{
+    background-color: map-get($colors, light) !important;
+    // color: map-get($colors, muted) !important;
+}
+.bg-dkgrey{
+    background-color: map-get($colors, dkgrey) !important;
+    color: map-get($colors, whitesmoke) !important;
+}
+
+.landing h2{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+.landing p{
+    font-size: 16px;
+    color: map-get($colors, muted) !important;
+}
+
+.landing h4{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+.landing p.smaller{
+    font-size: 13px !important;
+    line-height: 15px !important;
+}
+
