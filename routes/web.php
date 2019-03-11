@@ -15,6 +15,7 @@ Auth::routes();
 //alias for the 'register' route
 Route::get('/signup', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('/signup', 'Auth\RegisterController@register');
+Route::post('/signup-brand', 'Auth\RegisterController@registerWithBrand');
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 //Route::get('/home', 'HomeController@index')->name('home');

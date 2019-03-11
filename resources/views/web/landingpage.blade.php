@@ -29,7 +29,7 @@
                     <img src="/uploads/clients/{{ $brand->logo }}" class="img-fluid pb-3" />
                     <center>
                     <p class="text-center">Join the {{ $brand->name }} Club and get rewarded for sharing the love.</p>
-                    <button type="button" class="btn btn-danger">Join Now</button>
+                    <a href="#registration_form" class="btn btn-lg btn-danger">Join Now</a>
 
                     <p class="pt-3"><small>Already an ambassador? <a href="">Click here to sign in.</a></small></p>
                     </center>
@@ -90,17 +90,64 @@
 
         <div class="row p-4 bg-white">
             <div class="container">
+
             <div class="row">
-                <div class="col-12">
+                <div class="col-6">
                     <img src="/images/logo-light.png" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
                     <img src="/images/phone.png" />
+                    <img src="/images/download.png" />
                 </div>
                 <div class="col-6">
-                    <img src="/images/download.png" />
+                    <h3>Register Now to Join {{ $brand->name }} on Believer!</h3>
+                    <form class="form" id="registration_form" name="registration_form" onsubmit="return validateRegistrationForm()" method="post" action="/signup-brand">
+                        @csrf
+                        <input type="hidden" value="{{ $brand->id }}" name="brand_id" id="brand_id" />
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="control-label" for="first_name">First Name <span class="req">*</span></label>
+                                <input type="text" class="form-control" name="first_name" id="first_name" required />
+                            </div>
+                            <div class="col-6">
+                                <label class="control-label" for="last_name">Last Name <span class="req">*</span></label>
+                                <input type="text" class="form-control" name="last_name" id="last_name" required />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <label class="control-label" for="email">Email Address <span class="req">*</span></label>
+                                <input type="text" class="form-control" name="email" id="email" required />
+                                <label class="control-label" for="email">Confirm Email Address <span class="req">*</span></label>
+                                <input type="text" class="form-control" name="confirm_email" id="confirm_email" required />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <label class="control-label">Address <span class="req">*</span></label>
+                                <input type="text" id="address1" name="address1" class="form-control" value="" placeholder="Address Line 1" required>
+                                <input type="text" id="address2" name="address2" class="form-control" value="" placeholder="Address Line 2 (optional)">
+
+                                <div class="input-group form-group">
+                                    <input type="text" class="form-control" name="city" id="city" placeholder="City" value="" required>
+                                    <input type="text" class="form-control" name="province" id="province" placeholder="Province/State" value="LA" required>
+                                    <input type="text" class="form-control" name="postal_code" id="postal_code" placeholder="Postal/Zip Code" value="" required>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <label class="control-label" for="password">Password <span class="req">*</span></label>
+                                <input type="password" class="form-control" name="password" id="password" required />
+                                <br />
+                                <input class="btn btn-lg btn-primary" type="submit" name="submit" value="Register" />
+                            </div>
+
+                        </div>
+
+                    </form>
                 </div>
             </div>
         </div>

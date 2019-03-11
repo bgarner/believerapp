@@ -93,4 +93,5 @@ require('./believer/rewardPublishing.js');
 require('./believer/deleteMission.js');
 //invites
 require('./believer/uploadInvites.js');
-
+//registration
+require('./believer/validateRegistration.js');
