@@ -50,63 +50,7 @@ $(document).on("click", ".registerWithBrand", function() {
       }
     });
 
-    // request.statusCode: {
-    //     404: function() {
-    //       alert( "page not found" );
-    //    }
-    // }
 
-    // request.done(function( msg ) {
-    //     console.log("--- done ----");
-    //   console.log(msg);
-    // });
-
-    // request.fail(function( jqXHR, textStatus ) {
-    //     console.log("--- fail ----");
-    //   console.log(textStatus);
-    // });
-
-
-
-
-    // $.ajax({
-    //     method: 'POST',
-    //     url: '/signup-brand',
-    //     data: {
-    //         brand_id: brand_id,
-    //         first_name: first_name,
-    //         last_name: last_name,
-    //         email: email,
-    //         confirm_email: confirm_email,
-    //         address1: address1,
-    //         city: city,
-    //         province: province,
-    //         postal_code: postal_code,
-    //         password: password
-    //     },
-
-    //     processData: false,
-    //     contentType: false,
-    //     type: 'POST',
-    //     fail: function(responseText) {
-    //         console.log("----- error? -----");
-    //         alert( responseText );
-    //     },
-    //     success: function(data) {
-    //         console.log("----- in success -----");
-    //         console.log(data);
-    //         swal("Excellent!", "Thanks for signing up.", "success")
-    //             .then(function() {
-    //                 window.location = "/";
-    //             });
-    //     },
-    //     done: function(request, status, error) {
-    //         console.log("----- done -----");
-    //         console.log(request.responseText);
-    //         alert(request.responseText);
-    //         //return false;
-    //     },
-    // });
 
 });
 
