@@ -57798,79 +57798,99 @@ $(document).on("click", ".uploadInvites", function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-function validateRegistrationForm() {
-  var first_name = document.forms["registration_form"]["first_name"].value;
-  var last_name = document.forms["registration_form"]["last_name"].value;
-  var email = document.forms["registration_form"]["email"].value;
-  var confirm_email = document.forms["registration_form"]["confirm_email"].value;
-  var address1 = document.forms["registration_form"]["address1"].value;
-  var city = document.forms["registration_form"]["city"].value;
-  var province = document.forms["registration_form"]["province"].value;
-  var postal_code = document.forms["registration_form"]["postal_code"].value;
-  var password = document.forms["registration_form"]["password"].value;
-  var msg = "";
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  if (!first_name || !last_name || !email || !confirm_email || !address1 || !city || !province || !postal_code || !password) {
-    msg = "Oops, looks like you missed somthing...\n";
-  }
+$(document).on("click", ".registerWithBrand", function () {
+  var _$$ajax;
 
-  if (first_name == "") {
-    msg = +"Please enter your first name.\n";
-    return false;
-  }
-
-  if (last_name == "") {
-    msg = +"Please enter your last name. \n";
-    return false;
-  }
-
-  if (email == "") {
-    msg = +"Please enter your email address. \n";
-    return false;
-  }
-
-  if (confirm_email == "") {
-    msg = +"Please confirm your email address. \n";
-    return false;
-  }
-
-  if (address1 == "") {
-    msg = +"Please enter your address. \n";
-    return false;
-  }
-
-  if (city == "") {
-    msg = +"Please enter your city. \n";
-    return false;
-  }
-
-  if (province == "") {
-    msg = +"Please enter your province or state. \n";
-    return false;
-  }
-
-  if (postal_code == "") {
-    msg = +"Please enter your postal or zip code. \n";
-    return false;
-  }
-
-  if (password == "") {
-    msg = +"Please enter your password. \n";
-    return false;
-  }
-
-  if (email !== confirm_email) {
-    msg = +"Please make sure you correctly confirmed your email address. \n";
-    return false;
-  }
-
-  if (msg != "") {
-    alert(msg);
-    return false;
-  } else {
-    alert("looks good");
-  }
-}
+  var brand_id = $('#brand_id').val();
+  var first_name = $('#first_name').val();
+  var last_name = $('#last_name').val();
+  var email = $('#email').val();
+  var confirm_email = $('#confirm_email').val();
+  var address1 = $('#address1').val();
+  var city = $('#city').val();
+  var province = $('#province').val();
+  var postal_code = $('#postal_code').val();
+  var password = $('#password').val();
+  var request = $.ajax((_$$ajax = {
+    url: "script.php",
+    method: "POST"
+  }, _defineProperty(_$$ajax, "url", '/signup-brand'), _defineProperty(_$$ajax, "dataType", 'json'), _defineProperty(_$$ajax, "data", {
+    brand_id: brand_id,
+    first_name: first_name,
+    last_name: last_name,
+    email: email,
+    confirm_email: confirm_email,
+    address1: address1,
+    city: city,
+    province: province,
+    postal_code: postal_code,
+    password: password
+  }), _defineProperty(_$$ajax, "statusCode", {
+    200: function _(response) {
+      swal("Good job!", "You clicked the button!", "success");
+    },
+    400: function _(response) {
+      console.log(response.responseJSON);
+      errorStr = "";
+      $.each(response.responseJSON.errors, function (index, item) {
+        errorStr += item[0] + "\n";
+      });
+      console.log(errorStr);
+      swal("Oops!", errorStr, "error");
+    }
+  }), _$$ajax)); // request.statusCode: {
+  //     404: function() {
+  //       alert( "page not found" );
+  //    }
+  // }
+  // request.done(function( msg ) {
+  //     console.log("--- done ----");
+  //   console.log(msg);
+  // });
+  // request.fail(function( jqXHR, textStatus ) {
+  //     console.log("--- fail ----");
+  //   console.log(textStatus);
+  // });
+  // $.ajax({
+  //     method: 'POST',
+  //     url: '/signup-brand',
+  //     data: {
+  //         brand_id: brand_id,
+  //         first_name: first_name,
+  //         last_name: last_name,
+  //         email: email,
+  //         confirm_email: confirm_email,
+  //         address1: address1,
+  //         city: city,
+  //         province: province,
+  //         postal_code: postal_code,
+  //         password: password
+  //     },
+  //     processData: false,
+  //     contentType: false,
+  //     type: 'POST',
+  //     fail: function(responseText) {
+  //         console.log("----- error? -----");
+  //         alert( responseText );
+  //     },
+  //     success: function(data) {
+  //         console.log("----- in success -----");
+  //         console.log(data);
+  //         swal("Excellent!", "Thanks for signing up.", "success")
+  //             .then(function() {
+  //                 window.location = "/";
+  //             });
+  //     },
+  //     done: function(request, status, error) {
+  //         console.log("----- done -----");
+  //         console.log(request.responseText);
+  //         alert(request.responseText);
+  //         //return false;
+  //     },
+  // });
+});
 
 /***/ }),
 

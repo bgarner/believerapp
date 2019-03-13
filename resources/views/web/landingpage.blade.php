@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Believer :: {{ $brand->name }}</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="/css/app.css" />
 </head>
 <body class="landing">
@@ -98,8 +99,8 @@
                     <img src="/images/download.png" />
                 </div>
                 <div class="col-6">
-                    <h3>Register Now to Join {{ $brand->name }} on Believer!</h3>
-                    <form class="form" id="registration_form" name="registration_form" onsubmit="return validateRegistrationForm()" method="post" action="/signup-brand">
+                    <h2>Register Now to Join {{ $brand->name }} on Believer!</h2>
+                    <form class="form" id="registration_form">
                         @csrf
                         <input type="hidden" value="{{ $brand->id }}" name="brand_id" id="brand_id" />
                         <div class="row">
@@ -142,7 +143,7 @@
                                 <label class="control-label" for="password">Password <span class="req">*</span></label>
                                 <input type="password" class="form-control" name="password" id="password" required />
                                 <br />
-                                <input class="btn btn-lg btn-primary" type="submit" name="submit" value="Register" />
+                                <input class="btn btn-lg btn-primary registerWithBrand" type="button" name="button" value="Register" />
                             </div>
 
                         </div>

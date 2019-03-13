@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Models\Follower;
+use Illuminate\Http\Request;
+use Response;
 
 class RegisterController extends Controller
 {
@@ -68,5 +71,48 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    public function registerWithBrand(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string|email|max:255|unique:users',
+            'confirm_email' => 'same:email',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'address1' => 'required',
+            'city' => 'required',
+            'province' => 'required',
+            'postal_code' => 'required',
+            'password'=> 'required'
+        ]);
+        if ($validator->fails()) {
+            return Response::json(array(
+                'success' => false,
+                'errors' => $validator->getMessageBag()->toArray()
+            ), 400);
+        }
+        $user = User::create([
+            'name' => $request->get('first_name') . " " . $request->get('last_name'),
+            'first' => $request->get('first_name'),
+            'last' => $request->get('last_name'),
+            'email' => $request->get('email'),
+            'address1' => $request->get('address1'),
+            'address2' => $request->get('address2'),
+            'city' => $request->get('city'),
+            'province' => $request->get('province'),
+            'postal_code' => $request->get('postal_code'),
+            'password' => bcrypt($request->get('password')),
+            'group_id' => 3,
+        ]);
+
+        $brandFollow = Follower::create([
+            'brand_id' => $request->get('brand_id'),
+            'user_id' => $user->id,
+        ]);
+        \Log::info("new user...");
+        \Log::info($user);
+
+        //return Response::json(compact('token'));
     }
 }
