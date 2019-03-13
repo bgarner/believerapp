@@ -57829,7 +57829,9 @@ $(document).on("click", ".registerWithBrand", function () {
     password: password
   }), _defineProperty(_$$ajax, "statusCode", {
     200: function _(response) {
-      swal("Good job!", "You clicked the button!", "success");
+      swal("Welcome!", "Thanks for registering! You will recieve an email shortly with links to the app store and more information.", "success").then(function (value) {
+        window.location.href = "/";
+      });
     },
     400: function _(response) {
       console.log(response.responseJSON);

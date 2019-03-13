@@ -31,7 +31,10 @@ $(document).on("click", ".registerWithBrand", function() {
       },
       statusCode: {
          200: function (response) {
-            swal("Good job!", "You clicked the button!", "success");
+            swal("Welcome!", "Thanks for registering! You will recieve an email shortly with links to the app store and more information.", "success")
+            .then((value) => {
+              window.location.href = "/";
+            });
          },
 
          400: function (response) {
