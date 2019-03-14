@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Client;
 use App\Models\Follower;
+use Carbon\Carbon;
 
 class ClientController extends Controller
 {
@@ -19,7 +20,10 @@ class ClientController extends Controller
         // }
         $user = User::find($request->user_id);
         $user_postal_code_fragment = substr($user->postal_code, 0, 1) . '%';
-        return Client::where('postal_code','like',$user_postal_code_fragment)->get();        
+        $followedClients = Follower::where('user_id', $request->user_id)->get()->pluck('brand_id')->toArray();
+        return Client::where('postal_code','like',$user_postal_code_fragment)
+                    ->whereNotIn('id', $followedClients)
+                    ->get();        
     }
 
     public function clientsFollowedByUser(Request $request)
@@ -51,16 +55,63 @@ class ClientController extends Controller
         //     "user": 32,
         //     "client": 11
         // }
-        $checkFollow = Follower::where('user_id','=',$request->user)
-                                ->where('brand_id','=',$request->client)
+
+        $checkFollow = Follower::where('user_id','=',$request->user_id)
+                                ->where('brand_id','=',$request->client_id)
                                 ->first();
+
         if($checkFollow) {
-            return $checkFollow->updated_at;
+            $response = [
+                'isFollowing' => true,
+                'wasPreviouslyFollowing' => true,
+                'startedFollowingAt' => $checkFollow->updated_at
+            ];
+            
         } else {
-            $follow = new Follower(['brand_id' => $request->client, 'user_id' => $request->user]);
+            $follow = new Follower(['brand_id' => $request->client_id, 'user_id' => $request->user_id]);
             $follow->save();
-            return $follow->updated_at;
+
+            $response = [
+                'isFollowing' => true,
+                'wasPreviouslyFollowing' => false,
+                'startedFollowingAt' => $follow->updated_at
+            ];
         }
+        return ($response);
+    }
+
+    public function unfollow(Request $request)
+    {
+        // POST http://localhost:8000/api/v1/clients/follow
+        // {
+        //     "user": 32,
+        //     "client": 11
+        // }
+
+        $checkFollow = Follower::where('user_id','=',$request->user_id)
+                                ->where('brand_id','=',$request->client_id)
+                                ->first();
+
+        if($checkFollow) {
+
+            Follower::where('user_id','=',$request->user_id)
+                    ->where('brand_id','=',$request->client_id)
+                    ->delete();
+            $response = [
+                'isFollowing' => false,
+                'wasPreviouslyFollowing' => true,
+                'startedUnfollowingAt' => Carbon::now()
+            ];
+            
+        } else {
+
+            $response = [
+                'isFollowing' => false,
+                'wasPreviouslyFollowing' => false,
+                'startedUnfollowingAt' => null
+            ];
+        }
+        return ($response);
     }
 
     public function refer(Request $request)
