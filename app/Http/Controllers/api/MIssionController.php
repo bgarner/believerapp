@@ -23,16 +23,17 @@ class MissionController extends Controller
         // {
         //     "user_id": 31
         // }
-        $challenges = collect();
+        // $challenges = collect();
 
         $brands = Follower::where('user_id',$request->user_id)->pluck('brand_id')->toArray();
-        foreach($brands as $brand){
-           $c = Challenge::where('brand_id', $brand)
-                ->where('start', '<', Carbon::now())
-                ->where('end', '>', Carbon::now())
-                ->get();
-            $challenges = $challenges->merge($c);
-        }
+        
+        $challenges = Challenge::join('brands', 'challenges.brand_id', '=', 'brands.id')
+                                ->whereIn('challenges.brand_id' ,$brands)
+                                ->where('start', '<', Carbon::now())
+                                ->where('end', '>', Carbon::now())
+                                ->select('challenges.*', 'brands.name as brand_name')
+                                ->get();
+
         //$challenges = $challenges->sortBy('start');
         return $challenges;
     }

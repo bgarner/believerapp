@@ -18,7 +18,10 @@ class ProfileController extends Controller
         // {
         //     "user_id": 123
         // }
-        return User::find($request->user_id);
+        return User::join('advocate_levels', 'advocate_levels.level', 'users.level')
+                    ->where('users.id', $request->user_id)
+                    ->select('users.*', 'advocate_levels.level_name')
+                    ->first();
     }
 
     public function balance(Request $request)
