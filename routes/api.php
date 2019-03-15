@@ -22,8 +22,10 @@ Route::post('user/login', 'API\LoginController@login');
 // });
 
 Route::post('/v1/clients', 'api\ClientController@index');
+Route::post('/v1/clientsFollowedByUser', 'api\ClientController@clientsFollowedByUser');
 Route::post('/v1/clients/show', 'api\ClientController@show');
 Route::post('/v1/clients/follow', 'api\ClientController@follow');
+Route::post('/v1/clients/unfollow', 'api\ClientController@unfollow');
 Route::post('/v1/clients/refer', 'api\ClientController@refer');
 Route::post('/v1/clients/share', 'api\ClientController@share');
 
