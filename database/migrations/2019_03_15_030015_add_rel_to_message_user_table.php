@@ -14,7 +14,8 @@ class AddRelToMessageUserTable extends Migration
     public function up()
     {
         Schema::table('message_user', function (Blueprint $table) {
-            //
+            $table->foreign('message_id')->references('id')->on('brands');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
