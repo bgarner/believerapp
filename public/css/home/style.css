@@ -588,3 +588,24 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	font-size: 5em;
 }
 }
+
+.icon-col {
+
+}
+.icon-col svg{
+    text-align:center;
+
+    fill: #09a4bc;
+    height: 150px;
+}
+
+.icon-col p{
+    border-top: 5px solid #09a4bc;
+    padding-top: 20px;
+    display: block;
+    font-size: 20px;
+    line-height: 30px;
+    width: 50%;
+    margin: 20px auto;
+    text-align: center;
+}
