@@ -34,7 +34,7 @@
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse"> <i class="fa fa-bars"></i> </button>
-      <a class="navbar-brand page-scroll" href="#page-top"><img src="/images/Believer-Logo.webp"  height="30" /></a> </div>
+      <a class="navbar-brand page-scroll" href="#page-top"><img src="/images/Believer-Logo.webp"  height="30" style="position: relative; bottom: 7px;" /></a> </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
@@ -57,7 +57,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <h1><span class="brand-heading"><img src="/images/Believer-Logo.webp" /></span></h1>
+          <h1><span class="brand-heading"><img src="/images/home/Believer-Logo-REVERSED.png"  width="50%" style="padding: 0 0 20px 0;" /></span></h1>
           <p class="intro-text">Get rewarded for supporting brands and local businesses you believe in.</p>
           <a href="#section-app" class="btn btn-default page-scroll">Learn More</a> </div>
       </div>
