@@ -132,8 +132,23 @@
 <div id="about" class="text-center">
   <div class="container" id="section-business">
     <div class="section-title center">
-      <h2>Mobilize your brand evangelists.</h2>
-      <hr>
+{{--       <h2>Mobilize your brand evangelists.</h2>
+      <hr> --}}
+
+      <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-6" style="padding: 0; margin: 0;">
+            <div style="padding: 20px;">
+                <small style="text-align: left; border-bottom: thin solid #999; display: block; padding: 10px; margin-bottom: 20px; width: 70%;">BELIEVER FOR BUSINESS</small>
+                <h2 style="text-align: left;">Mobilize your brand evangelists.</h2>
+
+                <p style="text-align: left; font-size: 20px; width: 70%;">Partner with Believer to boost brand awareness, increase referrals and generate more leads for your business.</p>
+            </div>
+
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6" style="padding: 0; margin: 0;">
+            <img src="/images/home/subbg.webp" style="height: 100%; width: 100%; position: relative; top: 0; right: 0; padding: 0; margin: 0; float: right;" />
+        </div>
+      </div>
     </div>
   </div>
 </div>
