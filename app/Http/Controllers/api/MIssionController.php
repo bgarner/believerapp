@@ -26,13 +26,22 @@ class MissionController extends Controller
         // $challenges = collect();
 
         $brands = Follower::where('user_id',$request->user_id)->pluck('brand_id')->toArray();
+
+
         
         $challenges = Challenge::join('brands', 'challenges.brand_id', '=', 'brands.id')
+                                ->leftjoin('challenge_completions', 'challenges.id' , '=', 'challenge_completions.challenge_id')
                                 ->whereIn('challenges.brand_id' ,$brands)
                                 ->where('start', '<', Carbon::now())
                                 ->where('end', '>', Carbon::now())
-                                ->select('challenges.*', 'brands.name as brand_name')
-                                ->get();
+                                ->select('challenges.*', 'brands.name as brand_name', 'challenge_completions.user_id as completed_by')
+                                
+                                ->orderBy('start', 'desc')
+                                ->get()
+                                ->filter(function ($value, $key){
+                                    return $value['completed_by'] == null;
+                                })
+                                ->values();
 
         //$challenges = $challenges->sortBy('start');
         return $challenges;
@@ -101,6 +110,6 @@ class MissionController extends Controller
                 "new_point_balance" => $new_point_balance
             ];
         }
-        return response()->json($data);
+        return ($data);
     }
 }
