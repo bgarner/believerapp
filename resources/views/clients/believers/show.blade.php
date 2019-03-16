@@ -1,4 +1,4 @@
-@extends('layouts.client_mission_layout')
+@extends('layouts.client_layout')
 
 @section('mainnav')
 <li class="nav-item"><a href="/client/missions" class="nav-link">Missions</a></li>
