@@ -8,6 +8,8 @@ use App\User;
 use App\Models\ChallengeCompletion;
 use App\Models\ChallengeType;
 use App\Models\Challenge;
+use App\Models\Follower;
+use App\Models\Redemption;
 
 class ProfileController extends Controller
 {
@@ -18,10 +20,27 @@ class ProfileController extends Controller
         // {
         //     "user_id": 123
         // }
-        return User::join('advocate_levels', 'advocate_levels.level', 'users.level')
+        $user = User::join('advocate_levels', 'advocate_levels.level', 'users.level')
                     ->where('users.id', $request->user_id)
                     ->select('users.*', 'advocate_levels.level_name')
                     ->first();
+
+        
+        $missions_completed_count = ChallengeCompletion::where('user_id', $request->user_id)->get()->count();
+        $historic_total_points = Challenge::join('challenge_completions', 'challenges.id', '=', 'challenge_completions.challenge_id')
+                                        ->where('challenge_completions.user_id', $request->user_id)
+                                        ->sum('challenges.points');
+
+        $brands_following_count = Follower::where('user_id', $request->user_id)->get()->count();
+        $rewards_redeemed_count = Redemption::where('user_id', $request->user_id)->get()->count();
+
+        
+        $user->missions_completed_count = $missions_completed_count;
+        $user->historic_total_points = $historic_total_points;
+        $user->brands_following_count = $brands_following_count;
+        $user->rewards_redeemed_count = $rewards_redeemed_count;
+        
+        return $user;
     }
 
     public function balance(Request $request)
