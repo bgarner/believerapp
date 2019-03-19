@@ -21,6 +21,10 @@ Route::post('/client/updateBeliever', 'Client\BelieverController@updateBeliever'
 
 //Route::post('/client/toggleRewardPublish', 'Client\BelieverController@toggleStatus');
 
+//messsages
+Route::resource('/client/messages', 'Client\MessagesController');
+
+
 //referrals
 Route::resource('/client/referrals', 'Client\ReferralController');
 

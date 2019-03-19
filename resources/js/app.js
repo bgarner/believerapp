@@ -10,6 +10,7 @@ require('jquery.nicescroll');
 require('moment');
 require('datatables.net');
 require('sweetalert');
+require('summernote');
 require('daterangepicker');
 require('./stisla.js');
 require('./scripts.js');
@@ -51,6 +52,10 @@ $.ajaxSetup({
     $('#end').val( end.format('YYYY-MM-DD') + ' 23:59:59');
   });
 
+
+  $(document).ready(function() {
+    $('#body').summernote();
+  });
 
 // if(jQuery().daterangepicker) {
 //   if($(".datepicker").length) {

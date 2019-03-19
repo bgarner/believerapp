@@ -31,6 +31,13 @@ $(".datatable-believers").dataTable({
     // ]
 });
 
+$(".datatable-messages").dataTable({
+    // "columnDefs": [
+    //   { "sortable": false, "targets": [4] }
+    // ]
+});
+
+
 $(".datatable-audiences").dataTable({
     "columnDefs": [
       { "sortable": false, "targets": [2] }
