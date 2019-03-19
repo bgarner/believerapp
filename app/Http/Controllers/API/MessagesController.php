@@ -34,7 +34,17 @@ class MessagesController extends Controller
 
     public function delete(Request $request)
     {
+        $message = MessageUser::where('message_id', $request->message_id)
+                                ->where('user_id', $request->user_id)
+                                ->delete();
+        if ($message){
+            $data=['status'=>'1','msg'=>'success'
+            ];
+        } else {
+            $data=['status'=>'0','msg'=>'user/message was not found'];
+        }
 
+        return response()->json($data);
     }
 }
 
