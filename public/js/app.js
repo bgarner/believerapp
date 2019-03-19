@@ -74519,7 +74519,10 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()('#mission_create_daterange').dater
   jquery__WEBPACK_IMPORTED_MODULE_0___default()('#end').val(end.format('YYYY-MM-DD') + ' 23:59:59');
 });
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()('#body').summernote();
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('#body').summernote({
+    toolbar: [// [groupName, [list of button]]
+    ['style', ['bold', 'italic', 'underline', 'clear']], ['color', ['color']], ['para', ['ul', 'ol', 'paragraph']]]
+  });
 }); // if(jQuery().daterangepicker) {
 //   if($(".datepicker").length) {
 //     $('.datepicker').daterangepicker({

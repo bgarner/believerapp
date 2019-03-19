@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use App\Utility;
+use App\Models\Follower;
 
 class Message extends Model
 {
@@ -38,6 +39,9 @@ class Message extends Model
             'action' => 'whatever'
             //'action' => $request->action
         ]);
+
+        $audience = Follower::getFollowerIds($request->brand_id);
+        MessageUser::publishMessage($message->id, $audience);
     }
 
     public static function getMessagesByClient($id)

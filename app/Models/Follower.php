@@ -18,6 +18,12 @@ class Follower extends Model
         return Utility::prettifyDate($timestamp);
     }
 
+    public static function getFollowerIds($brand_id)
+    {
+        $followers = Follower::where('brand_id', $brand_id)->pluck('user_id');
+        return $followers;
+    }
+
     public static function getFollowers($brand_id)
     {
         $followers = Follower::where('brand_id', $brand_id)

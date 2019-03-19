@@ -54,7 +54,14 @@ $.ajaxSetup({
 
 
   $(document).ready(function() {
-    $('#body').summernote();
+    $('#body').summernote({
+        toolbar: [
+          // [groupName, [list of button]]
+          ['style', ['bold', 'italic', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+        ]
+    });
   });
 
 // if(jQuery().daterangepicker) {
