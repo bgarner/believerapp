@@ -26,7 +26,9 @@ class MessagesController extends Controller
 
     public function show(Request $request)
     {
-        $message = Message::find($request->message_id);
+        $message = Message::where('messages.id', $request->message_id)
+                    ->join('brands', 'brands.id', '=', 'messages.brand_id')
+                    ->get();
         return ($message);
     }
 
