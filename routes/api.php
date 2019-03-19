@@ -40,6 +40,10 @@ Route::post('/v1/profile/history', 'api\ProfileController@challengeHistory');
 Route::post('/v1/profile/pointbalance/', 'api\ProfileController@balance');
 Route::post('/v1/profile/edit', 'api\ProfileController@edit');
 
+Route::post('/v1/messages', 'api\MessagesController@index');
+Route::post('/v1/messages/show', 'api\MessagesController@show');
+Route::post('/v1/messages/delete', 'api\MessagesController@delete');
+
 Route::post('/v1/rewards', 'api\RewardController@index');
 Route::post('/v1/rewards/show', 'api\RewardController@show');
 Route::post('/v1/rewards/redeem', 'api\RewardController@redeem');
