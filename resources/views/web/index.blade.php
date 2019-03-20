@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Beleiver</title>
+<title>Believer</title>
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -43,6 +43,8 @@
         <li class="hidden"> <a href="#page-top"></a> </li>
         <li> <a class="page-scroll" href="#section-app">About the App</a> </li>
         <li> <a class="page-scroll" href="#section-business">For Business</a> </li>
+        <li> <a class="page-scroll" href="/signup">Sign Up</a> </li>
+        <li> <a class="btn-default" href="/login">Login</a> </li>
 
       </ul>
     </div>
@@ -59,7 +61,9 @@
         <div class="col-md-10 col-md-offset-1">
           <h1><span class="brand-heading"><img src="/images/home/Believer-Logo-REVERSED.png"  width="50%" style="padding: 0 0 20px 0;" /></span></h1>
           <p class="intro-text">Get rewarded for supporting brands and local businesses you believe in.</p>
-          <a href="#section-app" class="btn btn-default page-scroll">Learn More</a> </div>
+          <a href="#section-app" class="btn btn-default page-scroll">Learn More</a>
+          <a href="/login" class="btn btn-default">Log In</a>
+        </div>
       </div>
     </div>
   </div>
