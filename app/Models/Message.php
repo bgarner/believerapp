@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use App\Utility;
 use App\Models\Follower;
+use App\Models\MessageUser;
 
 class Message extends Model
 {
@@ -49,6 +50,7 @@ class Message extends Model
         return Message::where('brand_id', $id)->get()
                     ->each(function ($item) {
                         $item->trunc_body = Utility::truncateHtml(strip_tags($item->body));
+                        $item->sendCount = MessageUser::getMessageRecipientCount($item->id);
                     });
     }
 

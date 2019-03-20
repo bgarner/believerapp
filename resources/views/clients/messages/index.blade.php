@@ -25,7 +25,7 @@
                 <table id="table_id" class="datatable-messages table table-striped dataTable no-footer">
                 <thead>
                     <tr>
-                        <th>To</th>
+                        <th>Sent To</th>
                         <th>Subject</th>
                         <th>Body</th>
                         <th>Sent At</th>
@@ -35,7 +35,7 @@
                 <tbody>
                 @foreach($messages as $message)
                 <tr id="message{{ $message->id }}">
-                    <td><a href="/client/messages/{{ $message->id }}">Sent to who...</a></td>
+                    <td>{{ $message->sendCount }} believers</td>
                     <td><a href="/client/messages/{{ $message->id }}">{{ $message->subject }}</a></td>
                     <td>{!! $message->trunc_body !!}</td>
                     <td>{{ $message->create_at }}</td>

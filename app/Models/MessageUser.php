@@ -17,4 +17,9 @@ class MessageUser extends Model
             MessageUser::create(['message_id' => $message, 'user_id' => $user]);
         }
     }
+
+    public static function getMessageRecipientCount($message_id)
+    {
+        return self::find($message_id)->count();
+    }
 }

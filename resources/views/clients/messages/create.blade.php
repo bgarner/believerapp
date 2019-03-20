@@ -11,9 +11,10 @@
 
 @section('content')
 
-<form method="POST" enctype="multipart/form-data" action="/client/messages" class="form-horizontal">
+<form method="POST" id="message-form" enctype="multipart/form-data" action="/client/messages" class="form-horizontal">
     @csrf
     <input type="hidden" name="brand_id" id="brand_id" value="{{ $brand_id }}" />
+    <input type="hidden" name="body" id="body" value="{{ $brand_id }}" />
     <div class="card">
         <div class="card-header"><h4>Create a New Message</h4></div>
 
@@ -32,7 +33,9 @@
 
                     <div class="form-group"><label class="col-sm-12 control-label">Message<span class="req">*</span></label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" rows="5" id="body" name="body" required></textarea>
+                            {{-- <textarea class="form-control editable" rows="15" id="body" name="body" required></textarea> --}}
+
+                            <div class="editable"></div>
                         </div>
                     </div>
 

@@ -26,6 +26,7 @@
         "vue-template-compiler": "^2.6.4"
     },
     "dependencies": {
+        "@types/quill": "^2.0.2",
         "ajv": "^6.8.1",
         "datatables": "^1.10.18",
         "datatables.net": "^1.10.19",
@@ -34,8 +35,10 @@
         "icheck": "^1.0.2",
         "ionicons": "^4.5.5",
         "jquery.nicescroll": "^3.7.6",
+        "medium-editor": "^5.23.3",
         "moment": "^2.24.0",
         "popper": "^1.0.1",
+        "quill": "^1.3.6",
         "summernote": "^0.8.11",
         "sweetalert": "^2.1.2",
         "tooltip.js": "^1.3.1"

@@ -10,8 +10,9 @@ require('jquery.nicescroll');
 require('moment');
 require('datatables.net');
 require('sweetalert');
-require('summernote');
+// require('summernote');
 require('daterangepicker');
+require('medium-editor');
 require('./stisla.js');
 require('./scripts.js');
 
@@ -52,44 +53,46 @@ $.ajaxSetup({
     $('#end').val( end.format('YYYY-MM-DD') + ' 23:59:59');
   });
 
+  //var editor = new MediumEditor('.editor');
 
-  $(document).ready(function() {
-    $('#body').summernote({
-        toolbar: [
-          // [groupName, [list of button]]
-          ['style', ['bold', 'italic', 'underline', 'clear']],
-          ['color', ['color']],
-          ['para', ['ul', 'ol', 'paragraph']],
-        ]
-    });
+  var editor = new MediumEditor('.editable', {
+      toolbar: {
+          /* These are the default options for the toolbar,
+             if nothing is passed this is what is used */
+          allowMultiParagraphSelection: true,
+          buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote'],
+          diffLeft: 0,
+          diffTop: -10,
+          elementsContainer: '.editable',
+          firstButtonClass: 'medium-editor-button-first',
+          lastButtonClass: 'medium-editor-button-last',
+          // relativeContainer: false,
+          standardizeSelectionStart: false,
+          static: false,
+          /* options which only apply when static is true */
+          // align: 'center',
+          sticky: false,
+          updateOnEmptySelection: false
+      }
   });
 
-// if(jQuery().daterangepicker) {
-//   if($(".datepicker").length) {
-//     $('.datepicker').daterangepicker({
-//       locale: {format: 'MMMM D, YYYY'},
-//       singleDatePicker: true,
-//       showDropdowns: true,
-//     });
-//   }
-//   if($(".datetimepicker").length) {
-//     $('.datetimepicker').daterangepicker({
-//       locale: {format: 'YYYY-MM-DD hh:mm'},
-//       singleDatePicker: true,
-//       timePicker: true,
-//       timePicker24Hour: true,
-//     });
-//   }
-//   if($(".daterange").length) {
-//     $('.daterange').daterangepicker({
-//       locale: {format: 'YYYY-MM-DD'},
-//       drops: 'down',
-//       opens: 'right'
-//     }, function(start, end, label) {
-//         console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-//     });
-//   }
-// }
+  $( "#message-form" ).submit(function( event ) {
+      var value = $('.editable').html();
+      console.log(value);
+      $("#body").val(value);
+  })
+
+  // $('#body').summernote({
+  //     airMode: false,
+  //     toolbar: [
+  //       // [groupName, [list of button]]
+  //       ['style', ['bold', 'italic', 'underline', 'clear']],
+  //       ['color', ['color']],
+  //       ['para', ['ul', 'ol', 'paragraph']],
+  //     ]
+  // });
+
+
 
 //implementiations...
 require('./believer/iCheck.js');
