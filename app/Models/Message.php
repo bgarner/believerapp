@@ -58,4 +58,9 @@ class Message extends Model
     {
         return Message::find($id);
     }
+
+    public static function deleteMessage($id)
+    {
+        return Self::find($id)->delete();
+    }
 }

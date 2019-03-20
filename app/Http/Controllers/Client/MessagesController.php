@@ -62,7 +62,7 @@ class MessagesController extends Controller
 
     public function destroy($id) //delete a resource
     {
-        $mission = Mission::deleteMission($id);
-        return response()->json($mission);
+        $message = Message::deleteMessage($id);
+        return response()->json($message);
     }
 }

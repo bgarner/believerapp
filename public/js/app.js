@@ -65150,7 +65150,10 @@ __webpack_require__(/*! ./believer/deleteMission.js */ "./resources/js/believer/
 __webpack_require__(/*! ./believer/uploadInvites.js */ "./resources/js/believer/uploadInvites.js"); //registration
 
 
-__webpack_require__(/*! ./believer/validateRegistration.js */ "./resources/js/believer/validateRegistration.js");
+__webpack_require__(/*! ./believer/validateRegistration.js */ "./resources/js/believer/validateRegistration.js"); //messages
+
+
+__webpack_require__(/*! ./believer/deleteMessage.js */ "./resources/js/believer/deleteMessage.js");
 
 /***/ }),
 
@@ -65358,6 +65361,46 @@ $(document).on("click", ".deleteClient", function () {
       });
     } else {
       swal("Client is safe!");
+    }
+  });
+  return false;
+});
+
+/***/ }),
+
+/***/ "./resources/js/believer/deleteMessage.js":
+/*!************************************************!*\
+  !*** ./resources/js/believer/deleteMessage.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).on("click", ".deleteMessage", function () {
+  console.log("message delete requested");
+  var messageId = $(this).attr('data-item-id');
+  var selector = "#message" + messageId;
+  console.log("selector: " + selector); // e.preventDefault();
+
+  swal({
+    title: "Are you sure?",
+    text: "Are you sure you want to delete this message?",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true
+  }).then(function (willDelete) {
+    if (willDelete) {
+      $.ajax({
+        url: '/client/messages/' + messageId,
+        type: 'DELETE',
+        success: function success(result) {
+          $(selector).closest('tr').fadeOut(1000);
+          swal("Message deleted!", {
+            icon: "success"
+          });
+        }
+      });
+    } else {
+      swal("Message is safe!");
     }
   });
   return false;

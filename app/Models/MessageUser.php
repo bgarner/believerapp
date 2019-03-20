@@ -20,6 +20,6 @@ class MessageUser extends Model
 
     public static function getMessageRecipientCount($message_id)
     {
-        return self::find($message_id)->count();
+        return self::where('message_id', $message_id)->count();
     }
 }

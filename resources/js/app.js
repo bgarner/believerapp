@@ -97,3 +97,5 @@ require('./believer/deleteMission.js');
 require('./believer/uploadInvites.js');
 //registration
 require('./believer/validateRegistration.js');
+//messages
+require('./believer/deleteMessage.js');
