@@ -65051,8 +65051,7 @@ __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 
 __webpack_require__(/*! datatables.net */ "./node_modules/datatables.net/js/jquery.dataTables.js");
 
-__webpack_require__(/*! sweetalert */ "./node_modules/sweetalert/dist/sweetalert.min.js"); // require('summernote');
-
+__webpack_require__(/*! sweetalert */ "./node_modules/sweetalert/dist/sweetalert.min.js");
 
 __webpack_require__(/*! daterangepicker */ "./node_modules/daterangepicker/daterangepicker.js");
 
@@ -65122,16 +65121,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()("#message-form").submit(function (
   var value = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.editable').html();
   console.log(value);
   jquery__WEBPACK_IMPORTED_MODULE_0___default()("#body").val(value);
-}); // $('#body').summernote({
-//     airMode: false,
-//     toolbar: [
-//       // [groupName, [list of button]]
-//       ['style', ['bold', 'italic', 'underline', 'clear']],
-//       ['color', ['color']],
-//       ['para', ['ul', 'ol', 'paragraph']],
-//     ]
-// });
-//implementiations...
+}); //implementiations...
 
 __webpack_require__(/*! ./believer/iCheck.js */ "./resources/js/believer/iCheck.js");
 

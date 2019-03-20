@@ -10,7 +10,6 @@ require('jquery.nicescroll');
 require('moment');
 require('datatables.net');
 require('sweetalert');
-// require('summernote');
 require('daterangepicker');
 require('medium-editor');
 require('./stisla.js');
@@ -21,8 +20,6 @@ $.ajaxSetup({
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
   }
 });
-
-
 
 (function() {
   'use strict';
@@ -55,44 +52,32 @@ $.ajaxSetup({
 
   //var editor = new MediumEditor('.editor');
 
-  var editor = new MediumEditor('.editable', {
-      toolbar: {
-          /* These are the default options for the toolbar,
-             if nothing is passed this is what is used */
-          allowMultiParagraphSelection: true,
-          buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote'],
-          diffLeft: 0,
-          diffTop: -10,
-          elementsContainer: '.editable',
-          firstButtonClass: 'medium-editor-button-first',
-          lastButtonClass: 'medium-editor-button-last',
-          // relativeContainer: false,
-          standardizeSelectionStart: false,
-          static: false,
-          /* options which only apply when static is true */
-          // align: 'center',
-          sticky: false,
-          updateOnEmptySelection: false
-      }
-  });
+var editor = new MediumEditor('.editable', {
+    toolbar: {
+        /* These are the default options for the toolbar,
+           if nothing is passed this is what is used */
+        allowMultiParagraphSelection: true,
+        buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote'],
+        diffLeft: 0,
+        diffTop: -10,
+        elementsContainer: '.editable',
+        firstButtonClass: 'medium-editor-button-first',
+        lastButtonClass: 'medium-editor-button-last',
+        // relativeContainer: false,
+        standardizeSelectionStart: false,
+        static: false,
+        /* options which only apply when static is true */
+        // align: 'center',
+        sticky: false,
+        updateOnEmptySelection: false
+    }
+});
 
-  $( "#message-form" ).submit(function( event ) {
-      var value = $('.editable').html();
-      console.log(value);
-      $("#body").val(value);
-  })
-
-  // $('#body').summernote({
-  //     airMode: false,
-  //     toolbar: [
-  //       // [groupName, [list of button]]
-  //       ['style', ['bold', 'italic', 'underline', 'clear']],
-  //       ['color', ['color']],
-  //       ['para', ['ul', 'ol', 'paragraph']],
-  //     ]
-  // });
-
-
+$( "#message-form" ).submit(function( event ) {
+    var value = $('.editable').html();
+    console.log(value);
+    $("#body").val(value);
+});
 
 //implementiations...
 require('./believer/iCheck.js');
