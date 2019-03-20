@@ -33,6 +33,23 @@ class Utility
         return $since;
     }
 
+    public static function getTimePastSinceToday($date, $finalFormat = 'Y-m-d')
+    {
+        if($date == '0000-00-00 00:00:00' || $date == NULL) {
+            return "";
+        }
+        $dateObj = Carbon::createFromFormat('Y-m-d H:i:s', $date);
+        if($dateObj->isToday()) {
+            $since = Carbon::now()->diffForHumans($dateObj, true);    
+            $showDate = $since . " ago";
+        }
+        else{
+            $showDate = $dateObj->format($finalFormat);
+        }
+       
+        return $showDate;
+    }
+
     public static function getMonthName($monthNumber)
     {
         return date("F", mktime(0, 0, 0, $monthNumber, 1));
