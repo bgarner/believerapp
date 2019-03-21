@@ -39,6 +39,8 @@ class Message extends Model
             'body' => $request->body,
             'action_title' => $request->action_title,
             'action_url' => $request->action_url,
+            'start' => $request->start,
+            'end' => $request->end,
         ]);
 
         $audience = Follower::getFollowerIds($request->brand_id);

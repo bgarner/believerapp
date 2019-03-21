@@ -50,6 +50,14 @@ $.ajaxSetup({
     $('#end').val( end.format('YYYY-MM-DD') + ' 23:59:59');
   });
 
+  $('#message_create_daterange').daterangepicker({
+    drops: 'down',
+    opens: 'right'
+  }, function(start, end, label) {
+    $('#start').val( start.format('YYYY-MM-DD') + ' 00:00:00');
+    $('#end').val( end.format('YYYY-MM-DD') + ' 23:59:59');
+  });
+
   //var editor = new MediumEditor('.editor');
 
 var editor = new MediumEditor('.editable', {
