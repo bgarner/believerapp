@@ -7,6 +7,7 @@ use App\User;
 use App\Models\Client;
 use App\Models\Follower;
 use Carbon\Carbon;
+use App\Stats;
 
 class ClientController extends Controller
 {
@@ -45,7 +46,9 @@ class ClientController extends Controller
         // {
         //     "client_id": 10,
         // }
-        return Client::find($request->client_id);
+        $client =  Client::find($request->client_id);
+        $client['stats'] = Stats::clientStats($client->id);
+        return $client;
     }
 
     public function follow(Request $request)
