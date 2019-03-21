@@ -10,6 +10,7 @@ use App\Models\ChallengeType;
 use App\Models\Challenge;
 use App\Models\Follower;
 use App\Models\Redemption;
+use App\Models\Referral;
 
 class ProfileController extends Controller
 {
@@ -33,12 +34,13 @@ class ProfileController extends Controller
 
         $brands_following_count = Follower::where('user_id', $request->user_id)->get()->count();
         $rewards_redeemed_count = Redemption::where('user_id', $request->user_id)->get()->count();
-
+        $referrals_sent_count = Referral::where('referred_by_id', $request->user_id)->get()->count();
 
         $user->missions_completed_count = $missions_completed_count;
         $user->historic_total_points = $historic_total_points;
         $user->brands_following_count = $brands_following_count;
         $user->rewards_redeemed_count = $rewards_redeemed_count;
+        $user->referrals_sent_count = $referrals_sent_count;
 
         return $user;
     }
