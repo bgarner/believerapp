@@ -41485,7 +41485,7 @@ MediumEditor.extensions = {};
         /* text: [string]
          * Text to display in the placeholder
          */
-        text: 'Type your text',
+        text: '',
 
         /* hideOnClick: [boolean]
          * Should we hide the placeholder on click (true) or when user starts typing (false)
@@ -43678,7 +43678,6 @@ MediumEditor.version = MediumEditor.parseVersionString.call(this, ({
 
     return MediumEditor;
 }()));
-
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
@@ -65097,6 +65096,10 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()('#mission_create_daterange').dater
 }); //var editor = new MediumEditor('.editor');
 
 var editor = new MediumEditor('.editable', {
+  placeholder: {
+    text: 'Type your message',
+    hideOnClick: true
+  },
   toolbar: {
     /* These are the default options for the toolbar,
        if nothing is passed this is what is used */

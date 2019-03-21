@@ -37,6 +37,20 @@
                         </div>
                     </div>
 
+
+                    <div class="form-group"><label class="col-sm-12 control-label">Action Title</label>
+                        <small>This is the text that will appear on the action button at the bottom of your message.</small>
+                        <div class="col-sm-10">
+                            <input type="text" id="action_title" name="action_title" class="form-control" value="" />
+                        </div>
+                    </div>
+
+                    <div class="form-group"><label class="col-sm-12 control-label">Action URL</label>
+                        <small>When the action button is clicked, this is where the user will be taken. Don't foget to include 'http://'</small>
+                        <div class="col-sm-10">
+                            <input type="text" id="action_url" name="action_url" class="form-control" value="" />
+                        </div>
+                    </div>
 {{--                     <div class="form-group">
                         <label class="col-sm-6 control-label">Start and End Date<span class="req">*</span></label>
                         <div class="col-sm-10">
@@ -54,6 +68,10 @@
                             </div>
                         </div>
                     </div> --}}
+            </div>
+
+            <div class="col-4">
+                some stuff over there
             </div>
 
 

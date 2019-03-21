@@ -53,6 +53,10 @@ $.ajaxSetup({
   //var editor = new MediumEditor('.editor');
 
 var editor = new MediumEditor('.editable', {
+    placeholder: {
+        text: 'Type your message',
+        hideOnClick: true
+    },
     toolbar: {
         /* These are the default options for the toolbar,
            if nothing is passed this is what is used */
