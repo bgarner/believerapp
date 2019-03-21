@@ -43,6 +43,7 @@ class Message extends Model
 
         $audience = Follower::getFollowerIds($request->brand_id);
         MessageUser::publishMessage($message->id, $audience);
+        return redirect("/client/messages");
     }
 
     public static function getMessagesByClient($id)

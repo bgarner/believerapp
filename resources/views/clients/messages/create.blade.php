@@ -51,31 +51,26 @@
                             <input type="text" id="action_url" name="action_url" class="form-control" value="" />
                         </div>
                     </div>
-{{--                     <div class="form-group">
-                        <label class="col-sm-6 control-label">Start and End Date<span class="req">*</span></label>
+                </div>
+
+                <div class="col-4">
+                    <div class="form-group"><label class="col-sm-12 control-label">Audience</label>
+                        <small>Select an audience to send this message to.</small>
                         <div class="col-sm-10">
-                            <input type="text" id="mission_create_daterange" class="form-control" id="missionrange" name="missionrange" value="">
-                            <input type="hidden" id="start" name="start" value="" />
-                            <input type="hidden" id="end" name="end" value="" />
-                        </div>
-                    </div> --}}
+                            <select name="audience_select" id="audience_select" class="form-control">
+                                <option></option>
+                                @foreach($audiences as $audience)
+                                    <option value="{{ $audience->id }}">{{ $audience->name }}</option>
+                                @endforeach
+                            </select>
 
-{{--                     <div class="form-group"><label class="col-sm-12 control-label">Image<span class="req">*</span></label>
-                        <small>Some info about the specs for a logo file should go here...</small>
-                        <div class="input-group col-12">
-                            <div class="custom-file">
-                                <input type="file" class="form-control-file" id="missionimage" name="missionimage" required>
-                            </div>
                         </div>
-                    </div> --}}
+                    </div>
+
+
+                </div>
             </div>
 
-            <div class="col-4">
-                some stuff over there
-            </div>
-
-
-        </div>
         </div>
     </div>
 
