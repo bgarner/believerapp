@@ -60,15 +60,20 @@ class RewardController extends Controller
             $redemption->save();
 
             $data = [
+                "isRedeemed" => true,
                 "redeemed_at" => $redemption->updated_at,
-                "new_point_balance" => $new_point_balance
+                "new_point_balance" => $new_point_balance,
+                "response_message" => 'Redemption successful'
             ];
-
-            return response()->json($data);
-
         } else {
-            return "not enough points";
+            $data = [
+                "isRedeemed" => false,
+                "redeemed_at" => null,
+                "new_point_balance" => $points_balance,
+                "response_message" => 'Redemption unsuccessful: not enough points'
+            ];
         }
+        return response()->json($data);
     }
 
 }
