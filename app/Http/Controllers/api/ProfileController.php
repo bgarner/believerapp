@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\AdvocateProfile;
@@ -25,7 +25,7 @@ class ProfileController extends Controller
                     ->select('users.*', 'advocate_levels.level_name')
                     ->first();
 
-        
+
         $missions_completed_count = ChallengeCompletion::where('user_id', $request->user_id)->get()->count();
         $historic_total_points = Challenge::join('challenge_completions', 'challenges.id', '=', 'challenge_completions.challenge_id')
                                         ->where('challenge_completions.user_id', $request->user_id)
@@ -34,12 +34,12 @@ class ProfileController extends Controller
         $brands_following_count = Follower::where('user_id', $request->user_id)->get()->count();
         $rewards_redeemed_count = Redemption::where('user_id', $request->user_id)->get()->count();
 
-        
+
         $user->missions_completed_count = $missions_completed_count;
         $user->historic_total_points = $historic_total_points;
         $user->brands_following_count = $brands_following_count;
         $user->rewards_redeemed_count = $rewards_redeemed_count;
-        
+
         return $user;
     }
 

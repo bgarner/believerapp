@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
@@ -12,8 +12,8 @@ use App\Models\ChallengeCompletion;
 class MissionController extends Controller
 {
     /**
-     * Returns a list of clients available to follow, 
-     * ordered by who is closest to the users 
+     * Returns a list of clients available to follow,
+     * ordered by who is closest to the users
      * location (post code, city, etc), as per their profile
      */
     public function index(Request $request)
@@ -28,14 +28,14 @@ class MissionController extends Controller
         $brands = Follower::where('user_id',$request->user_id)->pluck('brand_id')->toArray();
 
 
-        
+
         $challenges = Challenge::join('brands', 'challenges.brand_id', '=', 'brands.id')
                                 ->leftjoin('challenge_completions', 'challenges.id' , '=', 'challenge_completions.challenge_id')
                                 ->whereIn('challenges.brand_id' ,$brands)
                                 ->where('start', '<', Carbon::now())
                                 ->where('end', '>', Carbon::now())
                                 ->select('challenges.*', 'brands.name as brand_name', 'challenge_completions.user_id as completed_by')
-                                
+
                                 ->orderBy('start', 'desc')
                                 ->get()
                                 ->filter(function ($value, $key){
@@ -69,7 +69,7 @@ class MissionController extends Controller
                 ->where('start', '<', Carbon::now())
                 ->where('end', '>', Carbon::now())
                 ->get();
-    }    
+    }
 
     public function accept(Request $request)
     {
@@ -97,7 +97,7 @@ class MissionController extends Controller
             $data = [
                 "previously_completed" => 1,
                 "completed_at" => $check->created_at,
-            ];            
+            ];
         } else {
             $completion = new ChallengeCompletion(['challenge_id' => $request->mission_id, 'user_id' => $request->user_id]);
             $completion->save();

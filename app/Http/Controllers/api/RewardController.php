@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\AdvocateProfile;
@@ -13,8 +13,8 @@ use DB;
 class RewardController extends Controller
 {
     /**
-     * Returns a list of clients available to follow, 
-     * ordered by who is closest to the users 
+     * Returns a list of clients available to follow,
+     * ordered by who is closest to the users
      * location (post code, city, etc), as per their profile
      */
     public function index(Request $request)
@@ -53,9 +53,9 @@ class RewardController extends Controller
         // }
         $points_balance = User::where('id', $request->user_id)->value('point_balance');
         $reward_cost = Reward::where('id', $request->reward_id)->value('points');
-        
+
         if($points_balance >= $reward_cost){
-            $redemption = new Redemption(['user_id' => $request->user_id, 'reward_id' => $request->reward_id]); 
+            $redemption = new Redemption(['user_id' => $request->user_id, 'reward_id' => $request->reward_id]);
             $new_point_balance = User::subtractPoints($request->user_id, $reward_cost);
             $redemption->save();
 

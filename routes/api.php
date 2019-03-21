@@ -47,3 +47,5 @@ Route::post('/v1/messages/delete', 'api\MessagesController@delete');
 Route::post('/v1/rewards', 'api\RewardController@index');
 Route::post('/v1/rewards/show', 'api\RewardController@show');
 Route::post('/v1/rewards/redeem', 'api\RewardController@redeem');
+
+Route::post('/v1/referral/create', 'api\ReferralController@create');
