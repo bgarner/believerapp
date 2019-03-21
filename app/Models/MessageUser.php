@@ -14,6 +14,7 @@ class MessageUser extends Model
     public static function publishMessage($message, $audience)
     {
         foreach($audience as $user){
+            \Log::info($user);
             MessageUser::create(['message_id' => $message, 'user_id' => $user]);
         }
     }

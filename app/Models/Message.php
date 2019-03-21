@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Utility;
 use App\Models\Follower;
 use App\Models\MessageUser;
+use App\Models\Audience;
 
 class Message extends Model
 {
@@ -53,7 +54,14 @@ class Message extends Model
             'end' => $request->end,
         ]);
 
-        $audience = Follower::getFollowerIds($request->brand_id);
+        \Log::info($request);
+
+        if($request->audience_select === "all"){
+            $audience = Follower::getFollowerIds($request->brand_id);
+        } else {
+            $audience = Audience::getAudienceMemberIds($request->audience_select);
+        }
+
         MessageUser::publishMessage($message->id, $audience);
         return redirect("/client/messages");
     }

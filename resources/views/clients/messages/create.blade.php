@@ -30,13 +30,11 @@
                         </div>
                     </div>
 
-
                     <div class="form-group"><label class="col-sm-12 control-label">Message<span class="req">*</span></label>
                         <div class="col-sm-10">
                             <div class="editable"></div>
                         </div>
                     </div>
-
 
                     <div class="form-group"><label class="col-sm-12 control-label">Action Title</label>
                         <small>This is the text that will appear on the action button at the bottom of your message.</small>
@@ -67,9 +65,6 @@
                         </div>
                     </div>
 
-
-
-
                     <div class="form-group">
                         <label class="col-sm-12 control-label">Start and End Date<span class="req">*</span></label>
                         <small>Messages will automatically be removed from a users inbox after the end date</small>
@@ -79,7 +74,6 @@
                             <input type="hidden" id="end" name="end" value="" />
                         </div>
                     </div>
-
 
                 </div>
             </div>

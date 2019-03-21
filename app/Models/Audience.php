@@ -32,7 +32,12 @@ class Audience extends Model
     public static function getAudience($id)
     {
         $audience = Self::find($id);
+        return $audience;
+    }
 
+    public static function getAudienceMemberIds($audience_id)
+    {
+        $audience = AudienceMember::where('audience_id', $audience_id)->pluck('believer_id');
         return $audience;
     }
 
