@@ -1,0 +1,11 @@
+//check if the follower is already in the array
+
+    //if not, add them via ajax
+        //jquery write them to the table
+
+    //if they are in the array already, show message
+
+
+//remove
+    //remove via ajax
+    //jquery remove from table

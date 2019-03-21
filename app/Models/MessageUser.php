@@ -14,7 +14,13 @@ class MessageUser extends Model
     public static function publishMessage($message, $audience)
     {
         foreach($audience as $user){
+            \Log::info($user);
             MessageUser::create(['message_id' => $message, 'user_id' => $user]);
         }
+    }
+
+    public static function getMessageRecipientCount($message_id)
+    {
+        return self::where('message_id', $message_id)->count();
     }
 }

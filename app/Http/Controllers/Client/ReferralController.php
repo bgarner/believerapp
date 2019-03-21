@@ -4,17 +4,23 @@ namespace App\Http\Controllers\Client;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Referral;
+use Auth;
 
 class ReferralController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('client');
     }
 
     public function index() //list the resources
     {
-        return view('clients.referrals.index');
+        $client_id = Auth::user()->client_id;
+        $referrals = Referral::getReferralsByBrandId($client_id);
+        return view('clients.referrals.index')
+            ->with('referrals', $referrals);
     }
 
     public function create() //show the create form

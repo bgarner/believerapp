@@ -7,6 +7,8 @@
   <title>CLIENT</title>
   <link rel="stylesheet" href="/css/app.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@5.23.2/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+
 </head>
 
 <body>
@@ -47,7 +49,7 @@
   <main role="main" class="container" style="clear: both;">
     @yield('content')
   </main>
-
+  <script src="//cdn.jsdelivr.net/npm/medium-editor@5.23.2/dist/js/medium-editor.min.js"></script>
   <script src="/js/app.js"></script>
 </body>
 

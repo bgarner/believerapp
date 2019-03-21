@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,14 +17,14 @@ class ClientController extends Controller
         //match the first char of the postal code to brands with the same first char
         // POST http://localhost:8000/api/v1/clients
         // {
-        //     "user_id": 123   
+        //     "user_id": 123
         // }
         $user = User::find($request->user_id);
         $user_postal_code_fragment = substr($user->postal_code, 0, 1) . '%';
         $followedClients = Follower::where('user_id', $request->user_id)->get()->pluck('brand_id')->toArray();
         return Client::where('postal_code','like',$user_postal_code_fragment)
                     ->whereNotIn('id', $followedClients)
-                    ->get();        
+                    ->get();
     }
 
     public function clientsFollowedByUser(Request $request)
@@ -32,7 +32,7 @@ class ClientController extends Controller
         //return a list of clients followed by the user
         // POST http://localhost:8000/api/v1/clientsFollowedByUser
         // {
-        //     "user_id": 123   
+        //     "user_id": 123
         // }
         $clientIds = Follower::where('user_id',$request->user_id)->pluck('brand_id')->toArray();
         return Client::whereIn('id', $clientIds)->get();
@@ -69,7 +69,7 @@ class ClientController extends Controller
                 'wasPreviouslyFollowing' => true,
                 'startedFollowingAt' => $checkFollow->updated_at
             ];
-            
+
         } else {
             $follow = new Follower(['brand_id' => $request->client_id, 'user_id' => $request->user_id]);
             $follow->save();
@@ -105,7 +105,7 @@ class ClientController extends Controller
                 'wasPreviouslyFollowing' => true,
                 'startedUnfollowingAt' => Carbon::now()
             ];
-            
+
         } else {
 
             $response = [

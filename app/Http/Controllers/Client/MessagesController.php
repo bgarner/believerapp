@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Message;
 use App\Models\Follower;
+use App\Models\Audience;
 use App\Stats;
 
 class MessagesController extends Controller
@@ -30,8 +31,10 @@ class MessagesController extends Controller
     {
         $client_id = Auth::user()->client_id;
         $followers = Follower::getFollowers($client_id);
+        $audiences = Audience::getAudiencesByBrand($client_id);
         return view('clients.messages.create')
             ->with('brand_id', $client_id)
+            ->with('audiences', $audiences)
             ->with('followers', $followers);
     }
 
@@ -62,7 +65,7 @@ class MessagesController extends Controller
 
     public function destroy($id) //delete a resource
     {
-        $mission = Mission::deleteMission($id);
-        return response()->json($mission);
+        $message = Message::deleteMessage($id);
+        return response()->json($message);
     }
 }

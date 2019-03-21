@@ -25,6 +25,26 @@ $(".datatable-missions").dataTable({
     ]
 });
 
+$(".datatable-audience_believers").dataTable({
+    "pagingType": "simple",
+    "columnDefs": [
+      { "sortable": false, "targets": [0] }
+    ]
+});
+
+$(".datatable-audience_members").dataTable({
+    "pagingType": "simple",
+    "columnDefs": [
+      { "sortable": false, "targets": [0] }
+    ]
+});
+
+$(".datatable-referrals").dataTable({
+
+});
+
+
+
 $(".datatable-believers").dataTable({
     // "columnDefs": [
     //   { "sortable": false, "targets": [4] }

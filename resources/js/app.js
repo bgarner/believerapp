@@ -10,8 +10,8 @@ require('jquery.nicescroll');
 require('moment');
 require('datatables.net');
 require('sweetalert');
-require('summernote');
 require('daterangepicker');
+require('medium-editor');
 require('./stisla.js');
 require('./scripts.js');
 
@@ -20,8 +20,6 @@ $.ajaxSetup({
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
   }
 });
-
-
 
 (function() {
   'use strict';
@@ -52,44 +50,46 @@ $.ajaxSetup({
     $('#end').val( end.format('YYYY-MM-DD') + ' 23:59:59');
   });
 
-
-  $(document).ready(function() {
-    $('#body').summernote({
-        toolbar: [
-          // [groupName, [list of button]]
-          ['style', ['bold', 'italic', 'underline', 'clear']],
-          ['color', ['color']],
-          ['para', ['ul', 'ol', 'paragraph']],
-        ]
-    });
+  $('#message_create_daterange').daterangepicker({
+    drops: 'down',
+    opens: 'right'
+  }, function(start, end, label) {
+    $('#start').val( start.format('YYYY-MM-DD') + ' 00:00:00');
+    $('#end').val( end.format('YYYY-MM-DD') + ' 23:59:59');
   });
 
-// if(jQuery().daterangepicker) {
-//   if($(".datepicker").length) {
-//     $('.datepicker').daterangepicker({
-//       locale: {format: 'MMMM D, YYYY'},
-//       singleDatePicker: true,
-//       showDropdowns: true,
-//     });
-//   }
-//   if($(".datetimepicker").length) {
-//     $('.datetimepicker').daterangepicker({
-//       locale: {format: 'YYYY-MM-DD hh:mm'},
-//       singleDatePicker: true,
-//       timePicker: true,
-//       timePicker24Hour: true,
-//     });
-//   }
-//   if($(".daterange").length) {
-//     $('.daterange').daterangepicker({
-//       locale: {format: 'YYYY-MM-DD'},
-//       drops: 'down',
-//       opens: 'right'
-//     }, function(start, end, label) {
-//         console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-//     });
-//   }
-// }
+  //var editor = new MediumEditor('.editor');
+
+var editor = new MediumEditor('.editable', {
+    placeholder: {
+        text: 'Type your message',
+        hideOnClick: true
+    },
+    toolbar: {
+        /* These are the default options for the toolbar,
+           if nothing is passed this is what is used */
+        allowMultiParagraphSelection: true,
+        buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote'],
+        diffLeft: 0,
+        diffTop: -10,
+        elementsContainer: '.editable',
+        firstButtonClass: 'medium-editor-button-first',
+        lastButtonClass: 'medium-editor-button-last',
+        // relativeContainer: false,
+        standardizeSelectionStart: false,
+        static: false,
+        /* options which only apply when static is true */
+        // align: 'center',
+        sticky: false,
+        updateOnEmptySelection: false
+    }
+});
+
+$( "#message-form" ).submit(function( event ) {
+    var value = $('.editable').html();
+    console.log(value);
+    $("#body").val(value);
+});
 
 //implementiations...
 require('./believer/iCheck.js');
@@ -109,3 +109,5 @@ require('./believer/deleteMission.js');
 require('./believer/uploadInvites.js');
 //registration
 require('./believer/validateRegistration.js');
+//messages
+require('./believer/deleteMessage.js');
