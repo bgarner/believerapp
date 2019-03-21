@@ -8,6 +8,7 @@ use App\User;
 use App\Stats;
 use App\Models\ClientUser;
 use App\Models\Audience;
+use App\Models\AudienceMember;
 use App\Models\Follower;
 use App\Models\Challenge as Mission;
 use Auth;
@@ -99,11 +100,25 @@ class BelieverController extends Controller
         $client_id = Auth::user()->client_id;
         $audience = Audience::getAudience($id);
         $followers = Follower::getFollowers($client_id);
+        $audience_members = AudienceMember::where('audience_id', $id)->get()
+                            ->each(function ($member) {
+                                $member->details = User::find($member->believer_id);
+                            });
         $missions = Mission::getMissionsByClient();
 
         return view('clients.believers.audience')
             ->with('audience', $audience)
             ->with('missions', $missions)
+            ->with('audience_members', $audience_members)
             ->with('followers', $followers);
+    }
+
+    public function addToAudience()
+    {
+
+    }
+    public function removeFromAudience()
+    {
+
     }
 }

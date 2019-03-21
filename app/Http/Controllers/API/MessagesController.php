@@ -21,7 +21,7 @@ class MessagesController extends Controller
                                 $messageDetail = Message::find($message->message_id);
                                 $message->subject = $messageDetail->subject;
                                 $message->trunc_body = Utility::truncateHtml(strip_tags($messageDetail->body));
-                                
+
                                 $message->prettyCreatedAt = Utility::getTimePastSinceToday($message->created_at);
                                 $message->client = Client::where('id', $messageDetail->brand_id)
                                  ->select('name', 'logo')
