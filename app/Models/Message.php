@@ -13,7 +13,7 @@ class Message extends Model
 {
     use SoftDeletes;
     protected $table = 'messages';
-    protected $fillable = ['brand_id', 'subject', 'body', 'action_title', 'action_url'];
+    protected $fillable = ['brand_id', 'subject', 'body', 'action_title', 'action_url', 'start', 'end'];
 
     public function getCreatedAtAttribute($timestamp)
     {

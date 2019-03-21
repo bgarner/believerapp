@@ -69,6 +69,7 @@
 
                     <div class="form-group">
                         <label class="col-sm-6 control-label">Start and End Date<span class="req">*</span></label>
+                        <small>Messages will automatically be removed from a users inbox after the end date</small>
                         <div class="col-sm-10">
                             <input type="text" id="message_create_daterange" class="form-control" id="messagerange" name="messagerange" value="">
                             <input type="hidden" id="start" name="start" value="" />

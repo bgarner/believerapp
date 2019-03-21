@@ -28,17 +28,21 @@
                         <th>Sent To</th>
                         <th>Subject</th>
                         <th>Body</th>
-                        <th>Sent At</th>
+                        <th>Created</th>
+                        <th>Start</th>
+                        <th>End</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                 @foreach($messages as $message)
                 <tr id="message{{ $message->id }}">
-                    <td>{{ $message->sendCount }} believers</td>
+                    <td>{{ $message->sendCount }}</td>
                     <td><a href="/client/messages/{{ $message->id }}">{{ $message->subject }}</a></td>
                     <td>{!! $message->trunc_body !!}</td>
                     <td>{{ $message->created_at }}</td>
+                    <td>{{ $message->start }}</td>
+                    <td>{{ $message->end }}</td>
                     <td>
                         <h5><a href="#" class="req deleteMessage" data-item-id="{{ $message->id }}"><i class="fa fa-trash"></i></a></h5>
                     </td>
