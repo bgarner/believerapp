@@ -37,8 +37,8 @@ class Message extends Model
             'brand_id' => $request->brand_id,
             'subject' => $request->subject,
             'body' => $request->body,
-            'action' => 'whatever'
-            //'action' => $request->action
+            'action_title' => $request->action_title,
+            'action_url' => $request->action_url,
         ]);
 
         $audience = Follower::getFollowerIds($request->brand_id);
