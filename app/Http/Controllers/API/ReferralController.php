@@ -16,6 +16,7 @@ class ReferralController extends Controller
             'last_name' => $request->last_name,
             'email' => $request->email,
             'phone' => $request->phone,
+            'comments' => $request->comments,
             'referred_by_id' => $request->referred_by_id
         ]);
 

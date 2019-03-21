@@ -39,6 +39,12 @@ $(".datatable-audience_members").dataTable({
     ]
 });
 
+$(".datatable-referrals").dataTable({
+
+});
+
+
+
 $(".datatable-believers").dataTable({
     // "columnDefs": [
     //   { "sortable": false, "targets": [4] }

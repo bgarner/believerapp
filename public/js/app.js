@@ -65329,6 +65329,7 @@ $(".datatable-audience_members").dataTable({
     "targets": [0]
   }]
 });
+$(".datatable-referrals").dataTable({});
 $(".datatable-believers").dataTable({// "columnDefs": [
   //   { "sortable": false, "targets": [4] }
   // ]
