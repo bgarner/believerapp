@@ -30,6 +30,16 @@ class Message extends Model
         return Utility::prettifyDate($timestamp);
     }
 
+    public function getStartAttribute($timestamp)
+    {
+        return Utility::prettifyDate($timestamp);
+    }
+
+    public function getEndAttribute($timestamp)
+    {
+        return Utility::prettifyDate($timestamp);
+    }
+
     public static function createNewMessage($request)
     {
         // dd($request->brand_id);

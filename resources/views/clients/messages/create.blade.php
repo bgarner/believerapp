@@ -21,7 +21,7 @@
         <div class="card-body">
             <div class="row">
 
-                <div class="col-8">
+                <div class="col-7">
 
                     <div class="form-group">
                         <label class="col-sm-12 control-label">Subject<span class="req">*</span></label>
@@ -53,22 +53,25 @@
                     </div>
                 </div>
 
-                <div class="col-4">
-                    <div class="form-group"><label class="col-sm-12 control-label">Audience</label>
-                        <small>Select an audience to send this message to.</small>
+                <div class="col-5">
+                    <div class="form-group">
+                        <label class="col-sm-12 control-label">Audience</label>
+                        <small>Select an audience to send this message to, or send to all your followers.</small>
                         <div class="col-sm-10">
                             <select name="audience_select" id="audience_select" class="form-control">
-                                <option></option>
+                                <option value="all">Send to all followers</option>
                                 @foreach($audiences as $audience)
                                     <option value="{{ $audience->id }}">{{ $audience->name }}</option>
                                 @endforeach
                             </select>
-
                         </div>
                     </div>
 
+
+
+
                     <div class="form-group">
-                        <label class="col-sm-6 control-label">Start and End Date<span class="req">*</span></label>
+                        <label class="col-sm-12 control-label">Start and End Date<span class="req">*</span></label>
                         <small>Messages will automatically be removed from a users inbox after the end date</small>
                         <div class="col-sm-10">
                             <input type="text" id="message_create_daterange" class="form-control" id="messagerange" name="messagerange" value="">
