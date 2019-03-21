@@ -34,7 +34,8 @@ class MessagesController extends Controller
     {
         $message = Message::where('messages.id', $request->message_id)
                     ->join('brands', 'brands.id', '=', 'messages.brand_id')
-                    ->get();
+                    ->select('messages.*', 'brands.name as brand_name', 'brands.logo as brand_logo')
+                    ->first();
         return ($message);
     }
 
