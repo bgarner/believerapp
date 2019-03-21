@@ -38,7 +38,7 @@
                     <td>{{ $message->sendCount }} believers</td>
                     <td><a href="/client/messages/{{ $message->id }}">{{ $message->subject }}</a></td>
                     <td>{!! $message->trunc_body !!}</td>
-                    <td>{{ $message->create_at }}</td>
+                    <td>{{ $message->created_at }}</td>
                     <td>
                         <h5><a href="#" class="req deleteMessage" data-item-id="{{ $message->id }}"><i class="fa fa-trash"></i></a></h5>
                     </td>

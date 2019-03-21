@@ -33,8 +33,6 @@
 
                     <div class="form-group"><label class="col-sm-12 control-label">Message<span class="req">*</span></label>
                         <div class="col-sm-10">
-                            {{-- <textarea class="form-control editable" rows="15" id="body" name="body" required></textarea> --}}
-
                             <div class="editable"></div>
                         </div>
                     </div>
