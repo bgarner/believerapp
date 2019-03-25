@@ -32,8 +32,6 @@ class RegisterController extends Controller
         return Response::json(compact('token'));
     }
 
-
-
     public function showRegistrationForm()
     {
         return "this is the registrationf form, I guess";
