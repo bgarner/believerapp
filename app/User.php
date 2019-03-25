@@ -41,7 +41,10 @@ class User extends Authenticatable
     }
     public function getPointBalanceAttribute($point_balance)
     {
-        return number_format($point_balance);
+        // return number_format($point_balance); 
+        // this is turning the point balance into string 
+        // and breaking the reward redemption math.
+        return $point_balance;
     }
 
     public static function getClientManagerOptions()
