@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Reward;
 use App\Models\RewardType;
 use App\Stats;
+use Cloudder;
 
 class RewardController extends Controller
 {

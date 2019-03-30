@@ -25,27 +25,40 @@ class Reward extends Model
 
     public static function createNewReward($request)
     {
-        //dd($request);
-        if( $request->file('rewardimage')->isValid() ) {
-            $file = $request->rewardimage;
-            $ext = strtolower( $request->rewardimage->extension() );
-        } else {
-            dd($request);
-        }
+        $cloud = config('services.cloudinary.cloud_name');
+        \Log::info( config('services.cloudinary') );
+        \Log::info( "here is something else: " .  $cloud );
 
-        $directory = public_path() . '/uploads/rewards';
-        $hash = md5(uniqid(rand(), true));
-        $filename  = $hash . "." . $ext;
+
+
+        \Cloudinary::config(array(
+          "cloud_name" => $cloud,
+          // "cloud_name" => 'believer',
+          "api_key" => config('services.cloudinary.api_key'),
+          // "api_key" => '843487995437637',
+          "api_secret" => config('services.cloudinary.api_secret')
+          // "api_secret" => 'agWhLopT-dy1rFGooMfnDsji_ks'
+        ));
+        // if( $request->file('rewardimage')->isValid() ) {
+        //     $file = $request->rewardimage;
+        //     $ext = strtolower( $request->rewardimage->extension() );
+        // }
+        $pic = $request->file('rewardimage');
+        $upload = \Cloudinary\Uploader::upload($pic);
+
+        // $directory = public_path() . '/uploads/rewards';
+        // $hash = md5(uniqid(rand(), true));
+        // $filename  = $hash . "." . $ext;
         //move and rename file
-        $upload_success = $request->file('rewardimage')->move($directory, $filename);
+        //$upload_success = $request->file('rewardimage')->move($directory, $filename);
 
-        if ($upload_success) {
+        if ($upload) {
             $reward = Reward::create([
                 'title' => $request->title,
                 'reward_type_id' => $request->reward_type_id,
                 'description' => $request->description,
                 'points' => $request->points,
-                'image' => $filename,
+                'image' => $upload['url'],
                 'active_status' => 1
             ]);
         }
