@@ -29,28 +29,14 @@ class Reward extends Model
         \Log::info( config('services.cloudinary') );
         \Log::info( "here is something else: " .  $cloud );
 
-
-
         \Cloudinary::config(array(
           "cloud_name" => $cloud,
-          // "cloud_name" => 'believer',
           "api_key" => config('services.cloudinary.api_key'),
-          // "api_key" => '843487995437637',
           "api_secret" => config('services.cloudinary.api_secret')
-          // "api_secret" => 'agWhLopT-dy1rFGooMfnDsji_ks'
         ));
-        // if( $request->file('rewardimage')->isValid() ) {
-        //     $file = $request->rewardimage;
-        //     $ext = strtolower( $request->rewardimage->extension() );
-        // }
+
         $pic = $request->file('rewardimage');
         $upload = \Cloudinary\Uploader::upload($pic);
-
-        // $directory = public_path() . '/uploads/rewards';
-        // $hash = md5(uniqid(rand(), true));
-        // $filename  = $hash . "." . $ext;
-        //move and rename file
-        //$upload_success = $request->file('rewardimage')->move($directory, $filename);
 
         if ($upload) {
             $reward = Reward::create([
