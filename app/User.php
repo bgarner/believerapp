@@ -13,7 +13,7 @@ use App\Models\Client;
 use App\Models\Redemption;
 use App\Models\Reward;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -41,8 +41,8 @@ class User extends Authenticatable
     }
     public function getPointBalanceAttribute($point_balance)
     {
-        // return number_format($point_balance); 
-        // this is turning the point balance into string 
+        // return number_format($point_balance);
+        // this is turning the point balance into string
         // and breaking the reward redemption math.
         return $point_balance;
     }
