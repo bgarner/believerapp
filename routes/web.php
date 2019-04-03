@@ -25,6 +25,14 @@ Route::get('/', array('uses'=> 'Web\HomeController@index'));
 
 Route::get('/{client_slug}', array('uses' => 'Web\ClientController@clientLandingPage'));
 
+
+Route::get('send_test_email', function(){
+    Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
+    {
+        $message->to('bgarner@gmail.com');
+    });
+});
+
 /*--- USER ROUTES --------------------------------------*/
 // Route::get('/advocate', function () {
 //     return ('welcome advocate');
