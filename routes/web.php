@@ -30,6 +30,7 @@ Route::get('/send_test_email', function(){
         $message->from('no-reply@gamegraft.com', 'Believer');
         $message->to('bgarner@gmail.com');
     });
+    \Log::info("sent an email....");
 });
 
 Route::get('/{client_slug}', array('uses' => 'Web\ClientController@clientLandingPage'));
