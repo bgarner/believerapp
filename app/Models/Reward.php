@@ -44,7 +44,7 @@ class Reward extends Model
                 'reward_type_id' => $request->reward_type_id,
                 'description' => $request->description,
                 'points' => $request->points,
-                'image' => "v" . $upload['version'] . "/" . $upload['public_id'] . "." . $upload['format'];
+                'image' => "v" . $upload['version'] . "/" . $upload['public_id'] . "." . $upload['format'],
                 'active_status' => 1
             ]);
         }
