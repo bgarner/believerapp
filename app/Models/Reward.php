@@ -18,6 +18,15 @@ class Reward extends Model
         'active_status'
     ];
 
+    public static function initCloudinary(){
+        $cloud = config('services.cloudinary.cloud_name');
+        \Cloudinary::config(array(
+          "cloud_name" => $cloud,
+          "api_key" => config('services.cloudinary.api_key'),
+          "api_secret" => config('services.cloudinary.api_secret')
+        ));
+    }
+
     public static function getAllRewards()
     {
         return Self::with('managers')->get();
@@ -25,15 +34,8 @@ class Reward extends Model
 
     public static function createNewReward($request)
     {
-        $cloud = config('services.cloudinary.cloud_name');
-        \Log::info( config('services.cloudinary') );
-        \Log::info( "here is something else: " .  $cloud );
 
-        \Cloudinary::config(array(
-          "cloud_name" => $cloud,
-          "api_key" => config('services.cloudinary.api_key'),
-          "api_secret" => config('services.cloudinary.api_secret')
-        ));
+        Self::initCloudinary();
 
         $pic = $request->file('rewardimage');
         $upload = \Cloudinary\Uploader::upload($pic);
@@ -54,21 +56,22 @@ class Reward extends Model
     public static function updateReward($request)
     {
         $reward = Reward::find($request->rewardId);
-
         $old_image = $reward->image;
 
-        if($request->file('image')){ //image is not null, therefore, we are update it too..
-            if( $request->file('image')->isValid() ) {
-                $file = $request->image;
-                $ext = strtolower( $request->image->extension() );
-                $directory = public_path() . '/uploads/rewards';
-                $hash = md5(uniqid(rand(), true));
-                $filename  = $hash . "." . $ext;
-                //move and rename file
-                $upload_success = $request->file('image')->move($directory, $filename);
-                $image = $filename; //send this to the updaate array
-                if($reward->image){ //if there was an old image...
-                    unlink(public_path().'/uploads/rewards/' . $old_image); //delete the old file.
+        if($request->file('rewardimage')){ //image is not null, therefore, we are update it too..
+            if( $request->file('rewardimage')->isValid() ) {
+
+                Self::initCloudinary();
+                $pic = $request->file('rewardimage');
+                $upload = \Cloudinary\Uploader::upload($pic);  // do the upload
+                if ($upload) {
+                    $reward = Reward::create([
+                        'title' => $request->title,
+                        'description' => $request->description,
+                        'points' => $request->points,
+                        'image' => "v" . $upload['version'] . "/" . $upload['public_id'] . "." . $upload['format'],
+                        'active_status' => 1
+                    ]);
                 }
             } else {
                 $image = $old_image; //just put the old one back.
