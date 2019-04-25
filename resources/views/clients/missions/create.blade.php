@@ -11,6 +11,7 @@
 @section('content')
 <form method="POST" enctype="multipart/form-data" action="/client/missions" class="form-horizontal needs-validation">
     @csrf
+    <input type="hidden" id="challenge_type" name="challenge_type" value="1" />
 
     <div class="card">
         <div class="card-header"><h4>Create a New Mission</h4></div>
@@ -28,14 +29,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-12 control-label">Misson Type<span class="req">*</span></label>
+                        <label class="col-sm-12 control-label">Shareable URL<span class="req">*</span></label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="challenge_type" name="challenge_type" required>
-                                <option></option>
-                                @foreach($challenge_types as $type)
-                                <option value="{{ $type->id }}">{{ $type->type }}</option>
-                                @endforeach
-                            </select>
+                            <input type="text" id="challenge_url" name="challenge_url" class="form-control" value="" required>
                         </div>
                     </div>
 

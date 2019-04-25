@@ -58,32 +58,35 @@ $.ajaxSetup({
     $('#end').val( end.format('YYYY-MM-DD') + ' 23:59:59');
   });
 
-  //var editor = new MediumEditor('.editor');
 
-var editor = new MediumEditor('.editable', {
-    placeholder: {
-        text: 'Type your message',
-        hideOnClick: true
-    },
-    toolbar: {
-        /* These are the default options for the toolbar,
-           if nothing is passed this is what is used */
-        allowMultiParagraphSelection: true,
-        buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote'],
-        diffLeft: 0,
-        diffTop: -10,
-        elementsContainer: '.editable',
-        firstButtonClass: 'medium-editor-button-first',
-        lastButtonClass: 'medium-editor-button-last',
-        // relativeContainer: false,
-        standardizeSelectionStart: false,
-        static: false,
-        /* options which only apply when static is true */
-        // align: 'center',
-        sticky: false,
-        updateOnEmptySelection: false
-    }
-});
+var editorExists = document.getElementsByClassName('editable');
+
+if(editorExists.length > 0 ){
+    var editor = new MediumEditor('.editable', {
+        placeholder: {
+            text: 'Type your message',
+            hideOnClick: true
+        },
+        toolbar: {
+            /* These are the default options for the toolbar,
+               if nothing is passed this is what is used */
+            allowMultiParagraphSelection: true,
+            buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote'],
+            diffLeft: 0,
+            diffTop: -10,
+            elementsContainer: '.editable',
+            firstButtonClass: 'medium-editor-button-first',
+            lastButtonClass: 'medium-editor-button-last',
+            // relativeContainer: false,
+            standardizeSelectionStart: false,
+            static: false,
+            /* options which only apply when static is true */
+            // align: 'center',
+            sticky: false,
+            updateOnEmptySelection: false
+        }
+    });
+}
 
 $( "#message-form" ).submit(function( event ) {
     var value = $('.editable').html();

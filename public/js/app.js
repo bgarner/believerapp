@@ -65100,33 +65100,37 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()('#message_create_daterange').dater
 }, function (start, end, label) {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()('#start').val(start.format('YYYY-MM-DD') + ' 00:00:00');
   jquery__WEBPACK_IMPORTED_MODULE_0___default()('#end').val(end.format('YYYY-MM-DD') + ' 23:59:59');
-}); //var editor = new MediumEditor('.editor');
-
-var editor = new MediumEditor('.editable', {
-  placeholder: {
-    text: 'Type your message',
-    hideOnClick: true
-  },
-  toolbar: {
-    /* These are the default options for the toolbar,
-       if nothing is passed this is what is used */
-    allowMultiParagraphSelection: true,
-    buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote'],
-    diffLeft: 0,
-    diffTop: -10,
-    elementsContainer: '.editable',
-    firstButtonClass: 'medium-editor-button-first',
-    lastButtonClass: 'medium-editor-button-last',
-    // relativeContainer: false,
-    standardizeSelectionStart: false,
-    static: false,
-
-    /* options which only apply when static is true */
-    // align: 'center',
-    sticky: false,
-    updateOnEmptySelection: false
-  }
 });
+var editorExists = document.getElementsByClassName('editable');
+
+if (editorExists.length > 0) {
+  var editor = new MediumEditor('.editable', {
+    placeholder: {
+      text: 'Type your message',
+      hideOnClick: true
+    },
+    toolbar: {
+      /* These are the default options for the toolbar,
+         if nothing is passed this is what is used */
+      allowMultiParagraphSelection: true,
+      buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote'],
+      diffLeft: 0,
+      diffTop: -10,
+      elementsContainer: '.editable',
+      firstButtonClass: 'medium-editor-button-first',
+      lastButtonClass: 'medium-editor-button-last',
+      // relativeContainer: false,
+      standardizeSelectionStart: false,
+      static: false,
+
+      /* options which only apply when static is true */
+      // align: 'center',
+      sticky: false,
+      updateOnEmptySelection: false
+    }
+  });
+}
+
 jquery__WEBPACK_IMPORTED_MODULE_0___default()("#message-form").submit(function (event) {
   var value = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.editable').html();
   console.log(value);
@@ -65777,11 +65781,7 @@ $(document).on("click", ".uploadInvites", function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 $(document).on("click", ".registerWithBrand", function () {
-  var _$$ajax;
-
   var brand_id = $('#brand_id').val();
   var first_name = $('#first_name').val();
   var last_name = $('#last_name').val();
@@ -65792,36 +65792,39 @@ $(document).on("click", ".registerWithBrand", function () {
   var province = $('#province').val();
   var postal_code = $('#postal_code').val();
   var password = $('#password').val();
-  var request = $.ajax((_$$ajax = {
-    url: "script.php",
-    method: "POST"
-  }, _defineProperty(_$$ajax, "url", '/signup-brand'), _defineProperty(_$$ajax, "dataType", 'json'), _defineProperty(_$$ajax, "data", {
-    brand_id: brand_id,
-    first_name: first_name,
-    last_name: last_name,
-    email: email,
-    confirm_email: confirm_email,
-    address1: address1,
-    city: city,
-    province: province,
-    postal_code: postal_code,
-    password: password
-  }), _defineProperty(_$$ajax, "statusCode", {
-    200: function _(response) {
-      swal("Welcome!", "Thanks for registering! You will recieve an email shortly with links to the app store and more information.", "success").then(function (value) {
-        window.location.href = "/";
-      });
+  var request = $.ajax({
+    method: "POST",
+    url: '/signup-brand',
+    dataType: 'json',
+    data: {
+      brand_id: brand_id,
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      confirm_email: confirm_email,
+      address1: address1,
+      city: city,
+      province: province,
+      postal_code: postal_code,
+      password: password
     },
-    400: function _(response) {
-      console.log(response.responseJSON);
-      errorStr = "";
-      $.each(response.responseJSON.errors, function (index, item) {
-        errorStr += item[0] + "\n";
-      });
-      console.log(errorStr);
-      swal("Oops!", errorStr, "error");
+    statusCode: {
+      200: function _(response) {
+        swal("Welcome!", "Thanks for registering! You will recieve an email shortly with links to the app store and more information.", "success").then(function (value) {
+          window.location.href = "/";
+        });
+      },
+      400: function _(response) {
+        console.log(response.responseJSON);
+        errorStr = "";
+        $.each(response.responseJSON.errors, function (index, item) {
+          errorStr += item[0] + "\n";
+        });
+        console.log(errorStr);
+        swal("Oops!", errorStr, "error");
+      }
     }
-  }), _$$ajax));
+  });
 });
 
 /***/ }),

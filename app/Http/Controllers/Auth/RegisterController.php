@@ -43,6 +43,16 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public static function initCloudinary()
+    {
+        $cloud = config('services.cloudinary.cloud_name');
+            \Cloudinary::config(array(
+            "cloud_name" => $cloud,
+            "api_key" => config('services.cloudinary.api_key'),
+            "api_secret" => config('services.cloudinary.api_secret')
+        ));
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -75,6 +85,8 @@ class RegisterController extends Controller
 
     public function registerWithBrand(Request $request)
     {
+        Self::initCloudinary();
+
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|max:255|unique:users',
             'confirm_email' => 'same:email',
@@ -92,7 +104,14 @@ class RegisterController extends Controller
                 'errors' => $validator->getMessageBag()->toArray()
             ), 400);
         }
-        $user = User::create([
+
+        $image = $request->file('image');
+        $banner = $request->file('banner');
+        $imageupload = \Cloudinary\Uploader::upload($image);
+        $bannerupload = \Cloudinary\Uploader::upload($banner);
+
+
+        $user = [
             'name' => $request->get('first_name') . " " . $request->get('last_name'),
             'first' => $request->get('first_name'),
             'last' => $request->get('last_name'),
@@ -104,7 +123,16 @@ class RegisterController extends Controller
             'postal_code' => $request->get('postal_code'),
             'password' => bcrypt($request->get('password')),
             'group_id' => 3,
-        ]);
+        ];
+
+        if (isset($imageupload)) {
+            $user['image'] = "v" . $logo2upload['version'] . "/" . $logo2upload['public_id'] . "." . $logo2upload['format'];
+        }
+        if (isset($bannerupload)) {
+            $user['banner'] = "v" . $logo2upload['version'] . "/" . $logo2upload['public_id'] . "." . $logo2upload['format'];
+        }
+
+        User::create($user);
 
         $brandFollow = Follower::create([
             'brand_id' => $request->get('brand_id'),

@@ -26,7 +26,7 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Type</th>
+
                         <th>Start</th>
                         <th>End</th>
                         <th>Completed</th>
@@ -37,7 +37,7 @@
                 @foreach($missions as $mission)
                 <tr id="mission{{ $mission->id }}">
                     <td><a href="/client/missions/{{ $mission->id }}">{{ $mission->name }}</a></td>
-                    <td>{{ $mission->type }}</td>
+
                     <td>{{ $mission->start }}</td>
                     <td>{{ $mission->end }}</td>
                     <td>{{ $mission->completion_count }}</td>

@@ -16,7 +16,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <img src="/uploads/clients/{{ $brand->logo }}" />
+                    @if($brand->logo)
+                    <img src="https://res.cloudinary.com/believer/image/upload/{{ $brand->logo }}" />
+                    @endif
                 </div>
             </div>
 
@@ -27,7 +29,9 @@
                 </div>
                 <div class="col-1"></div>
                 <div class="col-4 bg-ltgrey p-4">
-                    <img src="/uploads/clients/{{ $brand->logo }}" class="img-fluid pb-3" />
+                    @if($brand->logo)
+                    <img src="https://res.cloudinary.com/believer/image/upload/{{ $brand->logo }}" class="img-fluid pb-3" />
+                    @endif
                     <center>
                     <p class="text-center">Join the {{ $brand->name }} Club and get rewarded for sharing the love.</p>
                     <a href="#registration_form" class="btn btn-lg btn-danger">Join Now</a>

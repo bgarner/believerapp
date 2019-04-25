@@ -11,9 +11,7 @@ $(document).on("click", ".registerWithBrand", function() {
     var postal_code = $('#postal_code').val();
     var password = $('#password').val();
 
-
     var request = $.ajax({
-      url: "script.php",
       method: "POST",
       url: '/signup-brand',
       dataType: 'json',

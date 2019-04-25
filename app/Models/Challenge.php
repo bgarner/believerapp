@@ -78,7 +78,7 @@ class Challenge extends Model
                 'is_draft' => 0,
                 'points' => self::$point_value,
                 'challenge_type' => $request->challenge_type,
-                'share_url' => 'http://whatever.com',
+                'share_url' => $request->challenge_url,
             ]);
         }
         // return $client;
