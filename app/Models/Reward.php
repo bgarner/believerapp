@@ -18,7 +18,8 @@ class Reward extends Model
         'active_status'
     ];
 
-    public static function initCloudinary(){
+    public static function initCloudinary()
+    {
         $cloud = config('services.cloudinary.cloud_name');
         \Cloudinary::config(array(
           "cloud_name" => $cloud,

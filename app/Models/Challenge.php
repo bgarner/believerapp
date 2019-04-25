@@ -12,7 +12,7 @@ class Challenge extends Model
 {
     use SoftDeletes;
     protected $table = 'challenges';
-    protected $fillable = ['name', 'content', 'image', 'start', 'end', 'brand_id', 'created_by', 'is_draft', 'points', 'challenge_type'];
+    protected $fillable = ['name', 'content', 'image', 'start', 'end', 'brand_id', 'created_by', 'is_draft', 'points', 'challenge_type', 'share_url'];
     private static $point_value = 100;
 
     public function getCreatedAtAttribute($timestamp)
@@ -29,6 +29,16 @@ class Challenge extends Model
      {
          return Utility::prettifyDate($timestamp);
      }
+
+    public static function initCloudinary()
+    {
+        $cloud = config('services.cloudinary.cloud_name');
+            \Cloudinary::config(array(
+            "cloud_name" => $cloud,
+            "api_key" => config('services.cloudinary.api_key'),
+            "api_secret" => config('services.cloudinary.api_secret')
+        ));
+    }
 
     public static function getMissionsByClient()
     {
@@ -51,22 +61,16 @@ class Challenge extends Model
 
     public static function createNewMission($request)
     {
-        if( $request->file('missionimage')->isValid() ) {
-            $file = $request->missionimage;
-            $ext = strtolower( $request->missionimage->extension() );
-        }
+        Self::initCloudinary();
 
-        $directory = public_path() . '/uploads/missions';
-        $hash = md5(uniqid(rand(), true));
-        $filename  = $hash . "." . $ext;
-        //move and rename file
-        $upload_success = $request->file('missionimage')->move($directory, $filename);
+        $pic = $request->file('missionimage');
+        $upload = \Cloudinary\Uploader::upload($pic);
 
-        if ($upload_success) {
+        if ($upload) {
             $client = Self::create([
                 'name' => $request->name,
                 'content' => $request->description,
-                'image' => $filename,
+                'image' => "v" . $upload['version'] . "/" . $upload['public_id'] . "." . $upload['format'],
                 'start' => $request->start,
                 'end' => $request->end,
                 'brand_id' => Auth::user()->client_id,
@@ -74,6 +78,7 @@ class Challenge extends Model
                 'is_draft' => 0,
                 'points' => self::$point_value,
                 'challenge_type' => $request->challenge_type,
+                'share_url' => 'http://whatever.com',
             ]);
         }
         // return $client;

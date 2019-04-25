@@ -44,11 +44,29 @@
                         </div>
                     </div>
 
-                    <div class="form-group"><label class="col-sm-12 control-label">Image<span class="req">*</span></label>
+                    <div class="form-group"><label class="col-sm-12 control-label">Primary Logo<span class="req">*</span></label>
                         <small>Some info about the specs for a logo file should go here...</small>
                         <div class="input-group col-12">
                             <div class="custom-file">
                                 <input type="file" class="form-control-file" id="clientimage" name="clientimage" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group"><label class="col-sm-12 control-label">Secondary Logo</label>
+                        <small>Some info about the specs for a logo file should go here...</small>
+                        <div class="input-group col-12">
+                            <div class="custom-file">
+                                <input type="file" class="form-control-file" id="clientimage2" name="clientimage2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group"><label class="col-sm-12 control-label">Banner Image<span class="req">*</span></label>
+                        <small>Some info about the specs for a logo file should go here...</small>
+                        <div class="input-group col-12">
+                            <div class="custom-file">
+                                <input type="file" class="form-control-file" id="bannerimage" name="bannerimage" required>
                             </div>
                         </div>
                     </div>
