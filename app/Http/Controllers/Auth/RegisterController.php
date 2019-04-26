@@ -33,6 +33,16 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/home';
 
+    private $bannerImages = [
+        'v1556246965/1467.jpg',
+        'v1556246965/1536.jpg',
+        'v1556246965/1936.jpg',
+        'v1556246965/3840.jpg',
+        'v1556246965/4000-1.jpg',
+        'v1556246965/4000.jpg',
+        'v1556246965/960.jpg',
+    ];
+
     /**
      * Create a new controller instance.
      *
@@ -85,7 +95,7 @@ class RegisterController extends Controller
 
     public function registerWithBrand(Request $request)
     {
-        Self::initCloudinary();
+        //Self::initCloudinary();
 
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|max:255|unique:users',
@@ -105,17 +115,13 @@ class RegisterController extends Controller
             ), 400);
         }
 
-        $image = $request->file('image');
-        $banner = $request->file('banner');
-        $imageupload = \Cloudinary\Uploader::upload($image);
-        $bannerupload = \Cloudinary\Uploader::upload($banner);
-
-
+        $banner = $this->bannerImages[array_rand($this->bannerImages)];
         $user = [
             'name' => $request->get('first_name') . " " . $request->get('last_name'),
             'first' => $request->get('first_name'),
             'last' => $request->get('last_name'),
             'email' => $request->get('email'),
+            'banner' => $banner,
             'address1' => $request->get('address1'),
             'address2' => $request->get('address2'),
             'city' => $request->get('city'),
@@ -125,21 +131,15 @@ class RegisterController extends Controller
             'group_id' => 3,
         ];
 
-        if (isset($imageupload)) {
-            $user['image'] = "v" . $logo2upload['version'] . "/" . $logo2upload['public_id'] . "." . $logo2upload['format'];
-        }
-        if (isset($bannerupload)) {
-            $user['banner'] = "v" . $logo2upload['version'] . "/" . $logo2upload['public_id'] . "." . $logo2upload['format'];
-        }
-
-        User::create($user);
+        $newuser = User::create($user);
 
         $brandFollow = Follower::create([
             'brand_id' => $request->get('brand_id'),
-            'user_id' => $user->id,
+            'user_id' => $newuser->id,
         ]);
+
         \Log::info("new user...");
-        \Log::info($user);
+        \Log::info($newuser);
 
         //return Response::json(compact('token'));
     }
