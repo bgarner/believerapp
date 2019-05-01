@@ -12,9 +12,9 @@ class ChallengeCompletionsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('challenge_audiences')->truncate();
+        DB::table('challenge_completions')->truncate();
         $faker = Faker\Factory::create();
-        
+
         for($i = 0; $i < 600; $i++) {
 			ChallengeCompletion::create(
                 array(

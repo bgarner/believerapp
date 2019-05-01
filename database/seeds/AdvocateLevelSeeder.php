@@ -18,11 +18,12 @@ class AdvocateLevelSeeder extends Seeder
     public function run()
     {
         DB::table('advocate_levels')->truncate();
-        
+
         for($i = 0; $i < 9; $i++) {
 			AdvocateLevel::create(
                 array(
                     'level' => $i+1,
+                    'level_name' => 'level',
                     'level_range' => $this->level_range[$i],
                     'multiplier' => $this->multiplier[$i]
                 )

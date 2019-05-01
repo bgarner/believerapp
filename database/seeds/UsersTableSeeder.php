@@ -47,6 +47,8 @@ class UsersTableSeeder extends Seeder
                     'password' => bcrypt('ketchup9'),
                     'point_balance' => $faker->numberBetween(0,2500),
                     'social_accounts' => '',
+                    'image' => 'v1553798722/whyollclfwvrj90o5zyx.jpg',
+                    'banner' => 'v1556246965/4000-1.jpg',
                     'level' => $faker->numberBetween(1,9),
                     'address1' => $faker->streetAddress,
                     'address2' => '',

@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RewardsSeeder::class);
         $this->call(AdvocateGroupMembersSeeder::class);
         $this->call(AdvocateLevelSeeder::class);
-        $this->call(ChallengeAudiencesSeeder::class);
+        //$this->call(ChallengeAudiencesSeeder::class);
         $this->call(ChallengeCompletionsSeeder::class);
         $this->call(FollowerSeeder::class);
         $this->call(RedemptionSeeder::class);
