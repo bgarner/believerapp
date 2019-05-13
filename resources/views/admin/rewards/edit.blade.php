@@ -48,9 +48,9 @@
                         <small>Some info about the specs for a logo file should go here...</small>
                         <div class="col-6">
                             @if(!$reward->image)
-                            <img src="/uploads/rewards/placeholder.jpg" width="150" />
+                            <img src="https://res.cloudinary.com/believer/image/upload/" width="150" />
                             @else
-                            <img src="/uploads/rewards/{{ $reward->image }}" width="150" />
+                            <img src="https://res.cloudinary.com/believer/image/upload/{{ $reward->image }}" width="150" />
                             @endif
                         </div>
 

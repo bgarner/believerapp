@@ -35,9 +35,9 @@
                 <tr id="reward{{ $reward->id }}">
                     <td><a href="/admin/rewards/{{ $reward->id }}">{{ $reward->title }}</a></td>
                     @if(!$reward->image)
-                    <td><img src="/uploads/rewards/placeholder.jpg" width="100" /></td>
+                    <td><img src="https://res.cloudinary.com/believer/image/upload/c_scale,w_100/placeholder.jpg" width="100" /></td>
                     @else
-                    <td><img src="/uploads/rewards/{{ $reward->image }}" width="100" /></td>
+                    <td><img src="https://res.cloudinary.com/believer/image/upload/c_scale,w_100/{{ $reward->image }}" width="100" /></td>
                     @endif
                     <td>{{ $reward->description }}</td>
                     <td>{{ $reward->points }}</td>

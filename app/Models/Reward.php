@@ -37,7 +37,7 @@ class Reward extends Model
     {
 
         Self::initCloudinary();
-
+        \Log::info($request);
         $pic = $request->file('rewardimage');
         $upload = \Cloudinary\Uploader::upload($pic);
 
@@ -56,27 +56,24 @@ class Reward extends Model
 
     public static function updateReward($request)
     {
+
         $reward = Reward::find($request->rewardId);
         $old_image = $reward->image;
+        $pic = $request->file('image');
+        \Log::info($request);
 
-        if($request->file('rewardimage')){ //image is not null, therefore, we are update it too..
-            if( $request->file('rewardimage')->isValid() ) {
+        if($pic){ //image is not null, therefore, we are update it too..
+            \Log::info('line 63, uploading image...');
 
-                Self::initCloudinary();
-                $pic = $request->file('rewardimage');
-                $upload = \Cloudinary\Uploader::upload($pic);  // do the upload
-                if ($upload) {
-                    $reward = Reward::create([
-                        'title' => $request->title,
-                        'description' => $request->description,
-                        'points' => $request->points,
-                        'image' => "v" . $upload['version'] . "/" . $upload['public_id'] . "." . $upload['format'],
-                        'active_status' => 1
-                    ]);
-                }
+            Self::initCloudinary();
+            $upload = \Cloudinary\Uploader::upload($pic);  // do the upload
+
+            if ($upload) {
+                $image = "v" . $upload['version'] . "/" . $upload['public_id'] . "." . $upload['format'];
             } else {
                 $image = $old_image; //just put the old one back.
             }
+
             $reward->update([
                 'title' => $request->title,
                 'unique_name' => $request->unique_name,
@@ -84,6 +81,7 @@ class Reward extends Model
                 'points' => $request->points,
                 'image' => $image,
             ]);
+
         } else { //no image update, just update the text fields
             $reward->update([
                 'title' => $request->title,
