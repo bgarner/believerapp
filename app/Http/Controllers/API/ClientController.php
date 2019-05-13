@@ -19,12 +19,13 @@ class ClientController extends Controller
         // {
         //     "user_id": 123
         // }
-        $user = User::find($request->user_id);
-        $user_postal_code_fragment = substr($user->postal_code, 0, 1) . '%';
-        $followedClients = Follower::where('user_id', $request->user_id)->get()->pluck('brand_id')->toArray();
-        return Client::where('postal_code','like',$user_postal_code_fragment)
-                    ->whereNotIn('id', $followedClients)
-                    ->get();
+        // $user = User::find($request->user_id);
+        // $user_postal_code_fragment = substr($user->postal_code, 0, 1) . '%';
+        // $followedClients = Follower::where('user_id', $request->user_id)->get()->pluck('brand_id')->toArray();
+        // return Client::where('postal_code','like',$user_postal_code_fragment)
+        //             ->whereNotIn('id', $followedClients)
+        //             ->get();
+        return Client::orderBy('name', 'asc')->get();
     }
 
     public function clientsFollowedByUser(Request $request)
