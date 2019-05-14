@@ -6,31 +6,26 @@
 <li class="nav-item"><a href="/admin/reports" class="nav-link">Reports</a></li>
 @endsection
 
-@section('logo')
-  @if($client->logo != null)
-    <img src="/uploads/clients/{{ $client->logo }}" class="profile-logo" />
-  @endif
-@endsection
 
 @section('subnav')
-  @if($client->logo == null)
-    <li class="nav-item"><h2>{{ $client->name }}</h2></li>
-  </ul>
-  @endif
-<ul class="navbar-nav pull-right" style="float: right;">
-    <li class="nav-item" style="padding-right: 10px;"><a href="/{{ $client->unique_name }}" target="_blank"><i class="fa fa-share" aria-hidden="true"></i> believerapp.com/<strong>{{ $client->unique_name }}</strong></a></li>
-    <li class="nav-item">
-        <a class="btn btn-primary" href="/admin/clients/{{ $client->id }}/edit" role="button"><i class="fa fa-pencil-square-o"></i> Edit</a>
-    </li>
-
+    <h2 style="float: left; width: 100%;">{{ $client->name }}
+    <span style="float: right; font-size: 60%;">
+        <span class="nav-item">
+            <a href="/{{ $client->unique_name }}" target="_blank">believerapp.com/<strong>{{ $client->unique_name }}</strong></a>
+        </span>
+        <span class="nav-item">
+            <a class="btn btn-primary" href="/admin/clients/{{ $client->id }}/edit" role="button"><i class="fa fa-pencil-square-o"></i> Edit</a>
+        </span>
+    </span>
+    </h2>
 @endsection
 
 @section('content')
-@if($client->logo == null)
-<div class="row">
-@else
-<div class="row" style="padding-top: 60px;">
-@endif
+<div class="row" style="padding: 10px 0px; background: url('https://res.cloudinary.com/believer/image/upload/c_fill,g_center,h_150,w_800,x_0/b_rgb:000000,co_rgb:ffffff,e_gradient_fade:0,f_jpg,o_80/{{ $client->banner }}') top left no-repeat; background-size: 100%;">
+    <img src="https://res.cloudinary.com/believer/image/upload/c_fill,f_jpg,h_150,q_auto,w_150/{{$client-> logo }}" style="width: 150px; margin-left: 20px; border-radius: 75px; border: 1px solid white;" />
+</div>
+
+<div class="row" style="padding-top: 10px;">
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-primary">
@@ -68,7 +63,7 @@
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>All-Time Mission Completions</h4>
+                    <h4>Completions</h4>
                   </div>
                   <div class="card-body">
                     {{ $stats['mission_completions'] }}
@@ -83,7 +78,7 @@
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Total Points Awarded</h4>
+                    <h4>Points</h4>
                   </div>
                   <div class="card-body">
                     {{ $stats['total_points'] }}
