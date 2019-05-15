@@ -5,7 +5,7 @@ Route::get('/admin', array('uses' => 'Admin\DashboardController@index'));
 
 //clients
 Route::resource('/admin/clients', 'Admin\ClientController');
-Route::post('/admin/updateClient', 'Admin\ClientController@updateClient');
+Route::post('/admin/updateClient', 'Admin\ClientController@update');
 Route::resource('/admin/manager', 'Admin\ClientUserController');
 
 //rewards

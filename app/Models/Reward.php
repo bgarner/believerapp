@@ -60,11 +60,8 @@ class Reward extends Model
         $reward = Reward::find($request->rewardId);
         $old_image = $reward->image;
         $pic = $request->file('image');
-        \Log::info($request);
 
         if($pic){ //image is not null, therefore, we are update it too..
-            \Log::info('line 63, uploading image...');
-
             Self::initCloudinary();
             $upload = \Cloudinary\Uploader::upload($pic);  // do the upload
 

@@ -63,7 +63,7 @@ class ClientController extends Controller
         return view('admin.clients.edit', ['client' => $client]);
     }
 
-    public function updateClient(Request $request)
+    public function update(Request $request)
     {
         return Client::updateClient($request);
     }

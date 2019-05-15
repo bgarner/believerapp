@@ -13,9 +13,10 @@
 
 @section('content')
 
-<form id="editclient" name="editclient" method="POST" enctype="multipart/form-data" action="/admin/updateCient" class="form-horizontal">
+<form method="POST" enctype="multipart/form-data" action="/admin/updateClient" class="form-horizontal">
     @csrf
     <input type="hidden" name="client_id" id="client_id" value="{{ $client->id }}" />
+
     <div class="card">
         <div class="card-header"><h4>Client Details</h4></div>
 
@@ -46,11 +47,29 @@
                         </div>
                     </div>
 
-                    <div class="form-group"><label class="col-sm-12 control-label">Logo<span class="req">*</span></label>
+                    <div class="form-group"><label class="col-sm-12 control-label">Primary Logo<span class="req">*</span></label>
                         <small>Some info about the specs for a logo file should go here...</small>
-                        <div class="input-group mb-3 col-sm-12">
+                        <div class="input-group col-12">
                             <div class="custom-file">
                                 <input type="file" class="form-control-file" id="clientimage" name="clientimage">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group"><label class="col-sm-12 control-label">Secondary Logo</label>
+                        <small>Some info about the specs for a logo file should go here...</small>
+                        <div class="input-group col-12">
+                            <div class="custom-file">
+                                <input type="file" class="form-control-file" id="clientimage2" name="clientimage2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group"><label class="col-sm-12 control-label">Banner Image<span class="req">*</span></label>
+                        <small>Some info about the specs for a logo file should go here...</small>
+                        <div class="input-group col-12">
+                            <div class="custom-file">
+                                <input type="file" class="form-control-file" id="bannerimage" name="bannerimage">
                             </div>
                         </div>
                     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -86,33 +87,60 @@ class Client extends Model
         return redirect()->to('/admin/clients');
     }
 
-    public static function updateClient($request)
+    public static function updateClient(Request $request)
     {
+        \Log::info($request->all());
         $client = Client::find($request->clientId);
 
-        $old_image = $client->logo;
+        $old_logo1 = $client->logo;
+        $old_logo2 = $client->logo2;
+        $old_banner = $client->banner;
 
-        if($request->file('logo')){ //image is not null, therefore, we are update it too..
-            if( $request->file('logo')->isValid() ) {
-                $file = $request->logo;
-                $ext = strtolower( $request->logo->extension() );
-                $directory = public_path() . '/uploads/clients';
-                $hash = md5(uniqid(rand(), true));
-                $filename  = $hash . "." . $ext;
-                //move and rename file
-                $upload_success = $request->file('logo')->move($directory, $filename);
-                $image = $filename; //send this to the updaate array
-                if($client->logo){ //if there was an old image...
-                    unlink(public_path().'/uploads/clients/' . $old_image); //delete the old file.
+        $logo1 = $request->logo;
+        $logo2 = $request->logo2;
+        $banner = $request->banner;
+
+        if( isset($logo1) || isset($logo2) || isset($banner) ){
+
+            Self::initCloudinary();
+
+            if($logo1){
+                $upload_logo = \Cloudinary\Uploader::upload($logo1);
+                if ($upload_logo) {
+                    $image_logo1 = "v" . $upload_logo['version'] . "/" . $upload_logo['public_id'] . "." . $upload_logo['format'];
+                    \Log::info($image_logo1);
                 }
             } else {
-                $image = $old_image; //just put the old one back.
+                $image_logo1 = $old_logo1; //just put the old one back.
             }
+
+            if($logo2){
+                $upload_logo2 = \Cloudinary\Uploader::upload($logo2);
+                if ($upload_logo2) {
+                    $image_logo2 = "v" . $upload_logo2['version'] . "/" . $upload_logo2['public_id'] . "." . $upload_logo2['format'];
+                    \Log::info($image_logo2);
+                }
+            } else {
+                $image_logo2 = $old_logo2; //just put the old one back.
+            }
+
+            if($banner){
+                $upload_banner = \Cloudinary\Uploader::upload($banner);
+                if ($upload_banner) {
+                    $image_banner = "v" . $upload_banner['version'] . "/" . $upload_banner['public_id'] . "." . $upload_banner['format'];
+                    \Log::info($image_banner);
+                }
+            } else {
+                $image_banner = $old_banner; //just put the old one back.
+            }
+
             $client->update([
                 'name' => $request->company_name,
                 'unique_name' => $request->unique_name,
                 'description' => $request->description,
-                'logo' => $image,
+                'logo' => $image_logo1,
+                'logo2' => $image_logo2,
+                'banner' => $image_banner,
                 'address1' => $request->address1,
                 'address2' => $request->address2,
                 'city' => $request->city,
@@ -121,11 +149,14 @@ class Client extends Model
                 'phone1' => $request->phone1,
                 'phone2' => $request->phone2
             ]);
-        } else { //no image update, just update the text fields
+        } else {
             $client->update([
                 'name' => $request->company_name,
                 'unique_name' => $request->unique_name,
                 'description' => $request->description,
+                'logo' => $old_logo1,
+                'logo2' => $old_logo2,
+                'banner' => $old_banner,
                 'address1' => $request->address1,
                 'address2' => $request->address2,
                 'city' => $request->city,
