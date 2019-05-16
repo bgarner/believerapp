@@ -35,7 +35,7 @@
                                 <br />
                                 <h5>Mission Details</h5>
                                 <p>{{ $mission->content }}</p>
-                                <p>Mission URL: <a href="{{ $mission->share_url }}">{{ $mission->share_url }}</a></p>
+                                <p>Mission URL: <a href="{{ $mission->share_url }}" target="_blank">{{ $mission->share_url }}</a></p>
                             </div>
                         </div>
 
