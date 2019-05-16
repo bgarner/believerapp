@@ -23,19 +23,19 @@
 
                         <div class="row">
                             <div class="col-6">
-                                @if( $mission->image == "")
-                                <img src="/images/placeholder.jpg" width="100%" />
-                                @else
-                                <img src="/uploads/missions/{{ $mission->image }}" />
-                                @endif
+                                <img src="https://res.cloudinary.com/believer/image/upload/w_400,f_jpg/{{ $mission->image }}" width="100%" />
                             </div>
 
                             <div class="col-6">
-                                <small class="text-muted">{{ $mission->start }} <i class="fa fa-long-arrow-right" aria-hidden="true"></i> {{ $mission->end }}</small>
 
-                                <h4>{{ $mission->name }}</h4>
+                                <small class="text-muted">Mission Start and End Dates</small>
+                                <p>{{ $mission->start }} &nbsp;<i class="fa fa-long-arrow-right" aria-hidden="true"></i>&nbsp; {{ $mission->end }}</p>
+
+                                <h1>{{ $mission->name }}</h1>
+                                <br />
+                                <h5>Mission Details</h5>
                                 <p>{{ $mission->content }}</p>
-                                {{ $mission }}
+                                <p>Mission URL: <a href="{{ $mission->share_url }}">{{ $mission->share_url }}</a></p>
                             </div>
                         </div>
 
