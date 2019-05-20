@@ -114,3 +114,5 @@ require('./believer/uploadInvites.js');
 require('./believer/validateRegistration.js');
 //messages
 require('./believer/deleteMessage.js');
+//manager accounts
+require('./believer/createManagerAccount.js');

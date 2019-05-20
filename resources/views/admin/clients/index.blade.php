@@ -10,6 +10,10 @@
 <li class="nav-item">
     <a class="btn btn-primary" href="/admin/clients/create" role="button"><i class="fa fa-plus"></i> Add New Client</a>
 </li>
+
+<li class="nav-item">
+    <a class="btn btn-primary" href="/admin/manager/create" role="button"><i class="fa fa-plus"></i> Add a Manager Account</a>
+</li>
 @endsection
 
 @section('content')

@@ -20803,5 +20803,10 @@ tr:first-child > td > .fc-day-grid-event {
 
 .nav-item {
   list-style: none !important;
+  padding-right: 20px;
+}
+
+#navbarCollapse li {
+  list-style: none !important;
 }
 
