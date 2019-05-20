@@ -11,6 +11,7 @@ use App\Models\Audience;
 use App\Models\AudienceMember;
 use App\Models\Follower;
 use App\Models\Challenge as Mission;
+use App\Models\AdvocateBulkUpload;
 use Auth;
 use DB;
 
@@ -68,14 +69,52 @@ class BelieverController extends Controller
     {
         $client_id = Auth::user()->client_id;
         $uploader_id = Auth::user()->id;
+        $invitations = AdvocateBulkUpload::where('client_id', $client_id)
+                            ->orderBy('batch_date')
+                            ->get();
+        // $invitations = DB::table('advocate_bulk_uploads')
+        //                 ->groupBy('batch_date')
+        //                 ->having('client_id', '=', $client_id)
+        //                 ->get();
+
+        $grouped = $invitations->groupBy('batch_date');
+
         return view('clients.believers.invite')
                 ->with('client_id', $client_id)
-                ->with('uploader_id', $uploader_id);
+                ->with('uploader_id', $uploader_id)
+                ->with('invitations', $grouped);
     }
 
     public function uploadInvites(Request $request)
     {
         \Log::info($request);
+        request()->validate([
+            'csvfile' => 'required|mimes:csv,txt'
+        ]);
+        $path = $request->file('csvfile')->store('csvfile');
+       // $file = \Storage::get($path);
+        //$handle = fopen($_SERVER['DOCUMENT_ROOT'] . '/storage/app/' . $path, "r");
+        $batch_date = date("F j, Y, g:i a");
+        $handle = fopen("../storage/app/" . $path, "r");
+        $header = false;
+
+        while ($csvLine = fgetcsv($handle, 1000, ",")) {
+            if ($header) {
+                $header = false;
+            } else {
+                AdvocateBulkUpload::create([
+                    'client_id' => $request->client_id,
+                    'batch_date' => $batch_date,
+                    'user_id_uploader' => 1,
+                    'first' => $csvLine[0],
+                    'last' => $csvLine[1],
+                    'email' => $csvLine[2],
+                ]);
+            }
+        }
+        //delete the file
+        fclose($handle);
+        \Storage::delete($path);
     }
 
     public function audiences() //perform the update
