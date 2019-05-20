@@ -65357,13 +65357,12 @@ $(".datatable-rewards").dataTable({
 $(".datatable-clients").dataTable({
   "columnDefs": [{
     "sortable": false,
-    "targets": [5]
+    "targets": [2]
   }]
 });
 $(".datatable-missions").dataTable({
   "columnDefs": [{
-    "sortable": false,
-    "targets": [5]
+    "sortable": false
   }]
 });
 $(".datatable-audience_believers").dataTable({
