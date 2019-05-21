@@ -12,6 +12,7 @@ require('datatables.net');
 require('sweetalert');
 require('daterangepicker');
 require('medium-editor');
+require('chart.js');
 require('./stisla.js');
 require('./scripts.js');
 
@@ -93,6 +94,8 @@ $( "#message-form" ).submit(function( event ) {
     console.log(value);
     $("#body").val(value);
 });
+
+
 
 //implementiations...
 require('./believer/iCheck.js');
