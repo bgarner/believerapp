@@ -95,6 +95,7 @@ class BelieverController extends Controller
        // $file = \Storage::get($path);
         //$handle = fopen($_SERVER['DOCUMENT_ROOT'] . '/storage/app/' . $path, "r");
         $batch_date = date("F j, Y, g:i a");
+        $batch_id = substr(md5(date("Y-m-d H:i:s").rand()), 0, 8);
         $handle = fopen("../storage/app/" . $path, "r");
         $header = false;
 
@@ -104,6 +105,7 @@ class BelieverController extends Controller
             } else {
                 AdvocateBulkUpload::create([
                     'client_id' => $request->client_id,
+                    'batch_id' => $batch_id,
                     'batch_date' => $batch_date,
                     'user_id_uploader' => 1,
                     'first' => $csvLine[0],
