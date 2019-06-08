@@ -31,7 +31,7 @@ class Invitation extends Mailable
     public function build()
     {
         return $this->from('no-reply@gamegraft.com')
-                    ->view('email.invite')
+                    ->markdown('email.invite')
                     ->text('email.invite_text');
     }
 }

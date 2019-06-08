@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Stats;
+use App\Models\Client;
 use App\Models\ClientUser;
 use App\Models\Audience;
 use App\Models\AudienceMember;
@@ -14,6 +15,8 @@ use App\Models\Challenge as Mission;
 use App\Models\AdvocateBulkUpload;
 use Auth;
 use DB;
+use Mail;
+use App\Jobs\SendInvitations;
 
 class BelieverController extends Controller
 {
@@ -87,7 +90,7 @@ class BelieverController extends Controller
 
     public function uploadInvites(Request $request)
     {
-        \Log::info($request);
+        $client_id = Auth::user()->client_id;
         request()->validate([
             'csvfile' => 'required|mimes:csv,txt'
         ]);
@@ -107,7 +110,7 @@ class BelieverController extends Controller
                     'client_id' => $request->client_id,
                     'batch_id' => $batch_id,
                     'batch_date' => $batch_date,
-                    'user_id_uploader' => 1,
+                    'user_id_uploader' => Auth::user()->id,
                     'first' => $csvLine[0],
                     'last' => $csvLine[1],
                     'email' => $csvLine[2],
@@ -117,6 +120,30 @@ class BelieverController extends Controller
         //delete the file
         fclose($handle);
         \Storage::delete($path);
+
+        //get the invites
+        $invites = AdvocateBulkUpload::where('batch_id', $batch_id)->get();
+        $brand = Client::find($request->client_id);
+        //do the job
+        //SendInvitations::dispatchNow($invites, $brand, $batch_id);
+        foreach($invites as $invite){
+
+            \Log::info("\n ---------------------------------");
+            \Log::info("sending an email");
+            \Log::info($invite->email);
+
+            Mail::send('email.invite', ['first_name' => $invite->first, 'last_name' => $invite->last], function ($message) use ($invite){
+                $message->from('no-reply@gamegraft.com', 'Believer');
+                $message->to($invite->email)->subject('Testing this out');
+            });
+
+            // \Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
+            // {
+            //     $message->subject('Mailgun and Laravel are awesome!');
+            //     $message->from('no-reply@gamegraft.com', 'Believer');
+            //     $message->to($email);
+            // });
+        }
     }
 
     public function audiences() //perform the update
