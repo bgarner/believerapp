@@ -27,8 +27,6 @@ class MissionController extends Controller
 
         $brands = Follower::where('user_id',$request->user_id)->pluck('brand_id')->toArray();
 
-
-
         $challenges = Challenge::join('brands', 'challenges.brand_id', '=', 'brands.id')
                                 ->leftjoin('challenge_completions', 'challenges.id' , '=', 'challenge_completions.challenge_id')
                                 ->whereIn('challenges.brand_id' ,$brands)
@@ -111,6 +109,20 @@ class MissionController extends Controller
             ];
         }
         return ($data);
+    }
+
+    public function getMissionHistory(Request $request)
+    {
+        // list of completed misson nby a user
+        // POST http://localhost:8000/api/v1/missions/getMissionHistory
+        // {
+        //     "user_id": 123,
+        // }
+        $completions = ChallengeCompletion::where('user_id', $request->user_id)->get()
+                        ->each(function ($completion) {
+                            $completion->challengeDetails = Challenge::find($completion->challenge_id);
+                        });
+        return ($completions);
     }
 }
 

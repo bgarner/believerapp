@@ -34,6 +34,7 @@ Route::post('/v1/missions/show', 'API\MissionController@show');
 Route::post('/v1/missions/client', 'API\MissionController@showByClient');
 Route::post('/v1/missions/accept', 'API\MissionController@accept');
 Route::post('/v1/missions/complete', 'API\MissionController@complete');
+Route::post('/v1/missions/getMissionHistory', 'API\MissionController@getMissionHistory');
 
 Route::post('/v1/profile', 'API\ProfileController@show');
 Route::post('/v1/profile/history', 'API\ProfileController@challengeHistory');
