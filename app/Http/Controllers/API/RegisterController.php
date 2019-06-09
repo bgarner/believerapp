@@ -26,6 +26,7 @@ class RegisterController extends Controller
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'password' => bcrypt($request->get('password')),
+            'group_id' => 3
         ]);
         $token = JWTAuth::fromUser($user);
 
