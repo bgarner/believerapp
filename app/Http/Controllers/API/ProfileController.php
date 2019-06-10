@@ -56,7 +56,7 @@ class ProfileController extends Controller
 
     public function challengeHistory(Request $request)
     {
-        // GET http://localhost:8000/api/v1/profile/history
+        // POST http://localhost:8000/api/v1/profile/history
         // {
         //     "user_id": 20
         // }
@@ -83,6 +83,53 @@ class ProfileController extends Controller
     public function edit(Request $request)
     {
         return "not implemented yet";
+    }
+
+    public function leaderboard(Request $request)
+    {
+        // POST http://localhost:8000/api/v1/profile/leaderboard
+        // {
+        //     "user_id": 6
+        // }
+        $users = [];
+        $i = 1;
+        $j = 1;
+        $user_id = $request->user_id;
+
+        $allusers = User::select('id', 'first', 'last', 'image', 'point_balance')
+                        ->where('group_id', '3')
+                        ->orderBy('point_balance', 'DESC')
+                        ->get()
+                        ->each(function ($user) use(&$user_id, &$i, &$users) {
+                            $user->rank = $i;
+                            $i++;
+                            if($user->id == $user_id) {
+                                $user->current_user = "true";
+                                array_push($users, $user);
+                            }
+                        });
+
+        foreach($allusers as $u) {
+            if( $u->id == $user_id ){
+                continue;
+            } else {
+                array_push($users, $u);
+            }
+            if($j >= 9){
+                break;
+            }
+            $j++;
+        }
+
+        //$finalsort = $user_collection->sortBy('point_balance');
+        usort($users, array($this, "cmp"));
+        return $users;
+    }
+
+    function cmp($a, $b)
+    {
+        //return strcmp($a->rank, $b->rank);
+        return $a->rank - $b->rank;
     }
 
 }
