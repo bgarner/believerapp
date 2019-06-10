@@ -133,10 +133,14 @@ class RegisterController extends Controller
 
         $newuser = User::create($user);
 
-        $brandFollow = Follower::create([
-            'brand_id' => $request->get('brand_id'),
-            'user_id' => $newuser->id,
-        ]);
+        //signup the new user to follow the brand they registered with.
+        //if there is no brand, skip this part
+        if( $request->get('brand_id') ){
+            $brandFollow = Follower::create([
+                'brand_id' => $request->get('brand_id'),
+                'user_id' => $newuser->id,
+            ]);
+        }
 
         \Log::info("new user...");
         \Log::info($newuser);

@@ -4,33 +4,62 @@
     <title>Believer :: {{ $brand->name }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="/css/app.css" />
+    <style>
+        .nav{ display: inline; }
+        .nav li{ float: left; padding: 0px 10px; }
+    </style>
 </head>
 <body class="landing">
-  <div id="app" style="padding-top: 60px;">
+  <div id="app" style="padding-top: 0px;">
     <div class="main-wrapper">
 
       {{-- <a href="index.html" class=""><img src="/images/logo-light.png" width="150"></a> --}}
 
       <div class="main-content">
+        <div class="row" style="background: black; padding: 20px 0px;">
+            <div class="container">
+            <div class="col-12">
+                <a href="/"><img src="/images/Believer-Logo.webp"  height="" style="" /></a>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    @if($brand->logo)
-                    <img src="https://res.cloudinary.com/believer/image/upload/{{ $brand->logo }}" />
-                    @endif
-                </div>
+                <ul class="nav navbar-nav" style="float: right;">
+                  <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+
+                  <li> <a class="page-scroll" href="/#section-app">About the App</a> </li>
+                  <li> <a class="page-scroll" href="/#section-business">For Business</a> </li>
+                  <li> <a class="page-scroll" href="/signup">Sign Up</a> </li>
+                  <li> <a class="btn-default" href="/login">Login</a> </li>
+
+                </ul>
+
             </div>
+            </div>
+        </div>
+
+        <div class="container" style="padding: 60px 0px;">
 
             <div class="row pt-4 pb-4">
                 <div class="col-7">
-                    <h2>As if building the home of your dreams wasn't rewarding enough.</h2>
+                    <h2>
+                    @if($brand->logo)
+                    <img style="float: left; padding: 0px 20px 10px 0px;" src="https://res.cloudinary.com/believer/image/upload/c_fill,f_jpg,h_200,q_auto,w_200/{{ $brand->logo }}" />
+                    @endif
+                    As if building the home of your dreams wasn't rewarding enough.
+                    </h2>
                     <p>Raving fan of {{$brand->name}}? Become a member of the {{$brand->name}} Club to help friends, share your experience and earn rewards.</p>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </div>
                 <div class="col-1"></div>
                 <div class="col-4 bg-ltgrey p-4">
                     @if($brand->logo)
-                    <img src="https://res.cloudinary.com/believer/image/upload/{{ $brand->logo }}" class="img-fluid pb-3" />
+                    <center>
+                    <img src="https://res.cloudinary.com/believer/image/upload/c_fill,f_jpg,h_150,q_auto,w_150/{{ $brand->logo2 }}" class="img-fluid pb-3" />
+                    </center>
                     @endif
                     <center>
                     <p class="text-center">Join the {{ $brand->name }} Club and get rewarded for sharing the love.</p>

@@ -11,11 +11,14 @@ class ClientController extends Controller
     public function __construct()
     {
       //  $this->middleware('auth');
-    }  
+    }
 
     public function clientLandingPage($slug)
-    { 
+    {
         $brand = Client::where('unique_name', $slug)->first();
+        if(!$brand){
+            abort(404);
+        }
         return view('web.landingpage')
           ->with('brand', $brand);
     }

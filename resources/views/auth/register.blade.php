@@ -24,7 +24,55 @@
               <div class="card-header"><h4>Register</h4></div>
 
               <div class="card-body">
-              <form method="POST" action="{{ route('register') }}">
+
+                <form class="form" id="registration_form">
+                    @csrf
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="control-label" for="first_name">First Name <span class="req">*</span></label>
+                            <input type="text" class="form-control" name="first_name" id="first_name" required />
+                        </div>
+                        <div class="col-6">
+                            <label class="control-label" for="last_name">Last Name <span class="req">*</span></label>
+                            <input type="text" class="form-control" name="last_name" id="last_name" required />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <label class="control-label" for="email">Email Address <span class="req">*</span></label>
+                            <input type="text" class="form-control" name="email" id="email" required />
+                            <label class="control-label" for="email">Confirm Email Address <span class="req">*</span></label>
+                            <input type="text" class="form-control" name="confirm_email" id="confirm_email" required />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <label class="control-label">Address <span class="req">*</span></label>
+                            <input type="text" id="address1" name="address1" class="form-control" value="" placeholder="Address Line 1" required>
+                            <input type="text" id="address2" name="address2" class="form-control" value="" placeholder="Address Line 2 (optional)">
+
+                            <div class="input-group form-group">
+                                <input type="text" class="form-control" name="city" id="city" placeholder="City" value="" required>
+                                <input type="text" class="form-control" name="province" id="province" placeholder="Province/State" value="LA" required>
+                                <input type="text" class="form-control" name="postal_code" id="postal_code" placeholder="Postal/Zip Code" value="" required>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <label class="control-label" for="password">Password <span class="req">*</span></label>
+                            <input type="password" class="form-control" name="password" id="password" required />
+                            <br />
+                            <input class="btn btn-lg btn-primary registerWithBrand" type="button" name="button" value="Register" />
+                        </div>
+
+                    </div>
+
+          {{--     <form method="POST" action="{{ route('register') }}">
                         @csrf
                   <div class="row">
                     <div class="form-group col-6">
@@ -104,7 +152,7 @@
                       Register
                     </button>
                   </div>
-                </form>
+                </form> --}}
               </div>
             </div>
             <div class="simple-footer">
