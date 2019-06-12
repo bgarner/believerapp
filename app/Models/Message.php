@@ -14,7 +14,7 @@ class Message extends Model
 {
     use SoftDeletes;
     protected $table = 'messages';
-    protected $fillable = ['brand_id', 'subject', 'body', 'action_title', 'action_url', 'start', 'end'];
+    protected $fillable = ['brand_id', 'subject', 'body', 'banner', 'action_title', 'action_url', 'start', 'end'];
 
     public function getCreatedAtAttribute($timestamp)
     {
@@ -41,19 +41,36 @@ class Message extends Model
         return Utility::prettifyDate($timestamp);
     }
 
+    public static function initCloudinary()
+    {
+        $cloud = config('services.cloudinary.cloud_name');
+            \Cloudinary::config(array(
+            "cloud_name" => $cloud,
+            "api_key" => config('services.cloudinary.api_key'),
+            "api_secret" => config('services.cloudinary.api_secret')
+        ));
+    }
+
     public static function createNewMessage($request)
     {
-        // dd($request->brand_id);
-        $message = Message::create([
-            'brand_id' => $request->brand_id,
-            'subject' => $request->subject,
-            'body' => $request->body,
-            'action_title' => $request->action_title,
-            'action_url' => $request->action_url,
-            'start' => $request->start,
-            'end' => $request->end,
-        ]);
+        Self::initCloudinary();
 
+        $pic = $request->file('bannerimage');
+        $upload = \Cloudinary\Uploader::upload($pic);
+
+        if ($upload) {
+            // dd($request->brand_id);
+            $message = Message::create([
+                'brand_id' => $request->brand_id,
+                'subject' => $request->subject,
+                'banner' => "v" . $upload['version'] . "/" . $upload['public_id'] . "." . $upload['format'],
+                'body' => $request->body,
+                'action_title' => $request->action_title,
+                'action_url' => $request->action_url,
+                'start' => $request->start,
+                'end' => $request->end,
+            ]);
+        }
         \Log::info($request);
 
         if($request->audience_select === "all"){

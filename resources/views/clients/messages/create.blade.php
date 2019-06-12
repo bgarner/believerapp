@@ -30,6 +30,15 @@
                         </div>
                     </div>
 
+                    <div class="form-group"><label class="col-sm-12 control-label">Banner Image<span class="req">*</span></label>
+                        <small>Recommended Size: 800px x 150px</small>
+                        <div class="input-group col-12">
+                            <div class="custom-file">
+                                <input type="file" class="form-control-file" id="bannerimage" name="bannerimage" required>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="form-group"><label class="col-sm-12 control-label">Message<span class="req">*</span></label>
                         <div class="col-sm-10">
                             <div class="editable"></div>
