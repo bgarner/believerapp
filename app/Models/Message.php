@@ -99,6 +99,7 @@ class Message extends Model
 
     public static function deleteMessage($id)
     {
+        MessageUser::where('message_id', $id)->delete();
         return Self::find($id)->delete();
     }
 }
