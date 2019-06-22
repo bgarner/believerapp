@@ -32,7 +32,7 @@ class MissionController extends Controller
                                 ->whereIn('challenges.brand_id' ,$brands)
                                 ->where('start', '<', Carbon::now())
                                 ->where('end', '>', Carbon::now())
-                                ->select('challenges.*', 'brands.name as brand_name', 'challenge_completions.user_id as completed_by')
+                                ->select('challenges.*', 'brands.name as brand_name', 'brands.logo as client_logo', 'challenge_completions.user_id as completed_by')
 
                                 ->orderBy('start', 'desc')
                                 ->get()
@@ -118,11 +118,14 @@ class MissionController extends Controller
         // {
         //     "user_id": 123,
         // }
-        $completions = ChallengeCompletion::where('user_id', $request->user_id)->get()
-                        ->each(function ($completion) {
-                            $completion->challengeDetails = Challenge::find($completion->challenge_id);
-                        });
-        return ($completions);
+        $completedChallenges = Challenge::join('brands', 'challenges.brand_id', '=', 'brands.id')
+                                ->leftjoin('challenge_completions', 'challenges.id' , '=', 'challenge_completions.challenge_id')
+                                ->where('challenge_completions.user_id', $request->user_id)
+                                ->select('challenges.*', 'brands.name as brand_name','brands.logo as client_logo', 'challenge_completions.user_id as completed_by')
+                                ->orderBy('challenge_completions.created_at', 'desc')
+                                ->get();
+                                
+        return ($completedChallenges);
     }
 }
 
