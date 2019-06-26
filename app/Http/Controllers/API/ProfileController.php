@@ -21,9 +21,7 @@ class ProfileController extends Controller
         // {
         //     "user_id": 123
         // }
-        $user = User::join('advocate_levels', 'advocate_levels.level', 'users.level')
-                    ->where('users.id', $request->user_id)
-                    ->select('users.*', 'advocate_levels.level_name')
+        $user = User::where('users.id', $request->user_id)
                     ->first();
 
 
