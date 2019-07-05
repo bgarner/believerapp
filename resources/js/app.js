@@ -5,7 +5,7 @@ window.$ = window.jQuery = $;
 require('bootstrap');
 require('popper.js');
 require('tooltip.js');
-require('icheck');
+//require('icheck');
 require('jquery.nicescroll');
 require('moment');
 require('datatables.net');
@@ -98,7 +98,7 @@ $( "#message-form" ).submit(function( event ) {
 
 
 //implementiations...
-require('./believer/iCheck.js');
+//require('./believer/iCheck.js');
 require('./believer/dataTables.bs4.js');
 require('./believer/dataTables.js');
 // clients

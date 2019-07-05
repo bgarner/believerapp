@@ -53,16 +53,24 @@
                         </div>
                     </div>
 
+
+
                     <div class="form-group">
                         <label class="col-sm-6 control-label">Start and End Date<span class="req">*</span></label>
+
                         <div class="col-sm-10">
+                            <small><input type="checkbox" class="form-control-inline" id="no_end_date" name="no_end_date" value="no_end_date"> This Mission has no end date and starts now</small>
+
                             <input type="text" id="mission_create_daterange" class="form-control" id="missionrange" name="missionrange" value="">
                             <input type="hidden" id="start" name="start" value="" />
                             <input type="hidden" id="end" name="end" value="" />
+
+
+
+
+
                         </div>
                     </div>
-
-
 
                     <div class="form-group"><label class="col-sm-12 control-label">Image<span class="req">*</span></label>
                         <small>Some info about the specs for a logo file should go here...</small>

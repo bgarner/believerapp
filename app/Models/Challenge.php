@@ -66,13 +66,22 @@ class Challenge extends Model
         $pic = $request->file('missionimage');
         $upload = \Cloudinary\Uploader::upload($pic);
 
+        $start = $request->start;
+        $end = $request->end;
+
+        if($request->no_end_date){
+            $start = now();
+            //$end = "2099-12-31 23:59:59";
+            $end = null;
+        }
+
         if ($upload) {
             $client = Self::create([
                 'name' => $request->name,
                 'content' => $request->description,
                 'image' => "v" . $upload['version'] . "/" . $upload['public_id'] . "." . $upload['format'],
-                'start' => $request->start,
-                'end' => $request->end,
+                'start' => $start,
+                'end' => $end,
                 'brand_id' => Auth::user()->client_id,
                 'created_by' => Auth::user()->id,
                 'is_draft' => 0,

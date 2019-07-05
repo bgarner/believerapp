@@ -58,6 +58,12 @@ class Message extends Model
         $pic = $request->file('bannerimage');
         $upload = \Cloudinary\Uploader::upload($pic);
 
+        if($request->no_end_date){
+            $start = now();
+            //$end = "2099-12-31 23:59:59";
+            $end = null;
+        }
+
         if ($upload) {
             // dd($request->brand_id);
             $message = Message::create([
@@ -67,8 +73,8 @@ class Message extends Model
                 'body' => $request->body,
                 'action_title' => $request->action_title,
                 'action_url' => $request->action_url,
-                'start' => $request->start,
-                'end' => $request->end,
+                'start' => $start,
+                'end' => $end,
             ]);
         }
         \Log::info($request);

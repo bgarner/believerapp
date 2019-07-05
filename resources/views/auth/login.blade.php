@@ -49,9 +49,9 @@
                   </div>
 
                   <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
-                      <label class="custom-control-label" for="remember-me">Remember Me</label>
+                    <div class="custom-control">
+                        <input name="remember" type="checkbox" class="form-check-input" id="remember" tabindex="3">
+                        <label class="form-check-label" for="exampleCheck1">Remember Me</label>
                     </div>
                   </div>
 
@@ -61,7 +61,7 @@
                     </button>
                   </div>
                 </form>
-  
+
             <div class="mt-5 text-muted text-center">
               Don't have an account? <a href="/signup">Create One</a>
             </div>

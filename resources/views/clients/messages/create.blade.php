@@ -77,6 +77,9 @@
                     <div class="form-group">
                         <label class="col-sm-12 control-label">Start and End Date<span class="req">*</span></label>
                         <small>Messages will automatically be removed from a users inbox after the end date</small>
+
+                        <small><input type="checkbox" class="form-control-inline" id="no_end_date" name="no_end_date" value="no_end_date"> This Message has no end date and will be sent now</small>
+
                         <div class="col-sm-10">
                             <input type="text" id="message_create_daterange" class="form-control" id="messagerange" name="messagerange" value="">
                             <input type="hidden" id="start" name="start" value="" />
