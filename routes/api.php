@@ -39,7 +39,8 @@ Route::post('/v1/missions/getMissionHistory', 'API\MissionController@getMissionH
 Route::post('/v1/profile', 'API\ProfileController@show');
 Route::post('/v1/profile/history', 'API\ProfileController@challengeHistory');
 Route::post('/v1/profile/pointbalance/', 'API\ProfileController@balance');
-Route::post('/v1/profile/edit', 'API\ProfileController@edit');
+Route::post('/v1/profile/editUsername', 'API\ProfileController@editUsername');
+Route::post('/v1/profile/editContact', 'API\ProfileController@editContact');
 Route::post('/v1/profile/leaderboard', 'API\ProfileController@leaderboard');
 
 Route::post('/v1/messages', 'API\MessagesController@index');

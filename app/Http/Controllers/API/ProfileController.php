@@ -78,9 +78,46 @@ class ProfileController extends Controller
         return $completions;
     }
 
-    public function edit(Request $request)
+    public function editUsername(Request $request)
     {
-        return "not implemented yet";
+        // POST http://localhost:8000/api/v1/profile/updateUsername
+        // {
+        //     "user_id": 20,
+        //     "firstName": "First",
+        //     "lastName": "Last",
+        // }
+        $user = User::find($request->user_id);
+        $username = [];
+        $username['first'] = isset($request->firstName) ? $request->firstName : $user->first ;
+        $username['last'] = isset($request->lastName) ? $request->lastName : $user->last;
+        $username['name'] = $username['first'] . " " . $username['last'];
+        \Log::info($username);
+        $user = User::where('id', $request->user_id)
+            ->update($username);
+        return User::find($request->user_id);
+    }
+
+    public function editContact(Request $request)
+    {
+        // POST http://localhost:8000/api/v1/profile/updateUsername
+        // {
+        //     "user_id": 20,
+        //     "address1" : "Street address,
+        //     "city" : "city",
+        //     "postalCode": "postal code",
+        //     "province": "province",
+        //     "phone1": "phone number",
+        // }
+        $user = User::find($request->user_id);
+        $contact = [];
+        $contact['address1'] = isset($request->address1) ? $request->address1 : $user->address1;
+        $contact['city'] = isset($request->city) ? $request->city: $user->city;
+        $contact['postal_code'] = isset($request->postalCode) ? $request->postalCode: $user->postal_code;
+        $contact['province'] = isset($request->province) ? $request->province : $user->province;
+        $contact['phone1'] = isset($request->phone1) ? $request->phone1 : $user->phone1;
+        User::where('id', $request->user_id)
+            ->update($contact);
+        return User::find($request->user_id);
     }
 
     public function leaderboard(Request $request)
