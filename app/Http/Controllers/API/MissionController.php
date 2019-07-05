@@ -7,6 +7,7 @@ use App\User;
 use App\Models\Client;
 use App\Models\Follower;
 use App\Models\Challenge;
+use App\Models\ChallengeType;
 use App\Models\ChallengeCompletion;
 
 class MissionController extends Controller
@@ -48,11 +49,14 @@ class MissionController extends Controller
     public function show(Request $request)
     {
         // get a single mission
-        //POST http://localhost:8000/api/v1/missions
+        //POST http://localhost:8000/api/v1/missions/show
         // {
-        //     "user_id": 10
+        //     "mission_id": 6
         // }
-        return Challenge::find($request->mission_id);
+
+        $challenge = Challenge::find($request->mission_id);
+        $challenge->challenge_type_name = ChallengeType::find($challenge->challenge_type)->type;
+        return $challenge;
     }
 
     public function showByClient(Request $request)
@@ -124,7 +128,7 @@ class MissionController extends Controller
                                 ->select('challenges.*', 'brands.name as brand_name','brands.logo as client_logo', 'challenge_completions.user_id as completed_by')
                                 ->orderBy('challenge_completions.created_at', 'desc')
                                 ->get();
-                                
+
         return ($completedChallenges);
     }
 }

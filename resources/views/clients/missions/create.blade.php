@@ -22,6 +22,17 @@
                 <div class="col-6">
 
                     <div class="form-group">
+                        <label class="col-sm-12 control-label">Mission Type<span class="req">*</span></label>
+                        <div class="col-sm-10">
+                           <select class="form-control">
+                               @foreach($challenge_types as $ct)
+                               <option id="{{ $ct->id }}" value="{{ $ct->type }}">{{ $ct->type }}</option>
+                               @endforeach
+                           </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label class="col-sm-12 control-label">Title<span class="req">*</span></label>
                         <div class="col-sm-10">
                             <input type="text" id="name" name="name" class="form-control" value="" required>
