@@ -52,3 +52,7 @@ Route::post('/v1/rewards/show', 'API\RewardController@show');
 Route::post('/v1/rewards/redeem', 'API\RewardController@redeem');
 
 Route::post('/v1/referral/create', 'API\ReferralController@create');
+
+Route::post('/v1/favs', 'API\FavController@index');
+Route::post('/v1/favs/create', 'API\FavController@create');
+Route::post('/v1/favs/delete', 'API\FavController@delete');
