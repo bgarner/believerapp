@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Client;
 use App\Models\Follower;
-use Carbon\Carbon;
 use App\Stats;
+use App\Models\Challenge as Mission;
+use Carbon\Carbon;
+
 
 class ClientController extends Controller
 {
@@ -126,6 +128,14 @@ class ClientController extends Controller
     public function share(Request $request)
     {
         return "this is the share endpoint";
+    }
+
+    public function missions(Request $request)
+    {
+        return Mission::where('brand_id', $request->brand_id)
+                        ->where('start','<', Carbon::now())
+                        ->where('end', '>', Carbon::now())
+                        ->get();
     }
 }
 

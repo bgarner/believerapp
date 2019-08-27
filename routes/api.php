@@ -28,6 +28,7 @@ Route::post('/v1/clients/follow', 'API\ClientController@follow');
 Route::post('/v1/clients/unfollow', 'API\ClientController@unfollow');
 Route::post('/v1/clients/refer', 'API\ClientController@refer');
 Route::post('/v1/clients/share', 'API\ClientController@share');
+Route::post('/v1/clients/misisions', 'API\ClientController@missions');
 
 Route::post('/v1/missions', 'API\MissionController@index');
 Route::post('/v1/missions/show', 'API\MissionController@show');
