@@ -132,6 +132,11 @@ class ClientController extends Controller
 
     public function missions(Request $request)
     {
+        // returns a list of all of the active missions for a client
+        // POST http://localhost:8000/api/v1/clients/missions
+        // {
+        //     "brand_id": 2
+        // }
         return Mission::where('brand_id', $request->brand_id)
                         ->where('start','<', Carbon::now())
                         ->where('end', '>', Carbon::now())
