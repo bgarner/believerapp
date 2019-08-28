@@ -13,6 +13,11 @@ Route::resource('/admin/rewards', 'Admin\RewardController');
 Route::post('/admin/updateReward', 'Admin\RewardController@updateReward');
 Route::post('/admin/toggleRewardPublish', 'Admin\RewardController@toggleStatus');
 
+
+//user nav
+Route::resource('/admin/missiontypes', 'Admin\MissionTypesController');
+Route::post('/admin/missiontypes/update', 'Admin\MissionTypesController@update');
+
 //reports
 Route::resource('/admin/reports', 'Admin\ReportController');
 

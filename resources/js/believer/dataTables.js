@@ -57,6 +57,13 @@ $(".datatable-messages").dataTable({
     // ]
 });
 
+$(".datatable-missiontypes").dataTable({
+    // "columnDefs": [
+    //   { "sortable": false, "targets": [4] }
+    // ]
+});
+
+
 
 $(".datatable-audiences").dataTable({
     "columnDefs": [
