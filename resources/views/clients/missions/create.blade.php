@@ -25,6 +25,7 @@
                         <label class="col-sm-12 control-label">Mission Type<span class="req">*</span></label>
                         <div class="col-sm-10">
                            <select class="form-control" id="challenge_type" name="challenge_type">
+                               <option value="" id=""></option>
                                @foreach($challenge_types as $ct)
                                <option value="{{ $ct->id }}" id="challenge_type_{{ $ct->id }}">{{ $ct->type }}</option>
                                @endforeach
