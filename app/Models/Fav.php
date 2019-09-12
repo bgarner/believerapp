@@ -6,7 +6,8 @@ use App\Utility;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Challenge as Mission;
+use App\Models\Challenge;
+use App\Models\Client;
 use Carbon\Carbon;
 
 class Fav extends Model
@@ -17,12 +18,11 @@ class Fav extends Model
 
     public static function getFavsByUserId($user_id)
     {
-        return Fav::where('user_id', $user_id)->get()
-            ->each(function ($fav) {
-
-                $fav->mission_details = Mission::where('id', $fav->mission_id)
-                            ->where('end', '>', Carbon::now())
-                            ->get();
-            });
+        return  Fav::join('challenges', 'favs.mission_id', '=', 'challenges.id')
+                    ->join('brands', 'brands.id', '=', 'challenges.brand_id')
+                    ->where('user_id', $user_id)
+                    ->where('end', '>', Carbon::now())
+                    ->select('challenges.*', 'brands.name as brand_name', 'brands.logo as client_logo')
+                    ->get();
     }
 }

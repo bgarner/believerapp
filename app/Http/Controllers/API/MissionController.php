@@ -9,6 +9,7 @@ use App\Models\Follower;
 use App\Models\Challenge;
 use App\Models\ChallengeType;
 use App\Models\ChallengeCompletion;
+use App\Models\Fav;
 
 class MissionController extends Controller
 {
@@ -40,6 +41,16 @@ class MissionController extends Controller
                                     return $value['completed_by'] !== $request->user_id;
                                 })
                                 ->values();
+        foreach($challenges as $challenge){
+            $is_fav = Fav::where('mission_id', $challenge->id)
+                        ->where('user_id', $request->user_id)
+                        ->first();
+            if($is_fav) {
+                $challenge->is_fav = 1;
+            } else {
+                $challenge->is_fav = 0;
+            }
+        }
 
         return $challenges;
     }
@@ -50,10 +61,12 @@ class MissionController extends Controller
         //POST http://localhost:8000/api/v1/missions/show
         // {
         //     "mission_id": 6
+        //     "user_id": 5
         // }
 
         $challenge = Challenge::find($request->mission_id);
         $challenge->challenge_type_name = ChallengeType::find($challenge->challenge_type)->type;
+        $challenge->is_fav = Fav::where('mission_id', $challenge->id)->where('user_id', $request->user_id)->first() ? 1 : 0;
         return $challenge;
     }
 
@@ -65,12 +78,24 @@ class MissionController extends Controller
         //     "client_id": 10
         // }
 
-        return Challenge::join('brands', 'challenges.brand_id', '=', 'brands.id')
+        $challenges = Challenge::join('brands', 'challenges.brand_id', '=', 'brands.id')
                 ->select('challenges.*', 'brands.name as brand_name', 'brands.logo as client_logo')
                 ->where('brand_id', $request->client_id)
                 ->where('start', '<', Carbon::now())
                 ->where('end', '>', Carbon::now())
                 ->get();
+
+        foreach($challenges as $challenge){
+            $is_fav = Fav::where('mission_id', $challenge->id)
+                        ->where('user_id', $request->user_id)
+                        ->first();
+            if($is_fav) {
+                $challenge->is_fav = 1;
+            } else {
+                $challenge->is_fav = 0;
+            }
+        }
+        return $challenges;
     }
 
     public function accept(Request $request)
