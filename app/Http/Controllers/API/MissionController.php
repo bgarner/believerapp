@@ -65,7 +65,8 @@ class MissionController extends Controller
         //     "client_id": 10
         // }
 
-        return Challenge::where('brand_id', $request->client_id)
+        return Challenge::join('brands', 'challenges.brand_id', '=', 'brands.id')
+                ->where('brand_id', $request->client_id)
                 ->where('start', '<', Carbon::now())
                 ->where('end', '>', Carbon::now())
                 ->get();
