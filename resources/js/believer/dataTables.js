@@ -19,6 +19,7 @@ $(".datatable-clients").dataTable({
     ]
 });
 
+
 $(".datatable-missions").dataTable({
     "columnDefs": [
       { "sortable": false }
@@ -73,7 +74,7 @@ $(".datatable-audiences").dataTable({
 
 $(".datatable-redemptions").dataTable({
     "columnDefs": [
-      { "sortable": false, "targets": [1] }
+      { "sortable": false, "targets": [4] }
     ]
 });
 

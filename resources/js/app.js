@@ -112,6 +112,8 @@ require('./believer/rewardPublishing.js');
 //missions
 require('./believer/deleteMission.js');
 require('./believer/deleteMissionType.js');
+//redemptions
+require('./believer/recordRedemption.js');
 //invites
 require('./believer/uploadInvites.js');
 //registration

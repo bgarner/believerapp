@@ -13,6 +13,9 @@ Route::resource('/admin/rewards', 'Admin\RewardController');
 Route::post('/admin/updateReward', 'Admin\RewardController@updateReward');
 Route::post('/admin/toggleRewardPublish', 'Admin\RewardController@toggleStatus');
 
+//redemptions
+Route::resource('/admin/redemptions', 'Admin\RedemptionController');
+Route::post('/admin/redemption/record', 'Admin\RedemptionController@redeem');
 
 //user nav
 Route::resource('/admin/missiontypes', 'Admin\MissionTypesController');

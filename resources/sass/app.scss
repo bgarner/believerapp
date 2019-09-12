@@ -24,6 +24,14 @@
     color: $danger !important;
 }
 
+.notRedeemed{
+    color: #aaa !important;
+}
+
+.redeemed{
+    color: $success !important;
+}
+
 .profile-logo{
     width: 150px;
     border: 10px solid #fff;
