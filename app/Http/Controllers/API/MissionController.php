@@ -34,15 +34,13 @@ class MissionController extends Controller
                                 ->where('start', '<', Carbon::now())
                                 ->where('end', '>', Carbon::now())
                                 ->select('challenges.*', 'brands.name as brand_name', 'brands.logo as client_logo', 'challenge_completions.user_id as completed_by')
-
                                 ->orderBy('start', 'desc')
                                 ->get()
-                                ->filter(function ($value, $key){
-                                    return $value['completed_by'] == null;
+                                ->filter(function ($value, $key) use($request){
+                                    return $value['completed_by'] !== $request->user_id;
                                 })
                                 ->values();
 
-        //$challenges = $challenges->sortBy('start');
         return $challenges;
     }
 
