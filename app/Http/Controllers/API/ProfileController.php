@@ -120,6 +120,7 @@ class ProfileController extends Controller
         return User::find($request->user_id);
     }
 
+
     public function leaderboard(Request $request)
     {
         // POST http://localhost:8000/api/v1/profile/leaderboard
@@ -159,6 +160,33 @@ class ProfileController extends Controller
         //$finalsort = $user_collection->sortBy('point_balance');
         usort($users, array($this, "cmp"));
         return $users;
+    }
+
+    public function uploadProfilePic(Request $request)
+    {
+        $user = User::find($request->user_id);
+        Self::initCloudinary();
+        $pic = $request->file('profilepic');
+        $upload = \Cloudinary\Uploader::upload($pic);
+
+        if ($upload) {
+            $image = "v" . $upload['version'] . "/" . $upload['public_id'] . "." . $upload['format'];
+            $user->image = $image;
+            $user->save();
+        }
+
+        return $image;
+
+    }
+
+    public static function initCloudinary()
+    {
+        $cloud = config('services.cloudinary.cloud_name');
+            \Cloudinary::config(array(
+            "cloud_name" => $cloud,
+            "api_key" => config('services.cloudinary.api_key'),
+            "api_secret" => config('services.cloudinary.api_secret')
+        ));
     }
 
     function cmp($a, $b)

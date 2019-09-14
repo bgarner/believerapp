@@ -43,6 +43,7 @@ Route::post('/v1/profile/pointbalance/', 'API\ProfileController@balance');
 Route::post('/v1/profile/editUsername', 'API\ProfileController@editUsername');
 Route::post('/v1/profile/editContact', 'API\ProfileController@editContact');
 Route::post('/v1/profile/leaderboard', 'API\ProfileController@leaderboard');
+Route::post('/v1/profile/editProfilePic', 'API\ProfileController@uploadProfilePic');
 
 Route::post('/v1/messages', 'API\MessagesController@index');
 Route::post('/v1/messages/show', 'API\MessagesController@show');
