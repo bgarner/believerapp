@@ -35,6 +35,8 @@ class ClientController extends Controller
 
             if($follow){
                 $c->is_following = 1;
+            } else {
+                $c->is_following = 0;
             }
         }
 
