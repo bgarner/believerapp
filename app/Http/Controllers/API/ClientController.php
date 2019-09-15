@@ -28,11 +28,11 @@ class ClientController extends Controller
         //             ->whereNotIn('id', $followedClients)
         //             ->get();
         $clients = Client::orderBy('name', 'asc')->get();
+
         foreach($clients as $c){
             $follow = Follower::where('user_id',$request->user_id)
                         ->where('brand_id', $c->id)
-                        ->get();
-
+                        ->first();
             if($follow){
                 $c->is_following = 1;
             } else {
