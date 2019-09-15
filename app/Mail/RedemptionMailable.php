@@ -23,7 +23,7 @@ class RedemptionMailable extends Mailable
      *
      * @return void
      */
-    public function __construct(RedemptionMailable $redemption)
+    public function __construct($redemption)
     {
         $this->redemption = $redemption;
     }
@@ -35,7 +35,9 @@ class RedemptionMailable extends Mailable
      */
     public function build()
     {
-        return $this->view('email.redemption')
+        return $this->subject('New Reward Redemption!')
+                    ->from('Believer Admin')
+                    ->view('email.redemption')
                     ->with([
                         "name" => $this->redemption->name,
                         "email" => $this->redemption->email,
@@ -48,6 +50,6 @@ class RedemptionMailable extends Mailable
                         "phone2" => $this->redemption->phone2,
                         "reward_name" => $this->redemption->reward_name,
                         "reward_desc" => $this->redemption->reward_desc
-                    ]);;
+                    ]);
     }
 }
