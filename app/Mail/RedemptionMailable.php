@@ -23,7 +23,7 @@ class RedemptionMailable extends Mailable
      *
      * @return void
      */
-    public function __construct(Redemption $redemption)
+    public function __construct(RedemptionMailable $redemption)
     {
         $this->redemption = $redemption;
     }
