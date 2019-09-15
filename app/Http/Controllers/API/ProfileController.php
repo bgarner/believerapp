@@ -178,7 +178,7 @@ class ProfileController extends Controller
 
         // https://res.cloudinary.com/believer/image/upload/ar_1:1,c_fill,g_auto:face,r_max,w_300/v1568513765/rkgozkcmqog7oyslci67.png
         return response()->json([
-            'image' => url($cloudinary . $image)
+            'image' => $cloudinary . $image
         ]);
     }
 
