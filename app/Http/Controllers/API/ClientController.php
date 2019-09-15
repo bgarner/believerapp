@@ -27,7 +27,19 @@ class ClientController extends Controller
         // return Client::where('postal_code','like',$user_postal_code_fragment)
         //             ->whereNotIn('id', $followedClients)
         //             ->get();
-        return Client::orderBy('name', 'asc')->get();
+        $clients = Client::orderBy('name', 'asc')->get();
+        foreach($clients as $c){
+            $follow = Follower::where('user_id',$request->user_id)
+                        ->where('brand_id', $c->id)
+                        ->get();
+
+            if($follow){
+                $c->is_following = 1;
+            }
+        }
+
+        return $clients;
+
     }
 
     public function clientsFollowedByUser(Request $request)
