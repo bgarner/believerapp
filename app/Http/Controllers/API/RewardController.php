@@ -7,8 +7,10 @@ use App\Models\Client;
 use App\Models\Follower;
 use App\Models\Reward;
 use App\Models\Redemption;
+use App\Mail\RedemptionMailable;
 use App\User;
 use DB;
+use Illuminate\Support\Facades\Mail;
 
 class RewardController extends Controller
 {
@@ -65,6 +67,26 @@ class RewardController extends Controller
                 "new_point_balance" => $new_point_balance,
                 "response_message" => 'Redemption successful'
             ];
+
+            $user = User::find($request->user_id);
+            $reward = Reward::find($request->reward_id);
+            $order = [
+                "name" => $user->first . " " . $user->last,
+                "email" => $user->email,
+                "address" => $user->address1,
+                "address2" => $user->address2,
+                "city" => $user->city,
+                "province" => $user->province,
+                "postal_code" => $user->postal_code,
+                "phone1" => $user->phone1,
+                "phone2" => $user->phone2,
+                "reward_name" => $reward->title,
+                "reward_desc" => $reward->description
+            ];
+
+            $admin_email = config('services.believer.admin_email');
+            Mail::to($admin_email)->send(new RedemptionMailable($order));
+
         } else {
             $data = [
                 "isRedeemed" => false,

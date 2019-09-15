@@ -14,6 +14,10 @@ return [
     |
     */
 
+    'believer' => [
+        'admin_email' => env('BELIEVER_ADMIN_EMAIL'),
+    ],
+
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),
