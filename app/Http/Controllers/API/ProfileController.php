@@ -174,9 +174,10 @@ class ProfileController extends Controller
             $user->image = $image;
             $user->save();
         }
+        $cloudinary = rawurlencode('https://res.cloudinary.com/believer/image/upload/ar_1:1,c_fill,g_auto:face,r_max,w_300/');
         // https://res.cloudinary.com/believer/image/upload/ar_1:1,c_fill,g_auto:face,r_max,w_300/v1568513765/rkgozkcmqog7oyslci67.png
         return response()->json([
-            'image' => 'https://res.cloudinary.com/believer/image/upload/ar_1:1,c_fill,g_auto:face,r_max,w_300/' . $image
+            'image' => $cloudinary . $image
         ]);
     }
 
