@@ -36,7 +36,7 @@ class RedemptionMailable extends Mailable
     public function build()
     {
         return $this->subject('New Reward Redemption!')
-                    ->from('Believer Admin')
+                    ->from('no-reply@gamegraft.com')
                     ->view('email.redemption')
                     ->with([
                         "name" => $this->redemption['name'],

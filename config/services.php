@@ -16,6 +16,7 @@ return [
 
     'believer' => [
         'admin_email' => env('BELIEVER_ADMIN_EMAIL'),
+        'from_email' => env('BELIEVER_FROM_EMAIL'),
     ],
 
     'mailgun' => [
