@@ -11,6 +11,7 @@ use App\Models\Challenge;
 use App\Models\Follower;
 use App\Models\Redemption;
 use App\Models\Referral;
+use App\Models\Fav;
 
 class ProfileController extends Controller
 {
@@ -73,6 +74,16 @@ class ProfileController extends Controller
             $completion->brand_name = $brand->name;
             $completion->brand_logo = $brand->logo;
             $completion->brand_id = $brand->id;
+
+            $is_fav = Fav::where('mission_id', $completion->challenge_id)
+                        ->where('user_id', $request->user_id)
+                        ->first();
+            if($is_fav) {
+                $completion->is_fav = 1;
+            } else {
+                $completion->is_fav = 0;
+            }
+
         }
 
         return $completions;
