@@ -26,7 +26,6 @@ class RedemptionMailable extends Mailable
     public function __construct($redemption)
     {
         $this->redemption = $redemption;
-        dd($redemption);
     }
 
     /**
