@@ -175,8 +175,9 @@ class ProfileController extends Controller
             $user->save();
         }
 
-        return $image;
-
+        return response()->json([
+            'image' => $image
+        ]);
     }
 
     public static function initCloudinary()
