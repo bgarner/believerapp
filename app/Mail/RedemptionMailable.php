@@ -40,17 +40,17 @@ class RedemptionMailable extends Mailable
                     ->from('Believer Admin')
                     ->view('email.redemption')
                     ->with([
-                        "name" => $this->redemption->name,
-                        "email" => $this->redemption->email,
-                        "address" => $this->redemption->address,
-                        "address2" => $this->redemption->address2,
-                        "city" => $this->redemption->city,
-                        "province" => $this->redemption->province,
-                        "postal_code" => $this->redemption->postal_code,
-                        "phone1" => $this->redemption->phone1,
-                        "phone2" => $this->redemption->phone2,
-                        "reward_name" => $this->redemption->reward_name,
-                        "reward_desc" => $this->redemption->reward_desc
+                        "name" => $this->redemption['name'],
+                        "email" => $this->redemption['email'],
+                        "address" => $this->redemption['address'],
+                        "address2" => $this->redemption['address2'],
+                        "city" => $this->redemption['city'],
+                        "province" => $this->redemption['province'],
+                        "postal_code" => $this->redemption['postal_code'],
+                        "phone1" => $this->redemption['phone1'],
+                        "phone2" => $this->redemption['phone2'],
+                        "reward_name" => $this->redemption['reward_name'],
+                        "reward_desc" => $this->redemption['reward_desc']
                     ]);
     }
 }
