@@ -48,7 +48,7 @@ class ClientController extends Controller
             . "response:"
             . PHP_EOL
             . "-----------------"
-            . $clients;
+            . $clients
             . PHP_EOL
             . "*************************************"
         );
