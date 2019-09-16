@@ -16,6 +16,7 @@ class MessagesController extends Controller
 
     public function index(Request $request)
     {
+        \Log::info('API\MessagesController@index:\n' . $request . "\n -------------");
         $messages = MessageUser::where('user_id', $request->user_id)->orderByDesc('created_at')->get()
                             ->each(function ($message) {
                                 $messageDetail = Message::find($message->message_id);
@@ -32,6 +33,7 @@ class MessagesController extends Controller
 
     public function show(Request $request)
     {
+        \Log::info('API\MessagesController@show:\n' . $request . "\n -------------");
         $message = Message::where('messages.id', $request->message_id)
                     ->join('brands', 'brands.id', '=', 'messages.brand_id')
                     ->select('messages.*', 'brands.name as brand_name', 'brands.logo as brand_logo')
@@ -41,6 +43,7 @@ class MessagesController extends Controller
 
     public function delete(Request $request)
     {
+        \Log::info('API\MessagesController@delete:\n' . $request . "\n -------------");
         $message = MessageUser::where('message_id', $request->message_id)
                                 ->where('user_id', $request->user_id)
                                 ->delete();

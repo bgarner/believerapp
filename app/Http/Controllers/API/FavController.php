@@ -9,11 +9,13 @@ class FavController extends Controller
 {
     public function index(Request $request)
     {
+        \Log::info('API\FavController@index: ' . $request . "\n -------------");
         return Fav::getFavsByUserId($request->user_id);
     }
 
     public function create(Request $request)
     {
+        \Log::info('API\FavController@create: ' . $request . "\n -------------");
         $fav = Fav::create([
             'user_id' => $request->user_id,
             'mission_id' => $request->mission_id
@@ -24,6 +26,7 @@ class FavController extends Controller
 
     public function delete(Request $request)
     {
+        \Log::info('API\FavController@delete: ' . $request . "\n -------------");
         $fav = fav::where('user_id', $request->user_id)
                         ->where('mission_id', $request->mission_id)
                         ->delete();

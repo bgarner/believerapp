@@ -16,6 +16,7 @@ class ClientController extends Controller
 
     public function index(Request $request)
     {
+        \Log::info('API\ClientController@index:\n' . $request . "\n -------------");
         //match the first char of the postal code to brands with the same first char
         // POST http://localhost:8000/api/v1/clients
         // {
@@ -46,6 +47,7 @@ class ClientController extends Controller
 
     public function clientsFollowedByUser(Request $request)
     {
+        \Log::info('API\ClientController@clientsFollowedByUser:\n' . $request . "\n -------------");
         //return a list of clients followed by the user
         // POST http://localhost:8000/api/v1/clientsFollowedByUser
         // {
@@ -59,6 +61,7 @@ class ClientController extends Controller
 
     public function show(Request $request)
     {
+        \Log::info('API\ClientController@show:\n' . $request . "\n -------------");
         //POST http://localhost:8000/api/v1/clients/show
         // {
         //     "client_id": 10,
@@ -70,6 +73,7 @@ class ClientController extends Controller
 
     public function follow(Request $request)
     {
+        \Log::info('API\ClientController@follow:\n' . $request . "\n -------------");
         // POST http://localhost:8000/api/v1/clients/follow
         // {
         //     "user": 32,
@@ -102,6 +106,7 @@ class ClientController extends Controller
 
     public function unfollow(Request $request)
     {
+        \Log::info('API\ClientController@unfollow:\n' . $request . "\n -------------");
         // POST http://localhost:8000/api/v1/clients/follow
         // {
         //     "user": 32,
@@ -146,6 +151,7 @@ class ClientController extends Controller
 
     public function missions(Request $request)
     {
+        \Log::info('API\ClientController@missions:\n' . $request . "\n -------------");
         // returns a list of all of the active missions for a client
         // POST http://localhost:8000/api/v1/clients/missions
         // {

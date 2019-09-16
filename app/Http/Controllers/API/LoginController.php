@@ -14,6 +14,7 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
+        \Log::info('API\LoginController@index:\n' . $request . "\n -------------");
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|max:255',
             'password'=> 'required'
@@ -29,7 +30,7 @@ class LoginController extends Controller
         } catch (JWTException $e) {
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
-        
+
         return response()->json(['token' => $token, 'user_id' => \Auth::user()->id]);
     }
 }

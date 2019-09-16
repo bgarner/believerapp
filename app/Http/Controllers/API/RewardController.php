@@ -21,6 +21,7 @@ class RewardController extends Controller
      */
     public function index(Request $request)
     {
+        \Log::info('API\RewardController@index:\n' . $request . "\n -------------");
         /**
          * show a list of all active rewards
          * POST http://localhost:8000/api/v1/rewards
@@ -34,6 +35,7 @@ class RewardController extends Controller
 
     public function show(Request $request)
     {
+        \Log::info('API\RewardController@show:\n' . $request . "\n -------------");
         //POST http://localhost:8000/api/v1/rewards/show
         // {
         //     "reward_id": 3
@@ -45,6 +47,7 @@ class RewardController extends Controller
 
     public function redeem(Request $request)
     {
+        \Log::info('API\RewardController@redeem:\n' . $request . "\n -------------");
         // allows the user to redeem a reward, creates a record of the redemption, and subtracts
         // the points from the users account
         //

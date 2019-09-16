@@ -14,6 +14,7 @@ class RegisterController extends Controller
 {
     public function register(Request $request)
     {
+        \Log::info('API\RegisterController@register:\n' . $request . "\n -------------");
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|max:255|unique:users',
             'name' => 'required',
@@ -35,6 +36,6 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return "this is the registrationf form, I guess";
+        return "this is the registration form, I guess";
     }
 }

@@ -20,6 +20,7 @@ class MissionController extends Controller
      */
     public function index(Request $request)
     {
+        \Log::info('API\MissionController@index:\n' . $request . "\n -------------");
         //get all of the missions from the brands that a user is following
         // POST http://localhost:8000/api/v1/missions
         // {
@@ -57,6 +58,7 @@ class MissionController extends Controller
 
     public function show(Request $request)
     {
+        \Log::info('API\MissionController@show:\n' . $request . "\n -------------");
         // get a single mission
         //POST http://localhost:8000/api/v1/missions/show
         // {
@@ -72,6 +74,7 @@ class MissionController extends Controller
 
     public function showByClient(Request $request)
     {
+        \Log::info('API\MissionController@showByClient:\n' . $request . "\n -------------");
         //get all of active the missions for a particular brand
         // POST http://localhost:8000/api/v1/missions/client
         // {
@@ -100,6 +103,7 @@ class MissionController extends Controller
 
     public function accept(Request $request)
     {
+        \Log::info('API\MissionController@accept:\n' . $request . "\n -------------");
         // POST http://localhost:8000/api/v1/missions/accept
         // {
         //     "user": 123,
@@ -111,6 +115,7 @@ class MissionController extends Controller
 
     public function complete(Request $request)
     {
+        \Log::info('API\MissionController@complete:\n' . $request . "\n -------------");
         //mark a mission as complete for a user, returns the users new point balance one completed
         // POST http://localhost:8000/api/v1/missions/complete
         // {
@@ -142,6 +147,7 @@ class MissionController extends Controller
 
     public function getMissionHistory(Request $request)
     {
+        \Log::info('API\MissionController@getMissionHistory:\n' . $request . "\n -------------");
         // list of completed misson nby a user
         // POST http://localhost:8000/api/v1/missions/getMissionHistory
         // {
