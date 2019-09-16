@@ -41,6 +41,17 @@ class ClientController extends Controller
             }
         }
 
+        \Log::info('API\ClientController@index:'
+            . PHP_EOL
+            . $request
+            . PHP_EOL
+            . "response:"
+            . PHP_EOL
+            . "-----------------"
+            . $clients;
+            . PHP_EOL
+            . "*************************************"
+        );
         return $clients;
 
     }
