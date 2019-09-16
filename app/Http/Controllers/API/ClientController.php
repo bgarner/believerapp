@@ -16,7 +16,6 @@ class ClientController extends Controller
 
     public function index(Request $request)
     {
-        \Log::info('API\ClientController@index:' . PHP_EOL . $request . PHP_EOL . "-------------");
         //match the first char of the postal code to brands with the same first char
         // POST http://localhost:8000/api/v1/clients
         // {
@@ -48,11 +47,12 @@ class ClientController extends Controller
             . "response:"
             . PHP_EOL
             . "-----------------"
-            . $clients
+            . PHP_EOL
+            . ($clients)
             . PHP_EOL
             . "*************************************"
         );
-        return $clients;
+        return =$clients;
 
     }
 
