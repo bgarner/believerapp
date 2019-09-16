@@ -18,7 +18,7 @@ class ProfileController extends Controller
 
     public function show(Request $request)
     {
-        \Log::info('API\ProfileController@show:\n' . $request . "\n -------------");
+        \Log::info('\n API\ProfileController@show: \n' . $request . "\n -------------");
         //POST http://localhost:8000/api/v1/profile
         // {
         //     "user_id": 123
@@ -47,7 +47,7 @@ class ProfileController extends Controller
 
     public function balance(Request $request)
     {
-        \Log::info('API\ProfileController@balance:\n' . $request . "\n -------------");
+        \Log::info('\n API\ProfileController@balance: \n' . $request . "\n -------------");
         //POST http://localhost:8000/api/v1/profile/pointbalance
         // {
         //     "user_id": 123
@@ -57,7 +57,7 @@ class ProfileController extends Controller
 
     public function challengeHistory(Request $request)
     {
-        \Log::info('API\ProfileController@challengeHistory:\n' . $request . "\n -------------");
+        \Log::info('\n API\ProfileController@challengeHistory: \n' . $request . "\n -------------");
         // POST http://localhost:8000/api/v1/profile/history
         // {
         //     "user_id": 20
@@ -94,7 +94,7 @@ class ProfileController extends Controller
 
     public function editUsername(Request $request)
     {
-        \Log::info('API\ProfileController@editUsername:\n' . $request . "\n -------------");
+        \Log::info('\n API\ProfileController@editUsername: \n' . $request . "\n -------------");
         // POST http://localhost:8000/api/v1/profile/updateUsername
         // {
         //     "user_id": 20,
@@ -114,7 +114,7 @@ class ProfileController extends Controller
 
     public function editContact(Request $request)
     {
-        \Log::info('API\ProfileController@editContact:\n' . $request . "\n -------------");
+        \Log::info('\n API\ProfileController@editContact: \n' . $request . "\n -------------");
         // POST http://localhost:8000/api/v1/profile/updateUsername
         // {
         //     "user_id": 20,
@@ -139,7 +139,7 @@ class ProfileController extends Controller
 
     public function leaderboard(Request $request)
     {
-        \Log::info('API\ProfileController@leaderboard:\n' . $request . "\n -------------");
+        \Log::info('\n API\ProfileController@leaderboard: \n' . $request . "\n -------------");
         // POST http://localhost:8000/api/v1/profile/leaderboard
         // {
         //     "user_id": 6
@@ -181,7 +181,7 @@ class ProfileController extends Controller
 
     public function uploadProfilePic(Request $request)
     {
-        \Log::info('API\ProfileController@uploadProfilePic:\n' . $request . "\n -------------");
+        \Log::info('\n API\ProfileController@uploadProfilePic: \n' . $request . "\n -------------");
         $user = User::find($request->user_id);
         Self::initCloudinary();
         $pic = $request->file('profilepic');

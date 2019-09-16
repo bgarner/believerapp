@@ -10,7 +10,7 @@ class ReferralController extends Controller
 {
     public static function create(Request $request)
     {
-        \Log::info('API\ReferralController@create:\n' . $request . "\n -------------");
+        \Log::info('\n API\ReferralController@create: \n' . $request . "\n -------------");
         $referral = Referral::create([
             'brand_id' => $request->brand_id,
             'first_name' => $request->first_name,
