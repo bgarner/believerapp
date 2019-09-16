@@ -48,11 +48,11 @@ class ClientController extends Controller
             . PHP_EOL
             . "-----------------"
             . PHP_EOL
-            . $clients
+            . ($clients)
             . PHP_EOL
             . "*************************************"
         );
-        return =$clients;
+        return $clients;
 
     }
 
