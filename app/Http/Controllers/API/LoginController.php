@@ -14,7 +14,7 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        \Log::info('\n API\LoginController@index: \n' . $request . "\n -------------");
+        \Log::info('API\LoginController@index: ' . PHP_EOL . $request . PHP_EOL . " -------------");
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|max:255',
             'password'=> 'required'

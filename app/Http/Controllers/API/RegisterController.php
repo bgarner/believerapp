@@ -14,7 +14,7 @@ class RegisterController extends Controller
 {
     public function register(Request $request)
     {
-        \Log::info('\n API\RegisterController@register: \n' . $request . "\n -------------");
+        \Log::info('API\RegisterController@register: ' . PHP_EOL . $request . PHP_EOL . " -------------");
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|max:255|unique:users',
             'name' => 'required',

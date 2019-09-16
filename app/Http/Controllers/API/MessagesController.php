@@ -16,7 +16,7 @@ class MessagesController extends Controller
 
     public function index(Request $request)
     {
-        \Log::info('\n API\MessagesController@index: \n' . $request . "\n -------------");
+        \Log::info('API\MessagesController@index: ' . PHP_EOL . $request . PHP_EOL . " -------------");
         $messages = MessageUser::where('user_id', $request->user_id)->orderByDesc('created_at')->get()
                             ->each(function ($message) {
                                 $messageDetail = Message::find($message->message_id);
@@ -33,7 +33,7 @@ class MessagesController extends Controller
 
     public function show(Request $request)
     {
-        \Log::info('\n API\MessagesController@show: \n' . $request . "\n -------------");
+        \Log::info('API\MessagesController@show: ' . PHP_EOL . $request . PHP_EOL . " -------------");
         $message = Message::where('messages.id', $request->message_id)
                     ->join('brands', 'brands.id', '=', 'messages.brand_id')
                     ->select('messages.*', 'brands.name as brand_name', 'brands.logo as brand_logo')
@@ -43,7 +43,7 @@ class MessagesController extends Controller
 
     public function delete(Request $request)
     {
-        \Log::info('\n API\MessagesController@delete: \n' . $request . "\n -------------");
+        \Log::info('API\MessagesController@delete: ' . PHP_EOL . $request . PHP_EOL . " -------------");
         $message = MessageUser::where('message_id', $request->message_id)
                                 ->where('user_id', $request->user_id)
                                 ->delete();

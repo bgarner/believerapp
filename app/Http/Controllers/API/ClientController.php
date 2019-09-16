@@ -16,7 +16,7 @@ class ClientController extends Controller
 
     public function index(Request $request)
     {
-        \Log::info('\n API\ClientController@index: \n' . $request . "\n -------------");
+        \Log::info('API\ClientController@index:' . PHP_EOL . $request . PHP_EOL . "-------------");
         //match the first char of the postal code to brands with the same first char
         // POST http://localhost:8000/api/v1/clients
         // {
@@ -47,7 +47,7 @@ class ClientController extends Controller
 
     public function clientsFollowedByUser(Request $request)
     {
-        \Log::info('\n API\ClientController@clientsFollowedByUser: \n' . $request . "\n -------------");
+        \Log::info('API\ClientController@clientsFollowedByUser: ' . PHP_EOL . $request . PHP_EOL . " -------------");
         //return a list of clients followed by the user
         // POST http://localhost:8000/api/v1/clientsFollowedByUser
         // {
@@ -61,7 +61,7 @@ class ClientController extends Controller
 
     public function show(Request $request)
     {
-        \Log::info('\n API\ClientController@show: \n' . $request . "\n -------------");
+        \Log::info('API\ClientController@show: ' . PHP_EOL . $request . PHP_EOL . " -------------");
         //POST http://localhost:8000/api/v1/clients/show
         // {
         //     "client_id": 10,
@@ -73,7 +73,7 @@ class ClientController extends Controller
 
     public function follow(Request $request)
     {
-        \Log::info('\n API\ClientController@follow: \n' . $request . "\n -------------");
+        \Log::info('API\ClientController@follow: ' . PHP_EOL . $request . PHP_EOL . " -------------");
         // POST http://localhost:8000/api/v1/clients/follow
         // {
         //     "user": 32,
@@ -106,7 +106,7 @@ class ClientController extends Controller
 
     public function unfollow(Request $request)
     {
-        \Log::info('\n API\ClientController@unfollow: \n' . $request . "\n -------------");
+        \Log::info('API\ClientController@unfollow: ' . PHP_EOL . $request . PHP_EOL . " -------------");
         // POST http://localhost:8000/api/v1/clients/follow
         // {
         //     "user": 32,
@@ -151,7 +151,7 @@ class ClientController extends Controller
 
     public function missions(Request $request)
     {
-        \Log::info('\n API\ClientController@missions: \n' . $request . "\n -------------");
+        \Log::info('API\ClientController@missions: ' . PHP_EOL . $request . PHP_EOL . " -------------");
         // returns a list of all of the active missions for a client
         // POST http://localhost:8000/api/v1/clients/missions
         // {
