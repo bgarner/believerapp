@@ -23,6 +23,10 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 /*--- PUBLIC ROUTES ------------------------------------*/
 Route::get('/', array('uses'=> 'Web\HomeController@index'));
 
+Route::get('/privacy', function () {
+    return view('privacy');
+});
+
 Route::get('/send_test_email', function(){
     Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
     {

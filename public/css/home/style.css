@@ -419,6 +419,22 @@ ol.type li a:hover {
 	padding: 140px 0;
 	background: #e6e6e6;
 }
+
+#legal{
+	padding: 100px 0;
+	background: #fff;
+}
+
+#legal ul{
+	list-style: disc;
+	padding: 0px 20px;
+}
+
+#legal li {
+	padding: 10px 5px;
+	margin: 0 0 0 20px;
+}
+
 img.img-thumbnail.team-img {
 	width: 200px;
 	height: 200px;
