@@ -19,7 +19,7 @@
         <div class="row" style="background: black; padding: 20px 0px;">
             <div class="container">
             <div class="col-12">
-                <a href="/"><img src="/images/Believer-Logo.webp"  height="" style="" /></a>
+                <a href="/"><img src="/images/Believer-Logo.png"  height="" style="" /></a>
 
                 <ul class="nav navbar-nav" style="float: right;">
                   <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
