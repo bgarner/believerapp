@@ -43,6 +43,7 @@ class MissionController extends Controller
                                 })
                                 ->values();
         foreach($challenges as $challenge){
+            $challenge->points = ChallengeType::find($challenge->challenge_type)->points;
             $is_fav = Fav::where('mission_id', $challenge->id)
                         ->where('user_id', $request->user_id)
                         ->first();
@@ -68,6 +69,7 @@ class MissionController extends Controller
 
         $challenge = Challenge::find($request->mission_id);
         $challenge->challenge_type_name = ChallengeType::find($challenge->challenge_type)->type;
+        $challenge->points = ChallengeType::find($challenge->challenge_type)->points;
         $challenge->is_fav = Fav::where('mission_id', $challenge->id)->where('user_id', $request->user_id)->first() ? 1 : 0;
         return $challenge;
     }
@@ -89,6 +91,7 @@ class MissionController extends Controller
                 ->get();
 
         foreach($challenges as $challenge){
+            $challenge->points = ChallengeType::find($challenge->challenge_type)->points;
             $is_fav = Fav::where('mission_id', $challenge->id)
                         ->where('user_id', $request->user_id)
                         ->first();
@@ -134,8 +137,9 @@ class MissionController extends Controller
             $completion = new ChallengeCompletion(['challenge_id' => $request->mission_id, 'user_id' => $request->user_id]);
             $completion->save();
             //get the points for this challenge, update user points
-            $points = Challenge::find($request->mission_id);
-            $new_point_balance = User::addPoints($request->user_id, $points->points);
+            $challenge_type = Challenge::find($request->mission_id)->challenge_type;
+            $points = ChallengeType::find($challenge_type)->points;
+            $new_point_balance = User::addPoints($request->user_id, $points);
 
             $data = [
                 "completed_at" => $completion->updated_at,
