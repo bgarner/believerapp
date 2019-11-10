@@ -31,6 +31,10 @@ Route::get('/terms', function () {
     return view('terms');
 });
 
+Route::get('/terms_web', function () {
+    return view('webterms');
+});
+
 Route::get('/send_test_email', function(){
     Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
     {
