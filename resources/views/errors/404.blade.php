@@ -73,7 +73,7 @@
 
 <div id="footer" style="background-color: black;">
   <div class="container">
-    <p>Copyright &copy; Believer.</p>
+    <p>Copyright &copy; Believer.  &nbsp;&nbsp;&nbsp; <a href="/privacy">Privacy</a>&nbsp;<a href="/terms_web">Terms of Use</a></p>
   </div>
 </div>
 

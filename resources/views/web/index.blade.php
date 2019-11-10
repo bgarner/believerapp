@@ -34,7 +34,7 @@
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse"> <i class="fa fa-bars"></i> </button>
-      <a class="navbar-brand page-scroll" href="#page-top"><img src="/images/Believer-Logo.webp"  height="30" style="position: relative; bottom: 7px;" /></a> </div>
+      <a class="navbar-brand page-scroll" href="#page-top"><img src="/images/Believer-Logo.png"  height="30" style="position: relative; bottom: 7px;" /></a> </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
@@ -162,7 +162,7 @@
 
 <div id="footer" style="background-color: black;">
   <div class="container">
-    <p>Copyright &copy; Believer.</p>
+    <p>Copyright &copy; Believer.  &nbsp;&nbsp;&nbsp; <a href="/privacy">Privacy</a>&nbsp;<a href="/terms_web">Terms of Use</a></p>
   </div>
 </div>
 
