@@ -26,8 +26,8 @@
 
                   <li> <a class="page-scroll" href="/#section-app">About the App</a> </li>
                   <li> <a class="page-scroll" href="/#section-business">For Business</a> </li>
-                  <li> <a class="page-scroll" href="/signup">Sign Up</a> </li>
-                  <li> <a class="btn-default" href="/login">Login</a> </li>
+                  {{-- <li> <a class="page-scroll" href="/signup">Sign Up</a> </li> --}}
+                  {{-- <li> <a class="btn-default" href="/login">Login</a> </li> --}}
 
                 </ul>
 
@@ -65,13 +65,15 @@
                     <p class="text-center">Join the {{ $brand->name }} Club and get rewarded for sharing the love.</p>
                     <a href="#registration_form" class="btn btn-lg btn-danger">Join Now</a>
 
-                    <p class="pt-3"><small>Already an ambassador? <a href="">Click here to sign in.</a></small></p>
+                    <p class="pt-3"><small>Already an ambassador? Click below to download the app!</small>
+                        <a href="#"><img src="/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" width="100" /></a>
+                    </p>
                     </center>
                 </div>
             </div>
         </div>
 
-        <div class="row bg-ltgrey p-4">
+        {{-- <div class="row bg-ltgrey p-4">
             <div class="container">
                 <div class="row">
                     <div class="col-6">
@@ -88,8 +90,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row bg-dkgrey p-4">
+        </div> --}}
+        {{-- <div class="row bg-dkgrey p-4">
             <div class="container">
                 <h2 class="text-center pb-3">The Beginning of a Beautiful Friendship.</h2>
                 <div class="row">
@@ -119,19 +121,15 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
 
         <div class="row p-4 bg-white">
             <div class="container">
 
             <div class="row">
-                <div class="col-6">
-                    <img src="/images/logo-light.png" />
-                    <img src="/images/phone.png" />
-                    <img src="/images/download.png" />
-                </div>
-                <div class="col-6">
+                <div class="col-2 col-lg-2 col-md-2"></div>
+                <div class="col-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <h2>Register Now to Join {{ $brand->name }} on Believer!</h2>
                     <form class="form" id="registration_form">
                         @csrf
@@ -177,6 +175,7 @@
                                 <input type="password" class="form-control" name="password" id="password" required />
                                 <br />
                                 <input class="btn btn-lg btn-primary registerWithBrand" type="button" name="button" value="Register" />
+                                <a href="#"><img src="/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" width="auto" /></a>
                             </div>
 
                         </div>
