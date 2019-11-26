@@ -140,6 +140,10 @@ class MissionController extends Controller
             $challenge_type = Challenge::find($request->mission_id)->challenge_type;
             $points = ChallengeType::find($challenge_type)->points;
             $new_point_balance = User::addPoints($request->user_id, $points);
+            Fav::where([
+                ['user_id', '=', $request->user_id],
+                ['mission_id', '=', $request->mission_id],
+            ])->delete();
 
             $data = [
                 "completed_at" => $completion->updated_at,
