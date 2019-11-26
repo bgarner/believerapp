@@ -26,6 +26,15 @@
                     </tr>
                 </thead>
                 <tbody>
+                
+                @if(count($redemptions) > 1)
+                <tr>
+                    <td colspan="5">
+                    No redemptions yet....
+                    </td>
+                </tr>
+                @endif
+
                 @foreach($redemptions as $r)
                 <tr id="redemption{{ $r->id }}">
                     <td><strong>{{ $r->user->first }} {{ $r->user->last}}</strong>

@@ -53,14 +53,17 @@ class Message extends Model
 
     public static function createNewMessage($request)
     {
+
         Self::initCloudinary();
 
         $pic = $request->file('bannerimage');
         $upload = \Cloudinary\Uploader::upload($pic);
 
+        $start = $request->start;
+        $end = $request->end;
+
         if($request->no_end_date){
             $start = now();
-            //$end = "2099-12-31 23:59:59";
             $end = null;
         }
 
@@ -79,11 +82,13 @@ class Message extends Model
         }
         \Log::info($request);
 
-        if($request->audience_select === "all"){
-            $audience = Follower::getFollowerIds($request->brand_id);
-        } else {
-            $audience = Audience::getAudienceMemberIds($request->audience_select);
-        }
+        // if($request->audience_select === "all"){
+        //     $audience = Follower::getFollowerIds($request->brand_id);
+        // } else {
+        //     $audience = Audience::getAudienceMemberIds($request->audience_select);
+        // }
+
+        $audience = Follower::getFollowerIds($request->brand_id);
 
         MessageUser::publishMessage($message->id, $audience);
         return redirect("/client/messages");
