@@ -144,4 +144,9 @@ class Challenge extends Model
         return $mission;
     }
 
+    public static function deleteClientMissionsByBrandId($brand_id)
+    {
+        return Self::where('brand_id', $brand_id)->delete();
+    }
+
 }

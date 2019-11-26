@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="form-group"><label class="col-sm-12 control-label">Primary Logo<span class="req">*</span></label>
-                        <small>Some info about the specs for a logo file should go here...</small>
+                        <small>Choose the hight resolution logo you have available. The logo will resize automatically to be optimized.</small>
                         <div class="input-group col-12">
                             <div class="custom-file">
                                 <input type="file" class="form-control-file" id="clientimage" name="clientimage" required>
@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="form-group"><label class="col-sm-12 control-label">Secondary Logo</label>
-                        <small>Some info about the specs for a logo file should go here...</small>
+                        <small>Choose the hight resolution logo you have available. The logo will resize automatically to be optimized.</small>
                         <div class="input-group col-12">
                             <div class="custom-file">
                                 <input type="file" class="form-control-file" id="clientimage2" name="clientimage2">
@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="form-group"><label class="col-sm-12 control-label">Banner Image<span class="req">*</span></label>
-                        <small>Some info about the specs for a logo file should go here...</small>
+                        <small>Choose the highest resolution image you have available. The banner will resize to 800px x 150px automatically.</small>
                         <div class="input-group col-12">
                             <div class="custom-file">
                                 <input type="file" class="form-control-file" id="bannerimage" name="bannerimage" required>

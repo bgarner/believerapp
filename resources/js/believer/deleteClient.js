@@ -6,7 +6,7 @@ $(document).on("click", ".deleteClient", function() {
     // e.preventDefault();
     swal({
       title: "Are you sure?",
-      text: "Are you sure you want to delete this client?",
+      text: "Are you sure you want to delete this client? \n This will also delete any active Missions by this client.",
       icon: "warning",
       buttons: true,
       dangerMode: true,

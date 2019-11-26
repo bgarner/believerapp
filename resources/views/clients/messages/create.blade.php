@@ -53,7 +53,7 @@
                     </div>
 
                     <div class="form-group"><label class="col-sm-12 control-label">Action URL</label>
-                        <small>When the action button is clicked, this is where the user will be taken. Don't foget to include 'http://'</small>
+                        <small>When the action button is clicked, this is where the user will be taken. Don't foget to include 'https://'</small>
                         <div class="col-sm-10">
                             <input type="text" id="action_url" name="action_url" class="form-control" value="" />
                         </div>
@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="col-5">
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label class="col-sm-12 control-label">Audience</label>
                         <small>Select an audience to send this message to, or send to all your followers.</small>
                         <div class="col-sm-10">
@@ -72,7 +72,7 @@
                                 @endforeach
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="form-group">
                         <label class="col-sm-12 control-label">Start and End Date<span class="req">*</span></label>

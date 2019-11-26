@@ -71,6 +71,7 @@ class ClientController extends Controller
     public function destroy($id)
     {
         $client = Client::deleteClient($id);
+        Challenge::deleteClientMissionsByBrandId($id);
         return response()->json($client);
     }
 
