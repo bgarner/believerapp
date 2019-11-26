@@ -74,7 +74,7 @@
                     </div>
 
                     <div class="form-group"><label class="col-sm-12 control-label">Image<span class="req">*</span></label>
-                        <small>Some info about the specs for a logo file should go here...</small>
+                        <small>Choose the highest resolution image you have. We will resize the image to fit the best for the user's phone, with the center of your image being the center of the image on the phone. Landscape oriented images work best.</small>
                         <div class="input-group col-12">
                             <div class="custom-file">
                                 <input type="file" class="form-control-file" id="missionimage" name="missionimage" required>
