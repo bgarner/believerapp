@@ -18,7 +18,7 @@
               <div class="col-4">
                 <div class="card profile-widget">
                   <div class="profile-widget-header">
-                    @if($user->image)
+                    @if( $user->image )
                     <img alt="image" src="https://res.cloudinary.com/believer/image/upload/ar_1:1,c_fill,g_auto:face,r_max,w_300/{{ $user->image }}" class="rounded-circle profile-widget-picture">
                     @else
                     <img alt="image" src="/images/placeholder.jpg" class="rounded-circle profile-widget-picture">

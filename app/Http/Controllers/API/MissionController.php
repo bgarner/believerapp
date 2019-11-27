@@ -134,12 +134,27 @@ class MissionController extends Controller
                 "completed_at" => $check->created_at,
             ];
         } else {
-            $completion = new ChallengeCompletion(['challenge_id' => $request->mission_id, 'user_id' => $request->user_id]);
-            $completion->save();
-            //get the points for this challenge, update user points
-            $challenge_type = Challenge::find($request->mission_id)->challenge_type;
-            $points = ChallengeType::find($challenge_type)->points;
+            //get the challange that was completed
+            $challenge = Challenge::find($request->mission_id);
+            $points = ChallengeType::find($challenge->challenge_type)->points;
+            
+            //get the points for this challenge, update user points            
+            $points = ChallengeType::find($challenge->challenge_type)->points;
             $new_point_balance = User::addPoints($request->user_id, $points);
+
+            //record the completion
+            $completion = new ChallengeCompletion([
+                'challenge_id' => $request->mission_id, 
+                'user_id' => $request->user_id,
+                'challenge_name' => $challenge->name,
+                'challenge_content' => $challenge->content,
+                'challenge_type' => $challenge->challenge_type,
+                'brand_id' => $challenge->brand_id,
+                'points' => $points,
+            ]);
+            $completion->save();
+
+            //delete from favs if if was one
             Fav::where([
                 ['user_id', '=', $request->user_id],
                 ['mission_id', '=', $request->mission_id],
