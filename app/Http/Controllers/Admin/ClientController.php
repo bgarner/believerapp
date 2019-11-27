@@ -26,9 +26,11 @@ class ClientController extends Controller
             $challenges = Challenge::where('brand_id', $client->id)->pluck('id');
             $challenge_completions = ChallengeCompletion::whereIn('challenge_id', $challenges)->count();
 
-            $total_points = Challenge::where('brand_id', $client->id)
+            $total_points = Challenge::where('challenges.brand_id', $client->id)
                         ->join('challenge_completions', 'challenges.id', '=', 'challenge_completions.challenge_id')
                         ->sum('challenges.points');
+
+            // $total_points = 50;
 
             $client->total_believers = number_format(count($followers));
             $client->total_points = number_format($total_points);
