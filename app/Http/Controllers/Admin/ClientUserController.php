@@ -17,6 +17,17 @@ class ClientUserController extends Controller
 
     public function index()
     {
+        $accounts = ClientUser::all();
+
+        foreach($accounts as $account) {
+            $user = User::find($account->user_id);
+            $account->name = $user->first . " " . $user->last;
+            $account->email = $user->email;
+            $account->created = $user->created_at;
+            $account->brand = Client::find($account->client_id)->name;
+        }
+        return view('admin.manager.index')
+                ->with('accounts', $accounts);
 
     }
 
@@ -60,6 +71,8 @@ class ClientUserController extends Controller
 
     public function destroy($id)
     {
-
+        ClientUser::find($id)->delete();        
+        \Log::info('manager deleted: ' . $id);
+        return 'this is the delete function';
     }
 }

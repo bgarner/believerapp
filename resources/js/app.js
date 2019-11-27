@@ -122,3 +122,4 @@ require('./believer/validateRegistration.js');
 require('./believer/deleteMessage.js');
 //manager accounts
 require('./believer/createManagerAccount.js');
+require('./believer/deleteManagerAccount.js');

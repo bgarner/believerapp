@@ -19,6 +19,12 @@ $(".datatable-clients").dataTable({
     ]
 });
 
+$(".datatable-manageraccounts").dataTable({
+  // "columnDefs": [
+  //   { "sortable": false, "targets": [2] }
+  // ]
+});
+
 
 $(".datatable-missions").dataTable({
     "columnDefs": [
