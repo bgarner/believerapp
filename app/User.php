@@ -72,15 +72,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public static function getMissionsCompletedByUser($id)
     {
-        $completedMissionIds = ChallengeCompletion::where('user_id', $id)->pluck('challenge_id');
-        $missions = Mission::whereIn('id', $completedMissionIds)->get();
-
-        foreach($missions as $m){
-            $m->client_info = Client::find($m->brand_id);
-            $m->completed_at = ChallengeCompletion::where('user_id', $id)->where('challenge_id', $m->id)->first()->created_at;
-        }
-
-        return $missions;
+        return ChallengeCompletion::where('user_id', $id)->get();
     }
 
     public static function getRewardsClaimedByUser($id)

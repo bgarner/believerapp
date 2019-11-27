@@ -10,7 +10,7 @@
 
 @section('subnav')
 <li class="nav-item">
-    <a class="nav-link" href="/client/believers/invite" role=""><i class="fa fa-envelope-o" aria-hidden="true"></i> Invite</a>
+    <a class="btn btn-primary" href="/client/believers/invite" role="button"><i class="fa fa-envelope-o" aria-hidden="true"></i> Invite</a>
 </li>
 {{-- <li class="nav-item">
     <a class="nav-link" href="/client/believers/audiences" role=""><i class="fa fa-users" aria-hidden="true"></i> Audiences</a>

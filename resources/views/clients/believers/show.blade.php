@@ -83,10 +83,10 @@
                         <tbody>
                         @foreach($missions as $mission)
                         <tr>
-                            <td>{{ $mission->client_info->name }}</td>
-                            <td>{{ $mission->name }}</td>
+                            <td>{{ $mission->brand_name }}</td>
+                            <td>{{ $mission->challenge_name }}</td>
                             <td>{{ $mission->points }}</td>
-                            <td>{{ $mission->completed_at }}</td>
+                            <td>{{ $mission->created_at }}</td>
 
                         </tr>
                         @endforeach

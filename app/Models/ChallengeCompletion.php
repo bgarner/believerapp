@@ -10,7 +10,7 @@ class ChallengeCompletion extends Model
 {
     use SoftDeletes;
     protected $table = 'challenge_completions';
-    protected $fillable = ['challenge_id', 'user_id', 'challenge_name', 'challenge_content', 'challenge_type', 'brand_id', 'points'];
+    protected $fillable = ['challenge_id', 'user_id', 'challenge_name', 'challenge_content', 'challenge_type', 'brand_id', 'brand_name', 'points'];
 
     public function getCreatedAtAttribute($timestamp)
     {

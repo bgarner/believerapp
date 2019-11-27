@@ -136,6 +136,7 @@ class MissionController extends Controller
         } else {
             //get the challange that was completed
             $challenge = Challenge::find($request->mission_id);
+            $brand_name = Client::find($challenge->brand_id)->name;
             $points = ChallengeType::find($challenge->challenge_type)->points;
             
             //get the points for this challenge, update user points            
@@ -150,6 +151,7 @@ class MissionController extends Controller
                 'challenge_content' => $challenge->content,
                 'challenge_type' => $challenge->challenge_type,
                 'brand_id' => $challenge->brand_id,
+                'brand_name' =>$brand_name,
                 'points' => $points,
             ]);
             $completion->save();
