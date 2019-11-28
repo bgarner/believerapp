@@ -52,20 +52,21 @@
                     <div class="form-group"><label class="col-sm-12 control-label">Landing Page Title<span class="req">*</span></label>
                         <small>This is the slightly larger text on the landing page.</small>
                         <div class="col-sm-10">
-                            <textarea class="form-control" rows="5" id="landingpage_title" name="landingpage_title" required></textarea>
+                            <textarea class="form-control" rows="5" id="landingpage_title" name="landingpage_title" required>{{ $client->landingpage_title }}</textarea>
                         </div>
                     </div>
 
                     <div class="form-group"><label class="col-sm-12 control-label">Landing Page Content<span class="req">*</span></label>
                     <small>This is the paragraph on the landing page describing Believer for your client's users.</small>
                         <div class="col-sm-10">
-                            <textarea class="form-control" rows="5" id="landingpage_content" name="landingpage_content" required></textarea>
+                            <textarea class="form-control" rows="5" id="landingpage_content" name="landingpage_content" required>{{ $client->landingpage_content }}</textarea>
                         </div>
                     </div>          
-                                
+
                     <div class="form-group"><label class="col-sm-12 control-label">Primary Logo<span class="req">*</span></label>
                         <small>This is the primary logo for the client. It will also be displayed on the landing page inline with the content on that page. Choose the hight resolution logo you have available. The logo will resize automatically to be optimized.</small>
                         <div class="input-group col-12">
+                            <img src="https://res.cloudinary.com/believer/image/upload/c_fill,f_jpg,h_100,q_auto,w_100/{{ $client->logo }}" class="img-fluid" style="padding-right: 10px;" />
                             <div class="custom-file">
                                 <input type="file" class="form-control-file" id="clientimage" name="clientimage" required>
                             </div>
@@ -73,8 +74,9 @@
                     </div>
 
                     <div class="form-group"><label class="col-sm-12 control-label">Secondary Logo</label>
-                        <small>This logo goes above the call to action on the right side of the landing page. Could be a logo, or an image of any sort. Choose the hight resolution logo you have available. The logo will resize automatically to be optimized.</small>
+                        <small>This logo goes above the call to action on the right side of the landing page. Could be a logo, or an image of any sort. This image is not required. Choose the hight resolution logo you have available. The logo will resize automatically to be optimized.</small>
                         <div class="input-group col-12">
+                            <img src="https://res.cloudinary.com/believer/image/upload/c_fill,f_jpg,h_100,q_auto,w_100/{{ $client->logo2 }}" class="img-fluid pb-3" style="padding-right: 10px;" />
                             <div class="custom-file">
                                 <input type="file" class="form-control-file" id="clientimage2" name="clientimage2">
                             </div>
@@ -84,6 +86,7 @@
                     <div class="form-group"><label class="col-sm-12 control-label">Banner Image<span class="req">*</span></label>
                         <small>Choose the highest resolution image you have available. The banner will resize to 800px x 150px automatically.</small>
                         <div class="input-group col-12">
+                        <img src="https://res.cloudinary.com/believer/image/upload/c_fill,f_jpg,h_100,q_auto,w_500/{{ $client->banner }}" class="img-fluid" style="" /><br />
                             <div class="custom-file">
                                 <input type="file" class="form-control-file" id="bannerimage" name="bannerimage" required>
                             </div>

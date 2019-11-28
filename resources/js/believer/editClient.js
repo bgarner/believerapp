@@ -14,6 +14,8 @@ $(document).on("click", ".editClient", function() {
     var logo = fileInput.files[0];
     var logo2 = fileInput2.files[0];
     var banner = fileInput3.files[0];
+    var title = $("#landingpage_title").val();
+    var content = $("#landingpage_content").val();
     var address1 = $("#address1").val();
     var address2 = $("#address2").val();
     var city = $("#city").val();
@@ -26,6 +28,8 @@ $(document).on("click", ".editClient", function() {
     formData.append('company_name', company_name);
     formData.append('unique_name', unique_name);
     formData.append('description', description);
+    formData.append('landingpage_title', title);
+    formData.append('landingpage_content', content);
     // formData.append('logo', logo);
     // formData.append('logo2', logo2);
     // formData.append('banner', banner);
