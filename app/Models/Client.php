@@ -16,6 +16,8 @@ class Client extends Model
         'description',
         'logo',
         'logo2',
+        'landingpage_title',
+        'landingpage_content',
         'banner',
         'address1',
         'address2',

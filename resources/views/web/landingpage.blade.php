@@ -43,26 +43,23 @@
                     @if($brand->logo)
                     <img style="float: left; padding: 0px 20px 10px 0px;" src="https://res.cloudinary.com/believer/image/upload/c_fill,f_jpg,h_200,q_auto,w_200/{{ $brand->logo }}" />
                     @endif
-                    As if building the home of your dreams wasn't rewarding enough.
+                    {{ $brand->landingpage_title }}
                     </h2>
-                    <p>Raving fan of {{$brand->name}}? Become a member of the {{$brand->name}} Club to help friends, share your experience and earn rewards.</p>
+                    <p>Raving fan of {{$brand->name}}? Follow {{$brand->name}} on Believer to help friends, share your experience and earn rewards.</p>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p>{{ $brand->landingpage_content }}</p>
                 </div>
                 <div class="col-1"></div>
                 <div class="col-4 bg-ltgrey p-4">
                     @if($brand->logo)
                     <center>
+                    @if($brand->logo2)
                     <img src="https://res.cloudinary.com/believer/image/upload/c_fill,f_jpg,h_150,q_auto,w_150/{{ $brand->logo2 }}" class="img-fluid pb-3" />
+                    @endif
                     </center>
                     @endif
                     <center>
-                    <p class="text-center">Join the {{ $brand->name }} Club and get rewarded for sharing the love.</p>
+                    <p class="text-center">Join {{ $brand->name }} on Believer and get rewarded for sharing the love.</p>
                     <a href="#registration_form" class="btn btn-lg btn-danger">Join Now</a>
 
                     <p class="pt-3"><small>Already an ambassador? Click below to download the app!</small>

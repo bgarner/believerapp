@@ -39,9 +39,9 @@
                         </div>
                     </div>
 
-                    <div class="form-group"><label class="col-sm-12 control-label">Description<span class="req">*</span></label>
+                    <div class="form-group"><label class="col-sm-12 control-label">Description</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" rows="5" id="description" name="description" required>{{ $reward->description }}</textarea>
+                            <textarea class="form-control" rows="5" id="description" name="description">{{ $reward->description }}</textarea>
 
                         </div>
                     </div>
