@@ -73,7 +73,7 @@ class Stats
         $redemptions_this_week_count = count($redemptions_this_week);
 
 
-        $users_who_claimed_reward = User::whereIn('id', $redemptions->pluck('user_id') )
+        $users_who_claimed_reward = User::whereIn('users.id', $redemptions->pluck('user_id') )
                                     ->join('redemptions', 'users.id', '=', 'redemptions.user_id')
                                     ->select('users.*', 'redemptions.created_at as redeemed_at')
                                     ->orderBy('redemptions.created_at', 'desc')
