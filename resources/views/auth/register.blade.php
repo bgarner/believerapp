@@ -156,7 +156,7 @@
               </div>
             </div>
             <div class="simple-footer">
-              Copyright &copy; Believer <?=date('Y')?>
+              Copyright &copy; Culturebrand, Inc. <?=date('Y')?>
             </div>
           </div>
         </div>
