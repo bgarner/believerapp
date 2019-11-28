@@ -37,7 +37,7 @@
                     <div class="d-block">
                     	<label for="password" class="control-label">Password</label>
                       <div class="float-right">
-                        <a href="auth-forgot-password.html" class="text-small">
+                        <a href="/password/reset" class="text-small">
                           Forgot Password?
                         </a>
                       </div>
@@ -66,7 +66,7 @@
               Don't have an account? <a href="/signup">Create One</a>
             </div>
             <div class="simple-footer">
-              Copyright &copy; Believer <?=date('Y')?>
+              Copyright &copy; Culturebrand, Inc. <?=date('Y')?>
             </div>
           </div>
         </div>
