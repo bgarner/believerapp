@@ -128,6 +128,9 @@ class BelieverController extends Controller
         //SendInvitations::dispatchNow($invites, $brand, $batch_id);
         foreach($invites as $invite){
 
+            $invite->brandname = $brand->name;
+            $invite->brandslug = $brand->unique_name;
+            
             \Log::info("\n ---------------------------------");
             \Log::info("sending an email");
             \Log::info($invite->email);
