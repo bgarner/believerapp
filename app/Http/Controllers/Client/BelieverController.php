@@ -130,14 +130,14 @@ class BelieverController extends Controller
 
             $invite->brandname = $brand->name;
             $invite->brandslug = $brand->unique_name;
-            
+
             \Log::info("\n ---------------------------------");
             \Log::info("sending an email");
             \Log::info($invite->email);
 
-            Mail::send('email.invite', ['first_name' => $invite->first, 'last_name' => $invite->last], function ($message) use ($invite){
+            Mail::send('email.invite', ['first_name' => $invite->first, 'last_name' => $invite->last, 'brandname' => $brand->name, 'brandslug' => $brand->unique_name], function ($message) use ($invite){
                 $message->from('no-reply@believer.io', 'Believer');
-                $message->to($invite->email)->subject('Testing this out');
+                $message->to($invite->email)->subject("You've been invited to join " . $inivte->brandname . " on Believer!");
             });
 
             // \Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
