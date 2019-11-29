@@ -15,11 +15,13 @@ class ClientController extends Controller
 
     public function clientLandingPage($slug)
     {
+        $appstore_link = env("BELIEVER_APP_STORE_LINK");
         $brand = Client::where('unique_name', $slug)->first();
         if(!$brand){
             abort(404);
         }
         return view('web.landingpage')
+          ->with('appstore_link', $appstore_link)
           ->with('brand', $brand);
     }
 }

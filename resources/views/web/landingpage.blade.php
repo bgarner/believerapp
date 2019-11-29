@@ -63,7 +63,7 @@
                     <a href="#registration_form" class="btn btn-lg btn-danger">Join Now</a>
 
                     <p class="pt-3"><small>Already an ambassador? Click below to download the app!</small>
-                        <a href="#"><img src="/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" width="100" /></a>
+                        <a href="{{ $appstore_link }}"><img src="/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" width="100" /></a>
                     </p>
                     </center>
                 </div>
@@ -172,7 +172,7 @@
                                 <input type="password" class="form-control" name="password" id="password" required />
                                 <br />
                                 <input class="btn btn-lg btn-primary registerWithBrand" type="button" name="button" value="Register" />
-                                <a href="#"><img src="/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" width="auto" /></a>
+                                <a href="{{ $appstore_link }}"><img src="/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" width="auto" /></a>
                             </div>
 
                         </div>
