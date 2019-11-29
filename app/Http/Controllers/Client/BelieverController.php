@@ -124,7 +124,7 @@ class BelieverController extends Controller
         //get the invites
         $invites = AdvocateBulkUpload::where('batch_id', $batch_id)->get();
         $brand = Client::find($request->client_id);
-        dd($brand);
+
         //do the job
         //SendInvitations::dispatchNow($invites, $brand, $batch_id);
         foreach($invites as $invite){
@@ -133,17 +133,10 @@ class BelieverController extends Controller
             \Log::info("sending an email");
             \Log::info($invite->email);
 
-            Mail::send('email.invite', ['first_name' => $invite->first, 'last_name' => $invite->last, 'brandname' => $brand->name, 'brandslug' => $brand->unique_name], function ($message) use ($invite){
+            Mail::send('email.invite', ['first_name' => $invite->first, 'last_name' => $invite->last, 'brandname' => $brand->name, 'brandslug' => $brand->unique_name], function ($message) use ($invite, $brand){
                 $message->from('no-reply@believer.io', 'Believer');
-                $message->to($invite->email)->subject("You've been invited to join " . $brandname . " on Believer!");
+                $message->to($invite->email)->subject("You've been invited to join " . $brand->name . " on Believer!");
             });
-
-            // \Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
-            // {
-            //     $message->subject('Mailgun and Laravel are awesome!');
-            //     $message->from('no-reply@gamegraft.com', 'Believer');
-            //     $message->to($email);
-            // });
         }
     }
 
