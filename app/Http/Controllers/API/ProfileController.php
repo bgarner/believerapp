@@ -200,6 +200,17 @@ class ProfileController extends Controller
         ]);
     }
 
+    public static function deleteYourAccount(Request $request)
+    {
+        $comps = ChallengeCompletion::where('user_id', $request->user_id)->delete();
+        $user = User::find($request->user_id);
+        \Log::info('USER DELETE: ' . $user);
+        $user->delete();
+        return response()->json([
+            'deleted' => $user
+        ]);
+    }
+
     public static function initCloudinary()
     {
         $cloud = config('services.cloudinary.cloud_name');
