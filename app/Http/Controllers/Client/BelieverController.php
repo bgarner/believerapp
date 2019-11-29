@@ -98,9 +98,7 @@ class BelieverController extends Controller
         $path = $request->file('csvfile')->store('csvfile');
        // $file = \Storage::get($path);
         //$handle = fopen($_SERVER['DOCUMENT_ROOT'] . '/storage/app/' . $path, "r");
-        $carbon = Carbon::createFromFormat('F j, Y, g:i a', 'UTC');
-        $carbon->tz = 'America/Edmonton';
-        $batch_date = $date->format('F j, Y, g:i a');
+        $batch_date = Carbon::now()->tz('America/Edmonton')->toDayDateTimeString();
         //$batch_date = date("F j, Y, g:i a");
         $batch_id = substr(md5(date("Y-m-d H:i:s").rand()), 0, 8);
         $handle = fopen("../storage/app/" . $path, "r");
