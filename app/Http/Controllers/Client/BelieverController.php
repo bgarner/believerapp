@@ -128,16 +128,13 @@ class BelieverController extends Controller
         //SendInvitations::dispatchNow($invites, $brand, $batch_id);
         foreach($invites as $invite){
 
-            $invite->brandname = $brand->name;
-            $invite->brandslug = $brand->unique_name;
-
             \Log::info("\n ---------------------------------");
             \Log::info("sending an email");
             \Log::info($invite->email);
 
             Mail::send('email.invite', ['first_name' => $invite->first, 'last_name' => $invite->last, 'brandname' => $brand->name, 'brandslug' => $brand->unique_name], function ($message) use ($invite){
                 $message->from('no-reply@believer.io', 'Believer');
-                $message->to($invite->email)->subject("You've been invited to join " . $inivte->brandname . " on Believer!");
+                $message->to($invite->email)->subject("You've been invited to join " . $brand->name . " on Believer!");
             });
 
             // \Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
