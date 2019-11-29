@@ -133,7 +133,7 @@ class BelieverController extends Controller
             \Log::info($invite->email);
 
             Mail::send('email.invite', ['first_name' => $invite->first, 'last_name' => $invite->last], function ($message) use ($invite){
-                $message->from('no-reply@gamegraft.com', 'Believer');
+                $message->from('no-reply@believer.io', 'Believer');
                 $message->to($invite->email)->subject('Testing this out');
             });
 
