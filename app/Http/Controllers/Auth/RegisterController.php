@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Models\Follower;
 use Illuminate\Http\Request;
 use Response;
+use Mail;
 
 class RegisterController extends Controller
 {
@@ -91,6 +92,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        // Self::sendNewUserEmail($newuser);
     }
 
     public function registerWithBrand(Request $request)
@@ -145,6 +148,17 @@ class RegisterController extends Controller
         \Log::info("new user...");
         \Log::info($newuser);
 
+        Self::sendNewUserEmail($newuser);
         //return Response::json(compact('token'));
+    }
+
+    public static function sendNewUserEmail($newuser)
+    {
+        $appstore_link = env("BELIEVER_APP_STORE_LINK");
+
+        Mail::send('email.newuser', ['first_name' => $newuser->first, 'last_name' => $newuser->last, 'appstore_link' => $appstore_link], function ($message) use ($newuser){
+            $message->from('no-reply@believer.io', 'Believer');
+            $message->to($newuser->email)->subject("Welcome to Beliver!");
+        });
     }
 }
