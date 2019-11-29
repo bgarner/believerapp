@@ -134,7 +134,7 @@ class BelieverController extends Controller
 
             Mail::send('email.invite', ['first_name' => $invite->first, 'last_name' => $invite->last, 'brandname' => $brand->name, 'brandslug' => $brand->unique_name], function ($message) use ($invite){
                 $message->from('no-reply@believer.io', 'Believer');
-                $message->to($invite->email)->subject("You've been invited to join " . $brand->name . " on Believer!");
+                $message->to($invite->email)->subject("You've been invited to join " . $brandname . " on Believer!");
             });
 
             // \Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
