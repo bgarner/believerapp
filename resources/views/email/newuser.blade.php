@@ -39,6 +39,7 @@
 <tr>
 <td class="content-cell" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; padding: 35px;">
     <h1 style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #2F3133; font-size: 19px; font-weight: bold; margin-top: 0; text-align: left;">Hello, {{ $first_name }}!</h1>
+    <p style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #74787E; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Thank you for signing up to use Beliver, the easiest way to get rewarded for promoting brands and local businesses you love.</p>
     <p style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #74787E; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Sharing is rewarding, with <a href="https://believer.io/">Believer</a> – a word-of-mouth loyalty program that rewards you and supports local charities for promoting brands and local businesses you love. </p>
     <p style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #74787E; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Use our app to connect with businesses and brands you care about. Collect points for completing their simple missions on social media. Redeem your points for gift cards and movie passes, or pass them on to local charities.</p>
     <table class="action" align="center" width="100%" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; margin: 30px auto; padding: 0; text-align: center; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;"><tr>
@@ -48,7 +49,6 @@
     <table border="0" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box;"><tr>
     <td style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box;">
     <h1 style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #2F3133; font-size: 18px; font-weight: bold; margin-top: 0; text-align: center;">
-    <a href="{{ $appstore_link }}"><img src="https://believer.io/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" width="200px"></a>
     <a href="{{ $appstore_link }}">Click here to download the app and get started!</a>
     </h1>
     </td>
