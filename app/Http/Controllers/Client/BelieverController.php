@@ -124,6 +124,7 @@ class BelieverController extends Controller
         //get the invites
         $invites = AdvocateBulkUpload::where('batch_id', $batch_id)->get();
         $brand = Client::find($request->client_id);
+        dd($brand);
         //do the job
         //SendInvitations::dispatchNow($invites, $brand, $batch_id);
         foreach($invites as $invite){
