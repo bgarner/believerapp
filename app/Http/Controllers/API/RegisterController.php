@@ -30,8 +30,9 @@ class RegisterController extends Controller
             'group_id' => 3
         ]);
         $token = JWTAuth::fromUser($user);
+        $user_id = $user->id
 
-        return Response::json(compact('token'));
+        return Response::json(compact('token', 'user_id'));
     }
 
     public function showRegistrationForm()
