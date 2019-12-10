@@ -61,8 +61,11 @@
         <div class="col-md-10 col-md-offset-1">
           <h1><span class="brand-heading"><img src="/images/home/Believer-Logo-REVERSED.png"  width="50%" style="padding: 0 0 20px 0;" /></span></h1>
           <p class="intro-text">Get rewarded for supporting brands and local businesses you believe in.</p>
-          <a href="/signup" class="btn btn-default page-scroll">Sign Up</a>
-          <a href="/login" class="btn btn-default">Log In</a>
+          <a href="/signup" class="btn btn-default page-scroll">Sign Up Now</a>
+          <a href="{{ env("BELIEVER_APP_STORE_LINK") }}"><img src="/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" width="" height="50" /></a>
+          <div style="border-bottom: 1px solid #8ca5ab; width: 50%; margin: 30px auto; height: 1px;"></div>
+          <a href="/login" class="btn btn-secondary">Brand Log In</a>
+          
         </div>
       </div>
     </div>
@@ -162,7 +165,7 @@
 
 <div id="footer" style="background-color: black;">
   <div class="container">
-    <p>Copyright &copy; Believer.  &nbsp;&nbsp;&nbsp; <a href="/privacy">Privacy</a>&nbsp;<a href="/terms_web">Terms of Use</a></p>
+    <p>Copyright &copy; CultureBrand Inc.  &nbsp;&nbsp;&nbsp; <a href="/privacy">Privacy</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/terms_web">Terms of Use</a></p>
   </div>
 </div>
 

@@ -208,10 +208,27 @@ hr {
 	font-size: 18px;
 	transition: all 0.5s;
 }
+
+.btn-secondary {
+	color: #f6f6f6;
+	background: #333;
+	border: 0;
+	padding: 10px 16px;
+	margin: 0 4px;
+	font-size: 14px;
+	transition: all 0.5s;
+}
+
 .btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active {
 	color: #f6f6f6;
 	background-color: #09a4bc;
 }
+
+.btn-secondary:hover, .btn-secondary:focus, .btn-secondary.focus, .btn-secondary:active, .btn-secondary.active {
+	color: #f6f6f6;
+	background-color: #666;
+}
+
 .section-title.center {
 	padding: 0px 0;
 }
