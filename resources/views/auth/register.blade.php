@@ -68,6 +68,7 @@
                             <input type="password" class="form-control" name="password" id="password" required />
                             <br />
                             <input class="btn btn-lg btn-primary registerWithBrand" type="button" name="button" value="Register" />
+                            <a href="{{ env("BELIEVER_APP_STORE_LINK") }}"><img src="/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" width="auto" /></a>
                         </div>
 
                     </div>

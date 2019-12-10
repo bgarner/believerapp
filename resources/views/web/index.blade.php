@@ -61,7 +61,7 @@
         <div class="col-md-10 col-md-offset-1">
           <h1><span class="brand-heading"><img src="/images/home/Believer-Logo-REVERSED.png"  width="50%" style="padding: 0 0 20px 0;" /></span></h1>
           <p class="intro-text">Get rewarded for supporting brands and local businesses you believe in.</p>
-          <a href="#section-app" class="btn btn-default page-scroll">Learn More</a>
+          <a href="/signup" class="btn btn-default page-scroll">Sign Up</a>
           <a href="/login" class="btn btn-default">Log In</a>
         </div>
       </div>

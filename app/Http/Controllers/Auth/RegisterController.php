@@ -99,7 +99,8 @@ class RegisterController extends Controller
     public function registerWithBrand(Request $request)
     {
         //Self::initCloudinary();
-
+        \Log::info('here');
+        
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|max:255|unique:users',
             'confirm_email' => 'same:email',
