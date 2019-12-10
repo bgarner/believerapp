@@ -38,7 +38,7 @@
         <div class="container" style="padding: 60px 0px;">
 
             <div class="row pt-4 pb-4">
-                <div class="col-7">
+                <div class="col-12">
                     <h2>
                     @if($brand->logo)
                     <img style="float: left; padding: 0px 20px 10px 0px;" src="https://res.cloudinary.com/believer/image/upload/c_fill,f_jpg,h_200,q_auto,w_200/{{ $brand->logo }}" />
@@ -49,24 +49,7 @@
 
                     <p>{{ $brand->landingpage_content }}</p>
                 </div>
-                <div class="col-1"></div>
-                <div class="col-4 bg-ltgrey p-4">
-                    @if($brand->logo)
-                    <center>
-                    @if($brand->logo2)
-                    <img src="https://res.cloudinary.com/believer/image/upload/c_fill,f_jpg,h_150,q_auto,w_150/{{ $brand->logo2 }}" class="img-fluid pb-3" />
-                    @endif
-                    </center>
-                    @endif
-                    <center>
-                    <p class="text-center">Join {{ $brand->name }} on Believer and get rewarded for sharing the love.</p>
-                    <a href="#registration_form" class="btn btn-lg btn-danger">Join Now</a>
 
-                    <p class="pt-3"><small>Already an ambassador? Click below to download the app!</small>
-                        <a href="{{ $appstore_link }}"><img src="/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" width="100" /></a>
-                    </p>
-                    </center>
-                </div>
             </div>
         </div>
 
