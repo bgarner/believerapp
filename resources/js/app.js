@@ -65,7 +65,7 @@ var editorExists = document.getElementsByClassName('editable');
 if(editorExists.length > 0 ){
     var editor = new MediumEditor('.editable', {
         placeholder: {
-            text: 'Type your message',
+            text: '',
             hideOnClick: true
         },
         toolbar: {

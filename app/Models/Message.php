@@ -66,6 +66,9 @@ class Message extends Model
             $start = now();
             $end = null;
         }
+        if(!$request->body) {
+            $request->body = "";
+        }
 
         if ($upload) {
             // dd($request->brand_id);

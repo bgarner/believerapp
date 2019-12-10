@@ -41,21 +41,22 @@
 
                     <div class="form-group"><label class="col-sm-12 control-label">Message<span class="req">*</span></label>
                         <div class="col-sm-10">
-                            <div class="editable"></div>
+                            <div class="editable" required></div>
                         </div>
                     </div>
 
-                    <div class="form-group"><label class="col-sm-12 control-label">Action Title</label>
+                    <div class="form-group"><label class="col-sm-12 control-label">Action Title<span class="req">*</span></label>
                         <small>This is the text that will appear on the action button at the bottom of your message.</small>
                         <div class="col-sm-10">
-                            <input type="text" id="action_title" name="action_title" class="form-control" value="" />
+                            <input type="text" id="action_title" name="action_title" class="form-control" value="" required />
                         </div>
                     </div>
 
-                    <div class="form-group"><label class="col-sm-12 control-label">Action URL</label>
-                        <small>When the action button is clicked, this is where the user will be taken. Don't foget to include 'https://'</small>
+                    <div class="form-group"><label class="col-sm-12 control-label">Action URL<span class="req">*</span></label>
+                        <small>When the action button is clicked, this is where the user will be taken. <br />
+                        <strong>Don't foget to include 'https://'</strong></small>
                         <div class="col-sm-10">
-                            <input type="text" id="action_url" name="action_url" class="form-control" value="" />
+                            <input type="text" id="action_url" name="action_url" class="form-control" value="" required />
                         </div>
                     </div>
                 </div>
