@@ -48,8 +48,7 @@ class MessagesController extends Controller
                                 ->where('user_id', $request->user_id)
                                 ->delete();
         if ($message){
-            $data=['status'=>'1','msg'=>'success'
-            ];
+            $data=['status'=>'1','msg'=>'success'];
         } else {
             $data=['status'=>'0','msg'=>'user/message was not found'];
         }

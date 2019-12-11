@@ -36,7 +36,11 @@ class ProfileController extends Controller
         $rewards_redeemed_count = Redemption::where('user_id', $request->user_id)->get()->count();
         $referrals_sent_count = Referral::where('referred_by_id', $request->user_id)->get()->count();
 
-        $user->missions_completed_count = $missions_completed_count;
+        if(empty($missions_completed_count)){
+            $user->missions_completed_count = 0;    
+        } else {
+            $user->missions_completed_count = $missions_completed_count;
+        }
         $user->historic_total_points = $historic_total_points;
         $user->brands_following_count = $brands_following_count;
         $user->rewards_redeemed_count = $rewards_redeemed_count;

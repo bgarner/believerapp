@@ -83,7 +83,7 @@
 
                         <div class="col-sm-10">
                             <input type="text" id="message_create_daterange" class="form-control" id="messagerange" name="messagerange" value="">
-                            <input type="hidden" id="start" name="start" value="" />
+                            <input type="hidden" id="start" name="start" value="{{ date("Y-m-d H:i:s") }}" />
                             <input type="hidden" id="end" name="end" value="" />
                         </div>
                     </div>
