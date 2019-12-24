@@ -85,7 +85,8 @@
             <h3>If I’m a business or brand leader, how do I signup on the platform?</h3>
             <p>If you’re interested in becoming a Builder, Community Developer or Merchant Partner, visit <a href='https://www.believerapp.com/believer-for-business'>www.believerapp.com/believer-for-business</a> to learn more and to get in touch with us. </p>
 
-
+            <h3>Contact Us</h3>
+            If you have any concerns or technical questions, please contact us at <a href="mailto:support@believerapp.com">support@believerapp.com</a>.
 
             </div>
         </div>

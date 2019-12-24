@@ -195,7 +195,7 @@
                 <p>Our Website and its features and Services are not meant for children under 13 years of age. See our Website Terms of Use for more details. If you are under 13 years old, please do not give us your personal information. If you are the parent or guardian of someone under 13 years of age, please do not give us personal information of that person.</p>
 
                 <h3>How to contact us about privacy questions.</h3>
-                <p>If you have a question or a concern about our Privacy Policy or your personal information, please get in touch with us. Our Privacy Officer can be reached at privacy@believer.io.</p>
+                <p>If you have a question or a concern about our Privacy Policy or your personal information, please get in touch with us. Our Privacy Officer can be reached at <a href="mailto:privacy@believerapp.com">privacy@believerapp.com</a>.</p>
             </div>
         </div>
     </div>
