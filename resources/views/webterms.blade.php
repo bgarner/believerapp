@@ -39,7 +39,7 @@
         <ul class="nav navbar-nav">
             <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
             <li class="hidden"> <a href="#page-top"></a> </li>
-            
+            <li> <a class="btn-scroll" href="/support">Support</a> </li>
             <li> <a class="page-scroll" href="/signup">Sign Up</a> </li>
             <li> <a class="btn-default" href="/login">Login</a> </li>
 

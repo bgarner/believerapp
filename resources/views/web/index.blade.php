@@ -43,6 +43,7 @@
         <li class="hidden"> <a href="#page-top"></a> </li>
         <li> <a class="page-scroll" href="#section-app">About the App</a> </li>
         <li> <a class="page-scroll" href="#section-business">For Business</a> </li>
+        <li> <a class="btn-scroll" href="/support">Support</a> </li>
         <li> <a class="page-scroll" href="/signup">Sign Up</a> </li>
         <li> <a class="btn-default" href="/login">Login</a> </li>
 

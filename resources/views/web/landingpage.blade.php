@@ -23,7 +23,7 @@
 
                 <ul class="nav navbar-nav" style="float: right;">
                   <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-
+                  <li> <a class="btn-scroll" href="/support">Support</a> </li>
                   <li> <a class="page-scroll" href="/#section-app">About the App</a> </li>
                   <li> <a class="page-scroll" href="/#section-business">For Business</a> </li>
                   {{-- <li> <a class="page-scroll" href="/signup">Sign Up</a> </li> --}}

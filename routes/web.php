@@ -23,6 +23,10 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 /*--- PUBLIC ROUTES ------------------------------------*/
 Route::get('/', array('uses'=> 'Web\HomeController@index'));
 
+Route::get('/support', function () {
+    return view('support');
+});
+
 Route::get('/privacy', function () {
     return view('privacy');
 });
