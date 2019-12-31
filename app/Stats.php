@@ -41,6 +41,7 @@ class Stats
         $active_missions = Challenge::where('brand_id', $id)
                     ->where('start', '<', Carbon::now())
                     ->where('end', '>', Carbon::now())
+                    ->orWhereNull('end')
                     ->count();
 
         //points

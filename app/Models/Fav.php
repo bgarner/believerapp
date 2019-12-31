@@ -22,6 +22,7 @@ class Fav extends Model
                     ->join('brands', 'brands.id', '=', 'challenges.brand_id')
                     ->where('user_id', $user_id)
                     ->where('end', '>', Carbon::now())
+                    ->orWhereNull('end')
                     ->select('challenges.*', 'brands.name as brand_name', 'brands.logo as client_logo')
                     ->get();
         foreach($favs as $f){

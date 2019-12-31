@@ -90,6 +90,7 @@ class MissionController extends Controller
                 ->where('brand_id', $request->client_id)
                 ->where('start', '<', Carbon::now())
                 ->where('end', '>', Carbon::now())
+                ->orWhereNull('end')
                 ->get();
 
         foreach($challenges as $challenge){

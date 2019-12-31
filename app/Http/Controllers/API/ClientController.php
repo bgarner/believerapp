@@ -175,6 +175,7 @@ class ClientController extends Controller
         return Mission::where('brand_id', $request->brand_id)
                         ->where('start','<', Carbon::now())
                         ->where('end', '>', Carbon::now())
+                        ->orWhereNull('end')
                         ->get();
     }
 }
