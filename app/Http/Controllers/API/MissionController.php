@@ -35,6 +35,7 @@ class MissionController extends Controller
                                 ->whereIn('challenges.brand_id' ,$brands)
                                 ->where('start', '<', Carbon::now())
                                 ->where('end', '>', Carbon::now())
+                                ->orWhereNull('end')
                                 ->select('challenges.*', 'brands.name as brand_name', 'brands.logo as client_logo', 'challenge_completions.user_id as completed_by')
                                 ->orderBy('start', 'desc')
                                 ->get()
@@ -42,6 +43,7 @@ class MissionController extends Controller
                                     return $value['completed_by'] !== $request->user_id;
                                 })
                                 ->values();
+
         foreach($challenges as $challenge){
             $challenge->points = ChallengeType::find($challenge->challenge_type)->points;
             $is_fav = Fav::where('mission_id', $challenge->id)
