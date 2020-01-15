@@ -29,20 +29,19 @@ class MissionController extends Controller
         // $challenges = collect();
 
         $brands = Follower::where('user_id',$request->user_id)->pluck('brand_id')->toArray();
-
-        $challenges = Challenge::join('brands', 'challenges.brand_id', '=', 'brands.id')
-                                ->leftjoin('challenge_completions', 'challenges.id' , '=', 'challenge_completions.challenge_id')
-                                ->whereIn('challenges.brand_id' ,$brands)
-                                ->where('start', '<', Carbon::now())
-                                ->where('end', '>', Carbon::now())
-                                ->orWhereNull('end')
-                                ->select('challenges.*', 'brands.name as brand_name', 'brands.logo as client_logo', 'challenge_completions.user_id as completed_by')
-                                ->orderBy('start', 'desc')
-                                ->get()
-                                ->filter(function ($value, $key) use($request){
-                                    return $value['completed_by'] !== $request->user_id;
-                                })
-                                ->values();
+        $completions = ChallengeCompletion::where('user_id', $request->user_id)->pluck('challenge_id')->toArray();
+        $now = Carbon::now();
+        $challenges = Challenge::where([
+                                    ['challenges.start', '<', $now],
+                                    ['challenges.end', '>', $now],
+                                ])
+                                ->orWhereNull('challenges.end')
+                                ->whereIn('challenges.brand_id', $brands)
+                                ->whereNotIn('challenges.id', $completions)
+                                ->orderBy('challenges.start', 'desc')
+                                ->join('brands', 'challenges.brand_id', '=', 'brands.id')
+                                ->select('challenges.*', 'brands.name as brand_name', 'brands.logo as client_logo')
+                                ->get();
 
         foreach($challenges as $challenge){
             $challenge->points = ChallengeType::find($challenge->challenge_type)->points;
