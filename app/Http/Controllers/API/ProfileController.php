@@ -16,9 +16,24 @@ use App\Models\Fav;
 class ProfileController extends Controller
 {
 
+    public $ip;
+
+    public function __construct(){
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $this->ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $this->ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $this->ip = $_SERVER['REMOTE_ADDR'];
+        }
+    }
+
     public function show(Request $request)
     {
-        \Log::info('API\ProfileController@show: ' . PHP_EOL . $request . PHP_EOL . " -------------");
+        \Log::info('API\ProfileController@show: ' . PHP_EOL . 
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
         //POST http://localhost:8000/api/v1/profile
         // {
         //     "user_id": 123
@@ -51,7 +66,10 @@ class ProfileController extends Controller
 
     public function balance(Request $request)
     {
-        \Log::info('API\ProfileController@balance: ' . PHP_EOL . $request . PHP_EOL . " -------------");
+        \Log::info('API\ProfileController@balance: ' . PHP_EOL .
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
         //POST http://localhost:8000/api/v1/profile/pointbalance
         // {
         //     "user_id": 123
@@ -61,7 +79,11 @@ class ProfileController extends Controller
 
     public function challengeHistory(Request $request)
     {
-        \Log::info('API\ProfileController@challengeHistory: ' . PHP_EOL . $request . PHP_EOL . " -------------");
+        \Log::info('API\ProfileController@challengeHistory: ' . PHP_EOL . 
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
+        
         // POST http://localhost:8000/api/v1/profile/history
         // {
         //     "user_id": 20
@@ -98,7 +120,10 @@ class ProfileController extends Controller
 
     public function editUsername(Request $request)
     {
-        \Log::info('API\ProfileController@editUsername: ' . PHP_EOL . $request . PHP_EOL . " -------------");
+        \Log::info('API\ProfileController@editUsername: ' . PHP_EOL . 
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
         // POST http://localhost:8000/api/v1/profile/updateUsername
         // {
         //     "user_id": 20,
@@ -118,7 +143,10 @@ class ProfileController extends Controller
 
     public function editContact(Request $request)
     {
-        \Log::info('API\ProfileController@editContact: ' . PHP_EOL . $request . PHP_EOL . " -------------");
+        \Log::info('API\ProfileController@editContact: ' . PHP_EOL . 
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
         // POST http://localhost:8000/api/v1/profile/updateUsername
         // {
         //     "user_id": 20,
@@ -143,7 +171,10 @@ class ProfileController extends Controller
 
     public function leaderboard(Request $request)
     {
-        \Log::info('API\ProfileController@leaderboard: ' . PHP_EOL . $request . PHP_EOL . " -------------");
+        \Log::info('API\ProfileController@leaderboard: ' . PHP_EOL . 
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");     
         // POST http://localhost:8000/api/v1/profile/leaderboard
         // {
         //     "user_id": 6
@@ -185,7 +216,11 @@ class ProfileController extends Controller
 
     public function uploadProfilePic(Request $request)
     {
-        \Log::info('API\ProfileController@uploadProfilePic: ' . PHP_EOL . $request . PHP_EOL . " -------------");
+        \Log::info('API\ProfileController@uploadProfilePic: ' . PHP_EOL . 
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
+
         $user = User::find($request->user_id);
         Self::initCloudinary();
         $pic = $request->file('profilepic');
@@ -206,6 +241,10 @@ class ProfileController extends Controller
 
     public static function deleteYourAccount(Request $request)
     {
+        \Log::info('API\ProfileController@deleteYourAccount: ' . PHP_EOL . 
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
         
         $user = User::find($request->user_id);
         if(!$user) {

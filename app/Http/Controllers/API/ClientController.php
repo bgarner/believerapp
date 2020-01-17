@@ -13,6 +13,17 @@ use Carbon\Carbon;
 
 class ClientController extends Controller
 {
+    public $ip;
+
+    public function __construct(){
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $this->ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $this->ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $this->ip = $_SERVER['REMOTE_ADDR'];
+        }
+    }
 
     public function index(Request $request)
     {
@@ -40,29 +51,19 @@ class ClientController extends Controller
             }
         }
 
-        \Log::info(
-            PHP_EOL
-            . "*************************************"
-            . PHP_EOL
-            . 'API\ClientController@index:'
-            . PHP_EOL
-            . $request
-            . PHP_EOL
-            . "response:"
-            . PHP_EOL
-            . "-----------------"
-            . PHP_EOL
-            . ($clients)
-            . PHP_EOL
-            . "*************************************"
-        );
-        return $clients;
+        \Log::info('API\ClientController@index: ' . PHP_EOL .
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
 
     }
 
     public function clientsFollowedByUser(Request $request)
     {
-        \Log::info('API\ClientController@clientsFollowedByUser: ' . PHP_EOL . $request . PHP_EOL . " -------------");
+        \Log::info('API\ClientController@clientsFollowedByUser: ' . PHP_EOL .
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
         //return a list of clients followed by the user
         // POST http://localhost:8000/api/v1/clientsFollowedByUser
         // {
@@ -76,7 +77,10 @@ class ClientController extends Controller
 
     public function show(Request $request)
     {
-        \Log::info('API\ClientController@show: ' . PHP_EOL . $request . PHP_EOL . " -------------");
+        \Log::info('API\ClientController@show: ' . PHP_EOL . 
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
         //POST http://localhost:8000/api/v1/clients/show
         // {
         //     "client_id": 10,
@@ -88,7 +92,10 @@ class ClientController extends Controller
 
     public function follow(Request $request)
     {
-        \Log::info('API\ClientController@follow: ' . PHP_EOL . $request . PHP_EOL . " -------------");
+        \Log::info('API\ClientController@follow: ' . PHP_EOL . 
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
         // POST http://localhost:8000/api/v1/clients/follow
         // {
         //     "user": 32,
@@ -121,7 +128,10 @@ class ClientController extends Controller
 
     public function unfollow(Request $request)
     {
-        \Log::info('API\ClientController@unfollow: ' . PHP_EOL . $request . PHP_EOL . " -------------");
+        \Log::info('API\ClientController@unfollow: ' . PHP_EOL . 
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
         // POST http://localhost:8000/api/v1/clients/follow
         // {
         //     "user": 32,
@@ -166,7 +176,10 @@ class ClientController extends Controller
 
     public function missions(Request $request)
     {
-        \Log::info('API\ClientController@missions: ' . PHP_EOL . $request . PHP_EOL . " -------------");
+        \Log::info('API\ClientController@missions: ' . PHP_EOL . 
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
         // returns a list of all of the active missions for a client
         // POST http://localhost:8000/api/v1/clients/missions
         // {

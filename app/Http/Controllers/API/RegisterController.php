@@ -12,9 +12,25 @@ use Response;
 
 class RegisterController extends Controller
 {
+    public $ip;
+
+    public function __construct(){
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $this->ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $this->ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $this->ip = $_SERVER['REMOTE_ADDR'];
+        }
+    }
+    
     public function register(Request $request)
     {
-        \Log::info('API\RegisterController@register: ' . PHP_EOL . $request . PHP_EOL . " -------------");
+        \Log::info('API\RegisterController@register: ' . PHP_EOL . 
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
+
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|max:255|unique:users',
             'name' => 'required',

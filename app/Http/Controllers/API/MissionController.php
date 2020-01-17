@@ -13,6 +13,17 @@ use App\Models\Fav;
 
 class MissionController extends Controller
 {
+    public $ip;
+
+    public function __construct(){
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $this->ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $this->ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $this->ip = $_SERVER['REMOTE_ADDR'];
+        }
+    }
     /**
      * Returns a list of clients available to follow,
      * ordered by who is closest to the users
@@ -20,7 +31,10 @@ class MissionController extends Controller
      */
     public function index(Request $request)
     {
-        \Log::info('API\MissionController@index: ' . PHP_EOL . $request . PHP_EOL . " -------------");
+        \Log::info('API\MissionController@index: ' . PHP_EOL . 
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
         //get all of the missions from the brands that a user is following
         // POST http://localhost:8000/api/v1/missions
         // {
@@ -60,7 +74,10 @@ class MissionController extends Controller
 
     public function show(Request $request)
     {
-        \Log::info('API\MissionController@show: ' . PHP_EOL . $request . PHP_EOL . " -------------");
+        \Log::info('API\MissionController@show: ' . PHP_EOL . 
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
         // get a single mission
         //POST http://localhost:8000/api/v1/missions/show
         // {
@@ -77,7 +94,10 @@ class MissionController extends Controller
 
     public function showByClient(Request $request)
     {
-        \Log::info('API\MissionController@showByClient: ' . PHP_EOL . $request . PHP_EOL . " -------------");
+        \Log::info('API\MissionController@showByClient: ' . PHP_EOL . 
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
         //get all of active the missions for a particular brand
         // POST http://localhost:8000/api/v1/missions/client
         // {
@@ -108,7 +128,10 @@ class MissionController extends Controller
 
     public function accept(Request $request)
     {
-        \Log::info('API\MissionController@accept: ' . PHP_EOL . $request . PHP_EOL . " -------------");
+        \Log::info('API\MissionController@accept: ' . PHP_EOL . 
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
         // POST http://localhost:8000/api/v1/missions/accept
         // {
         //     "user": 123,
@@ -120,7 +143,10 @@ class MissionController extends Controller
 
     public function complete(Request $request)
     {
-        \Log::info('API\MissionController@complete: ' . PHP_EOL . $request . PHP_EOL . " -------------");
+        \Log::info('API\MissionController@complete: ' . PHP_EOL . 
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
         //mark a mission as complete for a user, returns the users new point balance one completed
         // POST http://localhost:8000/api/v1/missions/complete
         // {
@@ -174,7 +200,10 @@ class MissionController extends Controller
 
     public function getMissionHistory(Request $request)
     {
-        \Log::info('API\MissionController@getMissionHistory: ' . PHP_EOL . $request . PHP_EOL . " -------------");
+        \Log::info('API\MissionController@getMissionHistory: ' . PHP_EOL . 
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
         // list of completed misson nby a user
         // POST http://localhost:8000/api/v1/missions/getMissionHistory
         // {

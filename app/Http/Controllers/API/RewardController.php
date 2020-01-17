@@ -14,6 +14,17 @@ use Illuminate\Support\Facades\Mail;
 
 class RewardController extends Controller
 {
+    public $ip;
+
+    public function __construct(){
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $this->ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $this->ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $this->ip = $_SERVER['REMOTE_ADDR'];
+        }
+    }
     /**
      * Returns a list of clients available to follow,
      * ordered by who is closest to the users
@@ -21,7 +32,11 @@ class RewardController extends Controller
      */
     public function index(Request $request)
     {
-        \Log::info('API\RewardController@index: ' . PHP_EOL . $request . PHP_EOL . " -------------");
+        \Log::info('API\RewardController@index: ' . PHP_EOL . 
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
+
         /**
          * show a list of all active rewards
          * POST http://localhost:8000/api/v1/rewards
@@ -35,7 +50,11 @@ class RewardController extends Controller
 
     public function show(Request $request)
     {
-        \Log::info('API\RewardController@show: ' . PHP_EOL . $request . PHP_EOL . " -------------");
+        \Log::info('API\RewardController@show: ' . PHP_EOL .        
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
+
         //POST http://localhost:8000/api/v1/rewards/show
         // {
         //     "reward_id": 3
@@ -47,7 +66,11 @@ class RewardController extends Controller
 
     public function redeem(Request $request)
     {
-        \Log::info('API\RewardController@redeem: ' . PHP_EOL . $request . PHP_EOL . " -------------");
+        \Log::info('API\RewardController@redeem: ' . PHP_EOL .        
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
+        
         // allows the user to redeem a reward, creates a record of the redemption, and subtracts
         // the points from the users account
         //
