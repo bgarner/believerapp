@@ -27,6 +27,10 @@ class ClientController extends Controller
 
     public function index(Request $request)
     {
+        \Log::info('API\ClientController@index: ' . PHP_EOL .
+        "IP: " . $this->ip . PHP_EOL . 
+        $request . 
+        PHP_EOL . " -------------");
         //match the first char of the postal code to brands with the same first char
         // POST http://localhost:8000/api/v1/clients
         // {
@@ -50,12 +54,7 @@ class ClientController extends Controller
                 $c->is_following = 0;
             }
         }
-
-        \Log::info('API\ClientController@index: ' . PHP_EOL .
-        "IP: " . $this->ip . PHP_EOL . 
-        $request . 
-        PHP_EOL . " -------------");
-
+        return $clients;
     }
 
     public function clientsFollowedByUser(Request $request)
