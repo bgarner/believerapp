@@ -21,7 +21,11 @@ class ClientUserController extends Controller
 
         foreach($accounts as $account) {
             $user = User::find($account->user_id);
-            $account->name = $user->first . " " . $user->last;
+            if(!$user->first) {
+                $account->name = $user->name;
+            } else {
+                $account->name = $user->first . " " . $user->last;
+            }
             $account->email = $user->email;
             $account->created = $user->created_at;
             $account->brand = Client::find($account->client_id)->name;
@@ -71,7 +75,7 @@ class ClientUserController extends Controller
 
     public function destroy($id)
     {
-        ClientUser::find($id)->delete();        
+        ClientUser::find($id)->delete();
         \Log::info('manager deleted: ' . $id);
         return 'this is the delete function';
     }
