@@ -30,7 +30,7 @@
     },
     "dependencies": {
         "@types/quill": "^2.0.2",
-        "ajv": "^6.8.1",
+        "ajv": "^6.12.3",
         "chart.js": "^2.8.0",
         "datatables": "^1.10.18",
         "datatables.net": "^1.10.19",
